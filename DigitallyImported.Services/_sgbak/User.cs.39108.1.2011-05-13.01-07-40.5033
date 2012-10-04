@@ -1,0 +1,83 @@
+
+using DigitallyImported.Components;
+
+namespace DigitallyImported.Services
+{
+    public class User : DigitallyImported.Services.IUser
+    {
+        private string _username;
+
+        public User() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Username
+        {
+            get { return _username; }
+            set { _username = value; }
+        }
+        private string _password;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Password
+        {
+            get { return _password; }
+            set { _password = value; }
+        }
+
+        private string _mobileAddress;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string MobileAddress
+        {
+            get { return this._mobileAddress; }
+            set { this._mobileAddress = value; }
+        }
+
+        private string _emailAddress;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string EmailAddress
+        {
+            get { return _emailAddress; }
+            set { _emailAddress = value; }
+        }
+        private bool _receiveNotifications;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool ReceiveNotifications
+        {
+            get { return _receiveNotifications; }
+            set { _receiveNotifications = value; }
+        }
+        private NotificationTypes _notificationTypes;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public NotificationTypes NotificationTypes
+        {
+            get { return _notificationTypes; }
+            set { _notificationTypes = value; }
+        }
+        private IChannel _favoriteChannel;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IChannel FavoriteChannel
+        {
+            get { return _favoriteChannel; }
+            set { _favoriteChannel = value; }
+        }
+    }
+}

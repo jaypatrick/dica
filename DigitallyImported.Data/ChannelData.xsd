@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+        </Connections>
+        <Tables>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="PLAYLISTS" msprop:Generator_UserTableName="PLAYLISTS" msprop:Generator_RowDeletedName="PLAYLISTSRowDeleted" msprop:Generator_TableClassName="PLAYLISTSDataTable" msprop:Generator_RowChangedName="PLAYLISTSRowChanged" msprop:Generator_RowClassName="PLAYLISTSRow" msprop:Generator_RowChangingName="PLAYLISTSRowChanging" msprop:Generator_RowEvArgName="PLAYLISTSRowChangeEvent" msprop:Generator_RowEvHandlerName="PLAYLISTSRowChangeEventHandler" msprop:Generator_TablePropName="PLAYLISTS" msprop:Generator_TableVarName="tablePLAYLISTS" msprop:Generator_RowDeletingName="PLAYLISTSRowDeleting">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="STATIONTITLE" msprop:Generator_UserColumnName="STATIONTITLE" msprop:Generator_ColumnPropNameInRow="STATIONTITLE" msprop:Generator_ColumnVarNameInTable="columnSTATIONTITLE" msprop:Generator_ColumnPropNameInTable="STATIONTITLEColumn" type="xs:string" minOccurs="0" />
+        <xs:element name="STATIONURL" msprop:Generator_UserColumnName="STATIONURL" msprop:Generator_ColumnPropNameInRow="STATIONURL" msprop:Generator_ColumnVarNameInTable="columnSTATIONURL" msprop:Generator_ColumnPropNameInTable="STATIONURLColumn" type="xs:string" minOccurs="0" />
+        <xs:element name="GENERATETIME" msprop:Generator_UserColumnName="GENERATETIME" msprop:Generator_ColumnPropNameInRow="GENERATETIME" msprop:Generator_ColumnVarNameInTable="columnGENERATETIME" msprop:Generator_ColumnPropNameInTable="GENERATETIMEColumn" type="xs:string" minOccurs="0" />
+        <xs:element name="CHANNELS" msprop:Generator_UserTableName="CHANNELS" msprop:Generator_RowDeletedName="CHANNELSRowDeleted" msprop:Generator_TableClassName="CHANNELSDataTable" msprop:Generator_RowChangedName="CHANNELSRowChanged" msprop:Generator_RowClassName="CHANNELSRow" msprop:Generator_RowChangingName="CHANNELSRowChanging" msprop:Generator_RowEvArgName="CHANNELSRowChangeEvent" msprop:Generator_RowEvHandlerName="CHANNELSRowChangeEventHandler" msprop:Generator_TablePropName="CHANNELS" msprop:Generator_TableVarName="tableCHANNELS" msprop:Generator_RowDeletingName="CHANNELSRowDeleting" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CHANNEL" msprop:Generator_UserTableName="CHANNEL" msprop:Generator_RowDeletedName="CHANNELRowDeleted" msprop:Generator_TableClassName="CHANNELDataTable" msprop:Generator_RowChangedName="CHANNELRowChanged" msprop:Generator_RowClassName="CHANNELRow" msprop:Generator_RowChangingName="CHANNELRowChanging" msprop:Generator_RowEvArgName="CHANNELRowChangeEvent" msprop:Generator_RowEvHandlerName="CHANNELRowChangeEventHandler" msprop:Generator_TablePropName="CHANNEL" msprop:Generator_TableVarName="tableCHANNEL" msprop:Generator_RowDeletingName="CHANNELRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CHANNELTITLE" msprop:Generator_UserColumnName="CHANNELTITLE" msprop:Generator_ColumnPropNameInRow="CHANNELTITLE" msprop:Generator_ColumnVarNameInTable="columnCHANNELTITLE" msprop:Generator_ColumnPropNameInTable="CHANNELTITLEColumn" type="xs:string" minOccurs="0" />
+                    <xs:element name="TRACKS" msprop:Generator_UserTableName="TRACKS" msprop:Generator_RowDeletedName="TRACKSRowDeleted" msprop:Generator_TableClassName="TRACKSDataTable" msprop:Generator_RowChangedName="TRACKSRowChanged" msprop:Generator_RowClassName="TRACKSRow" msprop:Generator_RowChangingName="TRACKSRowChanging" msprop:Generator_RowEvArgName="TRACKSRowChangeEvent" msprop:Generator_RowEvHandlerName="TRACKSRowChangeEventHandler" msprop:Generator_TablePropName="TRACKS" msprop:Generator_TableVarName="tableTRACKS" msprop:Generator_RowDeletingName="TRACKSRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TRACK" msprop:Generator_UserTableName="TRACK" msprop:Generator_RowDeletedName="TRACKRowDeleted" msprop:Generator_TableClassName="TRACKDataTable" msprop:Generator_RowChangedName="TRACKRowChanged" msprop:Generator_RowClassName="TRACKRow" msprop:Generator_RowChangingName="TRACKRowChanging" msprop:Generator_RowEvArgName="TRACKRowChangeEvent" msprop:Generator_RowEvHandlerName="TRACKRowChangeEventHandler" msprop:Generator_TablePropName="TRACK" msprop:Generator_TableVarName="tableTRACK" msprop:Generator_RowDeletingName="TRACKRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="TRACKTITLE" msprop:Generator_UserColumnName="TRACKTITLE" msprop:Generator_ColumnPropNameInRow="TRACKTITLE" msprop:Generator_ColumnVarNameInTable="columnTRACKTITLE" msprop:Generator_ColumnPropNameInTable="TRACKTITLEColumn" type="xs:string" minOccurs="0" />
+                                <xs:element name="STARTTIME" msprop:Generator_UserColumnName="STARTTIME" msprop:Generator_ColumnPropNameInRow="STARTTIME" msprop:Generator_ColumnVarNameInTable="columnSTARTTIME" msprop:Generator_ColumnPropNameInTable="STARTTIMEColumn" type="xs:string" minOccurs="0" />
+                                <xs:element name="LABEL" msprop:Generator_UserColumnName="LABEL" msprop:Generator_ColumnPropNameInRow="LABEL" msprop:Generator_ColumnVarNameInTable="columnLABEL" msprop:Generator_ColumnPropNameInTable="LABELColumn" type="xs:string" minOccurs="0" />
+                                <xs:element name="TRACKURL" msprop:Generator_UserColumnName="TRACKURL" msprop:Generator_ColumnPropNameInRow="TRACKURL" msprop:Generator_ColumnVarNameInTable="columnTRACKURL" msprop:Generator_ColumnPropNameInTable="TRACKURLColumn" type="xs:string" minOccurs="0" />
+                                <xs:element name="BOARDCOUNT" msprop:Generator_UserColumnName="BOARDCOUNT" msprop:Generator_ColumnPropNameInRow="BOARDCOUNT" msprop:Generator_ColumnVarNameInTable="columnBOARDCOUNT" msprop:Generator_ColumnPropNameInTable="BOARDCOUNTColumn" type="xs:string" minOccurs="0" />
+                                <xs:element name="EXTRAURL" nillable="true" msprop:Generator_UserTableName="EXTRAURL" msprop:Generator_RowDeletedName="EXTRAURLRowDeleted" msprop:Generator_TableClassName="EXTRAURLDataTable" msprop:Generator_RowChangedName="EXTRAURLRowChanged" msprop:Generator_RowClassName="EXTRAURLRow" msprop:Generator_RowChangingName="EXTRAURLRowChanging" msprop:Generator_RowEvArgName="EXTRAURLRowChangeEvent" msprop:Generator_RowEvHandlerName="EXTRAURLRowChangeEventHandler" msprop:Generator_TablePropName="EXTRAURL" msprop:Generator_TableVarName="tableEXTRAURL" msprop:Generator_RowDeletingName="EXTRAURLRowDeleting" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msprop:Generator_UserColumnName="EXTRAURL_Text" msprop:Generator_ColumnPropNameInRow="EXTRAURL_Text" msprop:Generator_ColumnVarNameInTable="columnEXTRAURL_Text" msprop:Generator_ColumnPropNameInTable="EXTRAURL_TextColumn" msdata:ColumnName="EXTRAURL_Text" msdata:Ordinal="1">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="TITLE" msprop:Generator_UserColumnName="TITLE" msprop:Generator_ColumnPropNameInRow="TITLE" msprop:Generator_ColumnVarNameInTable="columnTITLE" msprop:Generator_ColumnPropNameInTable="TITLEColumn" type="xs:string" />
+                                        <xs:attribute name="TRACK_Id" msprop:Generator_UserColumnName="TRACK_Id" msprop:Generator_ColumnPropNameInRow="TRACK_Id" msprop:Generator_ColumnVarNameInTable="columnTRACK_Id" msprop:Generator_ColumnPropNameInTable="TRACK_IdColumn" type="xs:int" use="prohibited" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BUYURL1" msprop:Generator_UserTableName="BUYURL1" msprop:Generator_RowDeletedName="BUYURL1RowDeleted" msprop:Generator_TableClassName="BUYURL1DataTable" msprop:Generator_RowChangedName="BUYURL1RowChanged" msprop:Generator_RowClassName="BUYURL1Row" msprop:Generator_RowChangingName="BUYURL1RowChanging" msprop:Generator_RowEvArgName="BUYURL1RowChangeEvent" msprop:Generator_RowEvHandlerName="BUYURL1RowChangeEventHandler" msprop:Generator_TablePropName="BUYURL1" msprop:Generator_TableVarName="tableBUYURL1" msprop:Generator_RowDeletingName="BUYURL1RowDeleting" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:attribute name="FROM" msprop:Generator_UserColumnName="FROM" msprop:Generator_ColumnPropNameInRow="FROM" msprop:Generator_ColumnVarNameInTable="columnFROM" msprop:Generator_ColumnPropNameInTable="FROMColumn" type="xs:string" />
+                                    <xs:attribute name="TRACK_Id" msprop:Generator_UserColumnName="TRACK_Id" msprop:Generator_ColumnPropNameInRow="TRACK_Id" msprop:Generator_ColumnVarNameInTable="columnTRACK_Id" msprop:Generator_ColumnPropNameInTable="TRACK_IdColumn" type="xs:int" use="prohibited" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BUYURL2" nillable="true" msprop:Generator_UserTableName="BUYURL2" msprop:Generator_RowDeletedName="BUYURL2RowDeleted" msprop:Generator_TableClassName="BUYURL2DataTable" msprop:Generator_RowChangedName="BUYURL2RowChanged" msprop:Generator_RowClassName="BUYURL2Row" msprop:Generator_RowChangingName="BUYURL2RowChanging" msprop:Generator_RowEvArgName="BUYURL2RowChangeEvent" msprop:Generator_RowEvHandlerName="BUYURL2RowChangeEventHandler" msprop:Generator_TablePropName="BUYURL2" msprop:Generator_TableVarName="tableBUYURL2" msprop:Generator_RowDeletingName="BUYURL2RowDeleting" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msprop:Generator_UserColumnName="BUYURL2_Text" msprop:Generator_ColumnPropNameInRow="BUYURL2_Text" msprop:Generator_ColumnVarNameInTable="columnBUYURL2_Text" msprop:Generator_ColumnPropNameInTable="BUYURL2_TextColumn" msdata:ColumnName="BUYURL2_Text" msdata:Ordinal="1">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="FROM" msprop:Generator_UserColumnName="FROM" msprop:Generator_ColumnPropNameInRow="FROM" msprop:Generator_ColumnVarNameInTable="columnFROM" msprop:Generator_ColumnPropNameInTable="FROMColumn" type="xs:string" />
+                                        <xs:attribute name="TRACK_Id" msprop:Generator_UserColumnName="TRACK_Id" msprop:Generator_ColumnPropNameInRow="TRACK_Id" msprop:Generator_ColumnVarNameInTable="columnTRACK_Id" msprop:Generator_ColumnPropNameInTable="TRACK_IdColumn" type="xs:int" use="prohibited" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="TRACK_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="TRACK_Id" msprop:Generator_ColumnPropNameInRow="TRACK_Id" msprop:Generator_ColumnVarNameInTable="columnTRACK_Id" msprop:Generator_ColumnPropNameInTable="TRACK_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                              <xs:attribute name="TRACKS_Id" msprop:Generator_UserColumnName="TRACKS_Id" msprop:Generator_ColumnPropNameInRow="TRACKS_Id" msprop:Generator_ColumnVarNameInTable="columnTRACKS_Id" msprop:Generator_ColumnPropNameInTable="TRACKS_IdColumn" type="xs:int" use="prohibited" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="TRACKS_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="TRACKS_Id" msprop:Generator_ColumnPropNameInRow="TRACKS_Id" msprop:Generator_ColumnVarNameInTable="columnTRACKS_Id" msprop:Generator_ColumnPropNameInTable="TRACKS_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                        <xs:attribute name="CHANNEL_Id" msprop:Generator_UserColumnName="CHANNEL_Id" msprop:Generator_ColumnPropNameInRow="CHANNEL_Id" msprop:Generator_ColumnVarNameInTable="columnCHANNEL_Id" msprop:Generator_ColumnPropNameInTable="CHANNEL_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="CHANNEL_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CHANNEL_Id" msprop:Generator_ColumnPropNameInRow="CHANNEL_Id" msprop:Generator_ColumnVarNameInTable="columnCHANNEL_Id" msprop:Generator_ColumnPropNameInTable="CHANNEL_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="CHANNELS_Id" msprop:Generator_UserColumnName="CHANNELS_Id" msprop:Generator_ColumnPropNameInRow="CHANNELS_Id" msprop:Generator_ColumnVarNameInTable="columnCHANNELS_Id" msprop:Generator_ColumnPropNameInTable="CHANNELS_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="CHANNELS_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CHANNELS_Id" msprop:Generator_ColumnPropNameInRow="CHANNELS_Id" msprop:Generator_ColumnVarNameInTable="columnCHANNELS_Id" msprop:Generator_ColumnPropNameInTable="CHANNELS_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="PLAYLISTS_Id" msprop:Generator_UserColumnName="PLAYLISTS_Id" msprop:Generator_ColumnPropNameInRow="PLAYLISTS_Id" msprop:Generator_ColumnVarNameInTable="columnPLAYLISTS_Id" msprop:Generator_ColumnPropNameInTable="PLAYLISTS_IdColumn" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="PLAYLISTS_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="PLAYLISTS_Id" msprop:Generator_ColumnPropNameInRow="PLAYLISTS_Id" msprop:Generator_ColumnVarNameInTable="columnPLAYLISTS_Id" msprop:Generator_ColumnPropNameInTable="PLAYLISTS_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="NewDataSet" msprop:Generator_DataSetName="NewDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="PLAYLISTS" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="TRACK_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//TRACK" />
+      <xs:field xpath="@TRACK_Id" />
+    </xs:unique>
+    <xs:unique name="TRACKS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//TRACKS" />
+      <xs:field xpath="@TRACKS_Id" />
+    </xs:unique>
+    <xs:unique name="CHANNEL_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//CHANNEL" />
+      <xs:field xpath="@CHANNEL_Id" />
+    </xs:unique>
+    <xs:unique name="CHANNELS_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//CHANNELS" />
+      <xs:field xpath="@CHANNELS_Id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//PLAYLISTS" />
+      <xs:field xpath="@PLAYLISTS_Id" />
+    </xs:unique>
+    <xs:keyref name="PLAYLISTS_CHANNELS" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="PLAYLISTS_CHANNELS" msprop:rel_Generator_RelationVarName="relationPLAYLISTS_CHANNELS" msprop:rel_Generator_UserChildTable="CHANNELS" msprop:rel_Generator_UserParentTable="PLAYLISTS" msprop:rel_Generator_ParentPropName="PLAYLISTSRow" msprop:rel_Generator_ChildPropName="GetCHANNELSRows">
+      <xs:selector xpath=".//CHANNELS" />
+      <xs:field xpath="@PLAYLISTS_Id" />
+    </xs:keyref>
+    <xs:keyref name="CHANNELS_CHANNEL" refer="CHANNELS_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="CHANNELS_CHANNEL" msprop:rel_Generator_RelationVarName="relationCHANNELS_CHANNEL" msprop:rel_Generator_UserChildTable="CHANNEL" msprop:rel_Generator_UserParentTable="CHANNELS" msprop:rel_Generator_ParentPropName="CHANNELSRow" msprop:rel_Generator_ChildPropName="GetCHANNELRows">
+      <xs:selector xpath=".//CHANNEL" />
+      <xs:field xpath="@CHANNELS_Id" />
+    </xs:keyref>
+    <xs:keyref name="CHANNEL_TRACKS" refer="CHANNEL_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="CHANNEL_TRACKS" msprop:rel_Generator_RelationVarName="relationCHANNEL_TRACKS" msprop:rel_Generator_UserChildTable="TRACKS" msprop:rel_Generator_UserParentTable="CHANNEL" msprop:rel_Generator_ParentPropName="CHANNELRow" msprop:rel_Generator_ChildPropName="GetTRACKSRows">
+      <xs:selector xpath=".//TRACKS" />
+      <xs:field xpath="@CHANNEL_Id" />
+    </xs:keyref>
+    <xs:keyref name="TRACKS_TRACK" refer="TRACKS_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TRACKS_TRACK" msprop:rel_Generator_RelationVarName="relationTRACKS_TRACK" msprop:rel_Generator_UserChildTable="TRACK" msprop:rel_Generator_UserParentTable="TRACKS" msprop:rel_Generator_ParentPropName="TRACKSRow" msprop:rel_Generator_ChildPropName="GetTRACKRows">
+      <xs:selector xpath=".//TRACK" />
+      <xs:field xpath="@TRACKS_Id" />
+    </xs:keyref>
+    <xs:keyref name="TRACK_BUYURL2" refer="TRACK_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TRACK_BUYURL2" msprop:rel_Generator_RelationVarName="relationTRACK_BUYURL2" msprop:rel_Generator_UserChildTable="BUYURL2" msprop:rel_Generator_UserParentTable="TRACK" msprop:rel_Generator_ParentPropName="TRACKRow" msprop:rel_Generator_ChildPropName="GetBUYURL2Rows">
+      <xs:selector xpath=".//BUYURL2" />
+      <xs:field xpath="@TRACK_Id" />
+    </xs:keyref>
+    <xs:keyref name="TRACK_BUYURL1" refer="TRACK_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TRACK_BUYURL1" msprop:rel_Generator_RelationVarName="relationTRACK_BUYURL1" msprop:rel_Generator_UserChildTable="BUYURL1" msprop:rel_Generator_UserParentTable="TRACK" msprop:rel_Generator_ParentPropName="TRACKRow" msprop:rel_Generator_ChildPropName="GetBUYURL1Rows">
+      <xs:selector xpath=".//BUYURL1" />
+      <xs:field xpath="@TRACK_Id" />
+    </xs:keyref>
+    <xs:keyref name="TRACK_EXTRAURL" refer="TRACK_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TRACK_EXTRAURL" msprop:rel_Generator_RelationVarName="relationTRACK_EXTRAURL" msprop:rel_Generator_UserChildTable="EXTRAURL" msprop:rel_Generator_UserParentTable="TRACK" msprop:rel_Generator_ParentPropName="TRACKRow" msprop:rel_Generator_ChildPropName="GetEXTRAURLRows">
+      <xs:selector xpath=".//EXTRAURL" />
+      <xs:field xpath="@TRACK_Id" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

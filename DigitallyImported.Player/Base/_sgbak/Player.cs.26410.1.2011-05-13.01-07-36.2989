@@ -1,0 +1,157 @@
+using System;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Text.RegularExpressions;
+using DigitallyImported.Components;
+using DigitallyImported.Configuration.Properties;
+using P = DigitallyImported.Resources.Properties;
+
+
+namespace DigitallyImported.Player
+{
+    public abstract class Player : IPlayer, IPlayerFactory
+    {
+        protected Player()
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="channel"></param>
+        public abstract void Play(DigitallyImported.Components.IChannel channel);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract PlayerTypes PlayerType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract Icon PlayerIcon { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public abstract bool IsInstalled { get; }
+
+        public virtual IChannel GetPlayerKey()
+        {
+            return PlayerLoader.Channel;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual DigitallyImported.Components.IChannel Channel
+        {
+            get
+            {
+                return _channel;
+            }
+            set
+            {
+                _channel = value;
+            }
+        }
+        private DigitallyImported.Components.IChannel _channel = null;
+
+        protected virtual Uri ParseStreamUri(Uri streamUri)
+        {
+            Uri returnUri = null;
+
+            string uri = streamUri.AbsoluteUri;
+
+            try
+            {
+                Trace.WriteLine(string.Format("{0} received request: {1}", this.PlayerType.ToString(), uri), TraceCategories.StreamParsing.ToString());
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(streamUri);
+
+                if (Settings.Default.SubscriptionType == SubscriptionLevel.Premium.ToString())
+                    request.Headers.Add(string.Format(P.Resources.PremiumStreamCookieHeader, Settings.Default.Username, Settings.Default.Password));
+
+                WebResponse response = request.GetResponse();
+
+                using (StreamReader contentReader = new StreamReader(response.GetResponseStream()))
+                {
+                    string contents = contentReader.ReadToEnd();
+
+                    Regex mms = new Regex(@"mms://(.*)", RegexOptions.IgnoreCase);
+                    Regex http = new Regex(@"http://(.*)", RegexOptions.IgnoreCase);
+
+                    Regex file = new Regex(@"file(.*)", RegexOptions.IgnoreCase);
+
+                    if (uri.EndsWith("asx", StringComparison.CurrentCultureIgnoreCase))
+                    {
+                        string url = mms.Match(contents).Success ? mms.Match(contents).Value : http.Match(contents).Value;  // might contain http links instead of mms
+
+                        //if (Settings.Default.SubscriptionType == SubscriptionLevel.Premium.ToString())
+                        //    url = url.Remove(url.IndexOf(Settings.Default.Password) + Settings.Default.Password.Length);
+
+                        url = url.Remove(url.LastIndexOf('"'));
+
+                        returnUri = new Uri(url);
+                    }
+
+                    if (uri.EndsWith("pls", StringComparison.CurrentCultureIgnoreCase)) // need to account for m3u file type, though this should do it
+                    {
+                        //if (file.IsMatch(contents))
+                        //{
+                            string url = file.Matches(contents)[new Random().Next(file.Matches(contents).Count)].Value;
+                            url = http.Match(url).Value;
+
+                            //string url = http.Matches(contents)[new Random().Next(http.Matches(contents).Count)].Value;
+
+                            if (url.EndsWith("\r")) url = url.Replace("\r", "");
+
+                            // WMP cannot parse the UN:PW out of the URL, so strip it out
+                            // parse for aac headers as well.
+                            if (this.PlayerType == PlayerTypes.MediaPlayer)// != PlayerTypes.Winamp && this.PlayerType != PlayerTypes.Itunes)
+                            {
+                                //HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+                                //req.Headers.Add(P.Resources.PremiumStreamCookieHeaderFormat(Settings.Default.Username, Settings.Default.Password));
+                                //HttpWebResponse wres = (HttpWebResponse)req.GetResponse();
+
+                                //// if aac+ stream replace http with icyxto playwith orban
+                                //// http://wiki.cdyne.com/index.php/Playing_PLS_Winamp_files_in_Windows_Media
+                                //if (wres.Headers.Get("content-type") == "audio/aacp")
+                                //    url = url.Replace("http", "icyx");
+
+                                if (this.Channel.StreamType == StreamType.AacPlus || this.Channel.StreamType == StreamType.Aac)
+                                {
+                                    url = url.Replace("http", "icyx");
+                                }
+
+                                // strip out username and password
+                                url = new Uri(url).GetComponents(UriComponents.SchemeAndServer, UriFormat.UriEscaped);
+                            }
+
+                            // replace http w/ icy: http://developer.apple.com/documentation/QuickTime/QT6WhatsNew/Chap1/chapter_1_section_58.html
+                            //if (this.PlayerType == PlayerTypes.Quicktime)
+                            //{
+                            //    url = url.Replace("http", "icy");
+                            //}
+
+                            returnUri = new Uri(url);
+
+
+                            Trace.WriteLine(string.Format("{0} streaming attempt: {1}", this.PlayerType.ToString(), returnUri.AbsoluteUri), TraceCategories.StreamParsing.ToString());
+                        
+                    }
+                }
+
+                return returnUri;
+
+            }
+            catch
+            {
+                throw;
+            }
+        }
+    }
+}

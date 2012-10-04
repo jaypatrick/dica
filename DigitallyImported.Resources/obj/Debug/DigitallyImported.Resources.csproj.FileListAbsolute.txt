@@ -1,0 +1,14 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\bin\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\bin\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.Properties.Resources.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\GenerateResource.read.1.tlog
+C:\Code\Projects\DigitallyImported\DigitallyImported.Resources\obj\Debug\GenerateResource.write.1.tlog
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\bin\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\bin\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.Properties.Resources.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.csproj.GenerateResource.Cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.pdb

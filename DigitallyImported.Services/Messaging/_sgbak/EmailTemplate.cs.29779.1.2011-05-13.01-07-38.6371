@@ -1,0 +1,78 @@
+using System;
+using System.Net.Mail;
+using System.Xml;
+
+
+namespace DigitallyImported.Services.Messaging
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class EmailTemplate : MailMessage, IMessage
+    {
+        string messageXml = string.Empty;
+        MailAddress _emailAddress;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public EmailTemplate() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="node"></param>
+        public EmailTemplate(XmlNode node)
+        {
+            Priority        = (MailPriority)Enum.Parse(typeof(MailPriority), node.Attributes.GetNamedItem("priority").InnerText);
+            _emailType      = (EmailType)Enum.Parse(typeof(EmailType), node.Attributes.GetNamedItem("emailType").InnerText);
+            Subject         = node.SelectSingleNode("subject").InnerText;
+            Body            = node.SelectSingleNode("body").InnerText;
+            From            = new MailAddress(node.SelectSingleNode("from").InnerText);
+            BodyEncoding    = System.Text.Encoding.UTF7;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public EmailType EmailType
+        {
+            get { return this._emailType; }
+        }
+        private EmailType _emailType;
+
+        #region IMessage Members
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public object MessageToken
+        {
+            get
+            {
+                return this.GetHashCode();
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public DateTime TimeStamp
+        {
+            get { return DateTime.Now; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public NotificationTypes MessageTypes
+        {
+            get { return this._messageTypes; }
+            set { this._messageTypes = value; }
+        }
+
+        private NotificationTypes _messageTypes = NotificationTypes.Email;
+
+        #endregion
+    }
+}

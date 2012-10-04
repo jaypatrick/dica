@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47B9E6C4-1071-4B0D-936C-3F8AF35CC37E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DigitallyImported.Services</RootNamespace>
+    <AssemblyName>DigitallyImported.Services</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>DigitallyImported.Services.pfx</AssemblyOriginatorKeyFile>
+    <SccProjectName>DigitallyImported.Services</SccProjectName>
+    <SccLocalPath>2~7614B8CB-936F-4662-BBCD-F1C8B009A8BF</SccLocalPath>
+    <SccAuxPath>http://vault.jaysonknight.com/VaultService</SccAuxPath>
+    <SccProvider>SourceGear Vault Visual Studio 2005 Client:{7BE9CE03-56BF-4682-9C06-78C68B134B30}</SccProvider>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <SignManifests>true</SignManifests>
+    <ManifestCertificateThumbprint>D5B4B82FBB443E497131E11F3CC6C460AE9B04E5</ManifestCertificateThumbprint>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Base\SubscriptionParser.cs" />
+    <Compile Include="Base\MessageSender.cs" />
+    <Compile Include="Base\TemplateParser.cs" />
+    <Compile Include="Enum\NotificationTypes.cs" />
+    <Compile Include="Enum\SubscriptionTypes.cs" />
+    <Compile Include="Interfaces\IMessage.cs" />
+    <Compile Include="Interfaces\IMessageProcessor.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="Messaging\EmailTemplateParser.cs" />
+    <Compile Include="Messaging\EmailTemplate.cs" />
+    <Compile Include="Enum\EmailType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Subscriptions\ArtistParser.cs" />
+    <Compile Include="Subscriptions\EventParser.cs" />
+    <Compile Include="Subscriptions\TitleParser.cs" />
+    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DigitallyImported.Services.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DigitallyImported.Components\DigitallyImported.Components.csproj">
+      <Project>{FDFB6AA7-DBC7-41C4-96CC-60391E2A48FE}</Project>
+      <Name>DigitallyImported.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Configuration\DigitallyImported.Configuration.csproj">
+      <Project>{A159C918-35DB-426A-9D58-4284B83368F8}</Project>
+      <Name>DigitallyImported.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Controls\DigitallyImported.Controls.csproj">
+      <Project>{EF05FE9E-358B-4891-8C36-1F999474B2E9}</Project>
+      <Name>DigitallyImported.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Data\DigitallyImported.Data.csproj">
+      <Project>{8366C629-D78F-4985-87A9-AADA08187AD2}</Project>
+      <Name>DigitallyImported.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Resources\DigitallyImported.Resources.csproj">
+      <Project>{547E38B0-0DBA-487B-82C2-7CA5001B7F5C}</Project>
+      <Name>DigitallyImported.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Messaging\EmailTemplates.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

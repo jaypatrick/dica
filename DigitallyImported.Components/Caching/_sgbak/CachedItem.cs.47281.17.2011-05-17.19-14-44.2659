@@ -1,0 +1,197 @@
+using System;
+using System.Diagnostics;
+// using System.Web.Caching;
+using System.Runtime.Caching;
+
+using DigitallyImported.Configuration.Properties;
+
+namespace DigitallyImported.Components.Caching
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public abstract class CachedItem<T> : ICacheable<T> 
+        // wrapper around Cache object
+        // ...inherit from this for caching ability
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected CachedItem()
+        { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        protected CachedItem(CachedItem<T> value) 
+        { 
+            CachedItem<T> instance = value; 
+        
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        protected virtual T this[T item]
+        {
+            get { return this.GetItem(item); }
+            set { InsertItem(item); }
+            
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Item"></typeparam>
+        /// <param name="cacheItem"></param>
+        /// <param name="cacheDependency"></param>
+        public virtual void InsertItem(T cacheItem)
+        {
+            InsertItem(cacheItem, CachedItem<T>.GetExpirationTime());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Item"></typeparam>
+        /// <param name="cacheItem"></param>
+        /// <param name="cacheDependency"></param>
+        /// <param name="expirationInterval"></param>
+        public virtual void InsertItem(T cacheItem, DateTime expirationTime)
+        {
+            Trace.WriteLine(string.Format("Inserting cache key {0} of type {1}", cacheItem.GetHashCode().ToString(), cacheItem.GetType().UnderlyingSystemType.Name), TraceCategories.Caching.ToString());
+            Cache<string, T>.Insert(cacheItem.GetHashCode().ToString(), cacheItem, expirationTime);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Item"></typeparam>
+        /// <param name="cacheItem"></param>
+        /// <returns></returns>
+        public virtual T GetItem(T cacheItem)
+        {
+            if (cacheItem != null)
+                return (T)Cache<string, T>.Get(cacheItem.GetHashCode().ToString());
+            else
+                return default(T);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Item"></typeparam>
+        /// <param name="cacheItem"></param>
+        public virtual void RemoveItem(T cacheItem)
+        {
+            Cache<string, T>.Remove(cacheItem.GetHashCode().ToString());
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="Items"></typeparam>
+        public virtual void ClearItems()
+        {
+            Cache<string, T>.Clear();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static DateTime GetExpirationTime()
+        {
+            DateTime _time = DateTime.Now;
+            // return _time.AddMilliseconds((double)(Settings.Default.PlaylistRefreshInterval / 2));
+            return _time.AddMilliseconds(Settings.Default.PlaylistRefreshInterval.TotalMilliseconds / 2);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="removedKey"></param>
+        /// <param name="expiredValue"></param>
+        /// <param name="removalReason"></param>
+        public static void ExpirationCallback(CacheEntryRemovedArguments arguments)
+        {
+            // ItemExpiredEventArgs eventArgs = new ItemExpiredEventArgs(removedKey, expiredValue, removalReason);
+            ItemExpiredEventArgs<T> eventArgs = new ItemExpiredEventArgs<T>(arguments.CacheItem.Key, arguments.CacheItem.Value, arguments.RemovedReason);
+            Trace.WriteLine(string.Format("Item {0} was {1} from cache.", arguments.CacheItem.Value.GetType().Name, arguments.RemovedReason.ToString(), TraceCategories.Caching.ToString()));
+
+            if (arguments.RemovedReason == CacheEntryRemovedReason.Expired)
+            {
+                Trace.WriteLine(string.Format("Cache has {0} items before callback: {1} was {2} from cache.", Cache<string, object>.Count, arguments.CacheItem.Value.GetType().Name, arguments.RemovedReason.ToString(), TraceCategories.Caching.ToString()));
+
+                lock (_itemExpiredLock)
+                {
+                    Trace.WriteLine(string.Format("{0}: {1} {2} {3}"
+                        , arguments.RemovedReason.ToString()
+                        , arguments.CacheItem.Key
+                        , arguments.CacheItem.Value.GetType().Name
+                        , "callback started. "), TraceCategories.Caching.ToString());
+
+                    //Trace.WriteLine(string.Format("Cache has {0} items after pruning. ", Cache<string, object>.Count));
+
+                    // testing, filter out critical cache values and refresh them
+                    // need to run tests to see if dependencies perform better (memory-wise)
+                    if (arguments.CacheItem.Value.GetType() == typeof(DigitallyImported.Data.ChannelData))
+                    {
+                        arguments.CacheItem.Value = new ChannelListLoader<IChannel>().LoadPlaylist(true);
+                        arguments.CacheItem.Key = arguments.CacheItem.Value.GetHashCode().ToString();
+                        Cache<string, object>.Insert(arguments.CacheItem.Key, arguments.CacheItem.Value);
+                    }
+                }
+
+                Trace.WriteLine(string.Format("{0}: {1} {2} {3}"
+                        , arguments.RemovedReason.ToString()
+                        , arguments.CacheItem.Key
+                        , arguments.CacheItem.Value.GetType().Name
+                        , "callback completed. "), TraceCategories.Caching.ToString());
+
+                Trace.WriteLine(string.Format("Cache has {0} items after callback. ", Cache<string, object>.Count), TraceCategories.Caching.ToString());
+
+                // raise the event; can use this elsewhere to trigger callbacks, which YOU SHOULD DO!
+                if (_itemExpired != null)
+                    _itemExpired(default(T), eventArgs);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static event EventHandler<ItemExpiredEventArgs<T>> ItemExpired
+        {
+            add
+            {
+                lock (_itemExpiredLock)
+                {
+                    _itemExpired += value;
+                }
+            }
+            remove
+            {
+                lock (_itemExpiredLock)
+                {
+                    _itemExpired -= value;
+                }
+            }
+        }
+        private static EventHandler<ItemExpiredEventArgs<T>> _itemExpired;
+        private static readonly object _itemExpiredLock = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void OnItemExpired(object sender, ItemExpiredEventArgs<T> e)
+        {
+            if (_itemExpired != null)
+                _itemExpired(sender, e);
+        }
+    }
+}

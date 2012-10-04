@@ -1,0 +1,84 @@
+﻿<!-- ***************************************************************************
+* Debugging Microsoft .NET 2.0 Applications
+* Copyright © 1997-2006 John Robbins All rights reserved.
+**************************************************************************** -->
+<!-- Write a minidump only when an OutOfMemoryException occurs ADPlus 
+     configuration file. -->
+<ADPlus>
+  <Settings>
+    <!-- Only CRASH mode supports attaching and looking at exceptions. -->
+    <RunMode>CRASH</RunMode>
+    <!-- Don't pop up any modal dialogs. -->
+    <Option>Quiet</Option>
+    <!-- Exception options. -->
+  </Settings>
+  <Exceptions>
+    <!-- Default to not doing any dumps on first chance exceptions. -->
+    <Option>
+      NoDumpOnFirstChance
+    </Option>
+    <Config>
+      <!-- For all exceptions, turn off the stack walking for first chance 
+           exceptions. In production environments, you don't want to pay the
+           performance hit for initial symbol loading and stack walking. -->
+      <Code>
+        AllExceptions
+      </Code>
+      <!-- At least log the message to the log file.-->
+      <Actions1>
+        Log
+      </Actions1>
+      <!-- If we're falling over on an unhandled exception, log it and write 
+           a minidump.-->
+      <Actions2>
+        Log;
+        MiniDump;
+      </Actions2>
+      <!-- For first chance exceptions, say the debugger didn't handle it so
+           the normal unwinding code gets it. -->
+      <ReturnAction1>
+        GN;
+      </ReturnAction1>
+      <!-- For unhandled exceptions just quit. -->
+      <ReturnAction2>
+        Q;
+      </ReturnAction2>
+    </Config>
+    <Config>
+      <!-- Set the configuration for CLR first chance exceptions. -->
+      <Code>
+        clr
+      </Code>
+      <!-- Turn off all the defaults from ADPlus.-->
+      <Actions1>
+        Void
+      </Actions1>
+      <!-- Execute the cool command to do the dump on the specific exception. -->
+      <!-- Here's how to read the command: 
+           .loadby sos mscorwks
+           // Load SOS based on the MScorwks.DLL path.
+           !stoponexception System.OutOfMemoryException 3
+           // Tell SOS to set pseudo register 3 to 1 if the exception thrown is
+           // a System.OutOfMemoryException.
+           .if(@$t3==1){...}
+           // Using the debugger command program, execute the expression in the
+           // curly braces if pseudo register 3 is 1.
+           .dump /ma /u c:\\x\\y\\foo.dmp
+           // Write out a minidump. There's no way to get the full path to 
+           // where ADPlus is writing out the rest of the dumps.
+           // Note that the command program code has a bug in it in which it 
+           // doesn't properly handle single \ characters. You probably don't 
+           // want spaces in the output directories either.
+      -->
+      <CustomActions1>
+        .loadby sos mscorwks;
+        !stoponexception System.Net.WebException 3;
+        .if @@(@$t3==1){.dump /ma /u C:\\Dumps\\WebException.dmp}
+      </CustomActions1>
+      <!-- After taking the dump, let the application have it. -->
+      <ReturnAction1>
+        GN
+      </ReturnAction1>
+    </Config>
+  </Exceptions>
+</ADPlus>

@@ -1,0 +1,13 @@
+using System;
+
+
+namespace DigitallyImported.Services.Messaging
+{
+    public interface IMessage
+    {
+        // TODO
+        object MessageToken { get; }
+        DateTime TimeStamp { get; }
+        NotificationTypes MessageTypes { get; set; }
+    }
+}

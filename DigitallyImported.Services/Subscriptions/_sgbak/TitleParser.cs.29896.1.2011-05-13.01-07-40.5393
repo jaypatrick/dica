@@ -1,0 +1,8 @@
+
+
+namespace DigitallyImported.Services.Subscriptions
+{
+    public class TitleParser : SubscriptionParser
+    {
+    }
+}

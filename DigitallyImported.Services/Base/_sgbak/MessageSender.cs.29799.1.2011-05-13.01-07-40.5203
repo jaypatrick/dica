@@ -1,0 +1,9 @@
+
+namespace DigitallyImported.Services.Messaging
+{
+    public abstract class MessageSender
+    {
+        // TODO
+        // ABSTRACT base class for all message sending type.
+    }
+}

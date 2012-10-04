@@ -1,0 +1,52 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\ChannelTransforms.xslt
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Components.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\VbPowerPack.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Components.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.xml
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Data.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\Interop.iTunesLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\Interop.WMPLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\Interop.iTunesLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\Interop.WMPLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.csproj.ResolveComReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.XML
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\ChannelTransforms.xslt
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.XML
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Player.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Components.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\VbPowerPack.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Components.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Controls.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.iTunesLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.MediaPlayer.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.WMPDXMLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.WMPLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.csprojResolveAssemblyReference.cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.iTunesLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.MediaPlayer.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.WMPDXMLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.WMPLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.csproj.ResolveComReference.cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.pdb

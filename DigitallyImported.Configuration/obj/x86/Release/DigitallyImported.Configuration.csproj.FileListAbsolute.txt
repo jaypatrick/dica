@@ -1,0 +1,4 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\bin\x86\Release\DigitallyImported.Configuration.dll.config
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\bin\x86\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\obj\x86\Release\DigitallyImported.Configuration.dll

@@ -1,0 +1,120 @@
+using System;
+// using System.Web.Caching;
+using System.Runtime.Caching;
+
+namespace DigitallyImported.Components.Caching
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ItemExpiredEventArgs<T> : EventArgs 
+    {
+
+        private T _cachedItem = default(T);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="removedKey"></param>
+        public ItemExpiredEventArgs(string removedKey) 
+            : this(removedKey, null)
+        {
+            this._cachedItem.ToString();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="removedKey"></param>
+        /// <param name="expiredValue"></param>
+        public ItemExpiredEventArgs(string removedKey, object expiredValue)
+            : this(removedKey, expiredValue, CacheEntryRemovedReason.Expired)
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="removedKey"></param>
+        /// <param name="expiredValue"></param>
+        /// <param name="removalReason"></param>
+        public ItemExpiredEventArgs(string removedKey, object expiredValue, CacheEntryRemovedReason removalReason)
+            : this(removedKey, expiredValue, removalReason, new CacheEntryRemovedCallback(CachedItem<T>.ExpirationCallback))
+        {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="removedKey"></param>
+        /// <param name="expiredValue"></param>
+        /// <param name="removalReason"></param>
+        /// <param name="callbackFunction"></param>
+        public ItemExpiredEventArgs(string removedKey, object expiredValue, CacheEntryRemovedReason removalReason, CacheEntryRemovedCallback callbackFunction)
+        {
+            _removedKey       = removedKey;
+            _expiredValue     = expiredValue;
+            _removalReason    = removalReason;
+            _callbackFunction = callbackFunction;
+            _expirationTime   = DateTime.Now;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual string RemovedKey
+        {
+            get { return _removedKey; }
+            set { _removedKey = value; }
+        }
+        private string _removedKey;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual object ExpiredValue
+        {
+            get { return _expiredValue; }
+            set { _expiredValue = value; }
+        }
+        private object _expiredValue;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual CacheEntryRemovedReason RemovalReason
+        {
+            get { return _removalReason; }
+            set { _removalReason = value; }
+        }
+        private CacheEntryRemovedReason _removalReason;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual CacheEntryRemovedCallback CallbackFunction
+        {
+            get { return _callbackFunction; }
+            set { _callbackFunction = value; }
+        }
+        private CacheEntryRemovedCallback _callbackFunction;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual DateTime ExpirationTime
+        {
+            get { return _expirationTime; }
+        }
+        private DateTime _expirationTime;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual DateTime ExpirationInterval
+        {
+            get { return _expirationInterval; }
+            set { _expirationInterval = value; }
+        }
+        private DateTime _expirationInterval;
+    }
+}

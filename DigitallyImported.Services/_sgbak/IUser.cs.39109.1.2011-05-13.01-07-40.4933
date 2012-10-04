@@ -1,0 +1,16 @@
+﻿
+using DigitallyImported.Components;
+
+namespace DigitallyImported.Services
+{
+    public interface IUser
+    {
+        string EmailAddress { get; set; }
+        IChannel FavoriteChannel { get; set; }
+        string MobileAddress { get; set; }
+        NotificationTypes NotificationTypes { get; set; }
+        string Password { get; set; }
+        bool ReceiveNotifications { get; set; }
+        string Username { get; set; }
+    }
+}

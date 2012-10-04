@@ -1,0 +1,105 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DIIcon.ico
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\ChannelTransforms.xslt
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-WebException.xml
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-Quick.xml
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-DumpOnAllFirstChance.xml
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe.config
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe.manifest
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.application
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Components.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Player.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\VbPowerPack.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\Interop.WMPLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\Interop.iTunesLib.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Components.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Player.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\bin\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.AboutForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.AdminForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.BaseContainerControl.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.BaseForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.ContentControl.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.ExternalChannelPickerControl.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.OptionsControl.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.ExternalChannelsForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.FavoritesForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.HistoryForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.OptionsForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.PlaylistForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Properties.Resources.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\GenerateResource.read.1.tlog
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\GenerateResource.write.1.tlog
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.TrustInfo.xml
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe.manifest
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.application
+C:\Code\Projects\DigitallyImported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DIIcon.ico
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\ChannelTransforms.xslt
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-WebException.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-Quick.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Dumps\DIADPlus-DumpOnAllFirstChance.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe.config
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe.manifest
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.application
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Client.exe
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Components.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Player.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.ServiceLocation.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.Interception.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\VbPowerPack.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Data.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Interop.WMPLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Interop.iTunesLib.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Components.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Player.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.ServiceLocation.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.Configuration.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Microsoft.Practices.Unity.Interception.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.csprojResolveAssemblyReference.cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.AboutForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.AdminForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.BaseContainerControl.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.BaseForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.ContentControl.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.ExternalChannelPickerControl.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Controls.OptionsControl.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.ExternalChannelsForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.FavoritesForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.HistoryForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.OptionsForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.PlaylistForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.Properties.Resources.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.csproj.GenerateResource.Cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.TrustInfo.xml
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe.manifest
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.application
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe

@@ -1,0 +1,28 @@
+﻿<!-- ***************************************************************************
+* Debugging Microsoft .NET 2.0 Applications
+* Copyright © 1997-2006 John Robbins All rights reserved.
+**************************************************************************** -->
+<!-- Quick HANG mode configuration for all process types. -->
+<ADPlus>
+  <Settings>
+    <!-- Set the mode to HANG -->
+    <RunMode>HANG</RunMode>
+    <!-- Snap the dumps, don't tell me about it -->
+    <Option>Quiet</Option>
+  </Settings>
+  <HangActions>
+    <!-- Clear out all the default options that ADPlus wants to run. -->
+    <Option>
+      Clear
+    </Option>
+    <!-- For custom actions, I want to see all     -->
+    <!-- the handle info, the managed CLR version, -->
+    <!-- managed threads, and managed call stacks. -->
+    <CustomActions>
+      .loadby sos mscorwks;
+      !eeversion;
+      !threads;
+      ~*e!clrstack;
+    </CustomActions>
+  </HangActions>
+</ADPlus>

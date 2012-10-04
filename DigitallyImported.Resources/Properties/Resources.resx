@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AboutFormCaption" xml:space="preserve">
+    <value>About DI Channel Aggregator</value>
+  </data>
+  <data name="AlternatingChannelColor" xml:space="preserve">
+    <value>Choose &amp;Alternating Channel Color...</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Digitally Imported :: Channel Aggregator</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="blue_128k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_128k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue_256k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_256k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue_24k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_24k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue_32k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_32k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue_64k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_64k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="blue_96k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\blue_96k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChannelNameNull" xml:space="preserve">
+    <value>Channel name cannot be null. </value>
+  </data>
+  <data name="ChannelsAvailableNumber" xml:space="preserve">
+    <value>{0} Channels Available</value>
+  </data>
+  <data name="ChannelSites" xml:space="preserve">
+    <value>Channel Sites: </value>
+  </data>
+  <data name="ChannelSortBy" xml:space="preserve">
+    <value>Channel Sort By: </value>
+  </data>
+  <data name="ChannelSortOrder" xml:space="preserve">
+    <value>Channel Sort Order: </value>
+  </data>
+  <data name="ColonSeparator" xml:space="preserve">
+    <value>::</value>
+  </data>
+  <data name="DICalendarPage" xml:space="preserve">
+    <value>{0}{1}/{1}.php</value>
+  </data>
+  <data name="DigitallyImportedOptions" xml:space="preserve">
+    <value>Digitally Imported Radio :: Options</value>
+  </data>
+  <data name="DIHomePage" xml:space="preserve">
+    <value>di.fm</value>
+  </data>
+  <data name="DIIconNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\DIIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_asc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_asc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_calendar.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_connected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_connected.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_desc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_desc.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_di" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_di.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_disconnected" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_disconnected.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_itunes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_itunes.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_mp3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_mp3.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_options" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_options.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_play.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_repeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_repeat.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sort" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_sort.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_sound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_sound.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_trans_aac" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_trans_aac.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_trans_aacplus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_trans_aacplus.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_warning.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_web" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_web.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_winamp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_winamp.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_wm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_wm.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon_wmp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\icon_wmp.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="InternetConnectionExceptionMessage" xml:space="preserve">
+    <value>Internet connection not available. Make sure you are connected to the internet, and check your firewall settings.</value>
+  </data>
+  <data name="LoadDefaults" xml:space="preserve">
+    <value>Load &amp;Defaults</value>
+  </data>
+  <data name="MediaTypeAacPlus" xml:space="preserve">
+    <value>{0}public2/{1}.pls</value>
+  </data>
+  <data name="MediaTypeAacPlusAbout" xml:space="preserve">
+    <value>{0}reference/codec_aacPlus.php</value>
+  </data>
+  <data name="MediaTypeMp3" xml:space="preserve">
+    <value>{0}public3/{1}.pls</value>
+  </data>
+  <data name="MediaTypeMp3About" xml:space="preserve">
+    <value>{0}reference/codec_MP3.php</value>
+  </data>
+  <data name="MediaTypePremiumAac" xml:space="preserve">
+    <value>{0}premium/{1}.pls?{2}</value>
+  </data>
+  <data name="MediaTypePremiumAacPlus" xml:space="preserve">
+    <value>{0}premium_medium/{1}.pls?{2}</value>
+  </data>
+  <data name="MediaTypePremiumMp3" xml:space="preserve">
+    <value>{0}premium_high/{1}.pls?{2}</value>
+  </data>
+  <data name="MediaTypePremiumWma" xml:space="preserve">
+    <value>{0}premium_wma/{1}.asx?{2}</value>
+  </data>
+  <data name="MediaTypeWma" xml:space="preserve">
+    <value>{0}public5/{1}.asx</value>
+  </data>
+  <data name="MediaTypeWmaAbout" xml:space="preserve">
+    <value>{0}reference/codec_WindowsMedia.php</value>
+  </data>
+  <data name="NetworkAvailable" xml:space="preserve">
+    <value>Network Available</value>
+  </data>
+  <data name="NetworkConnectionError" xml:space="preserve">
+    <value>No internet connection. Check your internet connection or firewall settings. </value>
+  </data>
+  <data name="NetworkOffline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="NetworkOnline" xml:space="preserve">
+    <value>Online</value>
+  </data>
+  <data name="NetworkUnavailable" xml:space="preserve">
+    <value>Network Unavailable</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>&amp;No</value>
+  </data>
+  <data name="NumericValueOnly" xml:space="preserve">
+    <value>Numeric value only.</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="PlaylistRefreshText" xml:space="preserve">
+    <value>Playlist will refresh in {0}</value>
+  </data>
+  <data name="PlayPreviousChannel" xml:space="preserve">
+    <value>Play Previous Channel?</value>
+  </data>
+  <data name="PremiumServiceAuthorizationException" xml:space="preserve">
+    <value>Premium service requires username and password for authentication.</value>
+  </data>
+  <data name="PremiumStreamCookieHeader" xml:space="preserve">
+    <value>Cookie: _amember_ru={0}; _amember_rp={1}</value>
+  </data>
+  <data name="ProcessToStartNull" xml:space="preserve">
+    <value>Must supply a process name to start.</value>
+  </data>
+  <data name="ProductCompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="ProductCopyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ProductName" xml:space="preserve">
+    <value>Product Name</value>
+  </data>
+  <data name="ProductVersion" xml:space="preserve">
+    <value>Product Version</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="RefreshCounterMinInterval" xml:space="preserve">
+    <value>Must be greater than {0} seconds.</value>
+  </data>
+  <data name="RefreshIntervalEmpty" xml:space="preserve">
+    <value>Refresh interval cannot be empty. </value>
+  </data>
+  <data name="RefreshIntervalNull" xml:space="preserve">
+    <value>Refresh interval cannot be null. </value>
+  </data>
+  <data name="RefreshTimeInterval" xml:space="preserve">
+    <value>Enter Refresh Time (ms)</value>
+  </data>
+  <data name="RestartApplicationMessage" xml:space="preserve">
+    <value>Restart Application?</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>S&amp;ave</value>
+  </data>
+  <data name="SelectedChannelColor" xml:space="preserve">
+    <value>Choose S&amp;elected Channel Color...</value>
+  </data>
+  <data name="ServiceLevelChangedMessage" xml:space="preserve">
+    <value>Service level has changed, application must be restarted.{0}{0}{1}</value>
+  </data>
+  <data name="SitenameNull" xml:space="preserve">
+    <value>Site name cannot be null.</value>
+  </data>
+  <data name="SkyHomePage" xml:space="preserve">
+    <value>sky.fm</value>
+  </data>
+  <data name="SkyIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\SkyIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StringNull" xml:space="preserve">
+    <value>String parameter cannot be null. </value>
+  </data>
+  <data name="SupportPageUrl" xml:space="preserve">
+    <value>http://jaysonknight.com/files/folders/code/entry13536.aspx</value>
+  </data>
+  <data name="toast_skin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\toast_skin.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UrlContainer" xml:space="preserve">
+    <value>http://listen.{0}/</value>
+  </data>
+  <data name="yellow_32k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\yellow_32k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yellow_64k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\yellow_64k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>&amp;Yes</value>
+  </data>
+  <data name="DIIconOld" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\DIIcon.ico;System.Drawing.Icon, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="yellow_128k" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\yellow_128k.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ListenKeyLinkData" xml:space="preserve">
+    <value>http://www.di.fm/member/listen_key</value>
+  </data>
+</root>

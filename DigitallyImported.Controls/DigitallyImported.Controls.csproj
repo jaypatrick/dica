@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF05FE9E-358B-4891-8C36-1F999474B2E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DigitallyImported.Utilities</RootNamespace>
+    <AssemblyName>DigitallyImported.Controls</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>DigitallyImported.Controls.pfx</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\DigitallyImported.Controls.XML</DocumentationFile>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>bin\Debug\DigitallyImported.Controls.XML</DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleAssemblies>
+    </CodeAnalysisRuleAssemblies>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Migrated rules for DigitallyImported.Controls.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x64' ">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleAssemblies>
+    </CodeAnalysisRuleAssemblies>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Migrated rules for DigitallyImported.Controls.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleAssemblies>
+    </CodeAnalysisRuleAssemblies>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Migrated rules for DigitallyImported.Controls.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <CodeAnalysisRuleAssemblies>
+    </CodeAnalysisRuleAssemblies>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Migrated rules for DigitallyImported.Controls.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="VbPowerPack">
+      <HintPath>..\VbPowerPack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SolutionInfo.cs">
+      <Link>Properties\SolutionInfo.cs</Link>
+    </Compile>
+    <Compile Include="Base\ContentLinks.cs" />
+    <Compile Include="ChannelList.cs">
+    </Compile>
+    <Compile Include="ChannelUrls.cs" />
+    <Compile Include="Converters\ChannelConverter.cs" />
+    <Compile Include="EventList.cs">
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Utilities.cs" />
+    <Compile Include="Windows\ExternalChannel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\ExternalChannel.Designer.cs">
+      <DependentUpon>ExternalChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Track.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Track.Designer.cs">
+      <DependentUpon>Track.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\CommentToastForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\CommentToastForm.Designer.cs">
+      <DependentUpon>CommentToastForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Channel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Channel.Designer.cs">
+      <DependentUpon>Channel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorButton.Designer.cs">
+      <DependentUpon>ColorButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorPaletteDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ColorPaletteDialog.Designer.cs">
+      <DependentUpon>ColorPaletteDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Base\ControlFactory.cs" />
+    <Compile Include="Enum\ControlType.cs" />
+    <Compile Include="Windows\ChannelPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ChannelPanel.Designer.cs">
+      <DependentUpon>ChannelPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ChannelToastForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ChannelToastForm.Designer.cs">
+      <DependentUpon>ChannelToastForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ColorPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ColorPicker.Designer.cs">
+      <DependentUpon>ColorPicker.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Event.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Event.Designer.cs">
+      <DependentUpon>Event.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PlaylistTimer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Menus\BaseContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\BaseContextMenu.Designer.cs">
+      <DependentUpon>BaseContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\ChannelsContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\ChannelsContextMenu.Designer.cs">
+      <DependentUpon>ChannelsContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\EventsContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\EventsContextMenu.Designer.cs">
+      <DependentUpon>EventsContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\PlayersContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\PlayersContextMenu.Designer.cs">
+      <DependentUpon>PlayersContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\PlaylistsContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\PlaylistsContextMenu.Designer.cs">
+      <DependentUpon>PlaylistsContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\SortContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\SortContextMenu.Designer.cs">
+      <DependentUpon>SortContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Menus\ToolsContextMenu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\Menus\ToolsContextMenu.Designer.cs">
+      <DependentUpon>ToolsContextMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PlayerList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\PlayerList.Designer.cs">
+      <DependentUpon>PlayerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PremiumChannel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\PremiumChannel.Designer.cs">
+      <DependentUpon>PremiumChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\RefreshCounter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\RefreshCounter.Designer.cs">
+      <DependentUpon>RefreshCounter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ChannelList.cs" />
+    <Compile Include="Windows\Site.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Site.Designer.cs">
+      <DependentUpon>Site.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PlaylistList.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\PlaylistList.Designer.cs">
+      <DependentUpon>PlaylistList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Stream.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Windows\Stream.Designer.cs">
+      <DependentUpon>Stream.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TaskbarNotifier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\TaskbarNotifier.Designer.cs">
+      <DependentUpon>TaskbarNotifier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ToastForm.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Windows\ToastForm.Designer.cs">
+      <DependentUpon>ToastForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\Views\ChannelView.cs" />
+    <Compile Include="Windows\Views\ChannelViewChangedEventArgs.cs" />
+    <Compile Include="Windows\Views\EventView.cs" />
+    <Compile Include="Interfaces\IChannelView.cs" />
+    <Compile Include="Interfaces\IEventView.cs" />
+    <Compile Include="Interfaces\ISiteView.cs" />
+    <Compile Include="Windows\Views\PlaylistView.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\blue_24k.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\blue_32k.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\blue_96k.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\icon_mp3.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\icon_trans_aacplus.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Channel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Channel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\icon_wm.gif" />
+    <EmbeddedResource Include="Windows\ExternalChannel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ExternalChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Track.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Track.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ChannelPanel.resx">
+      <DependentUpon>ChannelPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\BaseContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>BaseContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\ChannelsContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ChannelsContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\EventsContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EventsContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\PlayersContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PlayersContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\PlaylistsContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PlaylistsContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\Menus\SortContextMenu.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SortContextMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\PremiumChannel.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>PremiumChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\RefreshCounter.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RefreshCounter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\ToastForm.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>ToastForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Controls.cd" />
+    <None Include="DigitallyImported.Controls.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DigitallyImported.Components\DigitallyImported.Components.csproj">
+      <Project>{FDFB6AA7-DBC7-41C4-96CC-60391E2A48FE}</Project>
+      <Name>DigitallyImported.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Configuration\DigitallyImported.Configuration.csproj">
+      <Project>{A159C918-35DB-426A-9D58-4284B83368F8}</Project>
+      <Name>DigitallyImported.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DigitallyImported.Resources\DigitallyImported.Resources.csproj">
+      <Project>{547E38B0-0DBA-487B-82C2-7CA5001B7F5C}</Project>
+      <Name>DigitallyImported.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\DIIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

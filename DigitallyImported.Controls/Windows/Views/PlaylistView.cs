@@ -1,0 +1,118 @@
+using System;
+
+using DigitallyImported.Components;
+
+namespace DigitallyImported.Utilities
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class PlaylistView<TPlaylist> : ContentView<TPlaylist>, ISiteView<TPlaylist>
+        where TPlaylist: IPlaylist, new()
+    {
+        private PlaylistLoader<TPlaylist> _loader = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlaylistView()
+            : base()
+        {
+            _loader = new PlaylistLoader<TPlaylist>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected override void Global_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <returns></returns>
+        public virtual PlaylistCollection<TPlaylist> GetView(bool bypassCache)
+        {
+            _sites = GetItem(_sites);
+
+            if (bypassCache || _sites == null)
+            {
+                _sites = _loader.LoadSites(false);
+
+                string tldEnd = ".fm";
+
+                _sites.ForEach(t =>
+                {
+                    t.SiteUri = new Uri(string.Format(Resources.Properties.Resources.UrlContainer, (t.Name + tldEnd)));
+
+                    if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.DIHomePage))
+                    {
+                        t.PlaylistType = PlaylistTypes.DI;
+                        t.PlaylistIcon = Resources.Properties.Resources.DIIconNew.ToBitmap();
+                    }
+                    else if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.SkyHomePage))
+                    {
+                        t.PlaylistType = PlaylistTypes.Sky;
+                        t.PlaylistIcon = Resources.Properties.Resources.SkyIcon.ToBitmap();
+                    }
+                    else if (t.Name.Contains("Custom"))
+                    {
+                        t.PlaylistType = PlaylistTypes.Custom;
+                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                    }
+
+                    else if (t.Name.Contains("External"))
+                    {
+                        t.PlaylistType = PlaylistTypes.External;
+                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                    }
+
+                    else
+                    {
+                        t.PlaylistType = PlaylistTypes.All;
+                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                    }
+                });
+
+                Sort(_sites);
+
+                InsertItem(_sites);
+            }
+
+            return _sites;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlaylistCollection<TPlaylist> Sites
+        {
+            get { return this._sites; }
+        }
+        private PlaylistCollection<TPlaylist> _sites;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override void Save()
+        {
+            throw new Exception("The method or operation is not implemented.");
+        }
+
+        public override void Sort(ContentCollection<TPlaylist> contentCollection)
+        {
+            // base.Sort(contentCollection);
+
+            contentCollection.Sort(new Comparison<TPlaylist>((list1, list2) =>
+            {
+                return list1.Name.CompareTo(list2.Name);
+            }));
+        }
+    }
+}

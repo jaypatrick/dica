@@ -1,0 +1,7 @@
+
+namespace DigitallyImported.Services.Subscriptions
+{
+    public class EventParser : SubscriptionParser
+    {
+    }
+}

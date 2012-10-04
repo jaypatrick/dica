@@ -1,0 +1,162 @@
+using System;
+using System.Data;
+using System.Diagnostics;
+using System.Net;
+using System.Xml;
+// DI
+using DigitallyImported.Components.Caching;
+using DigitallyImported.Configuration.Properties;
+using DigitallyImported.Data;
+using C = DigitallyImported.Configuration.Properties;
+
+namespace DigitallyImported.Components
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class ChannelListLoader<TChannel> : ContentLoader<TChannel>, IDisposable 
+        where TChannel: IChannel
+    {
+        private XmlReader _reader                       = null;
+        private XmlReaderSettings _readerSettings       = null;
+        private ChannelData _channelData                = null;
+
+        /// <summary>
+        /// Default constructor. Uses default playlist URL specified in app configuration.
+        /// </summary>
+        public ChannelListLoader() 
+            : this(Settings.Default.DIPlaylistXml)
+        { }
+
+        public ChannelListLoader(string channelsLocation)
+            : base(channelsLocation)
+        {
+            // ContentLocation = channelsLocation;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <returns></returns>
+        public virtual DataSet LoadPlaylist(bool bypassCache)
+        {
+            return this.LoadPlaylist(bypassCache, Settings.Default.DIPlaylistXml);
+        }
+
+        public virtual DataSet LoadPlaylist(bool bypassCache, string contentLocation)
+        {
+            _reader = GetItem(_reader);
+
+            if ((bypassCache) || (_reader == null))
+            {
+                try
+                {
+                    using (_reader)
+                    {
+                        _reader = LoadContentFromXml(); // XmlReader.Create(Resources.DIPlaylistXml, _readerSettings);
+                    }
+
+                    base.InsertItem<XmlReader>(_reader);
+                }
+                finally
+                {
+                    // _reader.Close();
+                }
+            }
+
+            _channelData = GetItem(_channelData);
+
+            if ((bypassCache) || (_channelData == null))
+            {
+                using (_channelData = new ChannelData())
+                {
+
+                    try
+                    {
+                        _channelData.ReadXml(_reader);
+
+                        base.InsertItem<ChannelData>(_channelData);
+                    }
+                    catch
+                    {
+                        throw;
+                    }
+                    finally
+                    {
+                        _channelData.Dispose();
+                    }
+                }
+            }
+
+            return _channelData;
+        }
+
+        private bool disposed = false;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            Trace.WriteLine("EventListLoader was disposed, disposing = {0}", disposing.ToString());
+
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    if (_channelData != null)
+                    {
+                        _channelData.Dispose();
+                    }
+                }
+
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        /// 
+        [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
+        protected internal XmlReader LoadXmlData()
+        {
+            _readerSettings = new XmlReaderSettings();
+
+            _readerSettings.IgnoreComments = true;
+            _readerSettings.IgnoreWhitespace = true;
+            _readerSettings.ProhibitDtd = false;
+
+            // EDGE CASE PROCESSING GOES HERE
+            ChannelTransforms transform = new ChannelTransforms();
+
+            try
+            {
+                if (IsNetworkAvailable)
+                {
+                    return transform.TransformContent(XmlReader.Create(C.Settings.Default.DIPlaylistXml, _readerSettings));
+                }
+                else
+                {
+                    throw new WebException(DigitallyImported.Resources.Properties.Resources.NetworkConnectionError
+                        , WebExceptionStatus.ConnectFailure);
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+    }
+}

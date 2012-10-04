@@ -1,0 +1,14 @@
+using System;
+
+namespace DigitallyImported.Services.Subscriptions
+{
+    [Flags()]
+    public enum SubscriptionTypes
+    {
+        None = 0,
+        ArtistName = 1,
+        TrackTitle = 2,
+        EventName = 4,
+        EventDate = 8
+    }
+}

@@ -1,0 +1,14 @@
+using System;
+
+namespace DigitallyImported.Services
+{
+    [Flags()]
+    public enum NotificationTypes
+    {
+        None = 0,
+        Email = 1,
+        SMS = 2,
+        IM = 4,
+        Toast = 8
+    }
+}

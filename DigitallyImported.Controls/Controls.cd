@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DigitallyImported.Utilities.ContentLinks" Collapsed="true">
+    <Position X="14.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\ContentLinks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ControlFactory" Collapsed="true">
+    <Position X="16.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\ControlFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelList&lt;T&gt;" Collapsed="true">
+    <Position X="18.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChannelList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelUrls" Collapsed="true">
+    <Position X="23.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChannelUrls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ColorButton" Collapsed="true">
+    <Position X="18.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAAAAAAAADAAAICQAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ColorButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ColorPaletteDialog" Collapsed="true">
+    <Position X="20" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACQAAAAAAACAAAACCIARAALARAAQgQAICAA=</HashCode>
+      <FileName>ColorPaletteDialog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelConverter" Collapsed="true">
+    <Position X="14.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAIAAAAAAAA=</HashCode>
+      <FileName>Converters\ChannelConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.EventList&lt;T&gt;" Collapsed="true">
+    <Position X="20" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PlaylistTimer" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAIAABAAAAAAEIAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>PlaylistTimer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Utilities" Collapsed="true">
+    <Position X="21.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAEIgAAAAAhAEAAAAAAAAIAAABBACAAAA=</HashCode>
+      <FileName>Util\Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Channel" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UGoREkgQAHAgFhxEqkiMRDICIxAKBioAKwZVqggNEwE=</HashCode>
+      <FileName>Windows\Channel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelPanel&lt;TChannel&gt;" Collapsed="true">
+    <Position X="20" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Windows\ChannelPanel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelToastForm&lt;T&gt;" Collapsed="true">
+    <Position X="21.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAACgIAAAAEQAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Windows\ChannelToastForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.CommentToastForm&lt;T&gt;" Collapsed="true">
+    <Position X="23.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAACgIAAAAEAAAAAAAAAAAAACAAAAAAAQAAAAA=</HashCode>
+      <FileName>Windows\CommentToastForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Event" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEEAAAAgIKACEMAEwAHAAKCCIEAgAAAAAAEIAABIBAA=</HashCode>
+      <FileName>Windows\Event.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.BaseContextMenu" Collapsed="true">
+    <Position X="6.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAAAAIAACAAAISAAAAAAAAAAABACAAgAA=</HashCode>
+      <FileName>Windows\Menus\BaseContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelsContextMenu&lt;TChannel&gt;" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAAAAAEACAAAAAAAAAAAAAAAAAAAAAAAAAAAIEJA=</HashCode>
+      <FileName>Windows\Menus\ChannelsContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.EventsContextMenu" Collapsed="true">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAACAAAAAAAACAAAACAgAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\Menus\EventsContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PlaylistsContextMenu" Collapsed="true">
+    <Position X="5.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAASAAAAAAAACAAAACAAAAAAAAAAAAAAIIAAQ=</HashCode>
+      <FileName>Windows\Menus\PlaylistsContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.SortContextMenu" Collapsed="true">
+    <Position X="7.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEACAAAAAEAASAAAACQAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\Menus\SortContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ToolsContextMenu" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\Menus\ToolsContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PlayerList" Collapsed="true">
+    <Position X="23.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\PlayerList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PlaylistList" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgABgCACEAAAgACAACDCAEEEABQAAAAACAAIAAA=</HashCode>
+      <FileName>Windows\PlaylistList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PremiumChannel" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAACAAAAAAIBCAAAACAAAAAAAAAAABAAAEIAI=</HashCode>
+      <FileName>Windows\PremiumChannel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.RefreshCounter" Collapsed="true">
+    <Position X="20" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAEAAEEACAEBAEGAICAAIACCAAAUIAQYMAgBQABgAA=</HashCode>
+      <FileName>Windows\RefreshCounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Site" Collapsed="true">
+    <Position X="23.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\Site.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.TaskbarNotifier" Collapsed="true">
+    <Position X="16.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gQREEykMWCUBAhpgkJbAQMECABREWAJAqEBAZElKAsA=</HashCode>
+      <FileName>Windows\TaskbarNotifier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ToastForm&lt;T&gt;" Collapsed="true">
+    <Position X="18.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAACgQAAAAFAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Windows\ToastForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Track" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="20" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAJEAAIDBAGAEEgAGECDWSIkSAAACEATkAoAIIFQA=</HashCode>
+      <FileName>Windows\Track.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelView&lt;TChannel, TTrack&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAIAIQAAAAQAAAIQAAAAAAAQAAAAAAAAAARAAAAEIA=</HashCode>
+      <FileName>Windows\Views\ChannelView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.ChannelViewChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Windows\Views\ChannelViewChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.EventView&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAIAAAAAAAAAAAAAAAAAAQgAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Windows\Views\EventView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.PlaylistView&lt;TPlaylist&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAQAAAAQAAAAQAAAAAAABAAJAAAAAAA=</HashCode>
+      <FileName>Windows\Views\PlaylistView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Properties.Resources" Collapsed="true">
+    <Position X="21.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Web.ChannelList" Collapsed="true">
+    <Position X="16.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAAAAAAABAQAAAAAAABAAAAAAAAAAAACAAAEAA=</HashCode>
+      <FileName>Web\ChannelList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Windows.ColorPicker" Collapsed="true">
+    <Position X="21.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAQIAACCCQgAAAACAAAASAgBACAAAAAgAiABBAAA=</HashCode>
+      <FileName>Windows\ColorPicker.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Windows.ExternalChannel" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAACAAAAAAAAKAAAACAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Windows\ExternalChannel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Windows.Stream" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAgAKACGAAAgQGBQCCKQEAAQAAACAQAAAEIQoA=</HashCode>
+      <FileName>Windows\Stream.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu" Collapsed="true">
+    <Position X="3.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAEACAAgAAAAABABAAAAAAAA=</HashCode>
+      <FileName>Windows\Menus\PlayersContextMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DigitallyImported.Utilities.IChannelView&lt;T&gt;" Collapsed="true">
+    <Position X="14.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAARAAAAEIA=</HashCode>
+      <FileName>Interfaces\IChannelView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Utilities.IEventView&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Interfaces\IEventView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Utilities.ISiteView&lt;T&gt;" Collapsed="true">
+    <Position X="18.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Interfaces\ISiteView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DigitallyImported.Utilities.ControlType" Collapsed="true">
+    <Position X="14.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Enum\ControlType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

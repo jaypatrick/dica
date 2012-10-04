@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Net.Mail;
+using System.Web.Caching;
+using System.Xml;
+
+
+namespace DigitallyImported.Services.Messaging
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class EmailTemplateParser<T> : TemplateParser<T> where T: EmailTemplate, new()
+    {
+        Dictionary<EmailType, T> _emailTemplates = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public EmailTemplateParser() { }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="emailType"></param>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public virtual MailMessage GetTemplate(EmailType emailType, User user)
+        {
+            T email = new T();
+            Dictionary<EmailType, T> emailTemplates = LoadEmailTemplates(false);
+
+            EmailTemplate template = emailTemplates[emailType];
+
+            email.Subject = template.Subject;
+            email.Priority = template.Priority;
+            email.From = template.From;
+            email.Body = template.Body;
+
+            return email;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <returns></returns>
+        protected internal virtual Dictionary<EmailType, T> LoadEmailTemplates(bool bypassCache)
+        {
+            FileInfo fileInfo;
+
+            _emailTemplates = GetItem(_emailTemplates);
+
+            if ((bypassCache) || (_emailTemplates == null))
+            {
+                _emailTemplates = new Dictionary<EmailType, T>();
+
+                try
+                {
+                    if (File.Exists(string.Format(@"{0}\{1}", Environment.CurrentDirectory, "emails.xml")))
+                    {
+                        Trace.WriteLine("Emails.xml file path found, begin loading...");
+                        fileInfo = new FileInfo(string.Format(@"{0}\{1}", Environment.CurrentDirectory, "emails.xml"));
+                    }
+                    else
+                        throw new FileNotFoundException("Emails.xml templates file not found", string.Format(string.Format(@"{0}\{1}", Environment.CurrentDirectory, "emails.xml")));
+                }
+                catch
+                {
+                    throw;
+                }
+
+                FileStream reader = fileInfo.OpenRead();
+                XmlDocument doc = new XmlDocument();
+                doc.Load(reader);
+                reader.Close();
+
+                // Loop through all contained emails
+				//
+                foreach (XmlNode node in doc.GetElementsByTagName("email"))
+                {
+                    T email = new EmailTemplate(node) as T;
+                    _emailTemplates.Add(email.EmailType, email);
+                }
+
+                CacheDependency dep = new CacheDependency(fileInfo.FullName);
+                InsertItem(_emailTemplates, dep, new DateTime().AddHours(2));
+            }
+
+            return _emailTemplates;
+        }
+    }
+}

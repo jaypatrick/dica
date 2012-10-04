@@ -1,0 +1,7 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\bin\Release\DigitallyImported.Utilities.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\bin\Release\DigitallyImported.Utilities.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\obj\Release\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\obj\Release\DigitallyImported.Utilities.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\obj\Release\DigitallyImported.Utilities.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Utilities\bin\Release\DigitallyImported.Resources.pdb

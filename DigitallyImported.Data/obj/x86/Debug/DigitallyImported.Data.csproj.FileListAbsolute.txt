@@ -1,0 +1,18 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Data.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\obj\x86\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Data\obj\x86\Debug\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\x86\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\x86\Debug\DigitallyImported.Data.csprojResolveAssemblyReference.cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\x86\Debug\DigitallyImported.Data.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\x86\Debug\DigitallyImported.Data.pdb

@@ -1,0 +1,11 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll.config
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\obj\Debug\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll.config
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.pdb

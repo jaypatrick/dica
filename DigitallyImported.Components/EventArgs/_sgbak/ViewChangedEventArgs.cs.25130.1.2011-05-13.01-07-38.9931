@@ -1,0 +1,26 @@
+using System;
+
+namespace DigitallyImported.Components
+{
+    public class ViewChangedEventArgs<T> : EventArgs
+        where T: IContentCollection<IChannel>
+    {
+        private T _changedContent = default(T);
+
+        public ViewChangedEventArgs()
+            : this(default(T))
+        {
+
+        }
+
+        public ViewChangedEventArgs(T changedContent)
+        {
+            _changedContent = changedContent;
+        }
+
+        public virtual T ChangedContent
+        {
+            get { return _changedContent; }
+        }
+    }
+}

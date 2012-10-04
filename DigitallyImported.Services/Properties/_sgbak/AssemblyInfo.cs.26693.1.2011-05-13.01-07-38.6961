@@ -1,0 +1,36 @@
+﻿using System.Reflection;
+using System.Runtime.InteropServices;
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
+[assembly: AssemblyTitle("DigitallyImported.Services")]
+[assembly: AssemblyDescription("")]
+[assembly: AssemblyConfiguration("")]
+// [assembly: AssemblyCompany("ZeroTrilogy")]
+[assembly: AssemblyProduct("DigitallyImported.Services")]
+// [assembly: AssemblyCopyright("Copyright © ZeroTrilogy 2007")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCulture("")]
+
+// Setting ComVisible to false makes the types in this assembly not visible 
+// to COM components.  If you need to access a type in this assembly from 
+// COM, set the ComVisible attribute to true on that type.
+[assembly: ComVisible(false)]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("71ca0d46-0de8-48f4-9ffb-40b8fed53115")]
+
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+//[assembly: AssemblyVersion("1.0.0.0")]
+//[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyDelaySign(false)]
+//[assembly: AssemblyKeyFile(@"..\..\DigitallyImported.Services.pfx")]
+//[assembly: AssemblyKeyName("")]
+[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Services.Tests.NUnit, PublicKey=00240000048000009400000006020000002400005253413100040000010001003FB1402FED8ADCCBA6518BAC4D262CF734782222816BD2D5D2E703A73CF23C45C8513DCF64B74780C05B846A9C507D00B4BF13DE9EA28F5EAE04D7D06BFEC71BE51DFD5828752FA553FC1EFD72D05610E4D9614BF054067BE06CFCFDBBF3C5AC7FFEC1BC949C4ABA0069CCE0107FB2F193A7BFB1DFFD810C237A41B0EF17FDEB")]

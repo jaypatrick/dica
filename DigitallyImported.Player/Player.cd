@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DigitallyImported.Player.Player" Collapsed="true">
+    <Position X="3.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAEgAgAAAAAAAAAAAQAEAEAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Base\Player.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerFactory&lt;T, TPlayer&gt;" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAEAAAAAAQAAAAAACABAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Base\PlayerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerNotInstalledExceptionEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAACAAAAAAAAAAAAABAAQAAAAA=</HashCode>
+      <FileName>EventArgs\PlayerNotInstalledExceptionEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerNotInstalledException" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Exceptions\PlayerNotInstalledException.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerCollection&lt;Channel, Player&gt;" Collapsed="true">
+    <Position X="16.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerController" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.PlayerLoader" Collapsed="true">
+    <Position X="16.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAAAgAAAAAAACAAAAiEAAAAAAAAAAgQBAAAAAAAA=</HashCode>
+      <FileName>PlayerLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.DefaultPlayer" Collapsed="true">
+    <Position X="3.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAEAEAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Players\DefaultPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.ITunes" Collapsed="true">
+    <Position X="5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAgAAAAAAAAAAEAEAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Players\ITunes.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Player.WMediaPlayer" Collapsed="true">
+    <Position X="7.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAIgAAAAAAAAAAEAEAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Players\MediaPlayer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Player.RealPlayer" Collapsed="true">
+    <Position X="16.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Players\RealPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Player.Winamp" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAACAAAAAAAEAEAAAAAAAAgAAAAgAAAAA=</HashCode>
+      <FileName>Players\Winamp.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Player.Zune" Collapsed="true">
+    <Position X="2.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Players\Zune.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DigitallyImported.Player.IDefaultPlayer" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IDefaultPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IITunes" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IITunes.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IMediaPlayer" Collapsed="true">
+    <Position X="9.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IMediaPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IPlayer" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAgAAAAAAAAAAAAAEAEAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IPlayerFactory" Collapsed="true">
+    <Position X="16.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPlayerFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IQuicktime" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IQuicktime.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IRealPlayer" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IRealPlayer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IWinamp" Collapsed="true">
+    <Position X="12" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IWinamp.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Player.IZune" Collapsed="true">
+    <Position X="14.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IZune.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DigitallyImported.Player.StreamExtension" Collapsed="true">
+    <Position X="16.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAABAAAAAAAAAAAAAAAAAAAAAAEAAQAAAQAA=</HashCode>
+      <FileName>Enum\StreamExtension.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

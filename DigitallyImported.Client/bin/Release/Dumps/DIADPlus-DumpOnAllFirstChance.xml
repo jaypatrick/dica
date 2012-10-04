@@ -1,0 +1,28 @@
+<!-- ***************************************************************************
+* Debugging Microsoft .NET 2.0 Applications
+* Copyright © 1997-2006 John Robbins All rights reserved.
+**************************************************************************** -->
+<!-- Write a minidump on all SEH exceptions ADPlus configuration file. -->
+<ADPlus>
+  <Settings>
+    <!-- Only CRASH mode supports attaching and looking at exceptions. -->
+    <RunMode>CRASH</RunMode>
+    <!-- Don't pop up any modal dialogs. -->
+    <Option>Quiet</Option>
+    <!-- Exception options. -->
+  </Settings>
+  <Exceptions>
+    <!-- Configure all exceptions to write a new dump every time there's a
+         first chance exception. -->
+    <Config>
+      <!-- Set the configuration for all exceptions. -->
+      <Code>AllExceptions</Code>
+      <!-- Write the dump on first chance exceptions.-->
+      <Actions1>FullDump</Actions1>
+      <!-- Note that you can't use the ReturnAction1 element because it causes 
+           an error in ADPlus if you use AllExceptions. The documentation does
+           not make clear that the ReturnActions1 applies only if you are
+           setting specific exceptions values. -->
+    </Config>
+  </Exceptions>
+</ADPlus>

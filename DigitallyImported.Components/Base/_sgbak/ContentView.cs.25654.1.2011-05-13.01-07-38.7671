@@ -1,0 +1,202 @@
+
+using DigitallyImported.Components.Caching;
+// using DigitallyImported.Configuration.Properties;
+
+namespace DigitallyImported.Components
+{
+    public abstract class ContentView<T> : CachedItem, IContentView<T> 
+        where T: IContent
+    {
+        public abstract void Save();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected ContentView() 
+            // : this(new ContentCollection<T>())
+        {
+            // Settings.Default.SettingsSaving += new System.Configuration.SettingsSavingEventHandler(Global_SettingsSaving);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="viewType"></param>
+        protected ContentView(ContentCollection<T> contents)
+        {
+            _contents = contents;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void Global_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            // invalidate the cache for now, but find a workaround
+            //Globals.Cache.Remove(Globals.DIChannelView);
+            //Globals.Cache.Remove(Globals.DIChannelList); 
+            ClearItems<object>();
+        }
+
+        #region IContentView Members
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public int Compare(T x, T y)
+        {
+            switch (this.SortBy)
+            {
+                case SortBy.ChannelName:
+                {
+                    if (this.SortOrder == SortOrder.Ascending)
+                    {
+                        return x.Name.CompareTo(y.Name);
+                        //break;
+                    }
+                    else
+                    {
+                        return y.Name.CompareTo(x.Name);
+                        //break;
+                    }
+                    
+                }
+                case SortBy.SiteName:
+                {
+                    if (this.SortOrder == SortOrder.Ascending)
+                    {
+                        return x.PlaylistType.CompareTo(y.PlaylistType);
+                        //break;
+                    }
+                    else
+                    {
+                        return y.PlaylistType.CompareTo(x.PlaylistType);
+                        //break;
+                    }
+                    //break;
+                }
+
+                // TESTING, kinda sloppy as you are testing conditionals via casting
+                    // handle in uplevel class!
+                case SortBy.TrackTitle:
+                {
+                    // T a, b;
+
+                    if (x as IChannel != null)
+                    {
+                        if (this.SortOrder == SortOrder.Ascending)
+                        {
+                            return ((IChannel)x).CurrentTrack.TrackTitle.CompareTo(((IChannel)y).CurrentTrack.TrackTitle);
+                        }
+                        else
+                        {
+                            return ((IChannel)y).CurrentTrack.TrackTitle.CompareTo(((IChannel)x).CurrentTrack.TrackTitle);
+                        }
+                    }
+                    break;
+                }
+            }
+
+            return 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        public virtual void Sort(ContentCollection<T> contentCollection)
+        {
+            contentCollection.Sort(this);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contentType"></param>
+        /// <returns></returns>
+        public virtual ContentCollection<T> GetView(ContentType contentType)
+        {
+            return null;
+
+            // TODO move to base class, infer type of T to get correct collection back.
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        /// <returns></returns>
+        public virtual ContentCollection<T> GetView(T t)
+        {
+            // you don't even need to pass in T t, just use class level T type to infer type of collection to return, then cast accordingly.
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual SortOrder SortOrder
+        {
+            get { return this._sortOrder; }
+            set { this._sortOrder = value; }
+        }
+        private SortOrder _sortOrder;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual SortBy SortBy
+        {
+            get { return this._sortBy; }
+            set { this._sortBy = value; }
+        }
+        private SortBy _sortBy;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual PlaylistTypes PlaylistTypes
+        {
+            get { return this._PlaylistTypes; }
+            set { this._PlaylistTypes = value; }
+        }
+        private PlaylistTypes _PlaylistTypes;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ViewType ViewType
+        {
+            get { return this._viewType; }
+            set { _viewType = value; }
+        }
+        private ViewType _viewType;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ContentCollection<T> Contents
+        {
+            get {return this._contents; }
+            set { this._contents = value; }
+        }
+        private ContentCollection<T> _contents;
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual bool IsViewSet
+        {
+            get { return this._isViewSet; }
+            protected set { this._isViewSet = value; }
+        }
+        private bool _isViewSet = false;
+    }
+}

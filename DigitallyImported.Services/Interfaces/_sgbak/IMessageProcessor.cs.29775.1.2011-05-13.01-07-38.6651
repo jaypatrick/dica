@@ -1,0 +1,10 @@
+
+
+namespace DigitallyImported.Services.Messaging
+{
+    public interface IMessageProcessor<T> where T: IMessage
+    {
+        void Send(NotificationTypes messageTypes);
+        void SendAsync(NotificationTypes messageTypes, object messageToken);
+    }
+}

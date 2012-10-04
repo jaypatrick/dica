@@ -1,0 +1,1 @@
+cscript adplus.vbs -c "C:\Documents and Settings\Jayson\My Documents\Visual Studio 2005\Projects\DigitallyImported\DigitallyImported.Client\bin\x86\Debug\Dumps\DIADPlus-DumpOnAllFirstChance.xml" -o "C:\Documents and Settings\Jayson\My Documents\Visual Studio 2005\Projects\DigitallyImported\DigitallyImported.Client\bin\x86\Debug\Dumps\Files\" -pn DigitallyImported.Client.exe

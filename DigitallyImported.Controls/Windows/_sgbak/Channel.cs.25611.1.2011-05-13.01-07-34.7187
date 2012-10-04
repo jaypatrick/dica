@@ -1,0 +1,887 @@
+namespace DigitallyImported.Utilities
+{
+    using System;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Windows.Forms;
+    using System.Xml.Serialization;
+    using DigitallyImported.Components;
+    using DigitallyImported.Configuration.Properties;
+    using DigitallyImported.Resources.Properties;
+
+    /// <summary>
+    /// Summary description for ChannelSection.
+    /// </summary>
+    /// 
+    [Serializable()]
+    [XmlRoot("RegularChannel")]
+    public partial class Channel : UserControl, IChannel
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public Channel()
+            : this(PlaylistTypes.Custom)
+        {
+        }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PlaylistTypes"></param>
+        public Channel(PlaylistTypes PlaylistTypes)
+            // : base(PlaylistTypes)
+        {
+            InitializeComponent();
+            this.PlaylistType = PlaylistTypes;
+            LoadImages();
+
+            // events
+            Settings.Default.SettingChanging += new System.Configuration.SettingChangingEventHandler(ChannelSection_SettingChanging);
+        }
+
+        /// <summary>
+        /// Method to initialize the image controls.
+        /// </summary>
+        protected internal virtual void LoadImages()
+        {
+            this.pic24k.Image = Resources.blue_24k;
+            this.pic32k.Image = Resources.blue_32k;
+            this.pic96k.Image = Resources.blue_96k;
+            this.picAacPlus.Image = Resources.icon_trans_aacplus;
+            this.picMp3.Image = Resources.icon_mp3;
+            this.picWmp.Image = Resources.icon_wm;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="track"></param>
+        /// <returns></returns>
+        public virtual IChannel this[ITrack track]
+        {
+            get
+            {
+                return tracks[track.Name].ParentChannel;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public virtual IChannel this[int index]
+        {
+            get
+            {
+                return tracks[index].ParentChannel;
+            }
+        }
+
+        /// <summary>
+        /// Property to get/set the channel name
+        /// </summary>
+        /// 
+        [XmlAttribute("ChannelName")]
+        public virtual string ChannelName
+        {
+            get { return channelName; }
+            set
+            {
+                base.Name = value.Replace(" ", "").ToLower(); // unique key for control
+                
+                this.channelName = value;
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        foreach (Control c in this.Controls)
+                        {
+                            c.Name += value.Replace(" ", "").ToLower();
+                        }
+
+                        toolTipLinks.SetToolTip(this.lblChannelName, value);
+                        this.lblChannelName.Text = value;
+                    });
+                }
+                else
+                {
+                    foreach (Control c in this.Controls)
+                    {
+                        c.Name += value.Replace(" ", "").ToLower();
+                    }
+
+                    toolTipLinks.SetToolTip(this.lblChannelName, value);
+                    this.lblChannelName.Text = value;
+                }
+            }
+        }
+        private string channelName = string.Empty;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("ChannelInfoUrl")]
+        public virtual Uri ChannelInfoUrl
+        {
+            get { return this.channelInfoUrl; }
+            set
+            {
+                this.channelInfoUrl = value;
+
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        toolTipLinks.SetToolTip(this.lnkChannelInfo, value.AbsoluteUri);
+                        this.lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri as string;
+                    });
+                }
+                else
+                {
+                    toolTipLinks.SetToolTip(this.lnkChannelInfo, value.AbsoluteUri);
+                    this.lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri as string;
+                }
+            }
+        }
+        private Uri channelInfoUrl = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("SiteName")]
+        public virtual string SiteName
+        {
+            get { return this.siteName; }
+            set { this.siteName = value; }
+        }
+        private string siteName = string.Empty;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("PlaylistHistoryUrl")]
+        public virtual Uri PlaylistHistoryUrl
+        {
+            get { return this.playListHistoryUrl; }
+            set
+            {
+                this.playListHistoryUrl = value;
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        this.lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri as string;
+                        toolTipLinks.SetToolTip(this.lnkPlaylistHistory, value.AbsoluteUri);
+                    });
+                }
+                else
+                {
+                    this.lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri as string;
+                    toolTipLinks.SetToolTip(this.lnkPlaylistHistory, value.AbsoluteUri);
+                }
+            }
+        }
+        private Uri playListHistoryUrl = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("SiteIcon")]
+        public virtual Icon SiteIcon
+        {
+            get { return this.siteIcon; }
+            set 
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        this.picSiteIcon.Image = value.ToBitmap();
+                    });
+                }
+                else
+                {
+                    this.picSiteIcon.Image = value.ToBitmap();
+                }
+                this.siteIcon = value;
+            }
+        }
+        private Icon siteIcon = null;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("PlaylistType")]
+        public virtual PlaylistTypes PlaylistType
+        {
+            get { return this.playlistType; }
+            set { this.playlistType = value; }
+        }
+        private PlaylistTypes playlistType;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("SubscriptionLevel")]
+        public virtual SubscriptionLevel SubscriptionLevel
+        {
+            get { return this.subscriptionLevel; }
+            set { this.subscriptionLevel = value; }
+        }
+        private SubscriptionLevel subscriptionLevel;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("StreamType")]
+        public virtual StreamType StreamType
+        {
+            get { return this.streamType; }
+            set { this.streamType = value; }
+        }
+        private StreamType streamType;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlArray("Streams")]
+        public virtual StreamCollection<IStream> Streams
+        {
+            get { return streams; }
+            set { streams = value; }
+        }
+        private StreamCollection<IStream> streams;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("Playlist")]
+        public virtual IPlaylist Playlist
+        {
+            get { return this.playlist; }
+            set { this.playlist = value; }
+        }
+        private IPlaylist playlist;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlArray("Tracks")]
+        public virtual TrackCollection<ITrack> Tracks
+        {
+            get { return tracks; }
+            set 
+            {
+                if (tracks != null)
+                {
+                    if (!currentTrack.TrackTitle.Equals(value[0].TrackTitle))
+                    {
+                        Trace.WriteLine(string.Format("Track changed on channel {0}", ChannelName), TraceCategories.ContentChangedEvents.ToString());
+                        this.OnTrackChanged(this, new TrackChangedEventArgs<ITrack>(value[0]));
+                    }
+                }
+                                
+                tracks = value;
+                currentTrack = tracks[0];
+                // update GUI...not very expensive
+
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        SetValues();
+                    });
+                }
+                else
+                {
+                    SetValues();
+                }
+            }
+        }
+        private TrackCollection<ITrack> tracks;
+
+        [XmlIgnore()]
+        public virtual ITrack CurrentTrack
+        {
+            get 
+            {
+                return currentTrack;  // CHANGE THIS PLEASE! should be the track marked as IsPlaying!
+            }
+        }
+        private ITrack currentTrack;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlIgnore()]
+        public virtual bool IsAlternating
+        {
+            get
+            {
+                return this.isAlternating;
+            }
+            set
+            {
+                this.isAlternating = value;
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        if (value == true)
+                            this.BackColor = Settings.Default.AlternatingChannelBackground;
+                        else
+                            this.BackColor = Settings.Default.ChannelBackground;
+                    });
+                }
+                else
+                {
+                    if (value == true)
+                        this.BackColor = Settings.Default.AlternatingChannelBackground;
+                    else
+                        this.BackColor = Settings.Default.ChannelBackground;
+                }
+            }
+        }
+        private bool isAlternating;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [XmlElement("SelectedChannel")]
+        public virtual bool IsSelected
+        {
+            get
+            {
+                return this.isSelected;
+            }
+            set
+            {
+                this.isSelected = value;
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        if (value == true)
+                        {
+                            this.BackColor = Settings.Default.SelectedChannelBackground;
+                            this.Focus();
+                        }
+                        else
+                        {
+                            if (this.isAlternating)
+                                this.BackColor = Settings.Default.AlternatingChannelBackground;
+                            else
+                                this.BackColor = Settings.Default.ChannelBackground;
+                        }
+                    });
+                }
+                else
+                {
+                    if (value == true)
+                    {
+                        this.BackColor = Settings.Default.SelectedChannelBackground;
+                        this.Focus();
+                    }
+                    else
+                    {
+                        if (this.isAlternating)
+                            this.BackColor = Settings.Default.AlternatingChannelBackground;
+                        else
+                            this.BackColor = Settings.Default.ChannelBackground;
+                    }
+                }
+            }
+        }
+        private bool isSelected;
+
+        /// <summary>
+        /// Event to set the mouse cursor to hand upon entering a picture box
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">EventArgs</param>
+        protected internal virtual void PictureBox_MouseEnter(object sender, System.EventArgs e)
+        {
+            this.Cursor = Cursors.Hand;
+
+            Control c = (Control)sender;
+            string name = c.Name.ToLower();
+
+            //switch (c.Name.ToLower().Substring(0, c.Name.Length - this.channelName.Replace(" ", "").Length))
+            //{
+                if (name.Contains("picmp3"))
+                {
+                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeMp3About));
+                    //break;
+                }
+                if (name.Contains("picwmp"))
+                {
+                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeWmaAbout));
+                    //break;
+                }
+                if (name.Contains("picaacplus"))
+                {
+                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeAacPlusAbout));
+                    //break;
+                }
+
+                // testing, delete and refactor
+                if (name.Contains("pic24k"))
+                {
+                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.AacPlus, 
+                        this.siteName, this.channelName).AbsoluteUri);
+                    //break;
+                }
+                if (name.Contains("pic32k"))
+                {
+                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Wma, 
+                        this.siteName, this.channelName).AbsoluteUri);
+                    //break;
+                }
+                if (name.Contains("pic96k"))
+                {
+                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Mp3, 
+                        this.siteName, this.channelName).AbsoluteUri);
+                    //break;
+                }
+                // end testing
+
+                else
+                {
+                    //break;
+                }
+            //}
+        }
+
+        /// <summary>
+        /// Event to set the mouse cursor to arrow upon leaving a picture box
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">EventArgs</param>
+        protected internal virtual void PictureBox_MouseLeave(object sender, System.EventArgs e)
+        {
+            this.Cursor = Cursors.Arrow;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            LinkLabel link = sender as LinkLabel;
+
+            if (link != null)
+            {
+                link.Tag = e.Link.LinkData ?? link.Text;
+                if (e.Button == MouseButtons.Left)
+                {
+                    if (link.Name.Contains("lnkPlaylistHistory"))
+                    {
+                        OnPlaylistHistoryClicked(this, EventArgs.Empty);
+                    }
+                    else
+                    {
+                        DigitallyImported.Components.Utilities.StartProcess(e.Link.LinkData as string);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void ChannelSection_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
+        {
+            switch (e.SettingName)
+            {
+                case ("AlternatingChannelBackground"):
+                {
+                    // this.IsAlternating = true;
+                    break;
+                }
+                case ("SelectedChannelBackground"):
+                {
+                    // this.IsSelected = true;
+                    break;
+                }
+                default:
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void OnChannelChanged(object sender, ChannelChangedEventArgs<IChannel> e)
+        {
+            if (_channelChanged != null)
+            {
+                _channelChanged(sender, e);
+            }
+        }
+
+        /// <summary>
+        /// Event to refresh the main page's playlist
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">EventArgs</param>
+        protected internal virtual void OnChannelRefreshed(object sender, TrackChangedEventArgs<ITrack> e)
+        {
+            if (_channelRefreshed != null)
+            {
+                _channelRefreshed(this, e);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">EventArgs</param>
+        protected internal virtual void OnTrackChanged(object sender, TrackChangedEventArgs<ITrack> e)
+        {
+            if (_trackChanged != null)
+            {
+                _trackChanged(this, e);
+            }
+        }
+
+        protected internal virtual void OnPlaylistHistoryClicked(object sender, EventArgs e)
+        {
+            if (_historyClicked != null)
+            {
+                _historyClicked(this, e);
+            }
+        }
+
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //protected internal virtual void Onee(object sender, eeEventArgs<IChannel> e)
+        //{
+        //    if (_ee != null)
+        //    {
+        //        _ee(this, e);
+        //    }
+        //}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void OnElementHover(object sender, PopupEventArgs e)
+        {
+            // TODO omplement
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.channelName;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected internal virtual void StreamType_MouseClick(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+            // refactor into property -- TODO, break all inks into Uri's and use Uri methods to extract/build string
+            Uri linkUri = null;
+            // MediaType mediaType = MediaType.None;
+            Control c = (Control)sender;
+            string name = c.Name.ToLower();
+
+            //switch (c.Name.ToLower().Substring(0, c.Name.Length - this.channelName.Replace(" ", "").Length))
+            //{
+                if (name.Contains("pic24k"))
+                    {
+                        linkUri = Components.Utilities.GetChannelUri(StreamType.AacPlus, this.siteName, this.channelName);
+                        streamType = StreamType.AacPlus;
+                        //break;
+                    }
+                if (name.Contains("pic32k"))
+                    {
+                        linkUri = Components.Utilities.GetChannelUri(StreamType.Wma, this.siteName, this.channelName);
+                        streamType = StreamType.Wma;
+                        //break;
+                    }
+                if (name.Contains("pic96k"))
+                    {
+                        linkUri = Components.Utilities.GetChannelUri(StreamType.Mp3, this.siteName, this.channelName);
+                        streamType = StreamType.Mp3;
+                        //break;
+                    }
+                if (name.Contains("picmp3"))
+                    {
+                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeMp3About));
+                        //break;
+                    }
+                if (name.Contains("picwmp"))
+                    {
+                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeWmaAbout));
+                        //break;
+                    }
+                if (name.Contains("picaac"))
+                    {
+                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeAacPlusAbout));
+                        //break;
+                    }
+                else
+                    {
+                        // ADDED TO SIMULATE CLICK EVENT
+                        //linkUri = Utilities.GetChannelUri(StreamType.Mp3, this.siteName, this.channelName);
+                        //break;
+                    }
+            //}
+            // testing
+            this.currentTrack.TrackUrl = linkUri; // NEED TO SET THIS VALUE EARLIER
+            c.Tag = linkUri != null ? linkUri.AbsoluteUri : string.Empty;
+
+            if (e.Button == MouseButtons.Left)
+                OnChannelChanged(this, new ChannelChangedEventArgs<IChannel>(this));
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        [Browsable(true)]
+        public event EventHandler<TrackChangedEventArgs<ITrack>> ChannelRefreshed
+        {
+            add
+            {
+                lock (_channelRefreshedLock)
+                {
+                    {
+                        _channelRefreshed += value;
+                    }
+                }
+            }
+            remove
+            {
+                lock (_channelRefreshedLock)
+                {
+                    _channelRefreshed -= value;
+                }
+            }
+        }
+        internal EventHandler<TrackChangedEventArgs<ITrack>> _channelRefreshed;
+        private readonly object _channelRefreshedLock = new object();
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// 
+        // todo refactor this out into it's own EventArgs class, pass link as e.Message
+        [Browsable(true)]
+        public static event EventHandler<EventArgs> ElementMouseHover
+        {
+            add
+            {
+                lock (_elementHoverLock)
+                {
+                    _elementMouseHover += value;
+                }
+            }
+            remove
+            {
+                lock (_elementHoverLock)
+                {
+                    _elementMouseHover -= value;
+                }
+            }
+        }
+        static internal EventHandler<EventArgs> _elementMouseHover;
+        private static readonly object _elementHoverLock = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Browsable(true)]
+        public static event EventHandler<ChannelChangedEventArgs<IChannel>> ChannelChanged
+        {
+            add
+            {
+                lock (_channelChangedLock)
+                {
+                    _channelChanged += value;
+                }
+            }
+            remove
+            {
+                lock (_channelChangedLock)
+                {
+                    _channelChanged -= value;
+                }
+            }
+        }
+        static internal EventHandler<ChannelChangedEventArgs<IChannel>> _channelChanged;
+        static private readonly object _channelChangedLock = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Browsable(true)]
+        public event EventHandler<EventArgs> PlaylistHistoryClicked
+        {
+            add
+            {
+                lock (_historyClickedLock)
+                {
+                    _historyClicked += value;
+                }
+            }
+            remove
+            {
+                lock (_historyClickedLock)
+                {
+                    _historyClicked -= value;
+                }
+            }
+        }
+        internal EventHandler<EventArgs> _historyClicked;
+        private readonly object _historyClickedLock = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Browsable(true)]
+        public event EventHandler<TrackChangedEventArgs<ITrack>> TrackChanged
+        {
+            add
+            {
+                lock (_trackChangedLock)
+                {
+                    {
+                        _trackChanged += value;
+                    }
+                }
+            }
+            remove
+            {
+                lock (_trackChangedLock)
+                {
+                    _trackChanged -= value;
+                }
+            }
+        }
+        internal EventHandler<TrackChangedEventArgs<ITrack>> _trackChanged;
+        private readonly object _trackChangedLock = new object();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseDown(MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+        }
+
+        public virtual void LoadUI()
+        {
+            if (currentTrack == null) throw new InvalidOperationException("Channel control must have a valid Track collection");
+
+            if (currentTrack != null)
+            {
+                if (this.InvokeRequired)
+                {
+                    this.Invoke((Action) delegate
+                    {
+                        SetValues();
+                    });
+                }
+                else
+                {
+                    SetValues();
+                }
+            }
+
+            // base.OnLoad(e);
+        }
+
+        private void SetValues()
+        {
+            ITrack track = CurrentTrack;
+
+            // track title
+            toolTipLinks.SetToolTip(this.lnkTrackTitle, track.TrackTitle);
+            this.lnkTrackTitle.Text = track.TrackTitle;
+
+            // comment count
+            this.lnkPostComments.Text = string.Format("Read and Post Comments {0}{1} {2}{3}", "(", track.CommentCount, "comments", ")");
+
+            // forum url
+            this.lnkPostComments.Links[0].LinkData = track.ForumUrl.AbsoluteUri as string;
+            toolTipLinks.SetToolTip(this.lnkPostComments, track.ForumUrl.AbsoluteUri);
+
+            // artist homepage link
+            if (track.ArtistUri != null)
+            {
+                this.lnkTrackTitle.Links[0].LinkData = track.ArtistUri.AbsoluteUri as string;
+                this.lnkTrackTitle.LinkBehavior = LinkBehavior.AlwaysUnderline;
+                this.lnkTrackTitle.LinkColor = Color.RoyalBlue;
+                toolTipLinks.SetToolTip(this.lnkTrackTitle, track.ArtistUri.AbsoluteUri);
+            }
+
+            // record label
+            if (track.RecordLabel != null)
+                this.lblRecordLabel.Text = track.RecordLabel;
+
+            // the url to the track (what is this?)
+            Uri trackUrl;
+            if (track.TrackUrl != null)
+                trackUrl = track.TrackUrl;
+
+            // time the track started
+            DateTime startTime = track.StartTime.AddMinutes(Settings.Default.TrackStartTimeOffset);
+            this.StartTimeLabel.Text = string.Format("{0} {1}", "Started at", startTime.ToShortTimeString());
+
+                    
+        }
+
+        #region IEquatable<IContent> Members
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(IContent other)
+        {
+            return this.Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        #endregion
+    }
+}

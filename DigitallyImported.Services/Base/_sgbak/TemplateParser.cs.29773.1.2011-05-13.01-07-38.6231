@@ -1,0 +1,10 @@
+
+using DigitallyImported.Components.Caching;
+
+namespace DigitallyImported.Services.Messaging
+{
+    public abstract class TemplateParser<T> : CachedItem where T: IMessage
+    {
+        // public abstract T GetTemplate<T>(EmailType emailType, User userEmailTo);
+    }
+}

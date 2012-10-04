@@ -1,0 +1,7 @@
+Create 1 panel per subscription level for Channel control. 
+Swap them out based on the subs level. You need to break out the "choose format" section into the panel.
+
+Inherit from one of the channel classes for premium data parsing. 
+or just parse the strings? in the inherited control? All that's changing is the string format
+
+Must add option for user profiles, i.e. more than one user per computer. store settings in isolated storage, but that'll affect the services service.

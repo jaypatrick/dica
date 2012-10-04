@@ -1,0 +1,17 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\ChannelTransforms.xslt
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Services.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Services.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Components.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\VbPowerPack.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Components.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\bin\Release\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\obj\Release\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\obj\Release\DigitallyImported.Services.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Services\obj\Release\DigitallyImported.Services.pdb

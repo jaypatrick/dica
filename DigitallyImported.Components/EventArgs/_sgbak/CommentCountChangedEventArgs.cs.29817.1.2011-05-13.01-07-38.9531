@@ -1,0 +1,57 @@
+
+namespace DigitallyImported.Components
+{
+    /// <summary>
+    /// 
+    /// </summary>
+    public class eeEventArgs<T> 
+        : ContentChangedEventArgs<T> where T: ITrack
+    {
+        private T _track = default(T);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="previousValue"></param>
+        /// <param name="newValue"></param>
+        public eeEventArgs(T track, int newValue) 
+        {
+            _track = track;
+            _commentCount = newValue;
+        }
+
+        private int _commentCount;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int CommentCount
+        {
+            get { return _commentCount; }
+            set { _commentCount = value; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int NewComments
+        {
+            get { return _commentCount - _track.CommentCount; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public override T RefreshedContent
+        {
+            get
+            {
+                return this._track;
+            }
+            set
+            {
+                this._track = value;
+            }
+        }
+    }
+}

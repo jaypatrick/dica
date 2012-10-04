@@ -1,0 +1,105 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="DigitallyImported.Configuration.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MainFormLocation" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">100, 100</Value>
+    </Setting>
+    <Setting Name="AlternatingChannelBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">WhiteSmoke</Value>
+    </Setting>
+    <Setting Name="SelectedChannelBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Beige</Value>
+    </Setting>
+    <Setting Name="SelectedChannelName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">techno</Value>
+    </Setting>
+    <Setting Name="MainFormScrollPosition" Type="System.Drawing.Point" Scope="User">
+      <Value Profile="(Default)">0, 0</Value>
+    </Setting>
+    <Setting Name="SelectedChannelUri" Type="System.Uri" Scope="User">
+      <Value Profile="(Default)">http://di.fm/mp3/progressive.pls</Value>
+    </Setting>
+    <Setting Name="RememberPreviousChannel" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="RefreshIntervalTEST" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)">12/29/2006 05:00:00</Value>
+    </Setting>
+    <Setting Name="ChannelSortOrder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Ascending</Value>
+    </Setting>
+    <Setting Name="ChannelSortBy" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ChannelName</Value>
+    </Setting>
+    <Setting Name="PlayerType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Default</Value>
+    </Setting>
+    <Setting Name="FormOpacityValue" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="PlaylistTypes" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;All&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ITunesProgID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">iTunes.Application</Value>
+    </Setting>
+    <Setting Name="WinampRegistryKey" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Software\Microsoft\Windows\CurrentVersion\Uninstall\Winamp</Value>
+    </Setting>
+    <Setting Name="QuickTimeProgID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">QuickTime.QuickTime</Value>
+    </Setting>
+    <Setting Name="WMPProgID" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">MediaPlayer.MediaPlayer</Value>
+    </Setting>
+    <Setting Name="SubscriptionType" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Regular</Value>
+    </Setting>
+    <Setting Name="ChannelBackground" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gainsboro</Value>
+    </Setting>
+    <Setting Name="Username" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Password" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="WinampRegistryKeyWoW" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Winamp</Value>
+    </Setting>
+    <Setting Name="TrackStartTimeOffset" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">-60</Value>
+    </Setting>
+    <Setting Name="PlaylistRefreshInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:05:00</Value>
+    </Setting>
+    <Setting Name="PlaylistFavorites" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Progressive&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ExternalPlaylistXml" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ExternalChannels.xml</Value>
+    </Setting>
+    <Setting Name="ShowUserToast" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DIPlaylistXml" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://old.di.fm/partners/xml/playlists.xml</Value>
+    </Setting>
+    <Setting Name="DIEventListXml" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://old.di.fm/partners/xml/dievents.xml</Value>
+    </Setting>
+    <Setting Name="ListenKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CalendarFormat" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Today</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

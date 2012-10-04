@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="PLAYLISTS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="STATIONTITLE" type="xs:string" minOccurs="0" />
+        <xs:element name="STATIONURL" type="xs:string" minOccurs="0" />
+        <xs:element name="GENERATETIME" type="xs:string" minOccurs="0" />
+        <xs:element name="CHANNELS" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CHANNEL" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="CHANNELTITLE" type="xs:string" minOccurs="0" />
+                    <xs:element name="TRACKS" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="TRACK" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="TRACKTITLE" type="xs:string" minOccurs="0" />
+                                <xs:element name="STARTTIME" type="xs:string" minOccurs="0" />
+                                <xs:element name="LABEL" type="xs:string" minOccurs="0" />
+                                <xs:element name="TRACKURL" type="xs:string" minOccurs="0" />
+                                <xs:element name="BOARDCOUNT" type="xs:string" minOccurs="0" />
+                                <xs:element name="EXTRAURL" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msdata:ColumnName="EXTRAURL_Text" msdata:Ordinal="1">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="TITLE" type="xs:string" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BUYURL1" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:attribute name="FROM" type="xs:string" />
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element name="BUYURL2" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:simpleContent msdata:ColumnName="BUYURL2_Text" msdata:Ordinal="1">
+                                      <xs:extension base="xs:string">
+                                        <xs:attribute name="FROM" type="xs:string" />
+                                      </xs:extension>
+                                    </xs:simpleContent>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="PLAYLISTS" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

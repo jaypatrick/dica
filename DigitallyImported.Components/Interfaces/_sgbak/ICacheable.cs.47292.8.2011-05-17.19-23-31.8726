@@ -1,0 +1,11 @@
+
+namespace DigitallyImported.Components.Caching
+{
+    public interface ICacheable<T> where T: IContent
+    {
+        void ClearItems();
+        T GetItem(T cacheItem);
+        void InsertItem(T cacheItem);
+        void RemoveItem(T cacheItem);
+    }
+}

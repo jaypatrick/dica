@@ -1,0 +1,61 @@
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\ChannelTransforms.xslt
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Components.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\VbPowerPack.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Data.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Components.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Configuration.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Resources.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\bin\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\ResolveAssemblyReference.cache
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Properties.Resources.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Channel.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Windows.ExternalChannel.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Track.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ChannelPanel.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.BaseContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ChannelsContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.EventsContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.PlaylistsContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.SortContextMenu.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.PremiumChannel.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.RefreshCounter.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ToastForm.resources
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\GenerateResource.read.1.tlog
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\GenerateResource.write.1.tlog
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\DigitallyImported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\ChannelTransforms.xslt
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Components.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Configuration.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Resources.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\VbPowerPack.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Data.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Components.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.csprojResolveAssemblyReference.cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Properties.Resources.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Channel.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Windows.ExternalChannel.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Track.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ChannelPanel.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.BaseContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ChannelsContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.EventsContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.PlaylistsContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.SortContextMenu.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.PremiumChannel.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.RefreshCounter.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.ToastForm.resources
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.csproj.GenerateResource.Cache
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.pdb

@@ -1,0 +1,75 @@
+//using System;
+
+
+//namespace DigitallyImported.Components.Caching
+//{
+//    /// <summary>
+//    /// Allows an item to be cached
+//    /// </summary>
+//    [AttributeUsage(AttributeTargets.All
+//        , AllowMultiple=false, Inherited=true)]
+//    public class CacheableAttribute<T> : System.Attribute<T>, ICacheable<T>
+//        where T: IContent
+//    {
+//        /// <summary>
+//        /// 
+//        /// </summary>
+//        public CacheableAttribute() 
+//            // : this(value, Globals.GetCacheExpirationDateTime())
+
+//        {   // auto insert into cache if this attribute is on the class
+//        }
+
+//        //public CacheableAttribute(object value, DateTime absoluteExpiration)
+//        //    : this(value, absoluteExpiration, CachedItem.Refresh)
+//        //{
+//        //}
+
+//        //public CacheableAttribute(object value, DateTime absoluteExpiration, CacheItemRemovedCallback callbackFunction)
+//        //{
+//        //    _cacheKey = value.GetHashCode().ToString();
+//        //}
+
+//        /// <summary>
+//        /// 
+//        /// </summary>
+//        public string CacheKey
+//        {
+//            get { return _cacheKey; }
+//        }
+//        private string _cacheKey;
+
+//        /// <summary>
+//        /// 
+//        /// </summary>
+//        public object CacheValue
+//        {
+//            get { return _cacheValue; }
+//        }
+//        private object _cacheValue;
+
+//        #region ICache Members
+
+//        public void ClearItems()
+//        {
+//            throw new Exception("The method or operation is not implemented.");
+//        }
+
+//        public T GetItem(T cacheItem)
+//        {
+//            throw new Exception("The method or operation is not implemented.");
+//        }
+
+//        public void InsertItem(T cacheItem)
+//        {
+//            throw new Exception("The method or operation is not implemented.");
+//        }
+
+//        public void RemoveItem(T cacheItem)
+//        {
+//            throw new Exception("The method or operation is not implemented.");
+//        }
+
+//        #endregion
+//    }
+//}

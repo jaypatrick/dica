@@ -1,0 +1,11 @@
+
+namespace DigitallyImported.Services.Messaging
+{
+    public enum EmailType
+    {
+        BoardCountChange,
+        SubscribedArtist,
+        SubscribedTrack,
+        SubscribedEvent
+    }
+}
