@@ -91,10 +91,11 @@ namespace DigitallyImported.Player
                 }
                 if (player != null)
                 {
+                    // calls base template method
                     player.OpenPlayer(channel);
                 }
             }
-            catch
+            catch (PlayerNotInstalledException)
             {
                 throw;
             }

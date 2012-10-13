@@ -80,6 +80,20 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:DigitallyImported.Utilities.Utilities.GetSiteStrings(DigitallyImported.Components.PlaylistTypes)">
+            <summary>
+            
+            </summary>
+            <param name="PlaylistTypes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Utilities.EncodeTo64(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="toEncode"></param>
+            <returns></returns>
+        </member>
         <member name="M:DigitallyImported.Utilities.Utilities.SplitName(System.String)">
             <summary>
             Splits a string up based on capital letters, i.e. ThisString becomes This String

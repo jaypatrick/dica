@@ -61,6 +61,6 @@ using System.Runtime.InteropServices;
 //[assembly: AssemblyKeyFile(@"..\..\DigitallyImported.Controls.pfx")]
 //[assembly: AssemblyKeyName("")]
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Controls.Tests.NUnit, PublicKey=0024000004800000940000000602000000240000525341310004000001000100C9AE0B1A82EEBF40923711D0BF740462635BFE9C6924E6F732DFBB6441F1B062C583D1B2B96B66384D949865DF8A381B22726B9BC6E10A083F1C7B783BA4F5A215F158DCCEF853FB4945D9BEBAB3859F34B06EC415F55386B35EC26E270D902CDFF93BC61DC855529A7AA156A49549B3310326DDF065BFAE4EAE63781779BAB3")]
-[assembly: AssemblyVersionAttribute("3.0.1.12")]
+//[assembly: AssemblyVersionAttribute("3.0.1.12")]
 
 [assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Tests")]

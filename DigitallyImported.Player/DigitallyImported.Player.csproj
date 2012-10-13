@@ -186,6 +186,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DigitallyImported.Player.cd" />
     <None Include="DigitallyImported.Player.pfx" />
     <None Include="Player.cd" />
   </ItemGroup>

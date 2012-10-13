@@ -209,6 +209,11 @@ namespace DigitallyImported.Utilities
 			return (T)Enum.Parse(typeof(T), value, true);
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="PlaylistTypes"></param>
+        /// <returns></returns>
 		public static StringCollection GetSiteStrings(PlaylistTypes PlaylistTypes)
 		{
 			//StringCollection col = new StringCollection();
@@ -220,6 +225,11 @@ namespace DigitallyImported.Utilities
 			return null;
 		}
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="toEncode"></param>
+        /// <returns></returns>
 		static public string EncodeTo64(string toEncode)
 		{
 			byte[] toEncodeAsBytes = System.Text.ASCIIEncoding.ASCII.GetBytes(toEncode);

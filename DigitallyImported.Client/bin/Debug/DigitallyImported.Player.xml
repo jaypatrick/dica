@@ -192,6 +192,11 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Player.PlayerNotInstalledException">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor">
             <summary>
             

@@ -3,6 +3,10 @@ using System.Runtime.Serialization;
 
 namespace DigitallyImported.Player
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    [Serializable()]
     public class PlayerNotInstalledException : System.Exception, ISerializable
     {
         private IPlayer _player;

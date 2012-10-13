@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DigitallyImported.Client.AboutForm" Collapsed="true">
+    <Position X="18.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIAABAgAACAgCAUAAACAAAADAAAAEIAAAAAAAAAAAAA=</HashCode>
+      <FileName>AboutForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.AdminForm" Collapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>8BAggBpEAiIIwBFKlCCAABBiCQAgAAilEAFBQBABCAk=</HashCode>
+      <FileName>AdminForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.BaseForm" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIACAQACAAAACAAIAAAAAAAAQAAAAAAw=</HashCode>
+      <FileName>Base\BaseForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.ExternalChannelsForm" Collapsed="true">
+    <Position X="13.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BBAAQIAiAiAARAAIAAGAAkgCACAAAAAAWAAABUAACAA=</HashCode>
+      <FileName>ExternalChannelsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.FavoritesForm&lt;TChannel, TTrack&gt;" Collapsed="true">
+    <Position X="4.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FQAAAAAAAAAIAAAAAAAghAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>FavoritesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.HistoryForm" Collapsed="true">
+    <Position X="9.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAAAAgACAAABAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HistoryForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.OptionsForm" Collapsed="true">
+    <Position X="11.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OptionsForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.PlaylistForm&lt;TChannel, TTrack&gt;" Collapsed="true">
+    <Position X="16" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABQAAAAAACAEAAAAAAAAAAAAIAAAQ=</HashCode>
+      <FileName>PlaylistForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Program" Collapsed="true">
+    <Position X="20.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Controls.BaseContainerControl" Collapsed="true">
+    <Position X="20.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BISCAj0gACAIAAAIEACCgANSCIBAAIAAAgQABjAAAEA=</HashCode>
+      <FileName>Base\BaseContainerControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Controls.ContentControl&lt;TChannel, TTrack&gt;" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GEChCpEkAJCA4AQCACRhQAABAAAABSJAUACBiACAAAA=</HashCode>
+      <FileName>Controls\ContentControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Controls.ExternalChannelPickerControl" Collapsed="true">
+    <Position X="20.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAACAACAAChAAAJCAIAgCEogAAAAAIEAACAAgQAA=</HashCode>
+      <FileName>Controls\ExternalChannelPickerControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Controls.GeneralTab" Collapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Options\GeneralTab.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Controls.OptionsControl" Collapsed="true">
+    <Position X="18.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\Options\OptionsControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Diagnostics.DebugConsoleWrapper" Collapsed="true">
+    <Position X="18.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAAABCCDCYgAABAaFAAACAAAAARAAAAAAEQAAQAA=</HashCode>
+      <FileName>Diagnostics\DebugConsole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Client.Properties.Resources" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

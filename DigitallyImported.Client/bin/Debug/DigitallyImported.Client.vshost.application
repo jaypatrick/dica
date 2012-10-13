@@ -14,14 +14,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="DigitallyImported.Client.exe.manifest" size="17671">
+    <dependentAssembly dependencyType="install" codebase="DigitallyImported.Client.exe.manifest" size="17702">
       <assemblyIdentity name="DigitallyImported.Client.exe" version="3.1.0.4" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FCMT+wb2oxsXv7v0Snve8bjvvTdW4ia/RrNCf5gh6bY=</dsig:DigestValue>
+        <dsig:DigestValue>jrU6lhxRatQYKO0JZ9+2xEczW0oMNQ54/vU79GByf4Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

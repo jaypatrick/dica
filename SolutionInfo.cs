@@ -12,7 +12,7 @@ using System.Resources;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-//[assembly: AssemblyVersion("2.1.8.*")]
+[assembly: AssemblyVersion("4.1.0.*")]
 [assembly: AssemblyCompany("JaysonKnight.com")]
-[assembly: AssemblyCopyright("Copyright 2011 :: Jayson Knight")]
+[assembly: AssemblyCopyright("Copyright 2012 :: Jayson Knight")]
 [assembly: NeutralResourcesLanguageAttribute("en-US")]

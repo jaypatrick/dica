@@ -219,6 +219,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Client.cd" />
+    <None Include="DigitallyImported.Client.cd" />
     <None Include="DigitallyImported.Client.pfx" />
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
