@@ -7,12 +7,11 @@ namespace DigitallyImported.Components
         //where K: string
         //where V: Uri
     {
-        private K _channelName = default(K);
-        private V _channelUri = default(V);
+        private K _channelName;
+        private V _channelUri;
 
         public ExternalChannelEntry()
         {
-
         }
 
         public ExternalChannelEntry(K channelName, V channelUri)

@@ -6,7 +6,7 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// 
-    [Flags()]
+    [Flags]
     public enum ContentType
     {
         None = 0,

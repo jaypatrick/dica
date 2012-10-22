@@ -11,10 +11,10 @@ namespace DigitallyImported.Components
         string TrackTitle { get; set; }
         Uri ArtistUri { get; set; } //
         Uri ForumUrl { get; set; } //
-        Uri TrackUrl { get; set; }    // move to IStream object, StreamUrl // this is set in the control itself
+        Uri TrackUrl { get; set; } // move to IStream object, StreamUrl // this is set in the control itself
         string RecordLabel { get; set; } // 
         int CommentCount { get; set; } //
-        bool IsPlaying { get; set; }    // this is set in the control itself
+        bool IsPlaying { get; set; } // this is set in the control itself
 
         event EventHandler<eeEventArgs<ITrack>> ee;
     }

@@ -39,13 +39,9 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Digitally
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Resources.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\DigitallyImported.Data.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.iTunesLib.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.MediaPlayer.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.WMPDXMLib.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\bin\Debug\Interop.WMPLib.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.csprojResolveAssemblyReference.cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.iTunesLib.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.MediaPlayer.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.WMPDXMLib.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\Interop.WMPLib.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.csproj.ResolveComReference.cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Player\obj\Debug\DigitallyImported.Player.dll

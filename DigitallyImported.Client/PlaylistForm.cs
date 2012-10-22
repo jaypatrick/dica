@@ -2,6 +2,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Windows.Forms;
 using DigitallyImported.Client.Controls;
 using DigitallyImported.Components;
@@ -10,12 +11,11 @@ using DigitallyImported.Configuration.Properties;
 namespace DigitallyImported.Client
 {
     public partial class PlaylistForm<TChannel, TTrack> : BaseForm
-        where TChannel: UserControl, IChannel, new()
+        where TChannel : UserControl, IChannel, new()
         where TTrack : UserControl, ITrack, new()
     {
+        protected ContentControl<TChannel, TTrack> PlaylistContainer;
         private Size _size;
-
-        protected DigitallyImported.Client.Controls.ContentControl<TChannel, TTrack> PlaylistContainer;
 
         //Type _playlistContainer = typeof(ContentControl<,>);
         //Type _workingType;
@@ -25,12 +25,12 @@ namespace DigitallyImported.Client
         /// </summary>
         public PlaylistForm()
         {
-            this.PlaylistContainer = new DigitallyImported.Client.Controls.ContentControl<TChannel, TTrack>();
+            PlaylistContainer = new ContentControl<TChannel, TTrack>();
 
-            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+            Application.ThreadException += Application_ThreadException;
 
             // use reflection to create the correct ContentControl type
-           
+
             //Type[] premiumArgs = 
             //    {
             //        typeof(PremiumChannel), typeof(Track)
@@ -95,10 +95,11 @@ namespace DigitallyImported.Client
         //    }
         //}
 
-        static new void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        private new static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            DirectoryInfo dirInfo = new DirectoryInfo(Application.ExecutablePath);
-            FileInfo fileInfo = new FileInfo(string.Format("{0} {1}.{2}", "StackTrace", DateTime.Now.ToShortDateString(), ".txt"));
+            var dirInfo = new DirectoryInfo(Application.ExecutablePath);
+            var fileInfo =
+                new FileInfo(string.Format("{0} {1}.{2}", "StackTrace", DateTime.Now.ToShortDateString(), ".txt"));
             TextWriter writer = fileInfo.CreateText();
             writer.WriteLine(e.Exception.StackTrace);
             writer.Flush();
@@ -113,14 +114,14 @@ namespace DigitallyImported.Client
         {
             base.OnLoad(e);
 
-            NetworkChange.NetworkAvailabilityChanged += new NetworkAvailabilityChangedEventHandler(NetworkAvailabilityChanged);
+            NetworkChange.NetworkAvailabilityChanged += NetworkAvailabilityChanged;
             UpdateNetworkStatus(NetworkInterface.GetIsNetworkAvailable());
 
-            this.Location = Settings.Default.MainFormLocation;
-            this.Text = Resources.Properties.Resources.ApplicationTitle;
-            this.Icon = Resources.Properties.Resources.DIIconNew;
+            Location = Settings.Default.MainFormLocation;
+            Text = Resources.Properties.Resources.ApplicationTitle;
+            Icon = Resources.Properties.Resources.DIIconNew;
 
-            foreach (Control control in this.Controls)
+            foreach (Control control in Controls)
             {
                 if (control is ContentControl<TChannel, TTrack>)
                 {
@@ -131,9 +132,9 @@ namespace DigitallyImported.Client
                 }
             }
 
-            this.Size = _size;
+            Size = _size;
             // this.ShowInTaskbar = true;
-            this.KeyPreview = true;
+            KeyPreview = true;
             // this.Focus();
         }
 
@@ -157,7 +158,7 @@ namespace DigitallyImported.Client
             base.OnFormClosing(e);
 
             // PlayerLoader.Save(); // CHANGE THIS CLASS!
-            Settings.Default.MainFormLocation = this.Location;
+            Settings.Default.MainFormLocation = Location;
         }
     }
 }

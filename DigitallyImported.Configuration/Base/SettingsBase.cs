@@ -1,22 +1,28 @@
+using System.ComponentModel;
+using System.Configuration;
+using DigitallyImported.Configuration.Properties;
 
 namespace DigitallyImported.Configuration
 {
-    public class SettingsBase : Properties.Settings
+    public class SettingsBase : Settings
     {
-        public SettingsBase() {
+        public SettingsBase()
+        {
             // // To add event handlers for saving and changing settings, uncomment the lines below:
             //
-            this.SettingChanging += this.SettingChangingEventHandler;
+            SettingChanging += SettingChangingEventHandler;
             //
-            this.SettingsSaving += this.SettingsSavingEventHandler;
+            SettingsSaving += SettingsSavingEventHandler;
             //
         }
-        
-        private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e) {
+
+        private void SettingChangingEventHandler(object sender, SettingChangingEventArgs e)
+        {
             // Add code to handle the SettingChangingEvent event here.
         }
-        
-        private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e) {
+
+        private void SettingsSavingEventHandler(object sender, CancelEventArgs e)
+        {
             // Add code to handle the SettingsSaving event here.
         }
     }

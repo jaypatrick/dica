@@ -92,13 +92,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.SqlServer.Smo, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SqlServerCe, Version=3.5.0.0, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -118,6 +116,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>ChannelData.Designer.cs</LastGenOutput>
     </Content>
+    <None Include="App.config" />
     <None Include="Data.cd" />
     <None Include="EventData.xsc">
       <DependentUpon>EventData.xsd</DependentUpon>
@@ -136,16 +135,7 @@
       <DependentUpon>ChannelData.xsd</DependentUpon>
     </None>
     <None Include="DigitallyImported.Data.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DigitallyImported.Configuration\DigitallyImported.Configuration.csproj">
-      <Project>{A159C918-35DB-426A-9D58-4284B83368F8}</Project>
-      <Name>DigitallyImported.Configuration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DigitallyImported.Resources\DigitallyImported.Resources.csproj">
-      <Project>{547E38B0-0DBA-487B-82C2-7CA5001B7F5C}</Project>
-      <Name>DigitallyImported.Resources</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -181,6 +171,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DB\" />
+    <Folder Include="JSON\" />
+    <Folder Include="XML\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

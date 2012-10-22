@@ -4,13 +4,36 @@ using DigitallyImported.Components;
 namespace DigitallyImported.Player
 {
     // BASE INTERFACE FOR ALL PLAYERS
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IPlayer
     {
-        void OpenPlayer(IChannel channel);
         // void Play(IChannel channel);
+        /// <summary>
+        /// 
+        /// </summary>
         IChannel Channel { get; set; }
-        PlayerTypes PlayerType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        PlayerType PlayerType { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         Icon PlayerIcon { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
         bool IsInstalled { get; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="channel"></param>
+        void OpenPlayer(IChannel channel);
     }
 }

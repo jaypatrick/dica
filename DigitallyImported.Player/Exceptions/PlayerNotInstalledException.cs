@@ -6,10 +6,10 @@ namespace DigitallyImported.Player
     /// <summary>
     /// 
     /// </summary>
-    [Serializable()]
-    public class PlayerNotInstalledException : System.Exception, ISerializable
+    [Serializable]
+    public class PlayerNotInstalledException : Exception, ISerializable
     {
-        private IPlayer _player;
+        private readonly IPlayer _player;
 
         /// <summary>
         /// 
@@ -48,7 +48,7 @@ namespace DigitallyImported.Player
         /// <param name="player"></param>
         public PlayerNotInstalledException(string message, Exception inner, IPlayer player)
         {
-            this._player = player;
+            _player = player;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace DigitallyImported.Player
         /// </summary>
         public virtual IPlayer Player
         {
-            get { return this._player; }
+            get { return _player; }
         }
     }
 }

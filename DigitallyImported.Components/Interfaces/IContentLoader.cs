@@ -6,7 +6,7 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public interface IContentLoader<T> where T: IContent
+    public interface IContentLoader<T> where T : IContent
     {
         bool IsNetworkAvailable { get; }
         XmlReader LoadContentFromXml(XmlReaderSettings settings);

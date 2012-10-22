@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 using Microsoft.Win32;
@@ -10,65 +11,36 @@ namespace DigitallyImported.Player
     /// <summary>
     /// 
     /// </summary>
-    public class Winamp : Player, IWinamp, IPlayerFactory
+    public class Winamp : Player, IWinamp
     {
         private RegistryKey _winampKey;
         private string _winampPath = string.Empty;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Winamp()
-            : base(PlayerTypes.Winamp)
+            : base(PlayerType.Winamp)
         {
-
             // if (!IsInstalled) throw new PlayerNotInstalledException("Winamp Player is not installed");
         }
 
-        #region IPlayer Members
+        #region IWinamp Members
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="channel"></param>
-        protected override void Play(DigitallyImported.Components.IChannel channel)
+        public override PlayerType PlayerType
         {
-            var url = channel.CurrentTrack.TrackUrl;
-
-            try
-            {
-                if (IsInstalled)
-                {
-                    ProcessStartInfo info = new ProcessStartInfo();
-
-                    info.Arguments = ParseStreamUri(url).AbsoluteUri;
-
-                    info.FileName = _winampPath;
-                    info.UseShellExecute = false;
-
-                    Components.Utilities.StartProcess(info);
-                }
-            }
-            catch
-            {
-                throw;
-            }
+            get { return PlayerType.Winamp; }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public override PlayerTypes PlayerType
+        public override Icon PlayerIcon
         {
-            get { return PlayerTypes.Winamp; }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public override System.Drawing.Icon PlayerIcon
-        {
-            get
-            {
-                return P.Resources.icon_winamp;
-            }
+            get { return P.Resources.icon_winamp; }
         }
 
         /// <summary>
@@ -78,25 +50,40 @@ namespace DigitallyImported.Player
         {
             get
             {
-                _winampKey = Registry.LocalMachine.OpenSubKey(Settings.Default.WinampRegistryKeyWoW) == null
-                    ? Registry.LocalMachine.OpenSubKey(Settings.Default.WinampRegistryKey)   // 64 bit
-                    : Registry.LocalMachine.OpenSubKey(Settings.Default.WinampRegistryKeyWoW);     // 32 bit
+                _winampKey = Registry.LocalMachine.OpenSubKey(Settings.Default.WinampRegistryKeyWoW) ??
+                             Registry.LocalMachine.OpenSubKey(Settings.Default.WinampRegistryKey); // 32 bit
 
                 if (_winampKey != null)
                 {
-                    _winampPath = (string)_winampKey.GetValue(@"UninstallString");
-                    _winampPath = _winampPath.Remove(_winampPath.LastIndexOf(@"\"));
+                    _winampPath = (string) _winampKey.GetValue(@"UninstallString");
+                    _winampPath = _winampPath.Remove(_winampPath.LastIndexOf(@"\", StringComparison.Ordinal));
                     _winampPath += @"\winamp.exe";
-                    _winampPath = _winampPath.Insert(_winampPath.Length, new string(new char[] {'"'}));
+                    _winampPath = _winampPath.Insert(_winampPath.Length, new string(new[] {'"'}));
                     return true;
                 }
 
-                else
-                    return false;
+                return false;
             }
         }
 
         #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="channel"></param>
+        protected override void Play(IChannel channel)
+        {
+            Uri url = channel.CurrentTrack.TrackUrl;
+
+            if (IsInstalled)
+            {
+                var info = new ProcessStartInfo
+                    {Arguments = ParseStreamUri(url).AbsoluteUri, FileName = _winampPath, UseShellExecute = false};
+
+                Components.Utilities.StartProcess(info);
+            }
+        }
 
         protected override Uri ParseStreamUri(Uri streamUri)
         {

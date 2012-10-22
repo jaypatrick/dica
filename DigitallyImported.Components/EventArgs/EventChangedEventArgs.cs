@@ -3,16 +3,18 @@ using System;
 namespace DigitallyImported.Components
 {
     [Serializable]
-    public class EventChangedEventArgs<T> : ContentChangedEventArgs<T> where T: IEvent
+    public class EventChangedEventArgs<T> : ContentChangedEventArgs<T>
+        where T : IEvent
     {
-        private T _refreshedEvent = default(T);
+        private T _refreshedEvent;
 
         /// <summary>
         /// 
         /// </summary>
-        public EventChangedEventArgs() 
-            :this(default(T))
-        { }
+        public EventChangedEventArgs()
+            : this(default(T))
+        {
+        }
 
         /// <summary>
         /// 
@@ -29,14 +31,8 @@ namespace DigitallyImported.Components
         /// </summary>
         public override T RefreshedContent
         {
-            get
-            {
-                return _refreshedEvent;
-            }
-            set
-            {
-                _refreshedEvent = value;
-            }
+            get { return _refreshedEvent; }
+            set { _refreshedEvent = value; }
         }
     }
 }

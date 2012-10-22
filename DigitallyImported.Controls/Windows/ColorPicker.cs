@@ -1,96 +1,154 @@
+using System;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Design;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.Windows.Forms.Design;
+
 namespace DigitallyImported.Utilities.Windows
 {
     // using Microsoft.VisualBasic.CompilerServices;
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Drawing.Design;
-    using System.Runtime.CompilerServices;
-    using System.Runtime.InteropServices;
-    using System.Windows.Forms;
-    using System.Windows.Forms.Design;
 
     [DefaultProperty("Color"), DefaultEvent("ColorChanged")]
     public partial class ColorPicker : Control
     {
-        [AccessedThroughProperty("_CheckBox")]
-        private CheckBox __CheckBox;
-        private EditorService _EditorService;
-        private bool _TextDisplayed;
         private const string DefaultColorName = "Black";
+        private readonly EditorService _EditorService;
+        private bool _TextDisplayed;
+        [AccessedThroughProperty("_CheckBox")] private CheckBox __CheckBox;
+
+        public ColorPicker()
+            : this(Color.FromName("Black"))
+        {
+        }
+
+        public ColorPicker(Color c)
+        {
+            _TextDisplayed = true;
+            _CheckBox = new CheckBox
+                {Appearance = Appearance.Button, Dock = DockStyle.Fill, TextAlign = ContentAlignment.MiddleCenter};
+            SetColor(c);
+            Controls.Add(_CheckBox);
+            _EditorService = new EditorService(this);
+        }
+
+        private CheckBox _CheckBox
+        {
+            get { return __CheckBox; }
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set
+            {
+                if (__CheckBox != null)
+                {
+                    __CheckBox.CheckStateChanged -= OnCheckStateChanged;
+                }
+                __CheckBox = value;
+                if (__CheckBox != null)
+                {
+                    __CheckBox.CheckStateChanged += OnCheckStateChanged;
+                }
+            }
+        }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public override Color BackColor
+        {
+            get { return base.BackColor; }
+            set { base.BackColor = value; }
+        }
+
+        [DefaultValue(typeof (Color), "Black"), Description("The currently selected color."), Category("Appearance")]
+        public Color Color
+        {
+            get { return _CheckBox.BackColor; }
+            set
+            {
+                SetColor(value);
+                EventHandler colorChangedEvent = ColorChanged;
+                if (colorChangedEvent != null)
+                {
+                    colorChangedEvent(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
+        public override Color ForeColor
+        {
+            get { return base.ForeColor; }
+            set { base.ForeColor = value; }
+        }
+
+        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
+        public override string Text
+        {
+            get { return base.Text; }
+            set { base.Text = value; }
+        }
+
+        [Category("Appearance"),
+         Description("True meanse the control displays the currently selected color's name, False otherwise."),
+         DefaultValue(true)]
+        public bool TextDisplayed
+        {
+            get { return _TextDisplayed; }
+            set
+            {
+                _TextDisplayed = value;
+                SetColor(Color);
+            }
+        }
 
         public event EventHandler ColorChanged;
 
-        public ColorPicker()
-            : this(System.Drawing.Color.FromName("Black"))
-        {
-        }
-
-        public ColorPicker(System.Drawing.Color c)
-        {
-            this._TextDisplayed = true;
-            this._CheckBox = new CheckBox();
-            this._CheckBox.Appearance = Appearance.Button;
-            this._CheckBox.Dock = DockStyle.Fill;
-            this._CheckBox.TextAlign = ContentAlignment.MiddleCenter;
-            this.SetColor(c);
-            this.Controls.Add(this._CheckBox);
-            this._EditorService = new EditorService(this);
-        }
-
         private void CloseDropDown()
         {
-            this._EditorService.CloseDropDown();
+            _EditorService.CloseDropDown();
         }
 
-        private System.Drawing.Color GetInvertedColor(System.Drawing.Color c)
+        private Color GetInvertedColor(Color c)
         {
             if (((c.R + c.G) + c.B) > 0x17e)
             {
-                return System.Drawing.Color.Black;
+                return Color.Black;
             }
-            return System.Drawing.Color.White;
+            return Color.White;
         }
 
         private void OnCheckStateChanged(object sender, EventArgs e)
         {
-            if (this._CheckBox.CheckState == CheckState.Checked)
+            if (_CheckBox.CheckState == CheckState.Checked)
             {
-                this.ShowDropDown();
+                ShowDropDown();
             }
             else
             {
-                this.CloseDropDown();
+                CloseDropDown();
             }
         }
 
-        private void SetColor(System.Drawing.Color c)
+        private void SetColor(Color c)
         {
-            this._CheckBox.BackColor = c;
-            this._CheckBox.ForeColor = this.GetInvertedColor(c);
-            if (this._TextDisplayed)
-            {
-                this._CheckBox.Text = c.Name;
-            }
-            else
-            {
-                this._CheckBox.Text = string.Empty;
-            }
+            _CheckBox.BackColor = c;
+            _CheckBox.ForeColor = GetInvertedColor(c);
+            _CheckBox.Text = _TextDisplayed ? c.Name : string.Empty;
         }
 
         private void ShowDropDown()
         {
             try
             {
-                ColorEditor editor = new ColorEditor();
-                System.Drawing.Color color = this.Color;
-                object objectValue = RuntimeHelpers.GetObjectValue(editor.EditValue(this._EditorService, color));
-                if ((objectValue != null) && !this._EditorService.Canceled)
+                var editor = new ColorEditor();
+                Color color = Color;
+                object objectValue = RuntimeHelpers.GetObjectValue(editor.EditValue(_EditorService, color));
+                if ((objectValue != null) && !_EditorService.Canceled)
                 {
-                    this.Color = (System.Drawing.Color)objectValue;
+                    Color = (Color) objectValue;
                 }
-                this._CheckBox.CheckState = CheckState.Unchecked;
+                _CheckBox.CheckState = CheckState.Unchecked;
             }
             catch (Exception exception1)
             {
@@ -100,97 +158,7 @@ namespace DigitallyImported.Utilities.Windows
             }
         }
 
-        private CheckBox _CheckBox
-        {
-            get
-            {
-                return this.__CheckBox;
-            }
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                if (this.__CheckBox != null)
-                {
-                    this.__CheckBox.CheckStateChanged -= new EventHandler(this.OnCheckStateChanged);
-                }
-                this.__CheckBox = value;
-                if (this.__CheckBox != null)
-                {
-                    this.__CheckBox.CheckStateChanged += new EventHandler(this.OnCheckStateChanged);
-                }
-            }
-        }
-
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public override System.Drawing.Color BackColor
-        {
-            get
-            {
-                return base.BackColor;
-            }
-            set
-            {
-                base.BackColor = value;
-            }
-        }
-
-        [DefaultValue(typeof(System.Drawing.Color), "Black"), Description("The currently selected color."), Category("Appearance")]
-        public System.Drawing.Color Color
-        {
-            get
-            {
-                return this._CheckBox.BackColor;
-            }
-            set
-            {
-                this.SetColor(value);
-                EventHandler colorChangedEvent = this.ColorChanged;
-                if (colorChangedEvent != null)
-                {
-                    colorChangedEvent(this, EventArgs.Empty);
-                }
-            }
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
-        public override System.Drawing.Color ForeColor
-        {
-            get
-            {
-                return base.ForeColor;
-            }
-            set
-            {
-                base.ForeColor = value;
-            }
-        }
-
-        [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
-        public override string Text
-        {
-            get
-            {
-                return base.Text;
-            }
-            set
-            {
-                base.Text = value;
-            }
-        }
-
-        [Category("Appearance"), Description("True meanse the control displays the currently selected color's name, False otherwise."), DefaultValue(true)]
-        public bool TextDisplayed
-        {
-            get
-            {
-                return this._TextDisplayed;
-            }
-            set
-            {
-                this._TextDisplayed = value;
-                this.SetColor(this.Color);
-            }
-        }
+        #region Nested type: DropDownForm
 
         private class DropDownForm : Form
         {
@@ -199,31 +167,34 @@ namespace DigitallyImported.Utilities.Windows
 
             public DropDownForm()
             {
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.ShowInTaskbar = false;
-                this.KeyPreview = true;
-                this.StartPosition = FormStartPosition.Manual;
-                Panel panel = new Panel();
-                panel.BorderStyle = BorderStyle.FixedSingle;
-                panel.Dock = DockStyle.Fill;
-                this.Controls.Add(panel);
+                FormBorderStyle = FormBorderStyle.None;
+                ShowInTaskbar = false;
+                KeyPreview = true;
+                StartPosition = FormStartPosition.Manual;
+                var panel = new Panel {BorderStyle = BorderStyle.FixedSingle, Dock = DockStyle.Fill};
+                Controls.Add(panel);
+            }
+
+            public bool Canceled
+            {
+                get { return _Canceled; }
             }
 
             public void CloseDropDown()
             {
-                this._CloseDropDownCalled = true;
-                this.Hide();
+                _CloseDropDownCalled = true;
+                Hide();
             }
 
             protected override void OnDeactivate(EventArgs e)
             {
-                this.Owner = null;
+                Owner = null;
                 base.OnDeactivate(e);
-                if (!this._CloseDropDownCalled)
+                if (!_CloseDropDownCalled)
                 {
-                    this._Canceled = true;
+                    _Canceled = true;
                 }
-                this.Hide();
+                Hide();
             }
 
             protected override void OnKeyDown(KeyEventArgs e)
@@ -231,69 +202,92 @@ namespace DigitallyImported.Utilities.Windows
                 base.OnKeyDown(e);
                 if ((e.Modifiers == Keys.None) && (e.KeyCode == Keys.Escape))
                 {
-                    this.Hide();
+                    Hide();
                 }
             }
 
             public void SetControl(Control ctl)
             {
-                ((Panel)this.Controls[0]).Controls.Add(ctl);
+                (Controls[0]).Controls.Add(ctl);
+            }
+        }
+
+        #endregion
+
+        #region Nested type: EditorService
+
+        private class EditorService : IWindowsFormsEditorService, IServiceProvider
+        {
+            private readonly ColorPicker _Picker;
+            private bool _Canceled;
+            private DropDownForm _DropDownHolder;
+
+            public EditorService(ColorPicker owner)
+            {
+                _Picker = owner;
             }
 
             public bool Canceled
             {
-                get
-                {
-                    return this._Canceled;
-                }
+                get { return _Canceled; }
             }
-        }
 
-        private class EditorService : IWindowsFormsEditorService, IServiceProvider
-        {
-            private bool _Canceled;
-            private ColorPicker.DropDownForm _DropDownHolder;
-            private ColorPicker _Picker;
+            #region IServiceProvider Members
 
-            public EditorService(ColorPicker owner)
+            public object GetService(Type serviceType)
             {
-                this._Picker = owner;
+                var obj2 = new object();
+                if (serviceType.Equals(typeof (IWindowsFormsEditorService)))
+                {
+                    return this;
+                }
+                return obj2;
             }
+
+            #endregion
+
+            #region IWindowsFormsEditorService Members
 
             public void CloseDropDown()
             {
-                if (this._DropDownHolder != null)
+                if (_DropDownHolder != null)
                 {
-                    this._DropDownHolder.CloseDropDown();
-                }
-            }
-
-            private void DoModalLoop()
-            {
-                while (this._DropDownHolder.Visible)
-                {
-                    Application.DoEvents();
-                    MsgWaitForMultipleObjects(1, IntPtr.Zero, 1, 5, 0xff);
+                    _DropDownHolder.CloseDropDown();
                 }
             }
 
             public void DropDownControl(Control control)
             {
-                this._Canceled = false;
-                this._DropDownHolder = new ColorPicker.DropDownForm();
-                this._DropDownHolder.Bounds = control.Bounds;
-                this._DropDownHolder.SetControl(control);
-                Control parentForm = this.GetParentForm(this._Picker);
-                if ((parentForm != null) && (parentForm is Form))
+                _Canceled = false;
+                _DropDownHolder = new DropDownForm {Bounds = control.Bounds};
+                _DropDownHolder.SetControl(control);
+                Control parentForm = GetParentForm(_Picker);
+                if (parentForm != null && (parentForm is Form))
                 {
-                    this._DropDownHolder.Owner = (Form)parentForm;
+                    _DropDownHolder.Owner = (Form) parentForm;
                 }
-                this.PositionDropDownHolder();
-                this._DropDownHolder.Show();
-                this.DoModalLoop();
-                this._Canceled = this._DropDownHolder.Canceled;
-                this._DropDownHolder.Dispose();
-                this._DropDownHolder = null;
+                PositionDropDownHolder();
+                _DropDownHolder.Show();
+                DoModalLoop();
+                _Canceled = _DropDownHolder.Canceled;
+                _DropDownHolder.Dispose();
+                _DropDownHolder = null;
+            }
+
+            public DialogResult ShowDialog(Form dialog)
+            {
+                throw new NotSupportedException();
+            }
+
+            #endregion
+
+            private void DoModalLoop()
+            {
+                while (_DropDownHolder.Visible)
+                {
+                    Application.DoEvents();
+                    MsgWaitForMultipleObjects(1, IntPtr.Zero, 1, 5, 0xff);
+                }
             }
 
             private Control GetParentForm(Control ctl)
@@ -305,54 +299,34 @@ namespace DigitallyImported.Utilities.Windows
                 return ctl;
             }
 
-            public object GetService(System.Type serviceType)
-            {
-                object obj2 = new object();
-                if (serviceType.Equals(typeof(IWindowsFormsEditorService)))
-                {
-                    return this;
-                }
-                return obj2;
-            }
-
             [DllImport("User32", SetLastError = true)]
-            private static extern int MsgWaitForMultipleObjects(int nCount, IntPtr pHandles, short bWaitAll, int dwMilliseconds, int dwWakeMask);
+            private static extern int MsgWaitForMultipleObjects(int nCount, IntPtr pHandles, short bWaitAll,
+                                                                int dwMilliseconds, int dwWakeMask);
+
             private void PositionDropDownHolder()
             {
-                Point point = this._Picker.Parent.PointToScreen(this._Picker.Location);
+                Point point = _Picker.Parent.PointToScreen(_Picker.Location);
                 Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
                 if (point.X < workingArea.X)
                 {
                     point.X = workingArea.X;
                 }
-                else if ((point.X + this._DropDownHolder.Width) > workingArea.Right)
+                else if ((point.X + _DropDownHolder.Width) > workingArea.Right)
                 {
-                    point.X = workingArea.Right - this._DropDownHolder.Width;
+                    point.X = workingArea.Right - _DropDownHolder.Width;
                 }
-                if (((point.Y + this._Picker.Height) + this._DropDownHolder.Height) > workingArea.Bottom)
+                if (((point.Y + _Picker.Height) + _DropDownHolder.Height) > workingArea.Bottom)
                 {
-                    point.Offset(0, 0 - this._DropDownHolder.Height);
+                    point.Offset(0, 0 - _DropDownHolder.Height);
                 }
                 else
                 {
-                    point.Offset(0, this._Picker.Height);
+                    point.Offset(0, _Picker.Height);
                 }
-                this._DropDownHolder.Location = point;
-            }
-
-            public DialogResult ShowDialog(Form dialog)
-            {
-                throw new NotSupportedException();
-            }
-
-            public bool Canceled
-            {
-                get
-                {
-                    return this._Canceled;
-                }
+                _DropDownHolder.Location = point;
             }
         }
+
+        #endregion
     }
 }
-

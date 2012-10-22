@@ -6,31 +6,31 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// 
-
     [Serializable]
-    public class ChannelChangedEventArgs<T> : ContentChangedEventArgs<T> where T: IChannel
+    public class ChannelChangedEventArgs<T> : ContentChangedEventArgs<T>
+        where T : IChannel
     {
+        private T _refreshedChannel;
+
         public ChannelChangedEventArgs()
             : this(default(T))
         {
-
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="refreshedChannel"></param>
         public ChannelChangedEventArgs(T refreshedChannel)
             : base(refreshedChannel)
         {
             _refreshedChannel = refreshedChannel;
         }
 
-        public override T  RefreshedContent
+        public override T RefreshedContent
         {
-            get { return this._refreshedChannel; }
-            set { this._refreshedChannel = value; }
+            get { return _refreshedChannel; }
+            set { _refreshedChannel = value; }
         }
-        private T _refreshedChannel;
     }
 }

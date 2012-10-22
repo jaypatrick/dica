@@ -1,5 +1,3 @@
-
-
 namespace DigitallyImported.Utilities
 {
     /// <summary>
@@ -13,7 +11,6 @@ namespace DigitallyImported.Utilities
         /// <param name="controlType"></param>
         public ControlFactory(ControlType controlType)
         {
-
         }
     }
 }

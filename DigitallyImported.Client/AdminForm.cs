@@ -1,110 +1,364 @@
+// using DigitallyImported.Client.Properties;
+// using DigitallyImported.Utilities;
+
 using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
-// using DigitallyImported.Client.Properties;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-// using DigitallyImported.Utilities;
-using P = DigitallyImported.Resources.Properties;
 using DigitallyImported.Utilities;
+using DigitallyImported.Utilities.Windows;
+using P = DigitallyImported.Resources.Properties;
+using SortOrder = DigitallyImported.Components.SortOrder;
+
 // using DigitallyImported.Player;
 
 namespace DigitallyImported.Client
 {
-	/// <summary>
-	/// Summary description for DIAdmin.
-	/// </summary>
-	public class AdminForm : BaseForm
-	{
-		private Label label1;
-
-		private ColorButton colorButton;
-		private Color _color = Color.Black;
-		private Panel previousChannelPanel;
-		private Label label2;
-		private RadioButton rememberNoRadio;
-		private RadioButton rememberYesRadio;
-		private DomainUpDown sortOrderValue;
-		private Label label3;
-		private ToolStrip adminFormToolStrip;
-		private ToolStripLabel toolStripStatusLabel;
-		private ToolStripButton toolStripLoadDefaults;
-		private ToolStripButton toolStripSave;
-		private DomainUpDown sortByValue;
-		private Label label4;
-
-		// PLAYERTYPE RADIO BUTTONS
-		private RadioButton[] playerTypes;
-		private ErrorProvider AdminErrorProvider;
-		private TrackBar transparencyTrackBar;
-		private Label trackBarValue;
-		private DigitallyImported.Utilities.Windows.ColorPicker selectedChannelColorPicker;
-		private DigitallyImported.Utilities.Windows.ColorPicker channelColorPicker;
-		private DigitallyImported.Utilities.Windows.ColorPicker alternatingChannelColorPicker;
-		private Label label8;
-		private Label label7;
-		private Label label6;
-		private GroupBox premiumInfoGroupBox;
-		private TextBox PasswordTextbox;
-		private TextBox UsernameTextbox;
-		private Label label9;
-		private Label lable12;
-		private CheckedListBox serviceLevelValues;
-		private Label label10;
-		private IContainer components;
-		private RefreshCounter refreshCounter1;
-		private Label label5;
-		private Panel showToastPanel;
-		private RadioButton toastNoRadio;
-		private RadioButton toastYesRadio;
-		private Label label11;
+    /// <summary>
+    /// Summary description for DIAdmin.
+    /// </summary>
+    public class AdminForm : BaseForm
+    {
+        private ErrorProvider AdminErrorProvider;
         private LinkLabel ListenKeyLinkLabel;
         private TextBox ListenKeyTextbox;
+        private TextBox PasswordTextbox;
+        private TextBox UsernameTextbox;
+        private Color _color = Color.Black;
+        private TimeSpan _refreshInterval;
+        private ToolStrip adminFormToolStrip;
+        private ColorPicker alternatingChannelColorPicker;
+        private DomainUpDown calendarFormatValue;
+        private ColorPicker channelColorPicker;
+        private ColorButton colorButton;
+        private IContainer components;
+        private Label label1;
+        private Label label10;
+        private Label label11;
         private Label label12;
         private Label label13;
-        private DomainUpDown calendarFormatValue;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
 
-		private TimeSpan _refreshInterval;
+        // PLAYERTYPE RADIO BUTTONS
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label lable12;
+        private RadioButton[] playerTypes;
+        private GroupBox premiumInfoGroupBox;
+        private Panel previousChannelPanel;
+        private RefreshCounter refreshCounter1;
+        private RadioButton rememberNoRadio;
+        private RadioButton rememberYesRadio;
+        private ColorPicker selectedChannelColorPicker;
+        private CheckedListBox serviceLevelValues;
+        private Panel showToastPanel;
+        private DomainUpDown sortByValue;
+        private DomainUpDown sortOrderValue;
+        private RadioButton toastNoRadio;
+        private RadioButton toastYesRadio;
+        private ToolStripButton toolStripLoadDefaults;
+        private ToolStripButton toolStripSave;
+        private ToolStripLabel toolStripStatusLabel;
+        private Label trackBarValue;
+        private TrackBar transparencyTrackBar;
 
-		/// <summary>
-		/// 
-		/// </summary>
-		public AdminForm()
-		{
-			//
-			// Required for Windows Form Designer support
-			//
-			InitializeComponent();
+        /// <summary>
+        /// 
+        /// </summary>
+        public AdminForm()
+        {
+            //
+            // Required for Windows Form Designer support
+            //
+            InitializeComponent();
 
-			this.Icon = P.Resources.DIIconNew;
-			this.CenterToScreen();
-		}
+            Icon = P.Resources.DIIconNew;
+            CenterToScreen();
+        }
 
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		protected override void Dispose( bool disposing )
-		{
-			if( disposing )
-			{
-				if(components != null)
-				{
-					components.Dispose();
-				}
-			}
-			base.Dispose( disposing );
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+            }
+            base.Dispose(disposing);
+        }
 
-		#region Windows Form Designer generated code
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            bool serviceLevelChanged = false;
+
+            if (!ValidateChildren()) return;
+            Settings.Default.PlaylistRefreshInterval = refreshCounter1.CountdownTimer.Value.TimeOfDay;
+
+
+            Settings.Default.SelectedChannelBackground = selectedChannelColorPicker.Color;
+            Settings.Default.AlternatingChannelBackground = alternatingChannelColorPicker.Color;
+            Settings.Default.ChannelBackground = channelColorPicker.Color;
+            Settings.Default.ShowUserToast = toastYesRadio.Checked;
+            Settings.Default.RememberPreviousChannel = rememberYesRadio.Checked;
+            Settings.Default.ChannelSortOrder = sortOrderValue.Text;
+            Settings.Default.ChannelSortBy = sortByValue.Text;
+            Settings.Default.CalendarFormat = calendarFormatValue.Text;
+            Settings.Default.FormOpacityValue = ((double) transparencyTrackBar.Value/100);
+
+            foreach (object item in serviceLevelValues.CheckedItems)
+            {
+                if (
+                    !Settings.Default.SubscriptionType.Equals(item.ToString(),
+                                                              StringComparison.CurrentCultureIgnoreCase))
+                    serviceLevelChanged = true;
+
+                Settings.Default.SubscriptionType = item.ToString();
+                break; // only get the first one selected.
+            }
+
+
+            Settings.Default.Username = UsernameTextbox.Text;
+            Settings.Default.Password = PasswordTextbox.Text;
+            Settings.Default.ListenKey = ListenKeyTextbox.Text;
+
+            Settings.Default.Save();
+
+            if (serviceLevelChanged)
+            {
+                switch (
+                    MessageBox.Show(this,
+                                    string.Format(P.Resources.ServiceLevelChangedMessage, Environment.NewLine,
+                                                  P.Resources.RestartApplicationMessage)
+                                    , P.Resources.RestartApplicationMessage
+                                    , MessageBoxButtons.YesNo
+                                    , MessageBoxIcon.Question
+                                    , MessageBoxDefaultButton.Button1))
+                {
+                    case DialogResult.Yes:
+                        Application.Restart();
+                        break;
+                    case DialogResult.No:
+                        DialogResult = DialogResult.OK;
+                        break;
+                }
+            }
+
+            DialogResult = DialogResult.OK;
+        }
+
+        private void DIAdmin_Load(object sender, EventArgs e)
+        {
+            refreshCounter1.Stop();
+            bindEnums();
+            bindControls();
+
+            trackBarValue.Text = transparencyTrackBar.Value.ToString(CultureInfo.InvariantCulture);
+
+            Settings.Default.SettingChanging += Default_SettingChanging;
+            Settings.Default.SettingsSaving += Default_SettingsSaving;
+
+            //int[] colorInts = new int[colors.Length];
+
+
+            //        for (int i = 0; i < colors.Length; i++)
+            //        {
+            //            colorInts[i] = Math.Abs(colors[i].ToArgb());
+            //        }
+
+            //        this.channelColorPicker.Color = Settings.Default.ChannelBackground;
+            //        this.alternatingChannelColorPicker.Color = Settings.Default.AlternatingChannelBackground;
+            //        this.selectedChannelColorPicker.Color = Settings.Default.SelectedChannelBackground;
+        }
+
+        private void colorButton_Click(object sender, EventArgs e)
+        {
+            var callingButton = (ColorButton) sender;
+            var p = new Point(callingButton.Left, callingButton.Top + callingButton.Height);
+            p = PointToScreen(p);
+
+            var clDlg = new ColorPaletteDialog(p.X, p.Y);
+
+            clDlg.ShowDialog();
+
+            if (clDlg.DialogResult == DialogResult.OK)
+                _color = clDlg.Color;
+
+            callingButton.CenterColor = _color;
+
+            Invalidate();
+
+            clDlg.Dispose();
+        }
+
+        private void Default_SettingChanging(object sender, SettingChangingEventArgs e)
+        {
+            // this.txtPlaylistRefresh.Text = e.SettingName + (int)e.NewValue;
+        }
+
+        private void Default_SettingsSaving(object sender, CancelEventArgs e)
+        {
+            // PERFORM VALIDATION HERE!
+        }
+
+        private void ChannelButton_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void selectedChannelButton_Click(object sender, EventArgs e)
+        {
+            // this.selectedChannelColor.ShowDialog();
+        }
+
+        private void alternatingChannelButton_Click(object sender, EventArgs e)
+        {
+            // this.alternatingChannelColor.ShowDialog();
+        }
+
+        private void reloadDefaultsButton_Click(object sender, EventArgs e)
+        {
+            Settings.Default.Reset();
+            bindControls();
+        }
+
+        private void bindControls()
+        {
+            refreshCounter1.CountdownTimer.Value = new DateTime(2000, 1, 1).Add(Settings.Default.PlaylistRefreshInterval);
+            selectedChannelColorPicker.Color = Settings.Default.SelectedChannelBackground;
+            alternatingChannelColorPicker.Color = Settings.Default.AlternatingChannelBackground;
+            channelColorPicker.Color = Settings.Default.ChannelBackground;
+
+            // set selected values
+            sortOrderValue.Text = Settings.Default.ChannelSortOrder;
+            sortByValue.Text = Settings.Default.ChannelSortBy;
+            transparencyTrackBar.Value = ((int) (Settings.Default.FormOpacityValue*100));
+            calendarFormatValue.Text = Settings.Default.CalendarFormat;
+
+            serviceLevelValues.ClearSelected();
+            serviceLevelValues.SetItemChecked(serviceLevelValues.FindStringExact(Settings.Default.SubscriptionType),
+                                              true);
+
+            UsernameTextbox.Text = Settings.Default.Username;
+            PasswordTextbox.Text = Settings.Default.Password;
+            ListenKeyTextbox.Text = Settings.Default.ListenKey;
+
+            // set the Listen Key link here
+            //LinkLabel.Link link = new LinkLabel.Link();
+            //link.LinkData = P.Resources.ListenKeyLinkData;
+            ListenKeyLinkLabel.Links[0].LinkData = P.Resources.ListenKeyLinkData;
+
+            // radio buttons
+            if (!Settings.Default.RememberPreviousChannel) rememberNoRadio.PerformClick();
+
+            if (!Settings.Default.ShowUserToast) toastNoRadio.PerformClick();
+
+            togglePremiumTextboxes(serviceLevelValues.SelectedIndex);
+        }
+
+        private void bindEnums()
+        {
+            // bind to enums
+            sortOrderValue.Items.AddRange(Enum.GetNames(typeof (SortOrder)));
+            sortByValue.Items.AddRange(Enum.GetNames(typeof (SortBy)));
+            serviceLevelValues.Items.AddRange(Enum.GetNames(typeof (SubscriptionLevel)));
+            calendarFormatValue.Items.AddRange(Enum.GetNames(typeof (CalendarFormat)));
+        }
+
+        private void txtPlaylistRefresh_Validated(object sender, EventArgs e)
+        {
+            AdminErrorProvider.SetError((Control) sender, string.Empty);
+            toolStripSave.Enabled = true;
+        }
+
+        private void txtPlaylistRefresh_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMessage;
+
+            //if (!ValidRefreshInterval(refreshCounter1, out errorMessage))
+            //{
+            //    e.Cancel = true;
+            //}
+        }
+
+        private void transparencyTrackBar_Scroll(object sender, EventArgs e)
+        {
+            trackBarValue.Text = (transparencyTrackBar.Value).ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void ListenKeyLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            ListenKeyLinkLabel.Links[ListenKeyLinkLabel.Links.IndexOf(e.Link)].Visited = true;
+            var target = e.Link.LinkData as string;
+
+            if (!string.IsNullOrEmpty(target))
+            {
+                Components.Utilities.StartProcess(e.Link.LinkData as string);
+            }
+        }
+
+        private void serviceLevelValues_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            {
+                //{
+                //    if (selected == 0)
+                //    {
+                //        this.UsernameTextbox.Enabled = false;
+                //        this.PasswordTextbox.Enabled = false;
+                //        this.ListenKeyTextbox.Enabled = false;
+                //    }
+                //    else
+                //    {
+                //        this.UsernameTextbox.Enabled = true;
+                //        this.PasswordTextbox.Enabled = true;
+                //        this.ListenKeyTextbox.Enabled = true;
+                //    }
+                //}
+
+                // togglePremiumTextboxes(serviceLevelValues.SelectedIndex;);
+            }
+        }
+
+        private void togglePremiumTextboxes(int selected)
+        {
+            if (selected >= 0)
+            {
+                foreach (Control c in premiumInfoGroupBox.Controls)
+                {
+                    if (c is TextBox)
+                    {
+                        c.Enabled = Convert.ToBoolean(selected);
+                    }
+                }
+            }
+        }
+
+        private void serviceLevelValues_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            togglePremiumTextboxes(e.Index);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof (AdminForm));
             this.showToastPanel = new System.Windows.Forms.Panel();
             this.toastNoRadio = new System.Windows.Forms.RadioButton();
             this.toastYesRadio = new System.Windows.Forms.RadioButton();
@@ -147,10 +401,10 @@ namespace DigitallyImported.Client
             this.calendarFormatValue = new System.Windows.Forms.DomainUpDown();
             this.showToastPanel.SuspendLayout();
             this.premiumInfoGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transparencyTrackBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.transparencyTrackBar)).BeginInit();
             this.adminFormToolStrip.SuspendLayout();
             this.previousChannelPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.AdminErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // showToastPanel
@@ -227,7 +481,8 @@ namespace DigitallyImported.Client
             this.ListenKeyLinkLabel.TabStop = true;
             this.ListenKeyLinkLabel.Text = "What is my listen key?";
             this.ListenKeyLinkLabel.VisitedLinkColor = System.Drawing.Color.Blue;
-            this.ListenKeyLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ListenKeyLinkLabel_LinkClicked);
+            this.ListenKeyLinkLabel.LinkClicked +=
+                new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ListenKeyLinkLabel_LinkClicked);
             // 
             // ListenKeyTextbox
             // 
@@ -255,8 +510,10 @@ namespace DigitallyImported.Client
             this.serviceLevelValues.Size = new System.Drawing.Size(122, 34);
             this.serviceLevelValues.TabIndex = 6;
             this.serviceLevelValues.ThreeDCheckBoxes = true;
-            this.serviceLevelValues.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.serviceLevelValues_ItemCheck);
-            this.serviceLevelValues.SelectedIndexChanged += new System.EventHandler(this.serviceLevelValues_SelectedIndexChanged);
+            this.serviceLevelValues.ItemCheck +=
+                new System.Windows.Forms.ItemCheckEventHandler(this.serviceLevelValues_ItemCheck);
+            this.serviceLevelValues.SelectedIndexChanged +=
+                new System.EventHandler(this.serviceLevelValues_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -383,10 +640,12 @@ namespace DigitallyImported.Client
             // adminFormToolStrip
             // 
             this.adminFormToolStrip.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.adminFormToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel,
-            this.toolStripSave,
-            this.toolStripLoadDefaults});
+            this.adminFormToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[]
+                {
+                    this.toolStripStatusLabel,
+                    this.toolStripSave,
+                    this.toolStripLoadDefaults
+                });
             this.adminFormToolStrip.Location = new System.Drawing.Point(0, 521);
             this.adminFormToolStrip.Name = "adminFormToolStrip";
             this.adminFormToolStrip.Size = new System.Drawing.Size(234, 25);
@@ -403,7 +662,7 @@ namespace DigitallyImported.Client
             // 
             this.toolStripSave.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSave.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSave.Image")));
+            this.toolStripSave.Image = ((System.Drawing.Image) (resources.GetObject("toolStripSave.Image")));
             this.toolStripSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSave.Name = "toolStripSave";
             this.toolStripSave.Size = new System.Drawing.Size(35, 22);
@@ -414,7 +673,8 @@ namespace DigitallyImported.Client
             // 
             this.toolStripLoadDefaults.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLoadDefaults.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripLoadDefaults.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLoadDefaults.Image")));
+            this.toolStripLoadDefaults.Image =
+                ((System.Drawing.Image) (resources.GetObject("toolStripLoadDefaults.Image")));
             this.toolStripLoadDefaults.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripLoadDefaults.Name = "toolStripLoadDefaults";
             this.toolStripLoadDefaults.Size = new System.Drawing.Size(83, 22);
@@ -575,7 +835,7 @@ namespace DigitallyImported.Client
             this.Controls.Add(this.previousChannelPanel);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "AdminForm";
             this.ShowInTaskbar = false;
@@ -585,270 +845,16 @@ namespace DigitallyImported.Client
             this.showToastPanel.PerformLayout();
             this.premiumInfoGroupBox.ResumeLayout(false);
             this.premiumInfoGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.transparencyTrackBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.transparencyTrackBar)).EndInit();
             this.adminFormToolStrip.ResumeLayout(false);
             this.adminFormToolStrip.PerformLayout();
             this.previousChannelPanel.ResumeLayout(false);
             this.previousChannelPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AdminErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.AdminErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
-		}
-		#endregion
-
-		private void saveButton_Click(object sender, EventArgs e)
-		{
-			bool serviceLevelChanged = false;
-
-			if (this.ValidateChildren())
-			{
-
-				Settings.Default.PlaylistRefreshInterval = refreshCounter1.CountdownTimer.Value.TimeOfDay;
-
-
-				Settings.Default.SelectedChannelBackground    = this.selectedChannelColorPicker.Color;
-				Settings.Default.AlternatingChannelBackground = this.alternatingChannelColorPicker.Color;
-				Settings.Default.ChannelBackground            = this.channelColorPicker.Color;
-				Settings.Default.ShowUserToast                = this.toastYesRadio.Checked;
-				Settings.Default.RememberPreviousChannel      = this.rememberYesRadio.Checked;
-				Settings.Default.ChannelSortOrder             = this.sortOrderValue.Text;
-				Settings.Default.ChannelSortBy                = this.sortByValue.Text;
-                Settings.Default.CalendarFormat               = this.calendarFormatValue.Text;
-				Settings.Default.FormOpacityValue             = ((double)this.transparencyTrackBar.Value / 100);
-
-				foreach (object item in this.serviceLevelValues.CheckedItems)
-				{
-					if (!Settings.Default.SubscriptionType.Equals(item.ToString(), StringComparison.CurrentCultureIgnoreCase))
-						serviceLevelChanged = true;
-
-					Settings.Default.SubscriptionType = item.ToString();
-					break;  // only get the first one selected.
-				}
-				
-				
-				Settings.Default.Username = this.UsernameTextbox.Text;
-				Settings.Default.Password = this.PasswordTextbox.Text;
-                Settings.Default.ListenKey = this.ListenKeyTextbox.Text;
-
-				Settings.Default.Save();
-
-				if (serviceLevelChanged)
-				{
-					switch(MessageBox.Show(this, string.Format(P.Resources.ServiceLevelChangedMessage, Environment.NewLine, P.Resources.RestartApplicationMessage)
-							, P.Resources.RestartApplicationMessage
-							, MessageBoxButtons.YesNo
-							, MessageBoxIcon.Question
-							, MessageBoxDefaultButton.Button1))
-					{
-						case DialogResult.Yes:
-							Application.Restart();
-							break;
-						case DialogResult.No:
-							this.DialogResult = DialogResult.OK;
-							break;
-						default:
-							break;
-					}
-
-				}
-
-				this.DialogResult = DialogResult.OK;
-			}
-			else
-			{
-
-			}
-		}
-
-		private void DIAdmin_Load(object sender, EventArgs e)
-		{
-			this.refreshCounter1.Stop();
-			this.bindEnums();
-			this.bindControls();
-
-			this.trackBarValue.Text = this.transparencyTrackBar.Value.ToString();
-
-			Settings.Default.SettingChanging    += new System.Configuration.SettingChangingEventHandler(Default_SettingChanging);
-			Settings.Default.SettingsSaving     += new System.Configuration.SettingsSavingEventHandler(Default_SettingsSaving);
-
-			//int[] colorInts = new int[colors.Length];
-
-
-			//        for (int i = 0; i < colors.Length; i++)
-			//        {
-			//            colorInts[i] = Math.Abs(colors[i].ToArgb());
-			//        }
-
-			//        this.channelColorPicker.Color = Settings.Default.ChannelBackground;
-			//        this.alternatingChannelColorPicker.Color = Settings.Default.AlternatingChannelBackground;
-			//        this.selectedChannelColorPicker.Color = Settings.Default.SelectedChannelBackground;
-		}
-
-		private void colorButton_Click(object sender, EventArgs e)
-		{
-			ColorButton callingButton = (ColorButton)sender;
-			Point p = new Point(callingButton.Left, callingButton.Top + callingButton.Height);
-			p = PointToScreen(p);
-
-			ColorPaletteDialog clDlg = new ColorPaletteDialog(p.X, p.Y);
-
-			clDlg.ShowDialog();
-
-			if (clDlg.DialogResult == DialogResult.OK)
-				_color = clDlg.Color;
-
-			callingButton.CenterColor = _color;
-
-			Invalidate();
-
-			clDlg.Dispose();
-		}
-
-		private void Default_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
-		{
-			// this.txtPlaylistRefresh.Text = e.SettingName + (int)e.NewValue;
-		}
-
-		private void Default_SettingsSaving(object sender, CancelEventArgs e)
-		{
-			// PERFORM VALIDATION HERE!
-		}
-
-		private void ChannelButton_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void selectedChannelButton_Click(object sender, EventArgs e)
-		{
-			// this.selectedChannelColor.ShowDialog();
-		}
-
-		private void alternatingChannelButton_Click(object sender, EventArgs e)
-		{
-			// this.alternatingChannelColor.ShowDialog();
-		}
-
-		private void reloadDefaultsButton_Click(object sender, EventArgs e)
-		{
-			Settings.Default.Reset();
-			this.bindControls();
-		}
-
-		private void bindControls()
-		{
-			this.refreshCounter1.CountdownTimer.Value = new DateTime(2000, 1, 1).Add(Settings.Default.PlaylistRefreshInterval);
-			this.selectedChannelColorPicker.Color = Settings.Default.SelectedChannelBackground;
-			this.alternatingChannelColorPicker.Color = Settings.Default.AlternatingChannelBackground;
-			this.channelColorPicker.Color = Settings.Default.ChannelBackground;
-
-			// set selected values
-			this.sortOrderValue.Text = Settings.Default.ChannelSortOrder;
-			this.sortByValue.Text = Settings.Default.ChannelSortBy;
-			this.transparencyTrackBar.Value = ((int)(Settings.Default.FormOpacityValue * 100));
-            this.calendarFormatValue.Text = Settings.Default.CalendarFormat;
-
-			this.serviceLevelValues.ClearSelected();
-			this.serviceLevelValues.SetItemChecked(this.serviceLevelValues.FindStringExact(Settings.Default.SubscriptionType), true);
-
-			this.UsernameTextbox.Text = Settings.Default.Username;
-			this.PasswordTextbox.Text = Settings.Default.Password;
-            this.ListenKeyTextbox.Text = Settings.Default.ListenKey;
-
-            // set the Listen Key link here
-            //LinkLabel.Link link = new LinkLabel.Link();
-            //link.LinkData = P.Resources.ListenKeyLinkData;
-            ListenKeyLinkLabel.Links[0].LinkData = P.Resources.ListenKeyLinkData;
-
-			// radio buttons
-			if (!Settings.Default.RememberPreviousChannel) this.rememberNoRadio.PerformClick();
-
-			if (!Settings.Default.ShowUserToast) this.toastNoRadio.PerformClick();
-
-            togglePremiumTextboxes(serviceLevelValues.SelectedIndex);
-		}
-
-		private void bindEnums()
-		{
-			// bind to enums
-			this.sortOrderValue.Items.AddRange(Enum.GetNames(typeof(DigitallyImported.Components.SortOrder)));
-			this.sortByValue.Items.AddRange(Enum.GetNames(typeof(DigitallyImported.Components.SortBy)));
-			this.serviceLevelValues.Items.AddRange(Enum.GetNames(typeof(DigitallyImported.Components.SubscriptionLevel)));
-            this.calendarFormatValue.Items.AddRange(Enum.GetNames(typeof(DigitallyImported.Components.CalendarFormat)));
-		}
-
-		private void txtPlaylistRefresh_Validated(object sender, EventArgs e)
-		{
-			this.AdminErrorProvider.SetError((Control)sender, string.Empty);
-			this.toolStripSave.Enabled = true;
-		}
-
-		private void txtPlaylistRefresh_Validating(object sender, CancelEventArgs e)
-		{
-			string errorMessage;
-
-			//if (!ValidRefreshInterval(refreshCounter1, out errorMessage))
-			//{
-			//    e.Cancel = true;
-			//}
-		}
-
-		private void transparencyTrackBar_Scroll(object sender, EventArgs e)
-		{
-			this.trackBarValue.Text = ((int)this.transparencyTrackBar.Value).ToString();
-		}
-
-        private void ListenKeyLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.ListenKeyLinkLabel.Links[this.ListenKeyLinkLabel.Links.IndexOf(e.Link)].Visited = true;
-            string target = e.Link.LinkData as string;
-
-            if (!string.IsNullOrEmpty(target))
-            {
-                DigitallyImported.Components.Utilities.StartProcess(e.Link.LinkData as string);
-            }
         }
 
-        private void serviceLevelValues_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            {
-                //{
-                //    if (selected == 0)
-                //    {
-                //        this.UsernameTextbox.Enabled = false;
-                //        this.PasswordTextbox.Enabled = false;
-                //        this.ListenKeyTextbox.Enabled = false;
-                //    }
-                //    else
-                //    {
-                //        this.UsernameTextbox.Enabled = true;
-                //        this.PasswordTextbox.Enabled = true;
-                //        this.ListenKeyTextbox.Enabled = true;
-                //    }
-                //}
-
-                // togglePremiumTextboxes(serviceLevelValues.SelectedIndex;);
-            }
-        }
-
-        private void togglePremiumTextboxes(int selected)
-        {
-            if (selected >= 0)
-            {
-                foreach (Control c in premiumInfoGroupBox.Controls)
-                {
-                    if (c is TextBox)
-                    {
-                        c.Enabled = Convert.ToBoolean(selected);
-                    }
-                }
-            }
-        }
-
-        private void serviceLevelValues_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            togglePremiumTextboxes(e.Index);
-        }
-	}
+        #endregion
+    }
 }

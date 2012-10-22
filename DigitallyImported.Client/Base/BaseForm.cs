@@ -1,6 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
+using System.Threading;
 using System.Windows.Forms;
 using DigitallyImported.Client.Diagnostics;
 using DigitallyImported.Configuration.Properties;
@@ -39,11 +40,11 @@ namespace DigitallyImported.Client
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
             // events
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(AppDomainUnhandledException);
-            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
-            Application.ApplicationExit += new EventHandler(Application_ApplicationExit);
+            AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
+            Application.ThreadException += Application_ThreadException;
+            Application.ApplicationExit += Application_ApplicationExit;
 
-            Icon = Resources.Properties.Resources.DIIconNew;
+            Icon = P.Resources.DIIconNew;
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace DigitallyImported.Client
         /// <param name="e"></param>
         protected virtual void NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
-            this.BeginInvoke(new System.Threading.WaitCallback(UpdateNetworkStatus), e.IsAvailable);
+            BeginInvoke(new WaitCallback(UpdateNetworkStatus), e.IsAvailable);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace DigitallyImported.Client
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        protected virtual void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
 #if !DEBUG
             {
@@ -105,32 +106,32 @@ namespace DigitallyImported.Client
                 Trace.WriteLine(e.Exception.ToString());
 
                 DialogResult result = MessageBox.Show(e.Exception.Message + Environment.NewLine
-                    + e.Exception.StackTrace, e.Exception.GetType().ToString()
-                    , MessageBoxButtons.AbortRetryIgnore
-                    , MessageBoxIcon.Error
-                    , MessageBoxDefaultButton.Button3
-                        );
+                                                      + e.Exception.StackTrace, e.Exception.GetType().ToString()
+                                                      , MessageBoxButtons.AbortRetryIgnore
+                                                      , MessageBoxIcon.Error
+                                                      , MessageBoxDefaultButton.Button3
+                    );
 
                 switch (result)
                 {
                     case DialogResult.Abort:
-                    {
-                        Application.Exit();
-                        break;
-                    }
+                        {
+                            Application.Exit();
+                            break;
+                        }
                     case DialogResult.Retry:
-                    {
-                        Application.Restart();
-                        break;
-                    }
+                        {
+                            Application.Restart();
+                            break;
+                        }
                     case DialogResult.Ignore:
-                    {
-                        break;
-                    }
+                        {
+                            break;
+                        }
                     default:
-                    {
-                        break;
-                    }
+                        {
+                            break;
+                        }
                 }
             }
 #endif
@@ -153,19 +154,19 @@ namespace DigitallyImported.Client
         /// <param name="state"></param>
         protected virtual void UpdateNetworkStatus(object state)
         {
-            if ((bool)state)
+            if ((bool) state)
             {
-                this.Text = P.Resources.NetworkAvailable;
-                foreach (Control control in this.Controls)
+                Text = P.Resources.NetworkAvailable;
+                foreach (Control control in Controls)
                 {
                     control.Enabled = true;
                 }
             }
             else
             {
-                this.Text = Resources.Properties.Resources.NetworkConnectionError;
-                this.Enabled = false; // DON"T DISABLE THE ENTIRE F'ING THING...and do this from the base form class.
-                foreach (Control control in this.Controls)
+                Text = P.Resources.NetworkConnectionError;
+                Enabled = false; // DON"T DISABLE THE ENTIRE F'ING THING...and do this from the base form class.
+                foreach (Control control in Controls)
                 {
                     control.Enabled = false;
                 }

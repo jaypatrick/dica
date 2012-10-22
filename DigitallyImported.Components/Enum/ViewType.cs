@@ -1,4 +1,3 @@
-
 namespace DigitallyImported.Components
 {
     public enum ViewType

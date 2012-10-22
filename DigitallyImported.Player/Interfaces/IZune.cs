@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace DigitallyImported.Player
+﻿namespace DigitallyImported.Player
 {
-    interface IZune : IPlayer
+    internal interface IZune : IPlayer
     {
-
     }
 }

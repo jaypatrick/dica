@@ -1,29 +1,33 @@
+using System;
+using System.Globalization;
+using System.Runtime.InteropServices;
+using DigitallyImported.Components;
+using DigitallyImported.Configuration.Properties;
+
 namespace DigitallyImported.Player
 {
-    using System;
-
-    using DigitallyImported.Components;
-    using DigitallyImported.Configuration.Properties;
-
     /// <summary>
     /// TODO: Make this an instance class
     /// </summary>
     public class PlayerLoader
     {
-        private PlayerController _player = new PlayerController(); // use factory to get correct player type, then call play.
+        private static EventHandler<PlayerNotInstalledExceptionEventArgs<IPlayer>> _playerNotInstalledException;
+
+        private readonly PlayerController _player = new PlayerController();
+        // use factory to get correct player type, then call play.
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="channel"></param>
-        public PlayerLoader(IChannel channel) 
+        public PlayerLoader(IChannel channel)
         {
             if (channel == null) throw new ArgumentNullException("channel", "Must supply a valid IChannel. ");
             Channel = channel;
 
-            DigitallyImported.Utilities.Channel.ChannelChanged += new EventHandler<ChannelChangedEventArgs<IChannel>>(ChannelSection_TrackChanged);
+            Utilities.Channel.ChannelChanged += ChannelSection_TrackChanged;
 
-            PlayerType = DigitallyImported.Components.Utilities.ParseEnum<PlayerTypes>(Settings.Default.PlayerType);
+            PlayerType = Components.Utilities.ParseEnum<PlayerType>(Settings.Default.PlayerType);
 
             if (Settings.Default.RememberPreviousChannel)
             {
@@ -31,23 +35,24 @@ namespace DigitallyImported.Player
             }
         }
 
+        internal static IChannel Channel { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlayerType PlayerType { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public static event EventHandler<PlayerNotInstalledExceptionEventArgs<IPlayer>> PlayerNotInstalledException
         {
-            add
-            {
-                _playerNotInstalledException += value;
-            }
-            remove
-            {
-                _playerNotInstalledException -= value;
-            }
+            add { _playerNotInstalledException += value; }
+            remove { if (_playerNotInstalledException != null) _playerNotInstalledException -= value; }
         }
-        private static EventHandler<PlayerNotInstalledExceptionEventArgs<IPlayer>> _playerNotInstalledException;
 
-        protected virtual void OnPlayerNotInstalledException(object sender, PlayerNotInstalledExceptionEventArgs<IPlayer> e)
+        protected virtual void OnPlayerNotInstalledException(object sender,
+                                                             PlayerNotInstalledExceptionEventArgs<IPlayer> e)
         {
             if (_playerNotInstalledException != null)
             {
@@ -56,7 +61,6 @@ namespace DigitallyImported.Player
         }
 
         // this is such a hack, i hate it.
-        internal static IChannel Channel { get; set; }
 
         /// <summary>
         /// 
@@ -67,11 +71,6 @@ namespace DigitallyImported.Player
         {
             _player.Play(channel, PlayerType);
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public PlayerTypes PlayerType { get; set; }
 
         private void ChannelSection_TrackChanged(object sender, ChannelChangedEventArgs<IChannel> e)
         {
@@ -85,12 +84,13 @@ namespace DigitallyImported.Player
                 Settings.Default.SelectedChannelName = e.RefreshedContent.ChannelName;
                 Settings.Default.SelectedChannelUri = e.RefreshedContent.CurrentTrack.TrackUrl;
             }
-            catch (System.Runtime.InteropServices.COMException exc)
+            catch (COMException exc)
             {
                 int hr = exc.ErrorCode;
-                String message = String.Format("There was an error.\nHRESULT = {0}\n{1}", hr.ToString(), exc.Message) ?? string.Empty;
+                string message = String.Format("There was an error.\nHRESULT = {0}\n{1}",
+                                               hr.ToString(CultureInfo.InvariantCulture), exc.Message);
 
-                throw new System.Runtime.InteropServices.COMException(message, exc);
+                throw new COMException(message, exc);
             }
             catch (PlayerNotInstalledException exc)
             {

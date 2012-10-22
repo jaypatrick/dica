@@ -7,9 +7,8 @@ using DigitallyImported.Components.Caching;
 namespace DigitallyImported.Components
 {
     public abstract class ContentSerializer<T> : CacheItem<T>, IXmlSerializable
-        where T: IContent
+        where T : IContent
     {
-
         #region IXmlSerializable Members
 
         public XmlSchema GetSchema()

@@ -5,16 +5,19 @@ namespace DigitallyImported.Components
 {
     public class ChannelTransforms : IContentTransform
     {
-        public virtual T TransformContent<T>(T reader) where T: XmlReader
+        #region IContentTransform Members
+
+        public virtual T TransformContent<T>(T reader) where T : XmlReader
         {
-            XmlReaderSettings readerSettings = new XmlReaderSettings();
+            var readerSettings = new XmlReaderSettings
+                {
+                    IgnoreComments = true,
+                    IgnoreWhitespace = true,
+                    ConformanceLevel = ConformanceLevel.Auto,
+                    ProhibitDtd = false
+                };
 
-            readerSettings.IgnoreComments = true;
-            readerSettings.IgnoreWhitespace = true;
-            readerSettings.ProhibitDtd = false;
-            readerSettings.ConformanceLevel = ConformanceLevel.Auto;
-
-            XmlDocument doc = new XmlDocument();
+            var doc = new XmlDocument();
             doc.Load(reader);
 
             XPathNavigator titleNodes = doc.CreateNavigator();
@@ -35,5 +38,7 @@ namespace DigitallyImported.Components
 
             return XmlReader.Create(titleNodes.ReadSubtree(), readerSettings) as T;
         }
+
+        #endregion
     }
 }

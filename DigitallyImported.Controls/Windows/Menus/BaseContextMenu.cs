@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -5,11 +6,18 @@ namespace DigitallyImported.Utilities
 {
     public partial class BaseContextMenu : ContextMenuStrip
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public BaseContextMenu()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
         public BaseContextMenu(IContainer container)
         {
             container.Add(this);
@@ -17,13 +25,13 @@ namespace DigitallyImported.Utilities
             InitializeComponent();
         }
 
-        void copyToolStripMenuItem_Click(object sender, System.EventArgs e)
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToolStripMenuItem myItem = (ToolStripMenuItem)sender;
+            var myItem = (ToolStripMenuItem) sender;
 
-            ContextMenuStrip myStrip = (ContextMenuStrip)myItem.Owner;
+            var myStrip = (ContextMenuStrip) myItem.Owner;
 
-            Control clickedControl = (Control)(myStrip.SourceControl);
+            Control clickedControl = (myStrip.SourceControl);
 
             // Clipboard.SetText(clickedControl.Tag != null ? (string)clickedControl.Tag : string.Empty, TextDataFormat.Text);
 
@@ -39,7 +47,6 @@ namespace DigitallyImported.Utilities
 
         private void BaseContextMenu_Opening(object sender, CancelEventArgs e)
         {
-
         }
     }
 }

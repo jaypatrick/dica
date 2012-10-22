@@ -2,7 +2,7 @@
 
 namespace DigitallyImported.Components
 {
-    [Flags()]
+    [Flags]
     public enum CalendarFormat
     {
         Today,

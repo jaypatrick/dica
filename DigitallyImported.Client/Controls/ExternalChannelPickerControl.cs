@@ -2,11 +2,18 @@ using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-
 namespace DigitallyImported.Client.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class ExternalChannelPickerControl : UserControl
     {
+        private string _channelName;
+        private EventHandler<EventArgs> _channelRemoved;
+        private EventHandler<EventArgs> _channelSaved;
+        private Uri _channelUri;
+
         /// <summary>
         /// 
         /// </summary>
@@ -19,13 +26,13 @@ namespace DigitallyImported.Client.Controls
         /// 
         /// </summary>
         /// <param name="channelName"></param>
-        /// <param name="channelLocation"></param>
+        /// <param name="channelUri"></param>
         public ExternalChannelPickerControl(string channelName, Uri channelUri)
         {
             InitializeComponent();
 
-            this.ChannelName = channelName;
-            this.ChannelUri = channelUri;
+            ChannelName = channelName;
+            ChannelUri = channelUri;
         }
 
         /// <summary>
@@ -35,14 +42,13 @@ namespace DigitallyImported.Client.Controls
         {
             get { return _channelName; }
 
-            protected internal set 
+            protected internal set
             {
                 _channelName = value.Trim();
 
                 NameTextBox.Text = _channelName;
             }
         }
-        private string _channelName;
 
         /// <summary>
         /// 
@@ -50,15 +56,14 @@ namespace DigitallyImported.Client.Controls
         public virtual Uri ChannelUri
         {
             get { return _channelUri; }
-            
-            protected internal set  
+
+            protected internal set
             {
                 _channelUri = value;
 
                 LocationTextBox.Text = _channelUri.AbsoluteUri;
             }
         }
-        private Uri _channelUri;
 
         /// <summary>
         /// 
@@ -87,30 +92,19 @@ namespace DigitallyImported.Client.Controls
         [Browsable(true)]
         public virtual event EventHandler<EventArgs> ChannelSaved
         {
-            add
-            {
-                _channelSaved += value;
-            }
-            remove
-            {
-                _channelSaved -= value;
-            }
+            add { _channelSaved += value; }
+            remove { _channelSaved -= value; }
         }
-        private EventHandler<EventArgs> _channelSaved;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [Browsable(true)]
         public virtual event EventHandler<EventArgs> ChannelRemoved
         {
-            add
-            {
-                _channelRemoved += value;
-            }
-            remove
-            {
-                _channelRemoved -= value;
-            }
+            add { _channelRemoved += value; }
+            remove { _channelRemoved -= value; }
         }
-        private EventHandler<EventArgs> _channelRemoved;
 
         /// <summary>
         /// 
@@ -146,7 +140,8 @@ namespace DigitallyImported.Client.Controls
         private void LocationTextBox_Leave(object sender, EventArgs e)
         {
             if (!Uri.TryCreate(LocationTextBox.Text, UriKind.Absolute, out _channelUri))
-            { }
+            {
+            }
         }
     }
 }

@@ -9,14 +9,14 @@ namespace DigitallyImported.Utilities
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public abstract partial class ToastForm<T> : NotificationWindow where T: IContent
+    public abstract partial class ToastForm<T> : NotificationWindow where T : IContent
     {
-        private T _content = default(T);
-
         /// <summary>
         /// 
         /// </summary>
         protected readonly string TextFormat = "{0}{1}{1}{2}";
+
+        private T _content;
 
         /// <summary>
         /// 
@@ -73,7 +73,6 @@ namespace DigitallyImported.Utilities
             return TitleText;
         }
 
-        
 
         /// <summary>
         /// 
@@ -81,11 +80,10 @@ namespace DigitallyImported.Utilities
         /// <returns></returns>
         protected internal virtual string GetFormattedBody()
         {
-            if (BodyText == null || TitleText == null) throw new InvalidOperationException("Properties 'Text' and 'TitleText' must be set. ");
+            if (BodyText == null || TitleText == null)
+                throw new InvalidOperationException("Properties 'Text' and 'TitleText' must be set. ");
 
             return string.Format(TextFormat, TitleText, Environment.NewLine, BodyText);
         }
-
-        
     }
 }

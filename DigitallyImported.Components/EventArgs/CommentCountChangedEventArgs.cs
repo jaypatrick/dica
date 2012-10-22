@@ -6,25 +6,23 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// 
-
     [Serializable]
-    public class eeEventArgs<T> 
-        : ContentChangedEventArgs<T> where T: ITrack
+    public class eeEventArgs<T>
+        : ContentChangedEventArgs<T> where T : ITrack
     {
-        private T _track = default(T);
+        private int _commentCount;
+        private T _track;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="previousValue"></param>
+        /// <param name="track"></param>
         /// <param name="newValue"></param>
-        public eeEventArgs(T track, int newValue) 
+        public eeEventArgs(T track, int newValue)
         {
             _track = track;
             _commentCount = newValue;
         }
-
-        private int _commentCount;
 
         /// <summary>
         /// 
@@ -48,14 +46,8 @@ namespace DigitallyImported.Components
         /// </summary>
         public override T RefreshedContent
         {
-            get
-            {
-                return this._track;
-            }
-            set
-            {
-                this._track = value;
-            }
+            get { return _track; }
+            set { _track = value; }
         }
     }
 }

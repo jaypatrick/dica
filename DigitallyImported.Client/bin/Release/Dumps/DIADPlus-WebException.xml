@@ -25,9 +25,7 @@
         AllExceptions
       </Code>
       <!-- At least log the message to the log file.-->
-      <Actions1>
-        Log
-      </Actions1>
+      <Actions1>Log</Actions1>
       <!-- If we're falling over on an unhandled exception, log it and write 
            a minidump.-->
       <Actions2>
@@ -36,23 +34,15 @@
       </Actions2>
       <!-- For first chance exceptions, say the debugger didn't handle it so
            the normal unwinding code gets it. -->
-      <ReturnAction1>
-        GN;
-      </ReturnAction1>
+      <ReturnAction1>GN;</ReturnAction1>
       <!-- For unhandled exceptions just quit. -->
-      <ReturnAction2>
-        Q;
-      </ReturnAction2>
+      <ReturnAction2>Q;</ReturnAction2>
     </Config>
     <Config>
       <!-- Set the configuration for CLR first chance exceptions. -->
-      <Code>
-        clr
-      </Code>
+      <Code>clr</Code>
       <!-- Turn off all the defaults from ADPlus.-->
-      <Actions1>
-        Void
-      </Actions1>
+      <Actions1>Void</Actions1>
       <!-- Execute the cool command to do the dump on the specific exception. -->
       <!-- Here's how to read the command: 
            .loadby sos mscorwks
@@ -76,9 +66,7 @@
         .if @@(@$t3==1){.dump /ma /u C:\\Dumps\\WebException.dmp}
       </CustomActions1>
       <!-- After taking the dump, let the application have it. -->
-      <ReturnAction1>
-        GN
-      </ReturnAction1>
+      <ReturnAction1>GN</ReturnAction1>
     </Config>
   </Exceptions>
 </ADPlus>

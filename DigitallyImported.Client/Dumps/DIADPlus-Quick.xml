@@ -12,9 +12,7 @@
   </Settings>
   <HangActions>
     <!-- Clear out all the default options that ADPlus wants to run. -->
-    <Option>
-      Clear
-    </Option>
+    <Option>Clear</Option>
     <!-- For custom actions, I want to see all     -->
     <!-- the handle info, the managed CLR version, -->
     <!-- managed threads, and managed call stacks. -->

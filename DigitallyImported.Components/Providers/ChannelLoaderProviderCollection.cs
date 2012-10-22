@@ -4,12 +4,12 @@ using System.Configuration.Provider;
 namespace DigitallyImported.Components
 {
     public class ChannelLoaderProviderCollection<TProvider, TChannel> : ProviderCollection
-        where TProvider: ProviderBase
-        where TChannel: IChannel, new()
+        where TProvider : ProviderBase
+        where TChannel : IChannel, new()
     {
         public new ChannelLoaderProvider<TChannel> this[string name]
         {
-            get { return (ChannelLoaderProvider<TChannel>)base[name]; }
+            get { return (ChannelLoaderProvider<TChannel>) base[name]; }
         }
 
         public override void Add(ProviderBase provider)

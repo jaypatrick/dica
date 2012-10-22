@@ -42,7 +42,6 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\Digit
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Resources.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\bin\Release\DigitallyImported.Data.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.csprojResolveAssemblyReference.cache
-C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Properties.Resources.resources
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Channel.resources
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Windows.ExternalChannel.resources
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Utilities.Track.resources
@@ -59,3 +58,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\Digit
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.csproj.GenerateResource.Cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Release\DigitallyImported.Controls.Properties.Resources.resources

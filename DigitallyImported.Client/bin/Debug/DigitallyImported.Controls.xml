@@ -15,17 +15,23 @@
             
             </summary>
         </member>
-        <member name="T:DigitallyImported.Utilities.Properties.Resources">
+        <member name="T:DigitallyImported.Utilities.EventList`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:DigitallyImported.Controls.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Utilities.Properties.Resources.ResourceManager">
+        <member name="P:DigitallyImported.Controls.Properties.Resources.ResourceManager">
             <summary>
               Returns the cached ResourceManager instance used by this class.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Utilities.Properties.Resources.Culture">
+        <member name="P:DigitallyImported.Controls.Properties.Resources.Culture">
             <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
@@ -37,6 +43,10 @@
             </summary>
         </member>
         <member name="M:DigitallyImported.Utilities.Utilities.Join``1(System.String,System.Collections.Generic.IEnumerable{``0},System.Converter{``0,System.String})">
+            <summary>
+            Splits a string up based on capital letters, i.e. ThisString becomes This String
+            </summary>
+            <returns></returns>
             <summary>
             
             </summary>
@@ -69,7 +79,7 @@
             
             </summary>
             <typeparam name="T"></typeparam>
-            <param name="PlaylistTypes"></param>
+            <param name="playlistTypes"></param>
             <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.Utilities.ParseEnum``1(System.String)">
@@ -80,11 +90,11 @@
             <param name="value"></param>
             <returns></returns>
         </member>
-        <member name="M:DigitallyImported.Utilities.Utilities.GetSiteStrings(DigitallyImported.Components.PlaylistTypes)">
+        <member name="M:DigitallyImported.Utilities.Utilities.GetSiteStrings(DigitallyImported.Components.StationType)">
             <summary>
             
             </summary>
-            <param name="PlaylistTypes"></param>
+            <param name="playlistTypes"></param>
             <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.Utilities.EncodeTo64(System.String)">
@@ -126,6 +136,11 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:DigitallyImported.Utilities.Windows.ExternalChannel">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Utilities.Channel">
             <summary>
             Summary description for ChannelSection.
@@ -137,11 +152,18 @@
             
             </summary>
         </member>
-        <member name="M:DigitallyImported.Utilities.Channel.#ctor(DigitallyImported.Components.PlaylistTypes)">
+        <member name="M:DigitallyImported.Utilities.Channel.#ctor(DigitallyImported.Components.StationType)">
             <summary>
             
             </summary>
             <param name="PlaylistTypes"></param>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Channel.Equals(DigitallyImported.Components.IContent)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.Channel.LoadImages">
             <summary>
@@ -197,6 +219,13 @@
             <param name="sender">sender</param>
             <param name="e">EventArgs</param>
         </member>
+        <member name="M:DigitallyImported.Utilities.Channel.OnPlaylistHistoryClicked(System.Object,System.EventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
         <member name="M:DigitallyImported.Utilities.Channel.OnElementHover(System.Object,System.Windows.Forms.PopupEventArgs)">
             <summary>
             
@@ -217,18 +246,10 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="M:DigitallyImported.Utilities.Channel.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+        <member name="M:DigitallyImported.Utilities.Channel.LoadUI">
             <summary>
             
             </summary>
-            <param name="e"></param>
-        </member>
-        <member name="M:DigitallyImported.Utilities.Channel.Equals(DigitallyImported.Components.IContent)">
-            <summary>
-            
-            </summary>
-            <param name="other"></param>
-            <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.Channel.Dispose(System.Boolean)">
             <summary> 
@@ -322,6 +343,11 @@
             </summary>
             
         </member>
+        <member name="P:DigitallyImported.Utilities.Channel.CurrentTrack">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:DigitallyImported.Utilities.Channel.IsAlternating">
             <summary>
             
@@ -333,6 +359,11 @@
             
             </summary>
             
+        </member>
+        <member name="E:DigitallyImported.Utilities.Channel.TrackChanged">
+            <summary>
+            
+            </summary>
         </member>
         <member name="E:DigitallyImported.Utilities.Channel.ChannelRefreshed">
             <summary>
@@ -352,11 +383,6 @@
             </summary>
         </member>
         <member name="E:DigitallyImported.Utilities.Channel.PlaylistHistoryClicked">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Utilities.Channel.TrackChanged">
             <summary>
             
             </summary>
@@ -420,6 +446,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="P:DigitallyImported.Utilities.Track.PlaylistTimeZone">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:DigitallyImported.Utilities.Track.ParentChannel">
             <summary>
             
@@ -436,11 +467,6 @@
             </summary>
         </member>
         <member name="P:DigitallyImported.Utilities.Track.StartTime">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Utilities.Track.PlaylistTimeZone">
             <summary>
             
             </summary>
@@ -642,6 +668,11 @@
             
             </summary>
         </member>
+        <member name="M:DigitallyImported.Utilities.ColorButton.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:DigitallyImported.Utilities.ColorButton.components">
             <summary> 
             Required designer variable.
@@ -657,6 +688,11 @@
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Utilities.ColorButton.CenterColor">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:DigitallyImported.Utilities.ColorPaletteDialog">
@@ -686,6 +722,11 @@
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Utilities.ColorPaletteDialog.Color">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:DigitallyImported.Utilities.ControlFactory">
@@ -821,6 +862,18 @@
             
             </summary>
         </member>
+        <member name="M:DigitallyImported.Utilities.Event.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Event.Equals(DigitallyImported.Components.IContent)">
+            <summary>
+            
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
         <member name="M:DigitallyImported.Utilities.Event.ToString">
             <summary>
             
@@ -831,13 +884,6 @@
             <summary>
             
             </summary>
-            <returns></returns>
-        </member>
-        <member name="M:DigitallyImported.Utilities.Event.Equals(DigitallyImported.Components.IContent)">
-            <summary>
-            
-            </summary>
-            <param name="other"></param>
             <returns></returns>
         </member>
         <member name="F:DigitallyImported.Utilities.Event.components">
@@ -857,6 +903,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="P:DigitallyImported.Utilities.Event.PlaylistTimeZone">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="P:DigitallyImported.Utilities.Event.EventDate">
             <summary>
             
@@ -873,11 +924,6 @@
             </summary>
         </member>
         <member name="P:DigitallyImported.Utilities.Event.Subtitle">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Utilities.Event.PlaylistTimeZone">
             <summary>
             
             </summary>
@@ -938,15 +984,26 @@
             
             </summary>
         </member>
+        <member name="P:DigitallyImported.Utilities.PlaylistTimer.TickInterval">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="E:DigitallyImported.Utilities.PlaylistTimer.TimerTick">
             <summary>
             
             </summary>
         </member>
-        <member name="P:DigitallyImported.Utilities.PlaylistTimer.TickInterval">
+        <member name="M:DigitallyImported.Utilities.BaseContextMenu.#ctor">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.BaseContextMenu.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
         </member>
         <member name="F:DigitallyImported.Utilities.BaseContextMenu.components">
             <summary>
@@ -964,6 +1021,23 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:DigitallyImported.Utilities.ChannelsContextMenu`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TChannel"></typeparam>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ChannelsContextMenu`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ChannelsContextMenu`1.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
         </member>
         <member name="F:DigitallyImported.Utilities.ChannelsContextMenu`1.components">
             <summary>
@@ -997,6 +1071,22 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Utilities.EventsContextMenu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.EventsContextMenu.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.EventsContextMenu.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
         <member name="F:DigitallyImported.Utilities.EventsContextMenu.components">
             <summary>
             Required designer variable.
@@ -1018,6 +1108,22 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
         </member>
         <member name="F:DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu.components">
             <summary>
@@ -1086,6 +1192,11 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Utilities.SortContextMenu">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Utilities.SortContextMenu.#ctor">
             <summary>
             
@@ -1124,6 +1235,22 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Utilities.ToolsContextMenu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ToolsContextMenu.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ToolsContextMenu.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
+        </member>
         <member name="F:DigitallyImported.Utilities.ToolsContextMenu.components">
             <summary>
             Required designer variable.
@@ -1140,6 +1267,22 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:DigitallyImported.Utilities.PlayerList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.PlayerList.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.PlayerList.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            
+            </summary>
+            <param name="container"></param>
         </member>
         <member name="F:DigitallyImported.Utilities.PlayerList.components">
             <summary>
@@ -1159,11 +1302,6 @@
             </summary>
         </member>
         <member name="T:DigitallyImported.Utilities.PremiumChannel">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Utilities.PremiumChannel.#ctor">
             <summary>
             
             </summary>
@@ -1257,11 +1395,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="E:DigitallyImported.Utilities.RefreshCounter.CounterRefreshed">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="P:DigitallyImported.Utilities.RefreshCounter.MaxInterval">
             <summary>
             
@@ -1280,6 +1413,11 @@
             
         </member>
         <member name="P:DigitallyImported.Utilities.RefreshCounter.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Utilities.RefreshCounter.CounterRefreshed">
             <summary>
             
             </summary>
@@ -1306,6 +1444,16 @@
             </summary>
         </member>
         <member name="P:DigitallyImported.Utilities.Web.ChannelList.Channels">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Utilities.Site">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Site.#ctor">
             <summary>
             
             </summary>
@@ -1397,7 +1545,17 @@
             
             </summary>
         </member>
+        <member name="P:DigitallyImported.Utilities.PlaylistList.SubscriptionLevel">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Utilities.Windows.Stream">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.Windows.Stream.#ctor">
             <summary>
             
             </summary>
@@ -1658,29 +1816,27 @@
             <summary>
             
             </summary>
-            <param name="viewType"></param>
+            <param name="channels"></param>
         </member>
         <member name="M:DigitallyImported.Utilities.ChannelView`2.GetView(System.Boolean)">
             <summary>
             
             </summary>
-            <typeparam name="U"></typeparam>
-            <param name="channels"></param>
             <param name="bypassCache"></param>
-            <returns></returns>
-        </member>
-        <member name="M:DigitallyImported.Utilities.ChannelView`2.GetView(System.Boolean,DigitallyImported.Components.PlaylistTypes)">
-            <summary>
-            
-            </summary>
-            <param name="bypassCache"></param>
-            <param name="playlistTypes"></param>
             <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.ChannelView`2.Save">
             <summary>
             
             </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ChannelView`2.GetView(System.Boolean,DigitallyImported.Components.StationType)">
+            <summary>
+            
+            </summary>
+            <param name="bypassCache"></param>
+            <param name="playlistTypes"></param>
+            <returns></returns>
         </member>
         <member name="M:DigitallyImported.Utilities.ChannelView`2.GetView(System.Predicate{`0})">
             <summary>
@@ -1711,6 +1867,28 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Utilities.ChannelViewChangedEventArgs`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ChannelViewChangedEventArgs`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.ChannelViewChangedEventArgs`1.#ctor(`0)">
+            <summary>
+            
+            </summary>
+            <param name="changedChannelView"></param>
+        </member>
+        <member name="P:DigitallyImported.Utilities.ChannelViewChangedEventArgs`1.ChangedContent">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Utilities.EventView`1">
             <summary>
             
@@ -1728,11 +1906,22 @@
             
             </summary>
         </member>
+        <member name="M:DigitallyImported.Utilities.EventView`1.#ctor(DigitallyImported.Components.EventCollection{`0})">
+            <summary>
+            
+            </summary>
+            <param name="events"></param>
+        </member>
         <member name="M:DigitallyImported.Utilities.EventView`1.GetView(System.Boolean)">
             <summary>
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:DigitallyImported.Utilities.EventView`1.Save">
+            <summary>
+            
+            </summary>
         </member>
         <member name="P:DigitallyImported.Utilities.EventView`1.Events">
             <summary>
@@ -1749,19 +1938,12 @@
             <summary>
             
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="TPlaylist"> </typeparam>
         </member>
         <member name="M:DigitallyImported.Utilities.PlaylistView`1.#ctor">
             <summary>
             
             </summary>
-        </member>
-        <member name="M:DigitallyImported.Utilities.PlaylistView`1.Global_SettingsSaving(System.Object,System.ComponentModel.CancelEventArgs)">
-            <summary>
-            
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
         </member>
         <member name="M:DigitallyImported.Utilities.PlaylistView`1.GetView(System.Boolean)">
             <summary>
@@ -1774,6 +1956,13 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="M:DigitallyImported.Utilities.PlaylistView`1.Global_SettingsSaving(System.Object,System.ComponentModel.CancelEventArgs)">
+            <summary>
+            
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="P:DigitallyImported.Utilities.PlaylistView`1.Sites">
             <summary>

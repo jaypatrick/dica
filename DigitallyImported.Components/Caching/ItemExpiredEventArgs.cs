@@ -8,16 +8,16 @@ namespace DigitallyImported.Components.Caching
     /// </summary>
     /// 
     [Serializable]
-    public class ItemExpiredEventArgs<TItem> : EventArgs 
-        where TItem: IContent
+    public class ItemExpiredEventArgs<TItem> : EventArgs
+        where TItem : IContent
     {
+        private readonly TItem _cachedItem;
 
-        private TItem _cachedItem;
         /// <summary>
         /// 
         /// </summary>
         /// <param name="removedKey"></param>
-        public ItemExpiredEventArgs(string removedKey) 
+        public ItemExpiredEventArgs(string removedKey)
             : this(removedKey, default(TItem))
         {
         }
@@ -29,8 +29,8 @@ namespace DigitallyImported.Components.Caching
         /// <param name="expiredValue"></param>
         public ItemExpiredEventArgs(string removedKey, TItem expiredValue)
             : this(removedKey
-                , expiredValue
-                , CacheEntryRemovedReason.Expired)
+                   , expiredValue
+                   , CacheEntryRemovedReason.Expired)
         {
         }
 
@@ -42,9 +42,9 @@ namespace DigitallyImported.Components.Caching
         /// <param name="removalReason"></param>
         public ItemExpiredEventArgs(string removedKey, TItem expiredValue, CacheEntryRemovedReason removalReason)
             : this(removedKey
-                , expiredValue
-                , removalReason
-                , new CacheEntryRemovedCallback(CacheItem<TItem>.ExpirationCallback))
+                   , expiredValue
+                   , removalReason
+                   , CacheItem<TItem>.ExpirationCallback)
         {
         }
 
@@ -55,77 +55,46 @@ namespace DigitallyImported.Components.Caching
         /// <param name="expiredValue"></param>
         /// <param name="removalReason"></param>
         /// <param name="callbackFunction"></param>
-        public ItemExpiredEventArgs(string removedKey, TItem expiredValue, CacheEntryRemovedReason removalReason, CacheEntryRemovedCallback callbackFunction)
+        public ItemExpiredEventArgs(string removedKey, TItem expiredValue, CacheEntryRemovedReason removalReason,
+                                    CacheEntryRemovedCallback callbackFunction)
         {
-            _removedKey         = removedKey;
-            _expiredValue       = expiredValue;
-            _removalReason      = removalReason;
-            _callbackFunction   = callbackFunction;
-            _expirationTime     = DateTime.Now;
-            _cachedItem         = expiredValue;
-
-            _cachedItem.ToString();
-
+            RemovedKey = removedKey;
+            ExpiredValue = expiredValue;
+            RemovalReason = removalReason;
+            CallbackFunction = callbackFunction;
+            ExpirationTime = DateTime.Now;
+            _cachedItem = expiredValue;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual string RemovedKey
-        {
-            get { return _removedKey; }
-            set { _removedKey = value; }
-        }
-        private string _removedKey;
+        public virtual string RemovedKey { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual TItem ExpiredValue
-        {
-            get { return _expiredValue; }
-            set { _expiredValue = value; }
-        }
-        private TItem _expiredValue;
+        public virtual TItem ExpiredValue { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual CacheEntryRemovedReason RemovalReason
-        {
-            get { return _removalReason; }
-            set { _removalReason = value; }
-        }
-        private CacheEntryRemovedReason _removalReason;
+        public virtual CacheEntryRemovedReason RemovalReason { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual CacheEntryRemovedCallback CallbackFunction
-        {
-            get { return _callbackFunction; }
-            set { _callbackFunction = value; }
-        }
-        private CacheEntryRemovedCallback _callbackFunction;
+        public virtual CacheEntryRemovedCallback CallbackFunction { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual DateTime ExpirationTime
-        {
-            get { return _expirationTime; }
-        }
-        private DateTime _expirationTime;
+        public virtual DateTime ExpirationTime { get; private set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual DateTime ExpirationInterval
-        {
-            get { return _expirationInterval; }
-            set { _expirationInterval = value; }
-        }
-        private DateTime _expirationInterval;
+        public virtual DateTime ExpirationInterval { get; set; }
 
         public override string ToString()
         {

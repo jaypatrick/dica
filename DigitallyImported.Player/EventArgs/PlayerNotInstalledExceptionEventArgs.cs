@@ -7,13 +7,9 @@ namespace DigitallyImported.Player
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// 
-
     [Serializable]
-    public class PlayerNotInstalledExceptionEventArgs<T> : EventArgs where T: IPlayer
+    public class PlayerNotInstalledExceptionEventArgs<T> : EventArgs where T : IPlayer
     {
-        private T _player = default(T);
-        private Exception _exception;
-
         /// <summary>
         /// 
         /// </summary>
@@ -21,25 +17,17 @@ namespace DigitallyImported.Player
         public PlayerNotInstalledExceptionEventArgs(Exception e)
         {
             // _player = player;
-            _exception = e;
+            Exception = e;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual T Player
-        {
-            get { return _player; }
-            set { _player = value; }
-        }
+        public virtual T Player { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual Exception Exception
-        {
-            get { return _exception; }
-            set { _exception = value; }
-        }
+        public virtual Exception Exception { get; set; }
     }
 }

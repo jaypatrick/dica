@@ -1,5 +1,3 @@
-
-
 namespace DigitallyImported.Utilities
 {
     /// <summary>
@@ -7,6 +5,5 @@ namespace DigitallyImported.Utilities
     /// </summary>
     public class ChannelUrls
     {
-
     }
 }

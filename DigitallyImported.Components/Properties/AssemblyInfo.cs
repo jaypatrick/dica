@@ -1,25 +1,31 @@
 ﻿using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+
 [assembly: AssemblyTitle("DigitallyImported.Components")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 // [assembly: AssemblyCompany("ZeroTrilogy")]
+
 [assembly: AssemblyProduct("DigitallyImported.Components")]
 // [assembly: AssemblyCopyright("Copyright © ZeroTrilogy 2006")]
+
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
+
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
+
 [assembly: Guid("20b271ae-6c7e-4721-83da-22ba762b585c")]
 
 // Version information for an assembly consists of the following four values:
@@ -58,10 +64,14 @@ using System.Runtime.InteropServices;
 //   (*) Delay Signing is an advanced option - see the Microsoft .NET Framework
 //       documentation for more information on this.
 //
+
 [assembly: CLSCompliant(true)]
 [assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile(@"..\..\DigitallyImported.Components.pfx")]
 //[assembly: AssemblyKeyName("")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Components.Tests.NUnit, PublicKey=00240000048000009400000006020000002400005253413100040000010001008DFD0348D9BDEA7DBAAE9F13DAD65A4F1B7ECE3E4752C209D1B2D390A7A81421B2616AAF41A4B0CEBD7CF237E862FDC7B9154C46975473E1D61757D0E7AA5168282FA81B15FDABB529210DB83D624498096F96CFA1243762BEB0CCA3A9CBF24FA7E5C6A07E2AB705F000C3B0627FC4C7BA38AEABDF5C74703AF61DF3B49C36B9")]
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.UnitTests")]
+[assembly:
+    InternalsVisibleTo(
+        "DigitallyImported.Components.Tests.NUnit, PublicKey=00240000048000009400000006020000002400005253413100040000010001008DFD0348D9BDEA7DBAAE9F13DAD65A4F1B7ECE3E4752C209D1B2D390A7A81421B2616AAF41A4B0CEBD7CF237E862FDC7B9154C46975473E1D61757D0E7AA5168282FA81B15FDABB529210DB83D624498096F96CFA1243762BEB0CCA3A9CBF24FA7E5C6A07E2AB705F000C3B0627FC4C7BA38AEABDF5C74703AF61DF3B49C36B9"
+        )]
+[assembly: InternalsVisibleTo("DigitallyImported.UnitTests")]

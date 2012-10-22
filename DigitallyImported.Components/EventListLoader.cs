@@ -3,7 +3,6 @@ using System.Data;
 using System.Diagnostics;
 using System.Net;
 using System.Xml;
-using DigitallyImported.Configuration.Properties;
 using C = DigitallyImported.Configuration.Properties;
 
 namespace DigitallyImported.Components
@@ -11,18 +10,19 @@ namespace DigitallyImported.Components
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class EventListLoader<TEvent> : ContentLoader<TEvent>, IDisposable 
+    /// <typeparam name="TEvent"> </typeparam>
+    public class EventListLoader<TEvent> : ContentLoader<TEvent>, IDisposable
         where TEvent : IEvent
     {
-        private XmlReader _reader = null;
-        private XmlReaderSettings _readerSettings = null;
-        private EventData _eventData = null;
+        private bool _disposed;
+        private EventData _eventData;
+        private XmlReader _reader;
+        private XmlReaderSettings _readerSettings;
 
         private StackFrame sf;
 
         public EventListLoader()
-            : this(Settings.Default.DIEventListXml)
+            : this(C.Settings.Default.DIEventListXml)
         {
             // ContentLocation = Settings.Default.DIEventListXml;
         }
@@ -32,7 +32,14 @@ namespace DigitallyImported.Components
         {
         }
 
-        #region ILoader<T> Members
+        #region IDisposable Members
+
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        #endregion
 
         /// <summary>
         /// 
@@ -48,7 +55,6 @@ namespace DigitallyImported.Components
         /// 
         /// </summary>
         /// <param name="bypassCache"></param>
-        /// <param name="contentType"></param>
         /// <returns></returns>
         public virtual DataSet LoadEventList(bool bypassCache)
         {
@@ -56,22 +62,11 @@ namespace DigitallyImported.Components
 
             if ((bypassCache) || (_reader == null))
             {
-                try
+                using (_reader)
                 {
-                    using (_reader)
-                    {
-                        _reader = LoadContentFromXml();
-                    }
-                    base.InsertItem<XmlReader>(_reader);
+                    _reader = LoadContentFromXml();
                 }
-                catch
-                {
-                    throw;
-                }
-                finally
-                {
-                    // _reader.Close();
-                }
+                base.InsertItem(_reader);
             }
 
             _eventData = GetItem(_eventData);
@@ -84,11 +79,7 @@ namespace DigitallyImported.Components
                     {
                         _eventData.ReadXml(_reader);
 
-                        base.InsertItem<EventData>(_eventData);
-                    }
-                    catch
-                    {
-                        throw;
+                        base.InsertItem(_eventData);
                     }
                     finally
                     {
@@ -100,13 +91,11 @@ namespace DigitallyImported.Components
             return _eventData;
         }
 
-        private bool disposed = false;
-
         protected virtual void Dispose(bool disposing)
         {
             Trace.WriteLine("EventListLoader was disposed, disposing = {0}", disposing.ToString());
 
-            if (!disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
@@ -116,13 +105,8 @@ namespace DigitallyImported.Components
                     }
                 }
 
-                disposed = true;
+                _disposed = true;
             }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
         }
 
         /// <summary>
@@ -133,33 +117,19 @@ namespace DigitallyImported.Components
         [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
         protected internal XmlReader LoadXmlData()
         {
-            _readerSettings = new XmlReaderSettings();
-
-            _readerSettings.IgnoreComments = true;
-            _readerSettings.IgnoreWhitespace = true;
-            _readerSettings.DtdProcessing = DtdProcessing.Prohibit;
+            _readerSettings = new XmlReaderSettings
+                {IgnoreComments = true, IgnoreWhitespace = true, DtdProcessing = DtdProcessing.Prohibit};
 
             // EDGE CASE PROCESSING GOES HERE
-            ChannelTransforms transform = new ChannelTransforms();
+            var transform = new ChannelTransforms();
 
-            try
+            if (IsNetworkAvailable)
             {
-                if (IsNetworkAvailable)
-                {
-                    return transform.TransformContent(XmlReader.Create(C.Settings.Default.DIEventListXml, _readerSettings));
-                }
-                else
-                {
-                    throw new WebException(DigitallyImported.Resources.Properties.Resources.NetworkConnectionError
-                        , WebExceptionStatus.ConnectFailure);
-                }
+                return
+                    transform.TransformContent(XmlReader.Create(C.Settings.Default.DIEventListXml, _readerSettings));
             }
-            catch
-            {
-                throw;
-            }
+            throw new WebException(Resources.Properties.Resources.NetworkConnectionError
+                                   , WebExceptionStatus.ConnectFailure);
         }
-
-        #endregion
     }
 }

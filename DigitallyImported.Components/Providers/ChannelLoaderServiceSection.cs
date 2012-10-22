@@ -7,14 +7,14 @@ namespace DigitallyImported.Components
         [ConfigurationProperty("providers")]
         public ProviderSettingsCollection Providers
         {
-            get { return (ProviderSettingsCollection)base["providers"]; }
+            get { return (ProviderSettingsCollection) base["providers"]; }
         }
 
         [StringValidator(MinLength = 1)]
         [ConfigurationProperty("defaultProvider", DefaultValue = "DIChannelProvider")]
         public string DefaultProvider
         {
-            get { return (string)base["defaultProvider"]; }
+            get { return (string) base["defaultProvider"]; }
             set { base["defaultProvider"] = value; }
         }
 

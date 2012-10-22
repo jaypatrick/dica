@@ -1,12 +1,11 @@
 using System;
 
-
 namespace DigitallyImported.Components
 {
     /// <summary>
     /// 
     /// </summary>
-    [Flags()]
+    [Flags]
     public enum SubscriptionLevel
     {
         Regular,

@@ -1,17 +1,20 @@
+// DI
+
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
+using System.Linq;
 using System.Net.NetworkInformation;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Web;
 using System.Windows.Forms;
-// DI
+using System.Xml;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-using DigitallyImported.Utilities;
 using DigitallyImported.Player;
+using DigitallyImported.Utilities;
 using P = DigitallyImported.Resources.Properties;
 
 // using DigitallyImported.Client.PlaylistService;
@@ -26,24 +29,26 @@ namespace DigitallyImported.Client.Controls
         where TTrack : UserControl, ITrack, new()
     {
         // value types
-        private bool _isFirstRun = true;
-        private string _eventsUrl = string.Format("{0}{1}/{2}/{3}", "http://", P.Resources.DIHomePage, "calendar", Settings.Default.CalendarFormat.ToLower());
 
-        HistoryForm _trackHistory;
+        private const string serviceOfflineMessage = "DI.fm playlist service is currently offline.";
+
+        private readonly string _eventsUrl = string.Format("{0}{1}/{2}/{3}", "http://", P.Resources.DIHomePage,
+                                                           "calendar", Settings.Default.CalendarFormat.ToLower());
+
+        private readonly RefreshCounter _refreshCounter = new RefreshCounter();
 
         // reference types
-        private TChannel _channel = default(TChannel);
+        private TChannel _channel;
 
         // views
         private ChannelView<TChannel, TTrack> _channelView;
         private EventView<Event> _eventView;
+        private bool _isFirstRun = true;
 
         // players
-        PlayerLoader _playerLoader;
+        private PlayerLoader _playerLoader;
+        private HistoryForm _trackHistory;
 
-
-        RefreshCounter RefreshCounter = new RefreshCounter();
-        private string serviceOfflineMessage = "DI.fm playlist service is currently offline.";
 
         /// <summary>
         /// 
@@ -55,7 +60,6 @@ namespace DigitallyImported.Client.Controls
 
         protected override void OnPaint(PaintEventArgs e)
         {
-
         }
 
         private void ContentControl_Load(object sender, EventArgs e)
@@ -66,33 +70,30 @@ namespace DigitallyImported.Client.Controls
             // check network status
             UpdateNetworkStatus(NetworkInterface.GetIsNetworkAvailable());
 
-            Task.Factory.StartNew(() => 
-                {
-                    BindEvents();
-                });
+            Task.Factory.StartNew(BindEvents);
 
 
             // local properties
-            RefreshPlaylistButton.Image     = P.Resources.icon_repeat;
-            ViewEventsSplitButton.Image     = P.Resources.icon_calendar;
-            ViewPlaylistsSplitButton.Image  = P.Resources.icon_web;
-            SortPlaylistSplitButton.Image   = P.Resources.icon_sort;
-            PlayerTypeSplitButton.Image     = P.Resources.icon_sound.ToBitmap();
-            OptionsButton.Image             = P.Resources.icon_options;
-            ExceptionStatusMessage.Image    = P.Resources.icon_warning;
+            RefreshPlaylistButton.Image = P.Resources.icon_repeat;
+            ViewEventsSplitButton.Image = P.Resources.icon_calendar;
+            ViewPlaylistsSplitButton.Image = P.Resources.icon_web;
+            SortPlaylistSplitButton.Image = P.Resources.icon_sort;
+            PlayerTypeSplitButton.Image = P.Resources.icon_sound.ToBitmap();
+            OptionsButton.Image = P.Resources.icon_options;
+            ExceptionStatusMessage.Image = P.Resources.icon_warning;
 
-            MainNotifyIcon.Icon             = P.Resources.DIIconOld; // SWITCH DYNAMICALLY BASED ON CHANNEL LISTENING TO
+            MainNotifyIcon.Icon = P.Resources.DIIconOld; // SWITCH DYNAMICALLY BASED ON CHANNEL LISTENING TO
             MainNotifyIcon.ContextMenuStrip = ChannelsContextMenu;
-            MainNotifyIcon.Text             = P.Resources.ApplicationTitle;
-            RefreshCounterLabel.Text        = P.Resources.PlaylistRefreshText;
+            MainNotifyIcon.Text = P.Resources.ApplicationTitle;
+            RefreshCounterLabel.Text = P.Resources.PlaylistRefreshText;
 
-            RefreshCounter.Stop();
+            _refreshCounter.Stop();
 
-            ViewPlaylistsSplitButton.DropDown   = PlaylistsContextMenu;
-            SortPlaylistSplitButton.DropDown    = SortContextMenu;
-            PlayerTypeSplitButton.DropDown      = PlayersContextMenu;
-            PlayerTypeSplitButton.Text          = DigitallyImported.Components.Utilities.SplitName(Settings.Default.PlayerType);
-            FeedbackButton.ToolTipText          = P.Resources.SupportPageUrl;
+            ViewPlaylistsSplitButton.DropDown = PlaylistsContextMenu;
+            SortPlaylistSplitButton.DropDown = SortContextMenu;
+            PlayerTypeSplitButton.DropDown = PlayersContextMenu;
+            PlayerTypeSplitButton.Text = Components.Utilities.SplitName(Settings.Default.PlayerType);
+            FeedbackButton.ToolTipText = P.Resources.SupportPageUrl;
 
 
             // memory counter
@@ -112,48 +113,46 @@ namespace DigitallyImported.Client.Controls
         protected virtual void BindEvents()
         {
             // BIND GLOBAL EVENTS
-            Channel.ChannelChanged          += new EventHandler<ChannelChangedEventArgs<IChannel>>(ChannelChanged);
-            RefreshCounter.CounterRefreshed += new EventHandler<EventArgs>(RefreshPlaylist);
+            Channel.ChannelChanged += ChannelChanged;
+            RefreshCounter.CounterRefreshed += RefreshPlaylist;
 
             Settings.Default.SettingsSaving += (sender, e) =>
-            {
-                if (this.Parent != null && !e.Cancel)
-                    RefreshPlaylist(sender, e);
-            };
+                {
+                    if (Parent != null && !e.Cancel)
+                        RefreshPlaylist(sender, e);
+                };
 
-            NetworkChange.NetworkAvailabilityChanged += (sender, e) =>
-            {
-                this.BeginInvoke(new System.Threading.WaitCallback(UpdateNetworkStatus), e.IsAvailable);
-            };
+            NetworkChange.NetworkAvailabilityChanged +=
+                (sender, e) => BeginInvoke(new WaitCallback(UpdateNetworkStatus), e.IsAvailable);
 
-            ParentForm.FormClosing += (sender, e) =>
+            if (ParentForm != null)
             {
-                if (!e.Cancel)
-                    _channelView.Save();
-            };
-            ParentForm.Resize += (sender, e) =>
-            {
-                if (!_isFirstRun)
-                    UpdateVisualCues();
-            };
+                ParentForm.FormClosing += (sender, e) =>
+                    {
+                        if (!e.Cancel)
+                            _channelView.Save();
+                    };
+                ParentForm.Resize += (sender, e) =>
+                    {
+                        if (!_isFirstRun)
+                            UpdateVisualCues();
+                    };
 
-            MainNotifyIcon.MouseDoubleClick += (sender, e) =>
-            {
-                if (e.Button == MouseButtons.Left)
-                    ParentForm.WindowState = FormWindowState.Normal;
-            };
+                MainNotifyIcon.MouseDoubleClick += (sender, e) =>
+                    {
+                        if (e.Button == MouseButtons.Left)
+                            ParentForm.WindowState = FormWindowState.Normal;
+                    };
+            }
 
             // player isn't installed?
-            PlayerLoader.PlayerNotInstalledException += (sender,  e) =>
-            {
-                MessageBox.Show(e.Exception.Message);
-            };
+            PlayerLoader.PlayerNotInstalledException += (sender, e) => MessageBox.Show(e.Exception.Message);
 
             // testing custom border
             PlaylistPanel.Paint += (s, pea) =>
-            {
-                // ControlPaint.DrawBorder(pea.Graphics, pea.ClipRectangle, Color.Gray, ButtonBorderStyle.Solid);
-            };
+                {
+                    // ControlPaint.DrawBorder(pea.Graphics, pea.ClipRectangle, Color.Gray, ButtonBorderStyle.Solid);
+                };
         }
 
         /// <summary>
@@ -162,19 +161,19 @@ namespace DigitallyImported.Client.Controls
         /// <param name="state"></param>
         protected virtual void UpdateNetworkStatus(object state)
         {
-            if ((bool)state)
+            if ((bool) state)
             {
                 ConnectionStatusLabel.Text = P.Resources.NetworkOnline;
                 ConnectionStatusLabel.ToolTipText = P.Resources.NetworkAvailable;
-                ConnectionStatusLabel.Image = Resources.Properties.Resources.icon_connected.ToBitmap();
-                this.Enabled = true;
+                ConnectionStatusLabel.Image = P.Resources.icon_connected.ToBitmap();
+                Enabled = true;
             }
             else
             {
                 ConnectionStatusLabel.Text = P.Resources.NetworkOffline;
                 ConnectionStatusLabel.ToolTipText = P.Resources.NetworkUnavailable;
-                ConnectionStatusLabel.Image = Resources.Properties.Resources.icon_disconnected.ToBitmap();
-                this.Enabled = false; // DON"T DISABLE THE ENTIRE F'ING THING...and do this from the base form class.
+                ConnectionStatusLabel.Image = P.Resources.icon_disconnected.ToBitmap();
+                Enabled = false; // DON"T DISABLE THE ENTIRE F'ING THING...and do this from the base form class.
             }
         }
 
@@ -182,62 +181,53 @@ namespace DigitallyImported.Client.Controls
         {
             SetTrackText(e.RefreshedContent.CurrentTrack);
 
-            foreach (var control in this.PlaylistPanel.Controls)
+            foreach (var control in PlaylistPanel.Controls.OfType<TChannel>())
             {
-                if (control is TChannel)
+                if (control.Equals(e.RefreshedContent))
                 {
-                    if (control.Equals(e.RefreshedContent))
-                    {
-                        _channel = e.RefreshedContent as TChannel;
-                        UpdateVisualCues();
-                    }
-                    else
-                    {
-                        ((TChannel)control).IsSelected = false;
-                    }
+                    _channel = e.RefreshedContent as TChannel;
+                    UpdateVisualCues();
+                }
+                else
+                {
+                    (control).IsSelected = false;
                 }
             }
         }
 
         private void RefreshPlaylist(object sender, EventArgs e)
         {
-            
-            RefreshPlaylistButton.Enabled   = false;
+            RefreshPlaylistButton.Enabled = false;
             PlaylistRefreshProgress.Visible = true;
             PlaylistRefreshProgress.Enabled = false;
-            ExceptionStatusMessage.Visible  = false;
-            this.PlaylistPanel.Enabled      = false;
+            ExceptionStatusMessage.Visible = false;
+            PlaylistPanel.Enabled = false;
 
-            if (NetworkInterface.GetIsNetworkAvailable()) // disables checking if no network connection
+            if (!NetworkInterface.GetIsNetworkAvailable()) return;
+            try
             {
-                try
-                {    
-                    if (!RefreshPlaylistWorker.IsBusy)
-                        RefreshPlaylistWorker.RunWorkerAsync();
+                if (!RefreshPlaylistWorker.IsBusy)
+                    RefreshPlaylistWorker.RunWorkerAsync();
 
-                    if (!RefreshEventlistWorker.IsBusy)
-                        RefreshEventlistWorker.RunWorkerAsync(); // OFFLOAD ELSEWHERE
-                }
-                catch (Exception exc)
-                {
-                    RefreshPlaylistButton.Enabled      = true;
-                    PlaylistRefreshProgress.Visible    = false;
-                    ExceptionStatusMessage.Visible     = true;
-                    ExceptionStatusMessage.ToolTipText = exc.ToString();
-                    Trace.WriteLine(exc.ToString());
-                }
-                finally
-                {
-                    // RefreshPlaylistButton.Enabled = true;
-                }
+                if (!RefreshEventlistWorker.IsBusy)
+                    RefreshEventlistWorker.RunWorkerAsync(); // OFFLOAD ELSEWHERE
+            }
+            catch (Exception exc)
+            {
+                RefreshPlaylistButton.Enabled = true;
+                PlaylistRefreshProgress.Visible = false;
+                ExceptionStatusMessage.Visible = true;
+                ExceptionStatusMessage.ToolTipText = exc.ToString();
+                Trace.WriteLine(exc.ToString());
             }
         }
 
         private ChannelCollection<TChannel> RefreshPlaylistAsync(BackgroundWorker worker, DoWorkEventArgs e)
         {
+            if (worker == null) throw new ArgumentNullException("worker");
             var channels = new ChannelCollection<TChannel>();
 
-            var percentageComplete = 0;
+            int percentageComplete = 0;
 
             worker.ReportProgress(0);
             worker.ReportProgress(50);
@@ -246,9 +236,9 @@ namespace DigitallyImported.Client.Controls
 
             try
             {
-                channels = _channelView.GetView(false); // need an int out param for progress bar
+                channels = _channelView.GetView(false);
             }
-            catch (System.Xml.XmlException)
+            catch (XmlException)
             {
                 DISiteUnavailable();
             }
@@ -258,6 +248,7 @@ namespace DigitallyImported.Client.Controls
 
         private EventCollection<Event> RefreshEventlistAsync(BackgroundWorker worker, DoWorkEventArgs e)
         {
+            if (worker == null) throw new ArgumentNullException("worker");
             var events = new EventCollection<Event>();
 
             worker.ReportProgress(0);
@@ -265,7 +256,7 @@ namespace DigitallyImported.Client.Controls
             {
                 events = _eventView.GetView(false);
             }
-            catch (System.Xml.XmlException)
+            catch (XmlException)
             {
                 DISiteUnavailable();
             }
@@ -297,51 +288,45 @@ namespace DigitallyImported.Client.Controls
 
         private void RefreshPlaylistWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            try
+            var channels = e.Result as ChannelCollection<TChannel>;
+
+            PlaylistPanel.Channels = channels != null && channels.Count > 0 ? channels : _channelView.GetView(false);
+            ChannelsContextMenu.Channels = PlaylistPanel.Channels;
+            ViewChannelSplitButton.DropDown = ChannelsContextMenu;
+
+            BindChannelPlaylistPanel();
+
+            // PlaylistPanel.RefreshPlaylist(sender, e);
+
+            if (_isFirstRun)
             {
-                var channels = e.Result as ChannelCollection<TChannel>;
+                // IF NULL, GENERATE RANDOM NUMBER AND PLAY THAT CHANNEL INDEX
+                if (channels != null)
+                    _channel = channels[Settings.Default.SelectedChannelName] ??
+                               channels[new Random().Next(channels.Count > 0 ? channels.Count : 0)];
 
-                if (e != null)
-                {
-                    PlaylistPanel.Channels = channels.Count > 0 ? channels : _channelView.GetView(false);
-                    ChannelsContextMenu.Channels = PlaylistPanel.Channels;
-                    ViewChannelSplitButton.DropDown = ChannelsContextMenu;
+                _playerLoader = new PlayerLoader(_channel);
+                _isFirstRun = false;
 
-                    BindChannelPlaylistPanel();
-
-                    // PlaylistPanel.RefreshPlaylist(sender, e);
-
-                    if (_isFirstRun)
-                    {
-                        // IF NULL, GENERATE RANDOM NUMBER AND PLAY THAT CHANNEL INDEX
-                        _channel = channels[Settings.Default.SelectedChannelName] ?? channels[new Random().Next(channels.Count > 0 ? channels.Count : 0)];
-
-                        _playerLoader = new PlayerLoader(_channel);
-                        _isFirstRun = false;
-
-                        RefreshCounter.CounterTick += (s, ea) =>
+                _refreshCounter.CounterTick +=
+                    (s, ea) =>
                         {
-                            RefreshCounterLabel.Text = string.Format("{0} {1}", "Refreshing in", RefreshCounter.Value);
+                            RefreshCounterLabel.Text = string.Format("{0} {1}", "Refreshing in",
+                                                                     _refreshCounter.Value);
                         };
 
-                        RefreshCounter.Start();
-                    }
-
-                    UpdateVisualCues();
-
-                    // fucking around w/ opacity
-                    ParentForm.Opacity = Settings.Default.FormOpacityValue;
-                }
+                _refreshCounter.Start();
             }
-            catch
-            {
-                throw;
-            }
+
+            UpdateVisualCues();
+
+            // fucking around w/ opacity
+            if (ParentForm != null) ParentForm.Opacity = Settings.Default.FormOpacityValue;
         }
 
         private void RefreshEventlistWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            EventsContextMenu.Events = (EventCollection<Event>)e.Result;
+            if (e.Result != null) EventsContextMenu.Events = (EventCollection<Event>) e.Result;
             ViewEventsSplitButton.DropDown = EventsContextMenu;
 
             ViewEventsSplitButton.Enabled = true;
@@ -350,7 +335,7 @@ namespace DigitallyImported.Client.Controls
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AboutForm about = new AboutForm();
+            var about = new AboutForm();
             about.Show(this);
         }
 
@@ -362,20 +347,18 @@ namespace DigitallyImported.Client.Controls
 
         private void ViewChannelSplitButton_ButtonClick(object sender, EventArgs e)
         {
-            Parallel.Invoke(() =>
-                {
-                    DigitallyImported.Components.Utilities.StartProcess(_channel.ChannelInfoUrl.AbsoluteUri);
-                });
+            Parallel.Invoke(() => {
+                                      if (_channel != null)
+                                          Components.Utilities.StartProcess(_channel.ChannelInfoUrl.AbsoluteUri);
+            });
         }
 
         private void ViewSitesSplitButton_ButtonClick(object sender, EventArgs e)
         {
             if (ViewPlaylistsSplitButton.Tag != null)
             {
-                Parallel.Invoke(() =>
-                    {
-                        DigitallyImported.Components.Utilities.StartProcess(((Uri)ViewPlaylistsSplitButton.Tag).AbsoluteUri);
-                    });
+                Parallel.Invoke(
+                    () => Components.Utilities.StartProcess(((Uri) ViewPlaylistsSplitButton.Tag).AbsoluteUri));
             }
         }
 
@@ -385,23 +368,23 @@ namespace DigitallyImported.Client.Controls
             // _channel.IsSelected = true;
 
             // TESTING
-            foreach (var control in this.PlaylistPanel.Controls)
+            for (var index = 0; index < PlaylistPanel.Controls.Count; index++)
             {
-                if (control is TChannel)
-                {
-                    var c = (TChannel)control;
+                var control = PlaylistPanel.Controls[index];
+                if (!(control is TChannel)) continue;
+                var c = (TChannel) control;
 
-                    if (c.Equals(_channel))
-                    {
-                        // PlayerLoader.Load(_channel); THIS WILL PLAY THE SELECTED CHANNEL AUTOMATICALLY
-                        _channel.IsSelected = true;
-                    }
-                    else
-                    {
-                        c.IsSelected = false;
-                    }
+                if (_channel != null && c.Equals(_channel))
+                {
+                    // PlayerLoader.Load(_channel); THIS WILL PLAY THE SELECTED CHANNEL AUTOMATICALLY
+                    _channel.IsSelected = true;
+                }
+                else
+                {
+                    c.IsSelected = false;
                 }
             }
+            if (_channel == null) return;
             ViewChannelSplitButton.Text = _channel.ChannelName;
             // ViewChannelSplitButton.ToolTipText = _channel.ChannelInfoUrl.AbsoluteUri;
             ViewChannelSplitButton.Image = _channel.SiteIcon.ToBitmap();
@@ -409,15 +392,12 @@ namespace DigitallyImported.Client.Controls
 
         private void ViewChannelSplitButton_TextChanged(object sender, EventArgs e)
         {
-            ViewChannelSplitButton.ToolTipText = _channel.ChannelInfoUrl.AbsoluteUri;
+            if (_channel != null) ViewChannelSplitButton.ToolTipText = _channel.ChannelInfoUrl.AbsoluteUri;
         }
 
         private void ViewEventsSplitButton_ButtonClick(object sender, EventArgs e)
         {
-            Parallel.Invoke(() =>
-                {
-                    DigitallyImported.Components.Utilities.StartProcess(_eventsUrl);
-                });
+            Parallel.Invoke(() => Components.Utilities.StartProcess(_eventsUrl));
         }
 
         // powerful pattern
@@ -427,41 +407,45 @@ namespace DigitallyImported.Client.Controls
 
             var playlist = e.ClickedItem as PlaylistList;
 
-            if (playlist != null)
+            if (playlist == null) return;
+            _channelView.PlaylistTypes = playlist.PlaylistType;
+
+            // temporary, i don't like this...not intuitive to have to select Custom as the playlist type
+            if (playlist.PlaylistType == StationType.Custom)
             {
-                _channelView.PlaylistTypes = playlist.PlaylistType;
+                var ff = new FavoritesForm<TChannel, TTrack>(_channelView);
+                var result = ff.ShowDialog();
+            }
+            else
+            {
+                if (PlaylistPanel != null) PlaylistPanel.Channels = _channelView.GetView(true);
 
-                // temporary, i don't like this...not intuitive to have to select Custom as the playlist type
-                if (playlist.PlaylistType == PlaylistTypes.Custom)
+                if (InvokeRequired)
                 {
-                    var ff = new FavoritesForm<TChannel, TTrack>(_channelView);
-                    var result = ff.ShowDialog();
-                }
-                else
-                {
-                    PlaylistPanel.Channels = _channelView.GetView(true);
-
-                    if (this.InvokeRequired)
-                    {
-                        this.Invoke((Action) delegate
+                    Invoke((Action) (() =>
                         {
                             BindChannelPlaylistPanel();
                             UpdateVisualCues();
 
-                            ViewPlaylistsSplitButton.Text        = playlist.Name;
-                            ViewPlaylistsSplitButton.Image       = playlist.Image;
-                            ViewPlaylistsSplitButton.Tag         = playlist.SiteUri; // HACK
-                            ViewPlaylistsSplitButton.ToolTipText = playlist.SiteUri.AbsoluteUri;
-                        });
-                    }
-                    else
-                    {
-                        BindChannelPlaylistPanel();
-                        UpdateVisualCues();
+                            if (ViewPlaylistsSplitButton != null)
+                            {
+                                ViewPlaylistsSplitButton.Text = playlist.Name;
+                                ViewPlaylistsSplitButton.Image = playlist.Image;
+                                ViewPlaylistsSplitButton.Tag = playlist.SiteUri; // HACK
+                                ViewPlaylistsSplitButton.ToolTipText = playlist.SiteUri.AbsoluteUri;
+                            }
+                        }));
+                }
+                else
+                {
+                    BindChannelPlaylistPanel();
+                    UpdateVisualCues();
 
-                        ViewPlaylistsSplitButton.Text        = playlist.Name;
-                        ViewPlaylistsSplitButton.Image       = playlist.Image;
-                        ViewPlaylistsSplitButton.Tag         = playlist.SiteUri; // HACK
+                    if (ViewPlaylistsSplitButton != null)
+                    {
+                        ViewPlaylistsSplitButton.Text = playlist.Name;
+                        ViewPlaylistsSplitButton.Image = playlist.Image;
+                        ViewPlaylistsSplitButton.Tag = playlist.SiteUri; // HACK
                         ViewPlaylistsSplitButton.ToolTipText = playlist.SiteUri.AbsoluteUri;
                     }
                 }
@@ -470,32 +454,38 @@ namespace DigitallyImported.Client.Controls
 
         private void SortPlaylist_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            _channelView.SortBy = SortContextMenu.SortBy;
-            PlaylistPanel.Channels = _channelView.Channels;
-
-            PlaylistPanel.Refresh();
-
-            this.BeginInvoke((Action) delegate
+            if (_channelView != null)
             {
-                SortPlaylistSplitButton.Text = e.ClickedItem.Text;
-                // SortPlaylist_Click(sender, e);
-            });
+                _channelView.SortBy = SortContextMenu.SortBy;
+                if (PlaylistPanel != null)
+                {
+                    PlaylistPanel.Channels = _channelView.Channels;
+
+                    PlaylistPanel.Refresh();
+                }
+            }
+
+            BeginInvoke((Action) (() =>
+                {
+                    if (SortPlaylistSplitButton != null) SortPlaylistSplitButton.Text = e.ClickedItem.Text;
+                    // SortPlaylist_Click(sender, e);
+                }));
             UpdateVisualCues();
         }
 
         // implement
         private void SortPlaylist_ButtonClick(object sender, EventArgs e)
         {
-
         }
 
         private void PlayerType_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            this.BeginInvoke((Action) delegate
-            {
-                PlayerTypeSplitButton.Text = e.ClickedItem.Text;
-                _playerLoader.PlayerType = DigitallyImported.Utilities.Utilities.ParseEnum<PlayerTypes>(e.ClickedItem.Name);
-            });
+            BeginInvoke((Action) (() =>
+                {
+                    if (PlayerTypeSplitButton != null) PlayerTypeSplitButton.Text = e.ClickedItem.Text;
+                    if (_playerLoader != null)
+                        _playerLoader.PlayerType = Utilities.Utilities.ParseEnum<PlayerType>(e.ClickedItem.Name);
+                }));
         }
 
         /// <summary>
@@ -503,32 +493,40 @@ namespace DigitallyImported.Client.Controls
         /// </summary>
         protected internal void UpdateVisualCues()
         {
-            PlaylistPanel.Enabled = true;
-
-            if (PlaylistPanel.Channels.Count > 0)
+            if (PlaylistPanel != null)
             {
-                _channel = PlaylistPanel.Channels[_channel.Name]
-                    ?? PlaylistPanel.Channels[new Random().Next(PlaylistPanel.Channels.Count > 0 ? PlaylistPanel.Channels.Count : 0)];
+                PlaylistPanel.Enabled = true;
 
-                _channel.IsSelected = true;
+                if (PlaylistPanel.Channels.Count > 0)
+                {
+                    if (_channel != null)
+                        _channel = PlaylistPanel.Channels[_channel.Name]
+                                   ??
+                                   PlaylistPanel.Channels[
+                                       new Random().Next(PlaylistPanel.Channels.Count > 0 ? PlaylistPanel.Channels.Count : 0)
+                                       ];
+
+                    _channel.IsSelected = true;
+                }
+
+                ConnectionStatusLabel.Text = string.Format("{0} {1}", PlaylistPanel.Channels.Count, "channels loaded");
             }
-
-            ConnectionStatusLabel.Text     = string.Format("{0} {1}", PlaylistPanel.Channels.Count, "channels loaded");
-            ViewChannelSplitButton.Text    = _channel.ChannelName;
-            ViewChannelSplitButton.Image   = _channel.SiteIcon.ToBitmap();
-            ViewPlaylistsSplitButton.Text  = DigitallyImported.Utilities.Utilities.GetPlaylistTypes<PlaylistTypes>(Settings.Default.PlaylistTypes).ToString();
+            ViewChannelSplitButton.Text = _channel.ChannelName;
+            ViewChannelSplitButton.Image = _channel.SiteIcon.ToBitmap();
+            ViewPlaylistsSplitButton.Text =
+                Utilities.Utilities.GetPlaylistTypes<StationType>(Settings.Default.PlaylistTypes).ToString();
             ViewPlaylistsSplitButton.Image = _channel.SiteIcon.ToBitmap();
             //MainNotifyIcon.Icon          = _channel.SiteIcon;
-            ParentForm.Icon                = _channel.SiteIcon;
+            if (ParentForm != null) ParentForm.Icon = _channel.SiteIcon;
 
             // do all of these need to be here?
-            RefreshPlaylistButton.Text       = "Refresh Playlist";
-            PlaylistRefreshProgress.Visible  = false;
-            RefreshPlaylistButton.Enabled    = true;
-            ViewChannelSplitButton.Enabled   = true;
+            RefreshPlaylistButton.Text = "Refresh Playlist";
+            PlaylistRefreshProgress.Visible = false;
+            RefreshPlaylistButton.Enabled = true;
+            ViewChannelSplitButton.Enabled = true;
             ViewPlaylistsSplitButton.Enabled = true;
-            SortPlaylistSplitButton.Enabled  = true;
-            PlayerTypeSplitButton.Enabled    = true;
+            SortPlaylistSplitButton.Enabled = true;
+            PlayerTypeSplitButton.Enabled = true;
 
             SetTrackText(_channel.CurrentTrack);
         }
@@ -537,56 +535,66 @@ namespace DigitallyImported.Client.Controls
         private void BindChannelPlaylistPanel()
         {
             // if (PlaylistPanel.Controls.Count == 0 || !_channelView.IsViewSet)
-            if (PlaylistPanel.Controls.Count != PlaylistPanel.Channels.Count) // beyond hacky
-            {
-                PlaylistPanel.Controls.Clear();
-                PlaylistPanel.Controls.AddRange(PlaylistPanel.Channels.ToArray());
+            if (PlaylistPanel.Controls.Count == PlaylistPanel.Channels.Count) return;
+            PlaylistPanel.Controls.Clear();
+            PlaylistPanel.Controls.AddRange(PlaylistPanel.Channels.ToArray());
 
-                // subscribe to the TrackChanged events here:
-                // this will run EVERY TIME PLAYLIST IS REFRESHED...very expensive, so move elsewhere
-                // PlaylistPanel.Channels.ForEach(delegate(TChannel channel)
-                Parallel.ForEach<IChannel>(PlaylistPanel.Channels, channel =>
+            // subscribe to the TrackChanged events here:
+            // this will run EVERY TIME PLAYLIST IS REFRESHED...very expensive, so move elsewhere
+            // PlaylistPanel.Channels.ForEach(delegate(TChannel channel)
+            Parallel.ForEach<IChannel>(PlaylistPanel.Channels, channel =>
                 {
-                    channel.TrackChanged -= (s, ee) => { GC.Collect(); GC.WaitForPendingFinalizers(); };
-                    channel.TrackChanged += (s, ee) =>
-                    {
-                        this.Invoke((Action) delegate
+                    channel.TrackChanged -= (s, ee) =>
+                        {
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                        };
+                    channel.TrackChanged += (s, ee) => Invoke((Action) (() =>
                         {
                             // first change the title of the window
-                            if (ee.RefreshedContent.TrackTitle.Equals(_channel.CurrentTrack.TrackTitle, StringComparison.CurrentCultureIgnoreCase) && _channel.IsSelected)
+                            if (
+                                ee.RefreshedContent.TrackTitle.Equals(_channel.CurrentTrack.TrackTitle,
+                                                                      StringComparison.
+                                                                          CurrentCultureIgnoreCase) &&
+                                _channel.IsSelected)
                                 SetTrackText(ee.RefreshedContent);
 
                             // show some toast to the user
-                            if (Settings.Default.ShowUserToast)
-                            {
-                                ChannelToastForm<IChannel> toast = new ChannelToastForm<IChannel>(ee.RefreshedContent.ParentChannel);
-                                toast.TitleText = ee.RefreshedContent.ParentChannel.ChannelName;
-                                toast.BodyText = string.Format("Track changed to {0}", ee.RefreshedContent.TrackTitle);
-                                toast.ForeColor = Color.Black;
-                                toast.Notify();
-                            }
-                        });
-                    };
-                    channel.Tracks[0].ee -= (s, ee) => { GC.Collect(); GC.WaitForPendingFinalizers(); };
-                    channel.Tracks[0].ee += (s,  ee) =>
-                    {
-                        this.Invoke((Action) delegate
-                        {
-                            CommentToastForm<IChannel> toast = new CommentToastForm<IChannel>(ee.RefreshedContent.ParentChannel);
-                            toast.TitleText = ee.RefreshedContent.ParentChannel.ChannelName;
-                            toast.BodyText = string.Format("{0} new comments for track {1}", ee.NewComments, ee.RefreshedContent.TrackTitle);
-                            toast.ForeColor = Color.Black;
+                            if (!Settings.Default.ShowUserToast) return;
+                            var toast = new ChannelToastForm<IChannel>(ee.RefreshedContent.ParentChannel)
+                                {
+                                    TitleText = ee.RefreshedContent.ParentChannel.ChannelName,
+                                    BodyText = string.Format("Track changed to {0}",
+                                                             ee.RefreshedContent.TrackTitle),
+                                    ForeColor = Color.Black
+                                };
                             toast.Notify();
-                        });
-                    };
+                        }));
+                    channel.Tracks[0].ee -= (s, ee) =>
+                        {
+                            GC.Collect();
+                            GC.WaitForPendingFinalizers();
+                        };
+                    channel.Tracks[0].ee += (s, ee) => Invoke((Action) (() =>
+                        {
+                            var toast = new CommentToastForm<IChannel>(ee.RefreshedContent.ParentChannel)
+                                {
+                                    TitleText = ee.RefreshedContent.ParentChannel.ChannelName,
+                                    BodyText =
+                                        string.Format("{0} new comments for track {1}", ee.NewComments,
+                                                      ee.RefreshedContent.TrackTitle),
+                                    ForeColor = Color.Black
+                                };
+                            toast.Notify();
+                        }));
                 });
 
-                foreach (var control in PlaylistPanel.Controls)
+            foreach (var control in PlaylistPanel.Controls)
+            {
+                if (control is TChannel)
                 {
-                    if (control is TChannel)
-                    {
-                        ((Channel)control).PlaylistHistoryClicked -= (sender, e) => {  };
-                        ((Channel)control).PlaylistHistoryClicked += (sender,  e) =>
+                    ((Channel) control).PlaylistHistoryClicked -= (sender, e) => { };
+                    ((Channel) control).PlaylistHistoryClicked += (sender, e) =>
                         {
                             var channel = sender as TChannel;
 
@@ -606,23 +614,19 @@ namespace DigitallyImported.Client.Controls
                                 // _trackHistory.Location = this.PointToScreen(this.PlaylistPanel.Controls[((Control)c).Name].Location);
                             }
                         };
-                    }
                 }
-            }
-
-            else
-            {
-                // just rebuild the collection here
-
             }
         }
 
         private void SetTrackText(ITrack track)
         {
-            var displayText = string.Format("{0} {1} {2}", track.ParentChannel.ChannelName, P.Resources.ColonSeparator, track.TrackTitle) ?? string.Empty;
+            if (track == null) throw new ArgumentNullException("track");
+            string displayText =
+                string.Format("{0} {1} {2}", track.ParentChannel.ChannelName, P.Resources.ColonSeparator,
+                              track.TrackTitle);
 
             MainNotifyIcon.Text = (displayText.Length > 63) ? displayText.Remove(63) : displayText;
-            this.ParentForm.Text = displayText;
+            if (ParentForm != null) ParentForm.Text = displayText;
         }
 
         private void ExitApplication(object sender, EventArgs e)
@@ -638,31 +642,28 @@ namespace DigitallyImported.Client.Controls
         /// <returns></returns>
         protected override bool ProcessDialogKey(Keys keyData)
         {
-            if (keyData.Equals(Keys.F5))
-            {
-                RefreshPlaylistButton.PerformClick();
-                return true;
-            }
-            else
+            if (!keyData.Equals(Keys.F5))
                 return false;
+            RefreshPlaylistButton.PerformClick();
+            return true;
         }
 
         private void FeedbackButton_Click(object sender, EventArgs e)
         {
-            DigitallyImported.Components.Utilities.StartProcess(Resources.Properties.Resources.SupportPageUrl);
+            Components.Utilities.StartProcess(P.Resources.SupportPageUrl);
         }
 
         private void DISiteUnavailable()
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.BeginInvoke((Action) delegate
-                {
-                    ConnectionStatusLabel.Visible = false;
-                    PlaylistRefreshProgress.Visible = false;
-                    ExceptionStatusMessage.Visible = true;
-                    ExceptionStatusMessage.Text = serviceOfflineMessage;
-                });
+                BeginInvoke((Action) (() =>
+                    {
+                        ConnectionStatusLabel.Visible = false;
+                        PlaylistRefreshProgress.Visible = false;
+                        ExceptionStatusMessage.Visible = true;
+                        ExceptionStatusMessage.Text = serviceOfflineMessage;
+                    }));
             }
             else
             {
@@ -672,17 +673,19 @@ namespace DigitallyImported.Client.Controls
                 ExceptionStatusMessage.Text = serviceOfflineMessage;
             }
         }
-        private void PremiumAuthenticationFailure(System.Web.HttpException exc)
+
+        private void PremiumAuthenticationFailure(HttpException exc)
         {
-            if (this.InvokeRequired)
+            if (InvokeRequired)
             {
-                this.BeginInvoke((Action) delegate
-                {
-                    ConnectionStatusLabel.Visible = false;
-                    PlaylistRefreshProgress.Visible = false;
-                    ExceptionStatusMessage.Visible = true;
-                    ExceptionStatusMessage.Text = string.Format("{0}: {1}", exc.GetHttpCode().ToString(), exc.Message);
-                });
+                BeginInvoke((Action) (() =>
+                    {
+                        ConnectionStatusLabel.Visible = false;
+                        PlaylistRefreshProgress.Visible = false;
+                        ExceptionStatusMessage.Visible = true;
+                        ExceptionStatusMessage.Text = string.Format("{0}: {1}", exc.GetHttpCode().ToString(),
+                                                                    exc.Message);
+                    }));
             }
             else
             {

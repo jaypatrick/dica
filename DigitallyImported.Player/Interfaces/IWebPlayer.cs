@@ -1,4 +1,3 @@
-
 namespace DigitallyImported.Player
 {
     /// <summary>
@@ -6,6 +5,5 @@ namespace DigitallyImported.Player
     /// </summary>
     public interface IWebPlayer : IPlayer
     {
-
     }
 }

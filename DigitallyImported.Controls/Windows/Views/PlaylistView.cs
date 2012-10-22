@@ -1,5 +1,5 @@
 using System;
-
+using System.ComponentModel;
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -7,30 +7,22 @@ namespace DigitallyImported.Utilities
     /// <summary>
     /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TPlaylist"> </typeparam>
     public class PlaylistView<TPlaylist> : ContentView<TPlaylist>, ISiteView<TPlaylist>
-        where TPlaylist: IPlaylist, new()
+        where TPlaylist : IPlaylist, new()
     {
-        private PlaylistLoader<TPlaylist> _loader = null;
+        private readonly PlaylistLoader<TPlaylist> _loader;
+        private PlaylistCollection<TPlaylist> _sites;
 
         /// <summary>
         /// 
         /// </summary>
         public PlaylistView()
-            : base()
         {
             _loader = new PlaylistLoader<TPlaylist>();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected override void Global_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
+        #region ISiteView<TPlaylist> Members
 
         /// <summary>
         /// 
@@ -45,40 +37,41 @@ namespace DigitallyImported.Utilities
             {
                 _sites = _loader.LoadSites(false);
 
-                string tldEnd = ".fm";
+                const string tldEnd = ".fm";
 
                 _sites.ForEach(t =>
-                {
-                    t.SiteUri = new Uri(string.Format(Resources.Properties.Resources.UrlContainer, (t.Name + tldEnd)));
+                    {
+                        t.SiteUri =
+                            new Uri(string.Format(Resources.Properties.Resources.UrlContainer, (t.Name + tldEnd)));
 
-                    if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.DIHomePage))
-                    {
-                        t.PlaylistType = PlaylistTypes.DI;
-                        t.PlaylistIcon = Resources.Properties.Resources.DIIconNew.ToBitmap();
-                    }
-                    else if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.SkyHomePage))
-                    {
-                        t.PlaylistType = PlaylistTypes.Sky;
-                        t.PlaylistIcon = Resources.Properties.Resources.SkyIcon.ToBitmap();
-                    }
-                    else if (t.Name.Contains("Custom"))
-                    {
-                        t.PlaylistType = PlaylistTypes.Custom;
-                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
-                    }
+                        if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.DIHomePage))
+                        {
+                            t.PlaylistType = StationType.DI;
+                            t.PlaylistIcon = Resources.Properties.Resources.DIIconNew.ToBitmap();
+                        }
+                        else if (t.SiteUri.AbsoluteUri.Contains(Resources.Properties.Resources.SkyHomePage))
+                        {
+                            t.PlaylistType = StationType.Sky;
+                            t.PlaylistIcon = Resources.Properties.Resources.SkyIcon.ToBitmap();
+                        }
+                        else if (t.Name.Contains("Custom"))
+                        {
+                            t.PlaylistType = StationType.Custom;
+                            t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                        }
 
-                    else if (t.Name.Contains("External"))
-                    {
-                        t.PlaylistType = PlaylistTypes.External;
-                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
-                    }
+                        else if (t.Name.Contains("External"))
+                        {
+                            t.PlaylistType = StationType.External;
+                            t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                        }
 
-                    else
-                    {
-                        t.PlaylistType = PlaylistTypes.All;
-                        t.PlaylistIcon = Resources.Properties.Resources.icon_web;
-                    }
-                });
+                        else
+                        {
+                            t.PlaylistType = StationType.All;
+                            t.PlaylistIcon = Resources.Properties.Resources.icon_web;
+                        }
+                    });
 
                 Sort(_sites);
 
@@ -93,9 +86,8 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public PlaylistCollection<TPlaylist> Sites
         {
-            get { return this._sites; }
+            get { return _sites; }
         }
-        private PlaylistCollection<TPlaylist> _sites;
 
         /// <summary>
         /// 
@@ -109,10 +101,18 @@ namespace DigitallyImported.Utilities
         {
             // base.Sort(contentCollection);
 
-            contentCollection.Sort(new Comparison<TPlaylist>((list1, list2) =>
-            {
-                return list1.Name.CompareTo(list2.Name);
-            }));
+            contentCollection.Sort((list1, list2) => list1.Name.CompareTo(list2.Name));
+        }
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected override void Global_SettingsSaving(object sender, CancelEventArgs e)
+        {
         }
     }
 }

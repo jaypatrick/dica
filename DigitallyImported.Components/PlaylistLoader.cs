@@ -2,18 +2,12 @@ using System;
 
 namespace DigitallyImported.Components
 {
-    public class PlaylistLoader<T> : ContentLoader<T> 
-        where T: IPlaylist, new()
+    public class PlaylistLoader<T> : ContentLoader<T>
+        where T : IPlaylist, new()
     {
-        private PlaylistTypes _playlistType;
-        private T _playlist = default(T);
-        private T[] _playlistArray = null;
-        private PlaylistCollection<T> _playlists = null;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public PlaylistLoader() { }
+        private T _playlist;
+        private T[] _playlistArray;
+        private PlaylistCollection<T> _playlists;
 
         /// <summary>
         /// 
@@ -25,29 +19,19 @@ namespace DigitallyImported.Components
             var playlists = new PlaylistCollection<T>();
 
             if (_playlists != null)
-                _playlists.ForEach(t =>
-            {
-                playlists.Add(t);
-            });
+                _playlists.ForEach(playlists.Add);
 
             if ((bypassCache) || (playlists.Count == 0))
             {
                 _playlists = new PlaylistCollection<T>();
             }
 
-            _playlistArray = new T[Enum.GetNames(typeof(PlaylistTypes)).Length];
+            _playlistArray = new T[Enum.GetNames(typeof (StationType)).Length];
             int i = 0;
 
-            foreach (var playlist in Enum.GetNames(typeof(PlaylistTypes)))
+            foreach (string playlist in Enum.GetNames(typeof (StationType)))
             {
-                if (playlists.Contains(playlists[playlist]))
-                {
-                    _playlist = playlists[playlist];
-                }
-                else
-                {
-                    _playlist = new T();
-                }
+                _playlist = playlists.Contains(playlists[playlist]) ? playlists[playlist] : new T();
 
                 _playlist.Name = playlist;
                 // _playlist.PlaylistIcon
@@ -59,13 +43,17 @@ namespace DigitallyImported.Components
             playlists.Clear();
             playlists.AddRange(_playlistArray);
 
-            _playlists.Clear();
-            playlists.Clone(_playlists);
+            if (_playlists != null)
+            {
+                _playlists.Clear();
+                playlists.Clone(_playlists);
 
-            return _playlists;
+                return _playlists;
+            }
 
             // create SiteDictionary loaded w/ channels and events per site, create tabbed control in main form
             // foreach site, i.e. DI, Sky, WFAE, etc...bind per tab. pass in PlaylistType to ctor.
+            return null;
         }
     }
 }

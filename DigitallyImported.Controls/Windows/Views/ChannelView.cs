@@ -1,5 +1,4 @@
 using System;
-using System.ComponentModel;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 
@@ -9,12 +8,16 @@ namespace DigitallyImported.Utilities
     /// 
     /// </summary>
     /// <typeparam name="T">IChannel</typeparam>
-    public class ChannelView<TChannel, TTrack> : ContentView<TChannel>, IChannelView<TChannel> 
+    public class ChannelView<TChannel, TTrack> : ContentView<TChannel>, IChannelView<TChannel>
         where TChannel : class, IChannel, new()
         where TTrack : class, ITrack, new()
     {
         // private CacheManager _viewCache = CacheFactory.GetCacheManager();
-        private ChannelLoader<TChannel, TTrack> _loader = null;
+        private readonly object _viewChangedLock = new object();
+        private EventHandler<ChannelViewChangedEventArgs<ChannelCollection<IChannel>>> _channelViewChanged;
+        private ChannelCollection<TChannel> _channels;
+        private ChannelLoader<TChannel, TTrack> _loader;
+        private TChannel _selectedChannel;
 
         /// <summary>
         /// 
@@ -28,109 +31,32 @@ namespace DigitallyImported.Utilities
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="viewType"></param>
-        public ChannelView(ChannelCollection<TChannel> channels) // NEED A SPECIFIC VIEW TYPE SERVED UP (WEB, WINFORMS, ETC)
+        /// <param name="channels"></param>
+        public ChannelView(ChannelCollection<TChannel> channels)
+            // NEED A SPECIFIC VIEW TYPE SERVED UP (WEB, WINFORMS, ETC)
             : base(channels)
         {
+            if (channels == null) throw new ArgumentNullException("channels");
             ParseSortSettings();
 
             Settings.Default.SettingsSaving += (sender, e) =>
-            {
-                ClearItems<object>();
-                ParseSortSettings();
-                IsViewSet = false;
-            };
+                {
+                    ClearItems<object>();
+                    ParseSortSettings();
+                    IsViewSet = false;
+                };
         }
 
-        #region IChannelView<T> Members
+        #region IChannelView<TChannel> Members
 
         /// <summary>
         /// 
         /// </summary>
-        /// <typeparam name="U"></typeparam>
-        /// <param name="channels"></param>
         /// <param name="bypassCache"></param>
         /// <returns></returns>
         public virtual ChannelCollection<TChannel> GetView(bool bypassCache)
         {
-            return GetView(bypassCache, this.PlaylistTypes);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <param name="playlistTypes"></param>
-        /// <returns></returns>
-        public virtual ChannelCollection<TChannel> GetView(bool bypassCache, PlaylistTypes playlistTypes)
-        {
-            // assume view is set
-            IsViewSet = true;
-
-            _channels = GetItem(_channels);
-
-            if ((bypassCache) || (_channels == null))
-            {
-                _loader = new ChannelLoader<TChannel, TTrack>(Settings.Default.DIPlaylistXml);  // this should not be hardcoded
-                //_channels = ChannelLoaderService<TChannel>.LoadChannels(bypassCache);  
-                _channels = _loader.LoadChannels(bypassCache);
-
-                //if (!IsViewSet)
-                //{
-                // ParseSortSettings();
-                IsViewSet = false;
-                //}
-
-                // assign siteIcons
-                _channels.ForEach(t =>
-                {
-                    if (t.SiteName.Contains(Resources.Properties.Resources.DIHomePage))
-                    {
-                        t.PlaylistType = PlaylistTypes.DI;
-                        t.SiteIcon = Resources.Properties.Resources.DIIconNew;
-                    }
-                    else if (t.SiteName.Contains(Resources.Properties.Resources.SkyHomePage))
-                    {
-                        t.PlaylistType = PlaylistTypes.Sky;
-                        t.SiteIcon = Resources.Properties.Resources.SkyIcon;
-                    }
-                    else
-                    {
-                        t.PlaylistType = PlaylistTypes.External;
-                        // t.SiteIcon = Resources.Properties.Resources.
-                    }
-                });
-
-                // now remove channels that aren't favorites specified in settings
-                if (playlistTypes == PlaylistTypes.Custom)
-                {
-                    _channels.RemoveAll(t =>
-                    {
-                        // if (Settings.Default.PlaylistFavorites != null)
-                        return !Settings.Default.PlaylistFavorites.Contains(t.ChannelName);
-                    });
-                }
-                else
-                {
-                    _channels.RemoveAll(t =>
-                    {
-                        return (t.PlaylistType & playlistTypes) == 0;
-                    });
-                }
-
-                Sort(_channels);
-                _channels.ForEach(t =>
-                {
-                    t.IsAlternating = (_channels.IndexOf(t) % 2 == 0);
-                });
-
-                InsertItem(_channels);
-
-                // only fire the event if the view changed, cache was bypassed on purpose
-                // OnChannelViewChanged(this, new ChannelViewChangedEventArgs<ChannelCollection<IChannel>>(_channels as ChannelCollection<IChannel>));
-            }
-
-            return _channels;
+            return GetView(bypassCache, PlaylistTypes);
         }
 
         /// <summary>
@@ -147,35 +73,18 @@ namespace DigitallyImported.Utilities
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="action">Summary for action</param>
-        /// <returns></returns>
-        public virtual ChannelCollection<TChannel> GetView(System.Predicate<TChannel> action)
-        {
-            // foreach (T t in 
-            return null;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
         public virtual ChannelCollection<TChannel> Channels
-        {
-            get 
-            {
-                Sort(_channels);    // sort first???
-                return this._channels; 
-            }
-        }
-        private ChannelCollection<TChannel> _channels;
-
-        #endregion
-
-        public override PlaylistTypes PlaylistTypes
         {
             get
             {
-                return base.PlaylistTypes;
+                Sort(_channels); // sort first???
+                return _channels;
             }
+        }
+
+        public override StationType PlaylistTypes
+        {
+            get { return base.PlaylistTypes; }
             set
             {
                 IsViewSet = false;
@@ -192,21 +101,11 @@ namespace DigitallyImported.Utilities
         public virtual TChannel SelectedChannel
         {
             get { return _selectedChannel; }
-            set 
-            { 
+            set
+            {
                 _selectedChannel = value;
-                ((TChannel)_selectedChannel).IsSelected = true;
+                (_selectedChannel).IsSelected = true;
             }
-        }
-        private TChannel _selectedChannel;
-
-
-        // load up defaults
-        private void ParseSortSettings()
-        {
-            SortOrder       = Utilities.ParseEnum<SortOrder>(Settings.Default.ChannelSortOrder.ToString());
-            SortBy          = Utilities.ParseEnum<SortBy>(Settings.Default.ChannelSortBy.ToString());
-            PlaylistTypes   = Utilities.GetPlaylistTypes<PlaylistTypes>(Settings.Default.PlaylistTypes);
         }
 
 
@@ -230,17 +129,104 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        private EventHandler<ChannelViewChangedEventArgs<ChannelCollection<IChannel>>> _channelViewChanged;
-        private readonly object _viewChangedLock = new object();
+
+        #endregion
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <param name="playlistTypes"></param>
+        /// <returns></returns>
+        public virtual ChannelCollection<TChannel> GetView(bool bypassCache, StationType playlistTypes)
+        {
+            // assume view is set
+            IsViewSet = true;
+
+            _channels = GetItem(_channels);
+
+            if ((bypassCache) || (_channels == null))
+            {
+                _loader = new ChannelLoader<TChannel, TTrack>(Settings.Default.DIPlaylistXml);
+                // this should not be hardcoded
+                //_channels = ChannelLoaderService<TChannel>.LoadChannels(bypassCache);  
+                _channels = _loader.LoadChannels(bypassCache);
+
+                //if (!IsViewSet)
+                //{
+                // ParseSortSettings();
+                IsViewSet = false;
+                //}
+
+                // assign siteIcons
+                _channels.ForEach(t =>
+                    {
+                        if (t.SiteName.Contains(Resources.Properties.Resources.DIHomePage))
+                        {
+                            t.PlaylistType = StationType.DI;
+                            t.SiteIcon = Resources.Properties.Resources.DIIconNew;
+                        }
+                        else if (t.SiteName.Contains(Resources.Properties.Resources.SkyHomePage))
+                        {
+                            t.PlaylistType = StationType.Sky;
+                            t.SiteIcon = Resources.Properties.Resources.SkyIcon;
+                        }
+                        else
+                        {
+                            t.PlaylistType = StationType.External;
+                            // t.SiteIcon = Resources.Properties.Resources.
+                        }
+                    });
+
+                // now remove channels that aren't favorites specified in settings
+                if (playlistTypes == StationType.Custom)
+                {
+                    _channels.RemoveAll(t => !Settings.Default.PlaylistFavorites.Contains(t.ChannelName));
+                }
+                else
+                {
+                    _channels.RemoveAll(t => (t.PlaylistType & playlistTypes) == 0);
+                }
+
+                Sort(_channels);
+                _channels.ForEach(t => { t.IsAlternating = (_channels.IndexOf(t)%2 == 0); });
+
+                InsertItem(_channels);
+
+                // only fire the event if the view changed, cache was bypassed on purpose
+                // OnChannelViewChanged(this, new ChannelViewChangedEventArgs<ChannelCollection<IChannel>>(_channels as ChannelCollection<IChannel>));
+            }
+
+            return _channels;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action">Summary for action</param>
+        /// <returns></returns>
+        public virtual ChannelCollection<TChannel> GetView(Predicate<TChannel> action)
+        {
+            // foreach (T t in 
+            return null;
+        }
+
+        private void ParseSortSettings()
+        {
+            SortOrder = Utilities.ParseEnum<SortOrder>(Settings.Default.ChannelSortOrder);
+            SortBy = Utilities.ParseEnum<SortBy>(Settings.Default.ChannelSortBy);
+            PlaylistTypes = Utilities.GetPlaylistTypes<StationType>(Settings.Default.PlaylistTypes);
+        }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected virtual void OnChannelViewChanged(object sender, ChannelViewChangedEventArgs<ChannelCollection<IChannel>> e)
+        protected virtual void OnChannelViewChanged(object sender,
+                                                    ChannelViewChangedEventArgs<ChannelCollection<IChannel>> e)
         {
-            if (this._channelViewChanged != null)
+            if (_channelViewChanged != null)
                 _channelViewChanged(sender, e);
         }
     }

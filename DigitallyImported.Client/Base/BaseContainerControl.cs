@@ -3,8 +3,14 @@ using System.Windows.Forms;
 
 namespace DigitallyImported.Client.Controls
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class BaseContainerControl : UserControl
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public BaseContainerControl()
         {
             InitializeComponent();
@@ -14,8 +20,9 @@ namespace DigitallyImported.Client.Controls
         {
             base.OnLoad(e);
 
-            this.ParentForm.Text = Resources.Properties.Resources.ApplicationTitle;
-            this.ParentForm.Icon = Resources.Properties.Resources.DIIconNew;
+            if (ParentForm == null) return;
+            ParentForm.Text = Resources.Properties.Resources.ApplicationTitle;
+            ParentForm.Icon = Resources.Properties.Resources.DIIconNew;
         }
     }
 }

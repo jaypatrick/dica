@@ -1,4 +1,6 @@
+using System;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 //
@@ -6,14 +8,17 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
+
 [assembly: AssemblyTitle("DI Channel Aggregator")]
 [assembly: AssemblyDescription("A simple channel Aggregator for DI.fm.")]
 [assembly: AssemblyConfiguration("")]
 // [assembly: AssemblyCompany("JaysonKnight.com")]
+
 [assembly: AssemblyProduct("DI Channel Aggregator")]
 // [assembly: AssemblyCopyright("Copyright 2005 :: Jayson Knight")]
+
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]		
+[assembly: AssemblyCulture("")]
 
 //
 // Version information for an assembly consists of the following four values:
@@ -53,12 +58,16 @@ using System.Runtime.InteropServices;
 //   (*) Delay Signing is an advanced option - see the Microsoft .NET Framework
 //       documentation for more information on this.
 //
-[assembly: System.CLSCompliant(true)]
-[assembly: ComVisible(false)]
 
+[assembly: CLSCompliant(true)]
+[assembly: ComVisible(false)]
 [assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile(@"..\..\DigitallyImported.Client.pfx")]
 //[assembly: AssemblyKeyName("")]
-[assembly: GuidAttribute("959CCFE1-7821-4ec9-AA60-3238AE44B2BB")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Client.Tests.NUnit, PublicKey=00240000048000009400000006020000002400005253413100040000010001004B558744A36FC5F3A5A07636592FDFB13DFA03FD6E355D038FE14EAF20B5A181419F6F707FD348FFD7116D4AF6057CCEBCFFEBD02965B86FCBF77BBE4F95FDCAFD66AD86F8D12581E066769B7E2310BBF8F253F015BC4046E9B944C00F08DC4D23B3E08677DFFA5036DD9289C68E59155A4A4993A6BD716842A88553018E9ECB")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.UnitTests")]
+
+[assembly: Guid("959CCFE1-7821-4ec9-AA60-3238AE44B2BB")]
+[assembly:
+    InternalsVisibleTo(
+        "DigitallyImported.Client.Tests.NUnit, PublicKey=00240000048000009400000006020000002400005253413100040000010001004B558744A36FC5F3A5A07636592FDFB13DFA03FD6E355D038FE14EAF20B5A181419F6F707FD348FFD7116D4AF6057CCEBCFFEBD02965B86FCBF77BBE4F95FDCAFD66AD86F8D12581E066769B7E2310BBF8F253F015BC4046E9B944C00F08DC4D23B3E08677DFFA5036DD9289C68E59155A4A4993A6BD716842A88553018E9ECB"
+        )]
+[assembly: InternalsVisibleTo("DigitallyImported.UnitTests")]

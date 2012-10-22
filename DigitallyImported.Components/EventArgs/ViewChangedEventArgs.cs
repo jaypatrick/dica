@@ -4,14 +4,13 @@ namespace DigitallyImported.Components
 {
     [Serializable]
     public class ViewChangedEventArgs<T> : EventArgs
-        where T: IContentCollection<IChannel>
+        where T : IContentCollection<IChannel>
     {
-        private T _changedContent = default(T);
+        private readonly T _changedContent;
 
         public ViewChangedEventArgs()
             : this(default(T))
         {
-
         }
 
         public ViewChangedEventArgs(T changedContent)

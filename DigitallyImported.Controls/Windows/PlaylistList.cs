@@ -1,7 +1,6 @@
 using System;
 using System.Drawing;
 using System.Windows.Forms;
-
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -9,7 +8,7 @@ namespace DigitallyImported.Utilities
     /// <summary>
     /// 
     /// </summary>
-    public partial class PlaylistList : ToolStripMenuItem, DigitallyImported.Components.IPlaylist
+    public partial class PlaylistList : ToolStripMenuItem, IPlaylist
     {
         /// <summary>
         /// 
@@ -25,10 +24,7 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public override string Text
         {
-            get
-            {
-                return base.Name;
-            }
+            get { return base.Name; }
         }
 
         /// <summary>
@@ -36,136 +32,50 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public override Image Image
         {
-            get
-            {
-                return PlaylistIcon;
-            }
+            get { return PlaylistIcon; }
         }
 
-        #region ISite Members
+        #region IPlaylist Members
 
         /// <summary>
         /// 
         /// </summary>
-        public Uri SiteUri
-        {
-            get
-            {
-                return _siteUri;
-            }
-            set
-            {
-                _siteUri = value;
-            }
-        }
-        private Uri _siteUri = null;
+        public Uri SiteUri { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public Bitmap PlaylistIcon
-        {
-            get
-            {
-                return _siteIcon;
-            }
-            set
-            {
-                _siteIcon = value;
-            }
-        }
-        private Bitmap _siteIcon;
+        public Bitmap PlaylistIcon { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public ChannelCollection<IChannel> SiteChannels
-        {
-            get
-            {
-                return _siteChannels;
-            }
-            set
-            {
-                _siteChannels = value;
-            }
-        }
-        private ChannelCollection<IChannel> _siteChannels;
+        public ChannelCollection<IChannel> SiteChannels { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public EventCollection<IEvent> SiteEvents
-        {
-            get
-            {
-                return _siteEvents;
-            }
-            set
-            {
-                _siteEvents = value;
-            }
-        }
-        private EventCollection<IEvent> _siteEvents;
-
-        #endregion
-
-        #region IContent Members
+        public EventCollection<IEvent> SiteEvents { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public PlaylistTypes PlaylistType
-        {
-            get
-            {
-                return _PlaylistType;
-            }
-            set
-            {
-                _PlaylistType = value;
-            }
-        }
-        private PlaylistTypes _PlaylistType;
+        public StationType PlaylistType { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool IsSelected
-        {
-            get
-            {
-                return _isSelected;
-            }
-            set
-            {
-                _isSelected = value;
-            }
-        }
-        private bool _isSelected;
+        public bool IsSelected { get; set; }
 
 
-        public SubscriptionLevel SubscriptionLevel
-        {
-            get
-            {
-                return this._subscriptionLevel;
-            }
-            set
-            {
-                this._subscriptionLevel = value;
-            }
-        }
-        private SubscriptionLevel _subscriptionLevel;
-
-
-        #endregion
-
-        #region IEquatable<IContent> Members
+        /// <summary>
+        /// 
+        /// </summary>
+        public SubscriptionLevel SubscriptionLevel { get; set; }
 
         public bool Equals(IContent other)
         {
-            return this.Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
+            return Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
         }
 
         #endregion

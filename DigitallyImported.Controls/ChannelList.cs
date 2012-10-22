@@ -1,4 +1,3 @@
-
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -7,11 +6,7 @@ namespace DigitallyImported.Utilities
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class ChannelList<T> : ChannelCollection<T> where T: IChannel
+    public class ChannelList<T> : ChannelCollection<T> where T : IChannel
     {
-        public ChannelList()
-        {
-            //
-        }
     }
 }

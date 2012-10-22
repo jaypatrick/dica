@@ -10,42 +10,40 @@
 #define TRACE
 
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
-
-
 namespace DigitallyImported.Client.Diagnostics
 {
-
-
     /// <summary>
     /// Summary description for DebugConsole.
     /// </summary>
-    public class DebugConsoleWrapper : System.Windows.Forms.Form
+    public class DebugConsoleWrapper : Form
     {
-        private System.Windows.Forms.Button BtnSave;
-        private System.Windows.Forms.Button BtnClear;
-        private System.Windows.Forms.SaveFileDialog SaveFileDlg;
-        private System.Windows.Forms.CheckBox CheckScroll;
-        private System.Diagnostics.DefaultTraceListener Tracer = new System.Diagnostics.DefaultTraceListener();
-        private System.Windows.Forms.ColumnHeader Col1;
-        private System.Windows.Forms.ColumnHeader Col2;
-        private System.Windows.Forms.ListView OutputView;
-        private System.Windows.Forms.CheckBox CheckTop;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ColumnHeader Col3;
-        private ListViewItem.ListViewSubItem CurrentMsgItem = null;
-        private int EventCounter = 0;
-        public StringBuilder Buffer = new StringBuilder();
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
         /// 
-        private System.ComponentModel.Container components = null;
+        private readonly Container _components = null;
+
+        private Button _btnClear;
+        private Button _btnSave;
+        public StringBuilder Buffer = new StringBuilder();
+        private CheckBox _checkScroll;
+        private CheckBox _checkTop;
+        private ColumnHeader _col1;
+        private ColumnHeader _col2;
+        private ColumnHeader _col3;
+        private ListViewItem.ListViewSubItem _currentMsgItem;
+        private int _eventCounter;
+        private ListView _outputView;
+        private SaveFileDialog _saveFileDlg;
+        private DefaultTraceListener _tracer = new DefaultTraceListener();
+        private Panel _panel2;
 
         public DebugConsoleWrapper()
         {
@@ -59,123 +57,210 @@ namespace DigitallyImported.Client.Diagnostics
         {
             if (disposing)
             {
-                if (components != null)
+                if (_components != null)
                 {
-                    components.Dispose();
+                    _components.Dispose();
                 }
             }
             base.Dispose(disposing);
         }
 
+        public void CreateEventRow()
+        {
+            DateTime d = DateTime.Now;
+
+            // create a ListView item/subitems : [event nb] - [time] - [empty string]
+            string msg1 = (++_eventCounter).ToString(CultureInfo.InvariantCulture);
+            string msg2 = d.ToLongTimeString();
+            var elem = new ListViewItem(msg1);
+            elem.SubItems.Add(msg2);
+            elem.SubItems.Add("");
+            // this.OutputView.Items.Add(elem);
+
+            if (_outputView.InvokeRequired)
+                _outputView.Invoke((Action) (() => _outputView.Items.Add(elem)));
+            else
+                _outputView.Items.Add(elem);
+
+            // we save the message item for incoming text updates
+            _currentMsgItem = elem.SubItems[2];
+        }
+
+
+        public void UpdateCurrentRow( /*bool CreateRowNextTime*/)
+        {
+            if (_currentMsgItem == null) CreateEventRow();
+            if (_currentMsgItem != null)
+            {
+                _currentMsgItem.Text = Buffer.ToString();
+
+                // if null, a new row will be created next time this function is called
+                if (true) _currentMsgItem = null;
+            }
+
+            // this is the autoscroll, move to the last element available in the ListView
+            if (_checkScroll.CheckState == CheckState.Checked)
+            {
+                _outputView.EnsureVisible(_outputView.Items.Count - 1);
+            }
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            _saveFileDlg.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*";
+            _saveFileDlg.FileName = "log.txt";
+            _saveFileDlg.ShowDialog();
+
+            var fileInfo = new FileInfo(_saveFileDlg.FileName);
+
+            // create a new textfile and export all lines
+            StreamWriter s = fileInfo.CreateText();
+            for (int i = 0; i < _outputView.Items.Count; i++)
+            {
+                var sb = new StringBuilder();
+                sb.Append(_outputView.Items[i].SubItems[0].Text);
+                sb.Append("\t");
+                sb.Append(_outputView.Items[i].SubItems[1].Text);
+                sb.Append("\t");
+                sb.Append(_outputView.Items[i].SubItems[2].Text);
+                s.WriteLine(sb.ToString());
+            }
+
+            s.Close();
+        }
+
+        private void BtnClear_Click(object sender, EventArgs e)
+        {
+            _eventCounter = 0;
+            _outputView.Items.Clear();
+            _currentMsgItem = null;
+            Buffer = new StringBuilder();
+        }
+
+        private void CheckTop_CheckedChanged(object sender, EventArgs e)
+        {
+            TopMost = _checkTop.CheckState == CheckState.Checked;
+        }
+
+        private void CheckScroll_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_checkScroll.CheckState == CheckState.Checked)
+                _outputView.EnsureVisible(_outputView.Items.Count - 1);
+        }
+
         #region Windows Form Designer generated code
+
         /// <summary>
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.BtnSave = new System.Windows.Forms.Button();
-            this.BtnClear = new System.Windows.Forms.Button();
-            this.SaveFileDlg = new System.Windows.Forms.SaveFileDialog();
-            this.CheckScroll = new System.Windows.Forms.CheckBox();
-            this.OutputView = new System.Windows.Forms.ListView();
-            this.Col1 = new System.Windows.Forms.ColumnHeader();
-            this.Col2 = new System.Windows.Forms.ColumnHeader();
-            this.Col3 = new System.Windows.Forms.ColumnHeader();
-            this.CheckTop = new System.Windows.Forms.CheckBox();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel2.SuspendLayout();
+            this._btnSave = new System.Windows.Forms.Button();
+            this._btnClear = new System.Windows.Forms.Button();
+            this._saveFileDlg = new System.Windows.Forms.SaveFileDialog();
+            this._checkScroll = new System.Windows.Forms.CheckBox();
+            this._outputView = new System.Windows.Forms.ListView();
+            this._col1 = new System.Windows.Forms.ColumnHeader();
+            this._col2 = new System.Windows.Forms.ColumnHeader();
+            this._col3 = new System.Windows.Forms.ColumnHeader();
+            this._checkTop = new System.Windows.Forms.CheckBox();
+            this._panel2 = new System.Windows.Forms.Panel();
+            this._panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnSave
             // 
-            this.BtnSave.Location = new System.Drawing.Point(8, 16);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(64, 24);
-            this.BtnSave.TabIndex = 8;
-            this.BtnSave.Text = "Save";
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            this._btnSave.Location = new System.Drawing.Point(8, 16);
+            this._btnSave.Name = "_btnSave";
+            this._btnSave.Size = new System.Drawing.Size(64, 24);
+            this._btnSave.TabIndex = 8;
+            this._btnSave.Text = "Save";
+            this._btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // BtnClear
             // 
-            this.BtnClear.Location = new System.Drawing.Point(80, 16);
-            this.BtnClear.Name = "BtnClear";
-            this.BtnClear.Size = new System.Drawing.Size(64, 24);
-            this.BtnClear.TabIndex = 8;
-            this.BtnClear.Text = "Clear";
-            this.BtnClear.Click += new System.EventHandler(this.BtnClear_Click);
+            this._btnClear.Location = new System.Drawing.Point(80, 16);
+            this._btnClear.Name = "_btnClear";
+            this._btnClear.Size = new System.Drawing.Size(64, 24);
+            this._btnClear.TabIndex = 8;
+            this._btnClear.Text = "Clear";
+            this._btnClear.Click += new System.EventHandler(this.BtnClear_Click);
             // 
             // CheckScroll
             // 
-            this.CheckScroll.Checked = true;
-            this.CheckScroll.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckScroll.Location = new System.Drawing.Point(152, 16);
-            this.CheckScroll.Name = "CheckScroll";
-            this.CheckScroll.Size = new System.Drawing.Size(80, 16);
-            this.CheckScroll.TabIndex = 8;
-            this.CheckScroll.Text = "autoscroll";
-            this.CheckScroll.CheckedChanged += new System.EventHandler(this.CheckScroll_CheckedChanged);
+            this._checkScroll.Checked = true;
+            this._checkScroll.CheckState = System.Windows.Forms.CheckState.Checked;
+            this._checkScroll.Location = new System.Drawing.Point(152, 16);
+            this._checkScroll.Name = "_checkScroll";
+            this._checkScroll.Size = new System.Drawing.Size(80, 16);
+            this._checkScroll.TabIndex = 8;
+            this._checkScroll.Text = "autoscroll";
+            this._checkScroll.CheckedChanged += new System.EventHandler(this.CheckScroll_CheckedChanged);
             // 
             // OutputView
             // 
-            this.OutputView.AutoArrange = false;
-            this.OutputView.BackColor = System.Drawing.Color.RoyalBlue;
-            this.OutputView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.Col1,
-            this.Col2,
-            this.Col3});
-            this.OutputView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutputView.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OutputView.ForeColor = System.Drawing.Color.Yellow;
-            this.OutputView.Location = new System.Drawing.Point(0, 0);
-            this.OutputView.Name = "OutputView";
-            this.OutputView.Size = new System.Drawing.Size(760, 286);
-            this.OutputView.TabIndex = 7;
-            this.OutputView.UseCompatibleStateImageBehavior = false;
-            this.OutputView.View = System.Windows.Forms.View.Details;
+            this._outputView.AutoArrange = false;
+            this._outputView.BackColor = System.Drawing.Color.RoyalBlue;
+            this._outputView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[]
+                {
+                    this._col1,
+                    this._col2,
+                    this._col3
+                });
+            this._outputView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this._outputView.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular,
+                                                           System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this._outputView.ForeColor = System.Drawing.Color.Yellow;
+            this._outputView.Location = new System.Drawing.Point(0, 0);
+            this._outputView.Name = "_outputView";
+            this._outputView.Size = new System.Drawing.Size(760, 286);
+            this._outputView.TabIndex = 7;
+            this._outputView.UseCompatibleStateImageBehavior = false;
+            this._outputView.View = System.Windows.Forms.View.Details;
             // 
             // Col1
             // 
-            this.Col1.Text = "#";
-            this.Col1.Width = 30;
+            this._col1.Text = "#";
+            this._col1.Width = 30;
             // 
             // Col2
             // 
-            this.Col2.Text = "Time";
-            this.Col2.Width = 101;
+            this._col2.Text = "Time";
+            this._col2.Width = 101;
             // 
             // Col3
             // 
-            this.Col3.Text = "Message";
-            this.Col3.Width = 619;
+            this._col3.Text = "Message";
+            this._col3.Width = 619;
             // 
             // CheckTop
             // 
-            this.CheckTop.Location = new System.Drawing.Point(240, 16);
-            this.CheckTop.Name = "CheckTop";
-            this.CheckTop.Size = new System.Drawing.Size(96, 16);
-            this.CheckTop.TabIndex = 8;
-            this.CheckTop.Text = "always on top";
-            this.CheckTop.CheckedChanged += new System.EventHandler(this.CheckTop_CheckedChanged);
+            this._checkTop.Location = new System.Drawing.Point(240, 16);
+            this._checkTop.Name = "_checkTop";
+            this._checkTop.Size = new System.Drawing.Size(96, 16);
+            this._checkTop.TabIndex = 8;
+            this._checkTop.Text = "always on top";
+            this._checkTop.CheckedChanged += new System.EventHandler(this.CheckTop_CheckedChanged);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.BtnSave);
-            this.panel2.Controls.Add(this.BtnClear);
-            this.panel2.Controls.Add(this.CheckScroll);
-            this.panel2.Controls.Add(this.CheckTop);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 286);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(760, 48);
-            this.panel2.TabIndex = 8;
+            this._panel2.Controls.Add(this._btnSave);
+            this._panel2.Controls.Add(this._btnClear);
+            this._panel2.Controls.Add(this._checkScroll);
+            this._panel2.Controls.Add(this._checkTop);
+            this._panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this._panel2.Location = new System.Drawing.Point(0, 286);
+            this._panel2.Name = "_panel2";
+            this._panel2.Size = new System.Drawing.Size(760, 48);
+            this._panel2.TabIndex = 8;
             // 
             // DebugConsoleWrapper
             // 
             this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
             this.ClientSize = new System.Drawing.Size(760, 334);
-            this.Controls.Add(this.OutputView);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this._outputView);
+            this.Controls.Add(this._panel2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MinimumSize = new System.Drawing.Size(390, 160);
@@ -184,119 +269,35 @@ namespace DigitallyImported.Client.Diagnostics
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Debug Console";
-            this.panel2.ResumeLayout(false);
+            this._panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-
         }
+
         #endregion
-
-        public void CreateEventRow()
-        {
-            DateTime d = DateTime.Now;
-
-            // create a ListView item/subitems : [event nb] - [time] - [empty string]
-            string msg1 = (++EventCounter).ToString();
-            string msg2 = d.ToLongTimeString();
-            ListViewItem elem = new ListViewItem(msg1);
-            elem.SubItems.Add(msg2);
-            elem.SubItems.Add("");
-            // this.OutputView.Items.Add(elem);
-
-            if (OutputView.InvokeRequired)
-                OutputView.Invoke((Action) delegate { OutputView.Items.Add(elem); });
-            else
-                this.OutputView.Items.Add(elem);
-
-            // we save the message item for incoming text updates
-            CurrentMsgItem = elem.SubItems[2];
-        }
-
-
-        public void UpdateCurrentRow(/*bool CreateRowNextTime*/)
-        {
-            if (CurrentMsgItem == null) CreateEventRow();
-            CurrentMsgItem.Text = Buffer.ToString();
-
-            // if null, a new row will be created next time this function is called
-            if (true) CurrentMsgItem = null;
-
-            // this is the autoscroll, move to the last element available in the ListView
-            if (this.CheckScroll.CheckState == CheckState.Checked)
-            {
-                this.OutputView.EnsureVisible(this.OutputView.Items.Count - 1);
-            }
-        }
-
-        private void BtnSave_Click(object sender, System.EventArgs e)
-        {
-            this.SaveFileDlg.Filter = "Text file (*.txt)|*.txt|All files (*.*)|*.*";
-            this.SaveFileDlg.FileName = "log.txt";
-            this.SaveFileDlg.ShowDialog();
-
-            FileInfo fileInfo = new FileInfo(SaveFileDlg.FileName);
-
-            // create a new textfile and export all lines
-            StreamWriter s = fileInfo.CreateText();
-            for (int i = 0; i < this.OutputView.Items.Count; i++)
-            {
-                StringBuilder sb = new StringBuilder();
-                sb.Append(this.OutputView.Items[i].SubItems[0].Text);
-                sb.Append("\t");
-                sb.Append(this.OutputView.Items[i].SubItems[1].Text);
-                sb.Append("\t");
-                sb.Append(this.OutputView.Items[i].SubItems[2].Text);
-                s.WriteLine(sb.ToString());
-            }
-
-            s.Close();
-        }
-
-        private void BtnClear_Click(object sender, System.EventArgs e)
-        {
-            this.EventCounter = 0;
-            this.OutputView.Items.Clear();
-            this.CurrentMsgItem = null;
-            this.Buffer = new StringBuilder();
-        }
-
-        private void CheckTop_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (this.CheckTop.CheckState == CheckState.Checked)
-                this.TopMost = true;
-            else
-                this.TopMost = false;
-        }
-
-        private void CheckScroll_CheckedChanged(object sender, System.EventArgs e)
-        {
-            if (this.CheckScroll.CheckState == CheckState.Checked)
-                this.OutputView.EnsureVisible(this.OutputView.Items.Count - 1);
-        }
-
     }
 
-	// DebugConsole Singleton
-	sealed class DebugConsole : TraceListener
-	{
-		public static readonly DebugConsole Instance = 
-			new DebugConsole();
+    // DebugConsole Singleton
+    internal sealed class DebugConsole : TraceListener
+    {
+        public static readonly DebugConsole Instance =
+            new DebugConsole();
 
-		private DebugConsoleWrapper DebugForm = new DebugConsoleWrapper();
-		
-		// if this parameter is set to true, a call to WriteLine will always create a new row
-		// (if false, it may be appended to the current buffer created with some Write calls)
-		private bool UseCrWl = true;
+        private readonly DebugConsoleWrapper _debugForm = new DebugConsoleWrapper();
 
-		private DebugConsole() 
-		{
-			DebugForm.Show();
-		}
+        // if this parameter is set to true, a call to WriteLine will always create a new row
+        // (if false, it may be appended to the current buffer created with some Write calls)
+        private bool _useCrWl = true;
 
-		public void Init(bool UseDebugOutput, bool UseCrForWriteLine)
-		{
-            DefaultTraceListener dtl = new DefaultTraceListener();
+        private DebugConsole()
+        {
+            _debugForm.Show();
+        }
 
-            if (UseDebugOutput == true)
+        public void Init(bool useDebugOutput, bool useCrForWriteLine)
+        {
+            var dtl = new DefaultTraceListener();
+
+            if (useDebugOutput)
             {
                 Debug.Listeners.Add(this);
                 Debug.Listeners.Add(dtl);
@@ -307,39 +308,38 @@ namespace DigitallyImported.Client.Diagnostics
                 Trace.Listeners.Add(dtl);
             }
 
-			this.UseCrWl = UseCrForWriteLine;
-		}
+            _useCrWl = useCrForWriteLine;
+        }
 
-		override public void Write(string message) 
-		{   
-			DebugForm.Buffer.Append(message);
+        public override void Write(string message)
+        {
+            _debugForm.Buffer.Append(message);
 
-            if (DebugForm.InvokeRequired && !DebugForm.Disposing)
-                DebugForm.Invoke((Action) delegate { DebugForm.UpdateCurrentRow();});
+            if (_debugForm.InvokeRequired && !_debugForm.Disposing)
+                _debugForm.Invoke((Action) (() => _debugForm.UpdateCurrentRow()));
 
             else
-                DebugForm.UpdateCurrentRow();
+                _debugForm.UpdateCurrentRow();
 
             // DebugForm.BeginInvoke(Action(delegate() { Console.WriteLine("Simple Anonymous Method Called"); }));
-		}
+        }
 
-		override public void WriteLine(string message) 
-		{     
+        public override void WriteLine(string message)
+        {
+            if (_useCrWl)
+            {
+                _debugForm.CreateEventRow();
+                _debugForm.Buffer = new StringBuilder();
+            }
 
-			if (this.UseCrWl==true) 
-			{
-				DebugForm.CreateEventRow();
-				DebugForm.Buffer=new StringBuilder();
-			}
+            _debugForm.Buffer.Append(message);
 
-			DebugForm.Buffer.Append(message);
-
-            if (DebugForm.InvokeRequired && !DebugForm.Disposing)
-                DebugForm.Invoke((Action)delegate { DebugForm.UpdateCurrentRow(); });
+            if (_debugForm.InvokeRequired && !_debugForm.Disposing)
+                _debugForm.Invoke((Action) (() => _debugForm.UpdateCurrentRow()));
             else
-                DebugForm.UpdateCurrentRow();
+                _debugForm.UpdateCurrentRow();
 
-			DebugForm.Buffer = new StringBuilder(); 
-		}
-	}
+            _debugForm.Buffer = new StringBuilder();
+        }
+    }
 }

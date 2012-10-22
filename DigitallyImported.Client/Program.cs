@@ -6,20 +6,21 @@ using DigitallyImported.Utilities;
 
 namespace DigitallyImported.Client
 {
-
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class Program
     {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             if (args.Length > 0)
             {
                 // process command line args
-                foreach (string arg in args)
+                foreach (var arg in args)
                 {
                     switch (arg.Trim().ToLower())
                     {

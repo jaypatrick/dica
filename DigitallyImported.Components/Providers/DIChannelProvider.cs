@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Specialized;
 using System.Configuration.Provider;
 using DigitallyImported.Configuration.Properties;
 
@@ -10,7 +11,12 @@ namespace DigitallyImported.Components
     {
         private string _channelsLocation;
 
-        public override void Initialize(string name, System.Collections.Specialized.NameValueCollection config)
+        public override string ChannelsLocation
+        {
+            get { return _channelsLocation; }
+        }
+
+        public override void Initialize(string name, NameValueCollection config)
         {
             // Verify that config isn't null
             if (config == null)
@@ -26,7 +32,7 @@ namespace DigitallyImported.Components
             {
                 config.Remove("description");
                 config.Add("description",
-                    "Channel Loader Provider");
+                           "Channel Loader Provider");
             }
 
             // Call the base class's Initialize method
@@ -39,21 +45,13 @@ namespace DigitallyImported.Components
 
             config.Remove("channelsLocation");
 
-                    // Throw an exception if unrecognized attributes remain
+            // Throw an exception if unrecognized attributes remain
             if (config.Count > 0)
             {
                 string attr = config.GetKey(0);
                 if (!String.IsNullOrEmpty(attr))
                     throw new ProviderException
                         ("Unrecognized attribute: " + attr);
-            }
-        }
-
-        public override string ChannelsLocation
-        {
-            get
-            {
-                return _channelsLocation;
             }
         }
 

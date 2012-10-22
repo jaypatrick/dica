@@ -1,33 +1,22 @@
+using System;
+using System.Windows.Forms;
+
 namespace DigitallyImported.Utilities
 {
-    using System;
-
     /// <summary>
     /// 
     /// </summary>
-    internal class PlaylistTimer : System.Windows.Forms.Timer
+    internal class PlaylistTimer : Timer
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        protected internal event EventHandler<EventArgs> TimerTick
-        {
-            add
-            {
-                _timerTick += value;
-            }
-            remove
-            {
-                _timerTick -= value;
-            }
-        }
+        private TimeSpan _tickInterval;
         private EventHandler<EventArgs> _timerTick;
-        private readonly object _timerTickLock = new object();
 
         /// <summary>
         /// 
         /// </summary>
-        protected internal PlaylistTimer() { }
+        protected internal PlaylistTimer()
+        {
+        }
 
         /// <summary>
         /// 
@@ -39,7 +28,29 @@ namespace DigitallyImported.Utilities
 
             TickInterval = tickInterval;
 
-            this.Tick += new EventHandler(PlaylistTimer_Tick);
+            Tick += PlaylistTimer_Tick;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected internal TimeSpan TickInterval
+        {
+            get { return _tickInterval; }
+            set
+            {
+                _tickInterval = value;
+                Interval = (int) value.TotalMilliseconds;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        protected internal event EventHandler<EventArgs> TimerTick
+        {
+            add { _timerTick += value; }
+            remove { _timerTick -= value; }
         }
 
         private void PlaylistTimer_Tick(object sender, EventArgs e)
@@ -53,22 +64,8 @@ namespace DigitallyImported.Utilities
         /// </summary>
         protected internal void Reset()
         {
-            this.Stop();
-            this.Start();
+            Stop();
+            Start();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        protected internal TimeSpan TickInterval
-        {
-            get { return this._tickInterval; }
-            set
-            {
-                this._tickInterval = value;
-                this.Interval = (int)value.TotalMilliseconds;
-            }
-        }
-        private TimeSpan _tickInterval;
     }
 }

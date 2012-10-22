@@ -1,25 +1,22 @@
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DigitallyImported.Data;
 using P = DigitallyImported.Resources.Properties;
 
 namespace DigitallyImported.Components
 {
     public class TrackLoader<TTrack> : ContentLoader<TTrack>
-        where TTrack: class, ITrack, new()
+        where TTrack : class, ITrack, new()
     {
         private TTrack _track;
-        private TrackCollection<TTrack> _tracks             = null;
-        private ConcurrentQueue<TTrack> _tracksQueue        = null;
+        private ConcurrentQueue<TTrack> _tracksQueue;
 
         /// <summary>
         /// 
         /// </summary>
         public TrackLoader()
         {
-            this._track = default(TTrack);
+            _track = default(TTrack);
         }
 
         /// <summary>
@@ -28,7 +25,7 @@ namespace DigitallyImported.Components
         /// <param name="tracks"></param>
         public TrackLoader(TrackCollection<TTrack> tracks)
         {
-            this._track = default(TTrack);
+            _track = default(TTrack);
         }
 
         /// <summary>
@@ -36,16 +33,18 @@ namespace DigitallyImported.Components
         /// </summary>
         /// <param name="tracksRow"></param>
         /// <param name="bypassCache"></param>
+        /// <param name="siteName"> </param>
+        /// <param name="channel"> </param>
         /// <returns></returns>
-        /// 
         [CLSCompliant(false)]
-        public virtual TrackCollection<ITrack> LoadTracks(ChannelData.TRACKSRow tracksRow, bool bypassCache, ref string siteName, IChannel channel)
+        public virtual TrackCollection<ITrack> LoadTracks(ChannelData.TRACKSRow tracksRow, bool bypassCache,
+                                                          ref string siteName, IChannel channel)
         {
             // check if channel already has a tracks collection, if not create a blank one
             var tracks = new TrackCollection<ITrack>();
 
             if (channel.Tracks != null)
-                tracks.AddRange(channel.Tracks.ToArray());  // add the existing array of tracks
+                tracks.AddRange(channel.Tracks.ToArray()); // add the existing array of tracks
 
             _tracksQueue = new ConcurrentQueue<TTrack>();
 
@@ -53,16 +52,15 @@ namespace DigitallyImported.Components
 
 
             // _tracksQueue = new ConcurrentQueue<TTrack>();
-            
 
 
-
-            foreach (var trackRow in tracksRow.GetTRACKRows())
+            foreach (ChannelData.TRACKRow trackRow in tracksRow.GetTRACKRows())
             {
-                _track = tracks.Find(t =>
-                {
-                    return t.Name.Equals(trackRow.TRACKTITLE.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase);
-                }) as TTrack;
+                _track =
+                    tracks.Find(
+                        t =>
+                        t.Name.Equals(trackRow.TRACKTITLE.Replace(" ", ""), StringComparison.CurrentCultureIgnoreCase))
+                    as TTrack;
 
                 // extract the site name from the forum url. the playlist doesn't have the site url in the schema
                 if (!trackRow.IsTRACKURLNull())
@@ -80,13 +78,11 @@ namespace DigitallyImported.Components
                 // track exists, update track info which is updateable...comment count is
                 if (tracks.Contains(_track))
                 {
-                    _track.CommentCount = int.Parse(trackRow.BOARDCOUNT);
+                    if (_track != null) _track.CommentCount = int.Parse(trackRow.BOARDCOUNT);
                 }
                 else
                 {
-                    _track = new TTrack();
-
-                    _track.ParentChannel = channel;
+                    _track = new TTrack {ParentChannel = channel};
 
                     // load up the tracks collection for the channel
                     if (!trackRow.IsSTARTTIMENull())
@@ -117,7 +113,7 @@ namespace DigitallyImported.Components
                         _track.RecordLabel = trackRow.LABEL;
                     }
 
-                    foreach (var extraUrlRow in trackRow.GetEXTRAURLRows())
+                    foreach (ChannelData.EXTRAURLRow extraUrlRow in trackRow.GetEXTRAURLRows())
                     {
                         if (!extraUrlRow.IsEXTRAURL_TextNull())
                         {
@@ -134,7 +130,7 @@ namespace DigitallyImported.Components
 
             if (_tracksQueue.Count > 0)
             {
-                tracks.InsertRange(0, _tracksQueue.ToArray());  // insert the new tracks
+                tracks.InsertRange(0, _tracksQueue.ToArray()); // insert the new tracks
                 // tracks.HasNewTracks = true;
             }
 
@@ -144,7 +140,6 @@ namespace DigitallyImported.Components
             }
 
             return tracks;
-
         }
     }
 }

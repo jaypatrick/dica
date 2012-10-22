@@ -1,4 +1,3 @@
-
 namespace DigitallyImported.Utilities
 {
     /// <summary>

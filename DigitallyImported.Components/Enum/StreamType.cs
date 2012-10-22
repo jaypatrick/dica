@@ -5,7 +5,7 @@ namespace DigitallyImported.Components
     /// <summary>
     /// 
     /// </summary>
-    [FlagsAttribute()]
+    [Flags]
     public enum StreamType
     {
         None = 0,

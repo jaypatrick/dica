@@ -3,25 +3,25 @@ using System;
 namespace DigitallyImported.Components
 {
     [Serializable]
-    public abstract class ContentChangedEventArgs<T> : EventArgs where T: IContent
+    public abstract class ContentChangedEventArgs<T> : EventArgs
+        where T : IContent
     {
-        private T _refreshedContent = default(T);
-
         /// <summary>
         /// 
         /// </summary>
-        protected ContentChangedEventArgs() 
+        protected ContentChangedEventArgs()
             : this(default(T))
-        { }
-        
+        {
+        }
+
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="refreshedContent"></param>
         protected ContentChangedEventArgs(T refreshedContent)
         {
-            _refreshedContent = refreshedContent;
+            RefreshedContent = refreshedContent;
         }
 
         /// <summary>

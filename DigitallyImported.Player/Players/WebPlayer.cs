@@ -1,7 +1,6 @@
 using System;
+using System.Drawing;
 using DigitallyImported.Components;
-using System.Threading.Tasks;
-
 
 namespace DigitallyImported.Player
 {
@@ -14,9 +13,8 @@ namespace DigitallyImported.Player
         /// 
         /// </summary>
         public WebPlayer()
-            : base(PlayerTypes.Default)
+            : base(PlayerType.Default)
         {
-
         }
 
         /// <summary>
@@ -30,7 +28,7 @@ namespace DigitallyImported.Player
         /// <summary>
         /// 
         /// </summary>
-        public override System.Drawing.Icon PlayerIcon
+        public override Icon PlayerIcon
         {
             get { throw new Exception("The method or operation is not implemented."); }
         }
@@ -38,31 +36,24 @@ namespace DigitallyImported.Player
         /// <summary>
         /// 
         /// </summary>
-        public override PlayerTypes PlayerType
+        public override PlayerType PlayerType
         {
-            get { return PlayerTypes.Default; }
+            get { return PlayerType.Default; }
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="channel"></param>
-        protected override void Play(DigitallyImported.Components.IChannel channel)
+        protected override void Play(IChannel channel)
         {
             //if (channel == null) throw new ArgumentNullException("channel", "Must specify a channel to play. ");
             // REALLY NEED TO CHANGE THIS IOC/TEMPLATE METHOD IN BASE CLASS\
 
             var url = channel.CurrentTrack.TrackUrl.AbsoluteUri;
 
-            try
-            {
-                if (IsInstalled)
-                    Components.Utilities.StartProcess(url);
-            }
-            catch
-            {
-                throw;
-            }
+            if (IsInstalled)
+                Components.Utilities.StartProcess(url);
         }
 
         /// <summary>

@@ -15,4 +15,4 @@ using System.Resources;
 [assembly: AssemblyVersion("4.1.0.*")]
 [assembly: AssemblyCompany("JaysonKnight.com")]
 [assembly: AssemblyCopyright("Copyright 2012 :: Jayson Knight")]
-[assembly: NeutralResourcesLanguageAttribute("en-US")]
+[assembly: NeutralResourcesLanguage("en-US")]

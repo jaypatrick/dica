@@ -6,13 +6,13 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// 
-    [Flags()]
-    public enum PlayerTypes
+    [Flags]
+    public enum PlayerType
     {
-        Default     = 0,
-        WMP         = 1,
-        iTunes      = 2,
-        Winamp      = 4,
-        Zune        = 8
+        Default = 0,
+        WMP = 1,
+        iTunes = 2,
+        Winamp = 4,
+        Zune = 8
     }
 }

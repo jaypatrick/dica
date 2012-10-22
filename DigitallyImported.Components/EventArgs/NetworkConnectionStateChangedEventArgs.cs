@@ -3,13 +3,14 @@ using System;
 namespace DigitallyImported.Components.Services
 {
     [Serializable]
-    public class NetworkConnectionStateChangedEventArgs : System.EventArgs
+    public class NetworkConnectionStateChangedEventArgs : EventArgs
     {
+        private ConnectionStatus _networkStatus;
+
         public ConnectionStatus NetworkStatus
         {
-            get { return this._networkStatus; }
-            set { this._networkStatus = value; }
+            get { return _networkStatus; }
+            set { _networkStatus = value; }
         }
-        private ConnectionStatus _networkStatus;
     }
 }

@@ -4,7 +4,7 @@
   <description asmv2:iconFile="DIIcon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="DigitallyImported.Client" version="4.1.0.29720" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="DigitallyImported.Client" version="4.1.0.1130" language="neutral" processorArchitecture="msil" />
     <commandLine file="DigitallyImported.Client.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -44,85 +44,85 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Client.exe" size="167936">
-      <assemblyIdentity name="DigitallyImported.Client" version="4.1.0.29720" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DigitallyImported.Client" version="4.1.0.1130" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>tUnneBJ9HZP08zjQZ4fKrwHi2NbL8qwJYlOitFEudt4=</dsig:DigestValue>
+        <dsig:DigestValue>A7OfPROFzp+7acQa+/r99RpbBFvFy2ccnJoc0RA0Yak=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Components.dll" size="50688">
-      <assemblyIdentity name="DigitallyImported.Components" version="4.1.0.29718" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Components.dll" size="50176">
+      <assemblyIdentity name="DigitallyImported.Components" version="4.1.0.1126" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>FdXykh+rP3uNHMAbN9P0rxdlCkULIdr+LLba+g5TWSI=</dsig:DigestValue>
+        <dsig:DigestValue>+J6XiNUdMpBkCQrxHFUlzzEUqIFXdzk2c+T2Ci5ki2Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Configuration.dll" size="14336">
-      <assemblyIdentity name="DigitallyImported.Configuration" version="4.1.0.29717" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DigitallyImported.Configuration" version="4.1.0.1126" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Slj8Nuve1yNhxVQF8KGT7WI2Ych/az5xyBu4PpOFkEA=</dsig:DigestValue>
+        <dsig:DigestValue>4afS2cXenvvvhObVQwfWfiXAbjPcdets/0S3iLmu5Ns=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Controls.dll" size="102912">
-      <assemblyIdentity name="DigitallyImported.Controls" version="4.1.0.29718" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Controls.dll" size="103424">
+      <assemblyIdentity name="DigitallyImported.Controls" version="4.1.0.1127" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XKM6tr0IWOP+0owB5/2x6Dkd5JZeAEOPklQQxKn2HFY=</dsig:DigestValue>
+        <dsig:DigestValue>yeecLKr9wEDnmZ3aoSYJ54lOJh8DyfOefFY10QsTZ3E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Data.dll" size="82944">
-      <assemblyIdentity name="DigitallyImported.Data" version="4.1.0.29717" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DigitallyImported.Data" version="4.1.0.1126" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D6goCH+gzVPAYlw+e9amdvmKt7ThTDknqRxOm34BSUI=</dsig:DigestValue>
+        <dsig:DigestValue>Va+l2JBtmZcJwbtZxwECj1OKv7xlaDh+vLXFL64cKL4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Player.dll" size="17920">
-      <assemblyIdentity name="DigitallyImported.Player" version="4.1.0.29720" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DigitallyImported.Player" version="4.1.0.1129" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>0kDp/6Kntnw/FgBrk5jw+QX2/c/ANejUJLAsm3OTGPg=</dsig:DigestValue>
+        <dsig:DigestValue>5+4CyAgj1LcoZVJI8TB/Jxa1BNic34S1bFwnhpte6LA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DigitallyImported.Resources.dll" size="303616">
-      <assemblyIdentity name="DigitallyImported.Resources" version="4.1.0.29717" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="DigitallyImported.Resources" version="4.1.0.1126" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dy0dF5SHzs9VWfEp93H/o9/rQW+9WAu0XEEbbCqJkwY=</dsig:DigestValue>
+        <dsig:DigestValue>kBRSR3ZMiIe5I7Rb6pH5qDc4EBNKo003uIPspkkj5Ic=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,7 +134,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2o/J/1DYl7Ut/kbTTivctc5bp0Bsea2iCV2AuUqTVgw=</dsig:DigestValue>
+        <dsig:DigestValue>0AWC54ho3dc1NDi4S3Sr5YQnKP7UPFpu/JqhIfxIwg4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,103 +146,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9vrUIfJU7IF9ULaI6JN40GIxuXk6MTX1SMrNVVE+i5k=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.EnterpriseLibrary.Common.dll" size="348160">
-      <assemblyIdentity name="Microsoft.Practices.EnterpriseLibrary.Common" version="5.0.414.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DdZDftcNKT38iRAcwoGSEmC6yUZKqYazJpyz0y57R08=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll" size="143360">
-      <assemblyIdentity name="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling" version="5.0.414.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>8fmwQcOXQnePD5DmtvBC7xtn+Wq7JIPcL/WJqwFayVc=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll" size="49152">
-      <assemblyIdentity name="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging" version="5.0.414.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>NgRM5u9ZGMLSL8EC+jrfQz/N3Pp2COeZMtZgkpMiIA4=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.EnterpriseLibrary.Logging.dll" size="520192">
-      <assemblyIdentity name="Microsoft.Practices.EnterpriseLibrary.Logging" version="5.0.414.0" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>TYFXiQccmLe2PGZf4JNt4Ukj33lnz3LHCD4P9OjxZrg=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.ServiceLocation.dll" size="29760">
-      <assemblyIdentity name="Microsoft.Practices.ServiceLocation" version="1.0.0.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eee+a+dQmhpSY/ApLxRipXdEp8UsTaZHXHClBU0Iwyc=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.Unity.dll" size="133944">
-      <assemblyIdentity name="Microsoft.Practices.Unity" version="2.0.414.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>IBZVzS9kGsBeRQ+wPOdjr7xehZ1s4aJa5/7zwnou45o=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.Unity.Configuration.dll" size="86840">
-      <assemblyIdentity name="Microsoft.Practices.Unity.Configuration" version="2.0.414.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>2R+YY0Ob2EmIkQXswxgusdwU6Oa8t6ozuQWLXoN+onE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Practices.Unity.Interception.dll" size="125752">
-      <assemblyIdentity name="Microsoft.Practices.Unity.Interception" version="2.0.414.0" publicKeyToken="31BF3856AD364E35" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>eewLm5dS/mPAw3vEIXwufZ6jMBYQfjhw1eYYieuMw+M=</dsig:DigestValue>
+        <dsig:DigestValue>i/9kwfARXCswL6iSq0C1WH77elzZEX9WrkvurCFxiqU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -258,13 +162,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="DigitallyImported.Client.exe.config" size="4614">
+  <file name="DigitallyImported.Client.exe.config" size="4921">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>k2Hw4Ic3UF+DgpylIi9fUrCLAL97sxxsZw0LkTUbPU4=</dsig:DigestValue>
+      <dsig:DigestValue>ExiT945Oz+p3VhIR+Yk2SSeC5mIFZBqS+c3wGisHYoA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="DIIcon.ico" size="1406">
@@ -285,22 +189,22 @@
       <dsig:DigestValue>S1Em5iOuyL6EI+IcTCIsZiBTrGzAnqvIQd9XBq2SApY=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dumps\DIADPlus-Quick.xml" size="978" writeableType="applicationData">
+  <file name="Dumps\DIADPlus-Quick.xml" size="962" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>k+xRapA1P7lVWorQsoNEP+/zKfb2Smq0GBPJYboLsoE=</dsig:DigestValue>
+      <dsig:DigestValue>B/mZNiLrSWgmz8DKh7w4Qm5y1AiAQAxDTavU67LXogk=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Dumps\DIADPlus-WebException.xml" size="3256" writeableType="applicationData">
+  <file name="Dumps\DIADPlus-WebException.xml" size="3146" writeableType="applicationData">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hCqpC/a9jTbOmKiL657BBcUCT5T4EQ1IQeLnl/4yeEc=</dsig:DigestValue>
+      <dsig:DigestValue>Ra1TkGKbYwW/3jQ/btsIHWFciZhsfPn71QrJO34RLnA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Dumps\RunADPlus.txt" size="376">

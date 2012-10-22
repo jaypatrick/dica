@@ -1,28 +1,53 @@
+using System;
+using System.ComponentModel;
+using System.Configuration;
+using System.Diagnostics;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Xml.Serialization;
+using DigitallyImported.Components;
+using DigitallyImported.Configuration.Properties;
+
 namespace DigitallyImported.Utilities
 {
-    using System;
-    using System.ComponentModel;
-    using System.Diagnostics;
-    using System.Drawing;
-    using System.Windows.Forms;
-    using System.Xml.Serialization;
-    using DigitallyImported.Components;
-    using DigitallyImported.Configuration.Properties;
-    using DigitallyImported.Resources.Properties;
-
     /// <summary>
     /// Summary description for ChannelSection.
     /// </summary>
     /// 
-    [Serializable()]
+    [Serializable]
     [XmlRoot("RegularChannel")]
     public partial class Channel : UserControl, IChannel
     {
+        internal static EventHandler<EventArgs> _elementMouseHover;
+        private static readonly object _elementHoverLock = new object();
+        internal static EventHandler<ChannelChangedEventArgs<IChannel>> _channelChanged;
+        private static readonly object _channelChangedLock = new object();
+        private readonly object _channelRefreshedLock = new object();
+        private readonly object _historyClickedLock = new object();
+        private readonly object _trackChangedLock = new object();
+        internal EventHandler<TrackChangedEventArgs<ITrack>> _channelRefreshed;
+        internal EventHandler<EventArgs> _historyClicked;
+        internal EventHandler<TrackChangedEventArgs<ITrack>> _trackChanged;
+        private Uri channelInfoUrl;
+        private string channelName = string.Empty;
+        private ITrack currentTrack;
+        private bool isAlternating;
+        private bool isSelected;
+        private Uri playListHistoryUrl;
+        private IPlaylist playlist;
+        private StationType playlistType;
+        private Icon siteIcon;
+        private string siteName = string.Empty;
+        private StreamType streamType;
+        private StreamCollection<IStream> streams;
+        private SubscriptionLevel subscriptionLevel;
+        private TrackCollection<ITrack> tracks;
+
         /// <summary>
         /// 
         /// </summary>
         public Channel()
-            : this(PlaylistTypes.Custom)
+            : this(StationType.Custom)
         {
         }
 
@@ -31,28 +56,15 @@ namespace DigitallyImported.Utilities
         /// 
         /// </summary>
         /// <param name="PlaylistTypes"></param>
-        public Channel(PlaylistTypes PlaylistTypes)
+        public Channel(StationType PlaylistTypes)
             // : base(PlaylistTypes)
         {
             InitializeComponent();
-            this.PlaylistType = PlaylistTypes;
+            PlaylistType = PlaylistTypes;
             LoadImages();
 
             // events
-            Settings.Default.SettingChanging += new System.Configuration.SettingChangingEventHandler(ChannelSection_SettingChanging);
-        }
-
-        /// <summary>
-        /// Method to initialize the image controls.
-        /// </summary>
-        protected internal virtual void LoadImages()
-        {
-            this.pic24k.Image = Resources.blue_24k;
-            this.pic32k.Image = Resources.blue_32k;
-            this.pic96k.Image = Resources.blue_96k;
-            this.picAacPlus.Image = Resources.icon_trans_aacplus;
-            this.picMp3.Image = Resources.icon_mp3;
-            this.picWmp.Image = Resources.icon_wm;
+            Settings.Default.SettingChanging += ChannelSection_SettingChanging;
         }
 
         /// <summary>
@@ -62,10 +74,7 @@ namespace DigitallyImported.Utilities
         /// <returns></returns>
         public virtual IChannel this[ITrack track]
         {
-            get
-            {
-                return tracks[track.Name].ParentChannel;
-            }
+            get { return tracks[track.Name].ParentChannel; }
         }
 
         /// <summary>
@@ -75,11 +84,10 @@ namespace DigitallyImported.Utilities
         /// <returns></returns>
         public virtual IChannel this[int index]
         {
-            get
-            {
-                return tracks[index].ParentChannel;
-            }
+            get { return tracks[index].ParentChannel; }
         }
+
+        #region IChannel Members
 
         /// <summary>
         /// Property to get/set the channel name
@@ -92,34 +100,33 @@ namespace DigitallyImported.Utilities
             set
             {
                 base.Name = value.Replace(" ", "").ToLower(); // unique key for control
-                
-                this.channelName = value;
-                if (this.InvokeRequired)
-                {
-                    this.Invoke((Action) delegate
-                    {
-                        foreach (Control c in this.Controls)
-                        {
-                            c.Name += value.Replace(" ", "").ToLower();
-                        }
 
-                        toolTipLinks.SetToolTip(this.lblChannelName, value);
-                        this.lblChannelName.Text = value;
-                    });
+                channelName = value;
+                if (InvokeRequired)
+                {
+                    Invoke((Action) delegate
+                        {
+                            foreach (Control c in Controls)
+                            {
+                                c.Name += value.Replace(" ", "").ToLower();
+                            }
+
+                            toolTipLinks.SetToolTip(lblChannelName, value);
+                            lblChannelName.Text = value;
+                        });
                 }
                 else
                 {
-                    foreach (Control c in this.Controls)
+                    foreach (Control c in Controls)
                     {
                         c.Name += value.Replace(" ", "").ToLower();
                     }
 
-                    toolTipLinks.SetToolTip(this.lblChannelName, value);
-                    this.lblChannelName.Text = value;
+                    toolTipLinks.SetToolTip(lblChannelName, value);
+                    lblChannelName.Text = value;
                 }
             }
         }
-        private string channelName = string.Empty;
 
         /// <summary>
         /// 
@@ -128,27 +135,26 @@ namespace DigitallyImported.Utilities
         [XmlElement("ChannelInfoUrl")]
         public virtual Uri ChannelInfoUrl
         {
-            get { return this.channelInfoUrl; }
+            get { return channelInfoUrl; }
             set
             {
-                this.channelInfoUrl = value;
+                channelInfoUrl = value;
 
-                if (this.InvokeRequired)
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        toolTipLinks.SetToolTip(this.lnkChannelInfo, value.AbsoluteUri);
-                        this.lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri as string;
-                    });
+                    Invoke((Action) delegate
+                        {
+                            toolTipLinks.SetToolTip(lnkChannelInfo, value.AbsoluteUri);
+                            lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri;
+                        });
                 }
                 else
                 {
-                    toolTipLinks.SetToolTip(this.lnkChannelInfo, value.AbsoluteUri);
-                    this.lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri as string;
+                    toolTipLinks.SetToolTip(lnkChannelInfo, value.AbsoluteUri);
+                    lnkChannelInfo.Links[0].LinkData = value.AbsoluteUri;
                 }
             }
         }
-        private Uri channelInfoUrl = null;
 
         /// <summary>
         /// 
@@ -157,10 +163,9 @@ namespace DigitallyImported.Utilities
         [XmlElement("SiteName")]
         public virtual string SiteName
         {
-            get { return this.siteName; }
-            set { this.siteName = value; }
+            get { return siteName; }
+            set { siteName = value; }
         }
-        private string siteName = string.Empty;
 
         /// <summary>
         /// 
@@ -169,26 +174,25 @@ namespace DigitallyImported.Utilities
         [XmlElement("PlaylistHistoryUrl")]
         public virtual Uri PlaylistHistoryUrl
         {
-            get { return this.playListHistoryUrl; }
+            get { return playListHistoryUrl; }
             set
             {
-                this.playListHistoryUrl = value;
-                if (this.InvokeRequired)
+                playListHistoryUrl = value;
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        this.lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri as string;
-                        toolTipLinks.SetToolTip(this.lnkPlaylistHistory, value.AbsoluteUri);
-                    });
+                    Invoke((Action) delegate
+                        {
+                            lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri;
+                            toolTipLinks.SetToolTip(lnkPlaylistHistory, value.AbsoluteUri);
+                        });
                 }
                 else
                 {
-                    this.lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri as string;
-                    toolTipLinks.SetToolTip(this.lnkPlaylistHistory, value.AbsoluteUri);
+                    lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri;
+                    toolTipLinks.SetToolTip(lnkPlaylistHistory, value.AbsoluteUri);
                 }
             }
         }
-        private Uri playListHistoryUrl = null;
 
         /// <summary>
         /// 
@@ -197,36 +201,31 @@ namespace DigitallyImported.Utilities
         [XmlElement("SiteIcon")]
         public virtual Icon SiteIcon
         {
-            get { return this.siteIcon; }
-            set 
+            get { return siteIcon; }
+            set
             {
-                if (this.InvokeRequired)
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        this.picSiteIcon.Image = value.ToBitmap();
-                    });
+                    Invoke((Action) delegate { picSiteIcon.Image = value.ToBitmap(); });
                 }
                 else
                 {
-                    this.picSiteIcon.Image = value.ToBitmap();
+                    picSiteIcon.Image = value.ToBitmap();
                 }
-                this.siteIcon = value;
+                siteIcon = value;
             }
         }
-        private Icon siteIcon = null;
 
         /// <summary>
         /// 
         /// </summary>
         /// 
         [XmlElement("PlaylistType")]
-        public virtual PlaylistTypes PlaylistType
+        public virtual StationType PlaylistType
         {
-            get { return this.playlistType; }
-            set { this.playlistType = value; }
+            get { return playlistType; }
+            set { playlistType = value; }
         }
-        private PlaylistTypes playlistType;
 
         /// <summary>
         /// 
@@ -235,10 +234,9 @@ namespace DigitallyImported.Utilities
         [XmlElement("SubscriptionLevel")]
         public virtual SubscriptionLevel SubscriptionLevel
         {
-            get { return this.subscriptionLevel; }
-            set { this.subscriptionLevel = value; }
+            get { return subscriptionLevel; }
+            set { subscriptionLevel = value; }
         }
-        private SubscriptionLevel subscriptionLevel;
 
         /// <summary>
         /// 
@@ -247,10 +245,9 @@ namespace DigitallyImported.Utilities
         [XmlElement("StreamType")]
         public virtual StreamType StreamType
         {
-            get { return this.streamType; }
-            set { this.streamType = value; }
+            get { return streamType; }
+            set { streamType = value; }
         }
-        private StreamType streamType;
 
         /// <summary>
         /// 
@@ -262,7 +259,6 @@ namespace DigitallyImported.Utilities
             get { return streams; }
             set { streams = value; }
         }
-        private StreamCollection<IStream> streams;
 
         /// <summary>
         /// 
@@ -271,10 +267,9 @@ namespace DigitallyImported.Utilities
         [XmlElement("Playlist")]
         public virtual IPlaylist Playlist
         {
-            get { return this.playlist; }
-            set { this.playlist = value; }
+            get { return playlist; }
+            set { playlist = value; }
         }
-        private IPlaylist playlist;
 
         /// <summary>
         /// 
@@ -284,27 +279,25 @@ namespace DigitallyImported.Utilities
         public virtual TrackCollection<ITrack> Tracks
         {
             get { return tracks; }
-            set 
+            set
             {
                 if (tracks != null)
                 {
                     if (!currentTrack.TrackTitle.Equals(value[0].TrackTitle))
                     {
-                        Trace.WriteLine(string.Format("Track changed on channel {0}", ChannelName), TraceCategories.ContentChangedEvents.ToString());
-                        this.OnTrackChanged(this, new TrackChangedEventArgs<ITrack>(value[0]));
+                        Trace.WriteLine(string.Format("Track changed on channel {0}", ChannelName),
+                                        TraceCategory.ContentChangedEvents.ToString());
+                        OnTrackChanged(this, new TrackChangedEventArgs<ITrack>(value[0]));
                     }
                 }
-                                
+
                 tracks = value;
                 currentTrack = tracks[0];
                 // update GUI...not very expensive
 
-                if (this.InvokeRequired)
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        SetValues();
-                    });
+                    Invoke((Action) SetValues);
                 }
                 else
                 {
@@ -312,52 +305,47 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        private TrackCollection<ITrack> tracks;
 
-        [XmlIgnore()]
+        /// <summary>
+        /// 
+        /// </summary>
+        [XmlIgnore]
         public virtual ITrack CurrentTrack
         {
-            get 
-            {
-                return currentTrack;  // CHANGE THIS PLEASE! should be the track marked as IsPlaying!
+            get { return currentTrack; // CHANGE THIS PLEASE! should be the track marked as IsPlaying!
             }
         }
-        private ITrack currentTrack;
 
         /// <summary>
         /// 
         /// </summary>
         /// 
-        [XmlIgnore()]
+        [XmlIgnore]
         public virtual bool IsAlternating
         {
-            get
-            {
-                return this.isAlternating;
-            }
+            get { return isAlternating; }
             set
             {
-                this.isAlternating = value;
-                if (this.InvokeRequired)
+                isAlternating = value;
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        if (value == true)
-                            this.BackColor = Settings.Default.AlternatingChannelBackground;
-                        else
-                            this.BackColor = Settings.Default.ChannelBackground;
-                    });
+                    Invoke(
+                        (Action)
+                        delegate
+                            {
+                                BackColor = value
+                                                ? Settings.Default.AlternatingChannelBackground
+                                                : Settings.Default.ChannelBackground;
+                            });
                 }
                 else
                 {
-                    if (value == true)
-                        this.BackColor = Settings.Default.AlternatingChannelBackground;
-                    else
-                        this.BackColor = Settings.Default.ChannelBackground;
+                    BackColor = value
+                                    ? Settings.Default.AlternatingChannelBackground
+                                    : Settings.Default.ChannelBackground;
                 }
             }
         }
-        private bool isAlternating;
 
         /// <summary>
         /// 
@@ -366,105 +354,144 @@ namespace DigitallyImported.Utilities
         [XmlElement("SelectedChannel")]
         public virtual bool IsSelected
         {
-            get
-            {
-                return this.isSelected;
-            }
+            get { return isSelected; }
             set
             {
-                this.isSelected = value;
-                if (this.InvokeRequired)
+                isSelected = value;
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        if (value == true)
+                    Invoke((Action) delegate
                         {
-                            this.BackColor = Settings.Default.SelectedChannelBackground;
-                            this.Focus();
-                        }
-                        else
-                        {
-                            if (this.isAlternating)
-                                this.BackColor = Settings.Default.AlternatingChannelBackground;
+                            if (value)
+                            {
+                                BackColor = Settings.Default.SelectedChannelBackground;
+                                Focus();
+                            }
                             else
-                                this.BackColor = Settings.Default.ChannelBackground;
-                        }
-                    });
+                            {
+                                BackColor = isAlternating
+                                                ? Settings.Default.AlternatingChannelBackground
+                                                : Settings.Default.ChannelBackground;
+                            }
+                        });
                 }
                 else
                 {
-                    if (value == true)
+                    if (value)
                     {
-                        this.BackColor = Settings.Default.SelectedChannelBackground;
-                        this.Focus();
+                        BackColor = Settings.Default.SelectedChannelBackground;
+                        Focus();
                     }
                     else
                     {
-                        if (this.isAlternating)
-                            this.BackColor = Settings.Default.AlternatingChannelBackground;
-                        else
-                            this.BackColor = Settings.Default.ChannelBackground;
+                        BackColor = isAlternating
+                                        ? Settings.Default.AlternatingChannelBackground
+                                        : Settings.Default.ChannelBackground;
                     }
                 }
             }
         }
-        private bool isSelected;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        [Browsable(true)]
+        public event EventHandler<TrackChangedEventArgs<ITrack>> TrackChanged
+        {
+            add
+            {
+                lock (_trackChangedLock)
+                {
+                    {
+                        _trackChanged += value;
+                    }
+                }
+            }
+            remove
+            {
+                lock (_trackChangedLock)
+                {
+                    _trackChanged -= value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(IContent other)
+        {
+            return Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Method to initialize the image controls.
+        /// </summary>
+        protected internal virtual void LoadImages()
+        {
+            pic24k.Image = Resources.Properties.Resources.blue_24k;
+            pic32k.Image = Resources.Properties.Resources.blue_32k;
+            pic96k.Image = Resources.Properties.Resources.blue_96k;
+            picAacPlus.Image = Resources.Properties.Resources.icon_trans_aacplus;
+            picMp3.Image = Resources.Properties.Resources.icon_mp3;
+            picWmp.Image = Resources.Properties.Resources.icon_wm;
+        }
 
         /// <summary>
         /// Event to set the mouse cursor to hand upon entering a picture box
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">EventArgs</param>
-        protected internal virtual void PictureBox_MouseEnter(object sender, System.EventArgs e)
+        protected internal virtual void PictureBox_MouseEnter(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.Hand;
+            Cursor = Cursors.Hand;
 
-            Control c = (Control)sender;
+            var c = (Control) sender;
             string name = c.Name.ToLower();
 
             //switch (c.Name.ToLower().Substring(0, c.Name.Length - this.channelName.Replace(" ", "").Length))
             //{
-                if (name.Contains("picmp3"))
-                {
-                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeMp3About));
-                    //break;
-                }
-                if (name.Contains("picwmp"))
-                {
-                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeWmaAbout));
-                    //break;
-                }
-                if (name.Contains("picaacplus"))
-                {
-                    toolTipLinks.SetToolTip(c, string.Format(this.siteName, Resources.MediaTypeAacPlusAbout));
-                    //break;
-                }
+            if (name.Contains("picmp3"))
+            {
+                toolTipLinks.SetToolTip(c, string.Format(siteName, Resources.Properties.Resources.MediaTypeMp3About));
+                //break;
+            }
+            if (name.Contains("picwmp"))
+            {
+                toolTipLinks.SetToolTip(c, string.Format(siteName, Resources.Properties.Resources.MediaTypeWmaAbout));
+                //break;
+            }
+            if (name.Contains("picaacplus"))
+            {
+                toolTipLinks.SetToolTip(c, string.Format(siteName, Resources.Properties.Resources.MediaTypeAacPlusAbout));
+                //break;
+            }
 
-                // testing, delete and refactor
-                if (name.Contains("pic24k"))
-                {
-                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.AacPlus, 
-                        this.siteName, this.channelName).AbsoluteUri);
-                    //break;
-                }
-                if (name.Contains("pic32k"))
-                {
-                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Wma, 
-                        this.siteName, this.channelName).AbsoluteUri);
-                    //break;
-                }
-                if (name.Contains("pic96k"))
-                {
-                    toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Mp3, 
-                        this.siteName, this.channelName).AbsoluteUri);
-                    //break;
-                }
-                // end testing
+            // testing, delete and refactor
+            if (name.Contains("pic24k"))
+            {
+                toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.AacPlus,
+                                                                              siteName, channelName).AbsoluteUri);
+                //break;
+            }
+            if (name.Contains("pic32k"))
+            {
+                toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Wma,
+                                                                              siteName, channelName).AbsoluteUri);
+                //break;
+            }
+            if (name.Contains("pic96k"))
+            {
+                toolTipLinks.SetToolTip(c, Components.Utilities.GetChannelUri(StreamType.Mp3,
+                                                                              siteName, channelName).AbsoluteUri);
+                //break;
+            }
+            // end testing
 
-                else
-                {
-                    //break;
-                }
             //}
         }
 
@@ -473,9 +500,9 @@ namespace DigitallyImported.Utilities
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">EventArgs</param>
-        protected internal virtual void PictureBox_MouseLeave(object sender, System.EventArgs e)
+        protected internal virtual void PictureBox_MouseLeave(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.Arrow;
+            Cursor = Cursors.Arrow;
         }
 
         /// <summary>
@@ -485,7 +512,7 @@ namespace DigitallyImported.Utilities
         /// <param name="e"></param>
         protected internal virtual void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LinkLabel link = sender as LinkLabel;
+            var link = sender as LinkLabel;
 
             if (link != null)
             {
@@ -498,7 +525,7 @@ namespace DigitallyImported.Utilities
                     }
                     else
                     {
-                        DigitallyImported.Components.Utilities.StartProcess(e.Link.LinkData as string);
+                        Components.Utilities.StartProcess(e.Link.LinkData as string);
                     }
                 }
             }
@@ -509,22 +536,20 @@ namespace DigitallyImported.Utilities
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected internal virtual void ChannelSection_SettingChanging(object sender, System.Configuration.SettingChangingEventArgs e)
+        protected internal virtual void ChannelSection_SettingChanging(object sender, SettingChangingEventArgs e)
         {
             switch (e.SettingName)
             {
                 case ("AlternatingChannelBackground"):
-                {
-                    // this.IsAlternating = true;
-                    break;
-                }
+                    {
+                        // this.IsAlternating = true;
+                        break;
+                    }
                 case ("SelectedChannelBackground"):
-                {
-                    // this.IsSelected = true;
-                    break;
-                }
-                default:
-                    break;
+                    {
+                        // this.IsSelected = true;
+                        break;
+                    }
             }
         }
 
@@ -567,6 +592,11 @@ namespace DigitallyImported.Utilities
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected internal virtual void OnPlaylistHistoryClicked(object sender, EventArgs e)
         {
             if (_historyClicked != null)
@@ -604,7 +634,7 @@ namespace DigitallyImported.Utilities
         /// <returns></returns>
         public override string ToString()
         {
-            return this.channelName;
+            return channelName;
         }
 
         /// <summary>
@@ -618,53 +648,50 @@ namespace DigitallyImported.Utilities
             // refactor into property -- TODO, break all inks into Uri's and use Uri methods to extract/build string
             Uri linkUri = null;
             // MediaType mediaType = MediaType.None;
-            Control c = (Control)sender;
+            var c = (Control) sender;
             string name = c.Name.ToLower();
 
             //switch (c.Name.ToLower().Substring(0, c.Name.Length - this.channelName.Replace(" ", "").Length))
             //{
-                if (name.Contains("pic24k"))
-                    {
-                        linkUri = Components.Utilities.GetChannelUri(StreamType.AacPlus, this.siteName, this.channelName);
-                        streamType = StreamType.AacPlus;
-                        //break;
-                    }
-                if (name.Contains("pic32k"))
-                    {
-                        linkUri = Components.Utilities.GetChannelUri(StreamType.Wma, this.siteName, this.channelName);
-                        streamType = StreamType.Wma;
-                        //break;
-                    }
-                if (name.Contains("pic96k"))
-                    {
-                        linkUri = Components.Utilities.GetChannelUri(StreamType.Mp3, this.siteName, this.channelName);
-                        streamType = StreamType.Mp3;
-                        //break;
-                    }
-                if (name.Contains("picmp3"))
-                    {
-                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeMp3About));
-                        //break;
-                    }
-                if (name.Contains("picwmp"))
-                    {
-                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeWmaAbout));
-                        //break;
-                    }
-                if (name.Contains("picaac"))
-                    {
-                        DigitallyImported.Components.Utilities.StartProcess(string.Format(this.siteName, Resources.MediaTypeAacPlusAbout));
-                        //break;
-                    }
-                else
-                    {
-                        // ADDED TO SIMULATE CLICK EVENT
-                        //linkUri = Utilities.GetChannelUri(StreamType.Mp3, this.siteName, this.channelName);
-                        //break;
-                    }
+            if (name.Contains("pic24k"))
+            {
+                linkUri = Components.Utilities.GetChannelUri(StreamType.AacPlus, siteName, channelName);
+                streamType = StreamType.AacPlus;
+                //break;
+            }
+            if (name.Contains("pic32k"))
+            {
+                linkUri = Components.Utilities.GetChannelUri(StreamType.Wma, siteName, channelName);
+                streamType = StreamType.Wma;
+                //break;
+            }
+            if (name.Contains("pic96k"))
+            {
+                linkUri = Components.Utilities.GetChannelUri(StreamType.Mp3, siteName, channelName);
+                streamType = StreamType.Mp3;
+                //break;
+            }
+            if (name.Contains("picmp3"))
+            {
+                Components.Utilities.StartProcess(string.Format(siteName,
+                                                                Resources.Properties.Resources.MediaTypeMp3About));
+                //break;
+            }
+            if (name.Contains("picwmp"))
+            {
+                Components.Utilities.StartProcess(string.Format(siteName,
+                                                                Resources.Properties.Resources.MediaTypeWmaAbout));
+                //break;
+            }
+            if (name.Contains("picaac"))
+            {
+                Components.Utilities.StartProcess(string.Format(siteName,
+                                                                Resources.Properties.Resources.MediaTypeAacPlusAbout));
+                //break;
+            }
             //}
             // testing
-            this.currentTrack.TrackUrl = linkUri; // NEED TO SET THIS VALUE EARLIER
+            currentTrack.TrackUrl = linkUri; // NEED TO SET THIS VALUE EARLIER
             c.Tag = linkUri != null ? linkUri.AbsoluteUri : string.Empty;
 
             if (e.Button == MouseButtons.Left)
@@ -695,8 +722,6 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        internal EventHandler<TrackChangedEventArgs<ITrack>> _channelRefreshed;
-        private readonly object _channelRefreshedLock = new object();
 
 
         /// <summary>
@@ -722,8 +747,6 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        static internal EventHandler<EventArgs> _elementMouseHover;
-        private static readonly object _elementHoverLock = new object();
 
         /// <summary>
         /// 
@@ -746,8 +769,6 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        static internal EventHandler<ChannelChangedEventArgs<IChannel>> _channelChanged;
-        static private readonly object _channelChangedLock = new object();
 
         /// <summary>
         /// 
@@ -770,56 +791,20 @@ namespace DigitallyImported.Utilities
                 }
             }
         }
-        internal EventHandler<EventArgs> _historyClicked;
-        private readonly object _historyClickedLock = new object();
 
         /// <summary>
         /// 
         /// </summary>
-        [Browsable(true)]
-        public event EventHandler<TrackChangedEventArgs<ITrack>> TrackChanged
-        {
-            add
-            {
-                lock (_trackChangedLock)
-                {
-                    {
-                        _trackChanged += value;
-                    }
-                }
-            }
-            remove
-            {
-                lock (_trackChangedLock)
-                {
-                    _trackChanged -= value;
-                }
-            }
-        }
-        internal EventHandler<TrackChangedEventArgs<ITrack>> _trackChanged;
-        private readonly object _trackChangedLock = new object();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
-        protected override void OnMouseDown(MouseEventArgs e)
-        {
-            base.OnMouseDown(e);
-        }
-
         public virtual void LoadUI()
         {
-            if (currentTrack == null) throw new InvalidOperationException("Channel control must have a valid Track collection");
+            if (currentTrack == null)
+                throw new InvalidOperationException("Channel control must have a valid Track collection");
 
             if (currentTrack != null)
             {
-                if (this.InvokeRequired)
+                if (InvokeRequired)
                 {
-                    this.Invoke((Action) delegate
-                    {
-                        SetValues();
-                    });
+                    Invoke((Action) SetValues);
                 }
                 else
                 {
@@ -835,31 +820,32 @@ namespace DigitallyImported.Utilities
             ITrack track = CurrentTrack;
 
             // track title
-            toolTipLinks.SetToolTip(this.lnkTrackTitle, track.TrackTitle);
-            this.lnkTrackTitle.Text = track.TrackTitle;
+            toolTipLinks.SetToolTip(lnkTrackTitle, track.TrackTitle);
+            lnkTrackTitle.Text = track.TrackTitle;
 
             // comment count
-            this.lnkPostComments.Text = string.Format("Read and Post Comments {0}{1} {2}{3}", "(", track.CommentCount, "comments", ")");
+            lnkPostComments.Text = string.Format("Read and Post Comments {0}{1} {2}{3}", "(", track.CommentCount,
+                                                 "comments", ")");
 
             // forum url
             if (track.ForumUrl != null)
             {
-                this.lnkPostComments.Links[0].LinkData = track.ForumUrl.AbsoluteUri as string;
-                toolTipLinks.SetToolTip(this.lnkPostComments, track.ForumUrl.AbsoluteUri);
+                lnkPostComments.Links[0].LinkData = track.ForumUrl.AbsoluteUri;
+                toolTipLinks.SetToolTip(lnkPostComments, track.ForumUrl.AbsoluteUri);
             }
 
             // artist homepage link
             if (track.ArtistUri != null)
             {
-                this.lnkTrackTitle.Links[0].LinkData = track.ArtistUri.AbsoluteUri as string;
-                this.lnkTrackTitle.LinkBehavior = LinkBehavior.AlwaysUnderline;
-                this.lnkTrackTitle.LinkColor = Color.RoyalBlue;
-                toolTipLinks.SetToolTip(this.lnkTrackTitle, track.ArtistUri.AbsoluteUri);
+                lnkTrackTitle.Links[0].LinkData = track.ArtistUri.AbsoluteUri;
+                lnkTrackTitle.LinkBehavior = LinkBehavior.AlwaysUnderline;
+                lnkTrackTitle.LinkColor = Color.RoyalBlue;
+                toolTipLinks.SetToolTip(lnkTrackTitle, track.ArtistUri.AbsoluteUri);
             }
 
             // record label
             if (track.RecordLabel != null)
-                this.lblRecordLabel.Text = track.RecordLabel;
+                lblRecordLabel.Text = track.RecordLabel;
 
             // the url to the track (what is this?)
             Uri trackUrl;
@@ -868,23 +854,7 @@ namespace DigitallyImported.Utilities
 
             // time the track started
             DateTime startTime = track.StartTime.AddMinutes(Settings.Default.TrackStartTimeOffset);
-            this.StartTimeLabel.Text = string.Format("{0} {1}", "Started at", startTime.ToShortTimeString());
-
-                    
+            StartTimeLabel.Text = string.Format("{0} {1}", "Started at", startTime.ToShortTimeString());
         }
-
-        #region IEquatable<IContent> Members
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(IContent other)
-        {
-            return this.Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
-        }
-
-        #endregion
     }
 }

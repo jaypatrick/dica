@@ -1,11 +1,7 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Net;
-using System.Text.RegularExpressions;
 using DigitallyImported.Components;
-using DigitallyImported.Configuration.Properties;
 using P = DigitallyImported.Resources.Properties;
 
 
@@ -19,27 +15,23 @@ namespace DigitallyImported.Player
         /// <summary>
         /// 
         /// </summary>
-        protected Player() 
-            : this(PlayerTypes.Default)
-        { 
-
+        protected Player()
+            : this(PlayerType.Default)
+        {
         }
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="playerType"></param>
-        protected Player(PlayerTypes playerType)
+        protected Player(PlayerType playerType)
         {
-            if (!IsInstalled) throw new PlayerNotInstalledException
-                (string.Format("{0} {1}", playerType.ToString(), "is not installed."));
+            if (!IsInstalled)
+                throw new PlayerNotInstalledException
+                    (string.Format("{0} {1}", playerType.ToString(), "is not installed."));
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="channel"></param>
-        protected abstract void Play(DigitallyImported.Components.IChannel channel);
+        #region IPlayer Members
 
         /// <summary>
         /// 
@@ -47,25 +39,27 @@ namespace DigitallyImported.Player
         /// <param name="channel"></param>
         public void OpenPlayer(IChannel channel)
         {
-            if (channel == null) throw new ArgumentNullException(string.Format("{0}, {1} ", "channel", "Must specify a channel to play."));
+            if (channel == null)
+                throw new ArgumentNullException(string.Format("{0}, {1} ", "channel", "Must specify a channel to play."));
 
             Channel = channel;
 
-            var url = channel.CurrentTrack.TrackUrl;
+            Uri url = channel.CurrentTrack.TrackUrl;
 
             //Template method
             GetPlayerKey();
             ParseStreamUri(channel.CurrentTrack.TrackUrl);
-            Trace.WriteLine(string.Format("{0} received request: {1}", this.PlayerType.ToString(), url), TraceCategories.StreamParsing.ToString());
-            Trace.WriteLine(string.Format("{0} will attempt to stream {1}", this.PlayerType.ToString(), url), TraceCategories.StreamParsing.ToString());
+            Trace.WriteLine(string.Format("{0} received request: {1}", PlayerType.ToString(), url),
+                            TraceCategory.StreamParsing.ToString());
+            Trace.WriteLine(string.Format("{0} will attempt to stream {1}", PlayerType.ToString(), url),
+                            TraceCategory.StreamParsing.ToString());
             Play(channel);
-            
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public abstract PlayerTypes PlayerType { get; }
+        public abstract PlayerType PlayerType { get; }
 
         /// <summary>
         /// 
@@ -80,16 +74,28 @@ namespace DigitallyImported.Player
         /// <summary>
         /// 
         /// </summary>
+        public virtual IChannel Channel { get; set; }
+
+        #endregion
+
+        #region IPlayerFactory Members
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <returns></returns>
         public virtual IChannel GetPlayerKey()
         {
             return PlayerLoader.Channel;
         }
 
+        #endregion
+
         /// <summary>
         /// 
         /// </summary>
-        public virtual IChannel Channel { get; set; }
+        /// <param name="channel"></param>
+        protected abstract void Play(IChannel channel);
 
         /// <summary>
         /// 

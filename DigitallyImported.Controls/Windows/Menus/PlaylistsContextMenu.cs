@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.Windows.Forms;
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -8,6 +9,8 @@ namespace DigitallyImported.Utilities
     /// </summary>
     public partial class PlaylistsContextMenu : BaseContextMenu
     {
+        private StationType _playlistType;
+
         /// <summary>
         /// 
         /// </summary>
@@ -30,6 +33,14 @@ namespace DigitallyImported.Utilities
         /// <summary>
         /// 
         /// </summary>
+        public StationType PlaylistType
+        {
+            get { return _playlistType; }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SitesContextMenu_Opening(object sender, CancelEventArgs e)
@@ -38,18 +49,9 @@ namespace DigitallyImported.Utilities
             Items.AddRange(new PlaylistView<PlaylistList>().GetView(true).ToArray());
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public PlaylistTypes PlaylistType
+        private void SitesContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            get { return this._playlistType; }
-        }
-        private PlaylistTypes _playlistType;
-
-        private void SitesContextMenu_ItemClicked(object sender, System.Windows.Forms.ToolStripItemClickedEventArgs e)
-        {
-            _playlistType = ((PlaylistList)e.ClickedItem).PlaylistType;
+            _playlistType = ((PlaylistList) e.ClickedItem).PlaylistType;
         }
     }
 }

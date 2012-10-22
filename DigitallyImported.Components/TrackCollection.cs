@@ -6,43 +6,23 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    [Serializable()]
-    public class TrackCollection<T> : ContentCollection<T> 
-        where T: ITrack
+    [Serializable]
+    public class TrackCollection<T> : ContentCollection<T>
+        where T : ITrack
     {
         /// <summary>
         /// 
         /// </summary>
-        public TrackCollection()
-        {
-
-        }
+        public virtual T Channel { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual T Channel
-        {
-            get;
-            set;
-        }
+        public bool HasNewTracks { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public bool HasNewTracks
-        {
-            get;
-            set;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public TrackCollection<T> NewTracks
-        {
-            get;
-            set;
-        }
+        public TrackCollection<T> NewTracks { get; set; }
     }
 }

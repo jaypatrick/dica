@@ -132,7 +132,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Caching" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -156,7 +155,7 @@
     <Compile Include="Enum\PlayerType.cs" />
     <Compile Include="Enum\StreamBitrate.cs" />
     <Compile Include="Enum\SubscriptionLevel.cs" />
-    <Compile Include="Enum\TraceCategories.cs" />
+    <Compile Include="Enum\TraceCategory.cs" />
     <Compile Include="EventArgs\CommentCountChangedEventArgs.cs" />
     <Compile Include="EventArgs\ContentChangedEventArgs.cs" />
     <Compile Include="EventArgs\EventChangedEventArgs.cs" />
@@ -169,7 +168,7 @@
     <Compile Include="EventArgs\ChannelChangedEventArgs.cs" />
     <Compile Include="ChannelLoader.cs" />
     <Compile Include="Enum\StreamType.cs" />
-    <Compile Include="Enum\PlaylistTypes.cs" />
+    <Compile Include="Enum\StationType.cs" />
     <Compile Include="Enum\SortBy.cs" />
     <Compile Include="Enum\SortOrder.cs" />
     <Compile Include="EventListLoader.cs" />

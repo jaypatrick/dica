@@ -6,22 +6,23 @@ namespace DigitallyImported.Components
     /// 
     /// </summary>
     /// 
-
     [Serializable]
-    public class TrackChangedEventArgs<T> : ContentChangedEventArgs<T> 
-        where T: ITrack
+    public class TrackChangedEventArgs<T> : ContentChangedEventArgs<T>
+        where T : ITrack
     {
-        private T _refreshedTrack = default(T);
+        private T _refreshedTrack;
 
         /// <summary>
         /// 
         /// </summary>
-        public TrackChangedEventArgs() : this(default(T)) { }
+        public TrackChangedEventArgs() : this(default(T))
+        {
+        }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="channelName"></param>
+        /// <param name="refreshedTrack"></param>
         public TrackChangedEventArgs(T refreshedTrack)
             : base(refreshedTrack)
         {
@@ -30,14 +31,8 @@ namespace DigitallyImported.Components
 
         public override T RefreshedContent
         {
-            get
-            {
-                return _refreshedTrack;
-            }
-            set
-            {
-                _refreshedTrack = value;
-            }
+            get { return _refreshedTrack; }
+            set { _refreshedTrack = value; }
         }
     }
 }

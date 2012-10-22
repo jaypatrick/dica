@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Windows.Forms;
 using DigitallyImported.Components;
@@ -12,10 +11,10 @@ namespace DigitallyImported.Client
 {
     public partial class FavoritesForm<TChannel, TTrack> : BaseForm
         where TChannel : UserControl, IChannel, new()
-        where TTrack: UserControl, ITrack, new()
+        where TTrack : UserControl, ITrack, new()
     {
-        private ChannelView<TChannel, TTrack> _channelView = null;
-        ExternalChannelsForm form;
+        private readonly ChannelView<TChannel, TTrack> _channelView;
+        private ExternalChannelsForm form;
 
         public FavoritesForm()
         {
@@ -32,14 +31,14 @@ namespace DigitallyImported.Client
 
         private void FavoritesForm_Load(object sender, EventArgs e)
         {
-            this.RemoveExternalButton.Enabled = false;
+            RemoveExternalButton.Enabled = false;
 
             LoadFavoritesLists();
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            StringCollection favorites = new StringCollection();
+            var favorites = new StringCollection();
 
             IEnumerator diEnum = DIPlaylistCheckedList.CheckedItems.GetEnumerator();
             IEnumerator skyEnum = SkyPlaylistCheckedList.CheckedItems.GetEnumerator();
@@ -47,17 +46,17 @@ namespace DigitallyImported.Client
 
             while (diEnum.MoveNext())
             {
-                favorites.Add((string)diEnum.Current);
+                favorites.Add((string) diEnum.Current);
             }
 
             while (skyEnum.MoveNext())
             {
-                favorites.Add((string)skyEnum.Current);
+                favorites.Add((string) skyEnum.Current);
             }
 
             while (extEnum.MoveNext())
             {
-                favorites.Add((string)skyEnum.Current);
+                favorites.Add((string) skyEnum.Current);
             }
 
             Settings.Default.PlaylistFavorites = favorites;
@@ -76,35 +75,44 @@ namespace DigitallyImported.Client
 
         protected virtual void LoadFavoritesLists()
         {
-            ChannelCollection<TChannel> channels = _channelView.GetView(true, PlaylistTypes.All);
+            ChannelCollection<TChannel> channels = _channelView.GetView(true, StationType.All);
 
             ChannelCountLabel.Text = string.Format(P.Resources.ChannelsAvailableNumber, channels.Count.ToString());
 
             channels.ForEach(channel =>
-            {
-                switch (channel.PlaylistType)
                 {
-                    case PlaylistTypes.DI:
+                    switch (channel.PlaylistType)
                     {
-                        PlaylistLabel1.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(), "Channels");
-                        this.DIPlaylistCheckedList.Items.Add(channel.ChannelName, Settings.Default.PlaylistFavorites.Contains(channel.ChannelName));
-                        break;
+                        case StationType.DI:
+                            {
+                                PlaylistLabel1.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(),
+                                                                    "Channels");
+                                DIPlaylistCheckedList.Items.Add(channel.ChannelName,
+                                                                Settings.Default.PlaylistFavorites.Contains(
+                                                                    channel.ChannelName));
+                                break;
+                            }
+                        case StationType.Sky:
+                            {
+                                PlaylistLabel2.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(),
+                                                                    "Channels");
+                                SkyPlaylistCheckedList.Items.Add(channel.ChannelName,
+                                                                 Settings.Default.PlaylistFavorites.Contains(
+                                                                     channel.ChannelName));
+                                break;
+                            }
+                            //case PlaylistTypes.External:
+                        default:
+                            {
+                                PlaylistLabel3.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(),
+                                                                    "Channels");
+                                ExternalPlaylistCheckBox.Items.Add(channel.ChannelName,
+                                                                   Settings.Default.PlaylistFavorites.Contains(
+                                                                       channel.ChannelName));
+                                break;
+                            }
                     }
-                    case PlaylistTypes.Sky:
-                    {
-                        PlaylistLabel2.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(), "Channels");
-                        this.SkyPlaylistCheckedList.Items.Add(channel.ChannelName, Settings.Default.PlaylistFavorites.Contains(channel.ChannelName));
-                        break;
-                    }
-                    //case PlaylistTypes.External:
-                    default:
-                    {
-                        PlaylistLabel3.Text = string.Format("{0} {1}", channel.PlaylistType.ToString(), "Channels");
-                        this.ExternalPlaylistCheckBox.Items.Add(channel.ChannelName, Settings.Default.PlaylistFavorites.Contains(channel.ChannelName));
-                        break;
-                    }
-                }
-            });
+                });
         }
 
         private void AddExternalButton_Click(object sender, EventArgs e)
@@ -114,23 +122,22 @@ namespace DigitallyImported.Client
             switch (form.ShowDialog(this))
             {
                 case DialogResult.OK:
-                {
-                    foreach (KeyValuePair<string, Uri> entry in form.ExternalEntries)
                     {
-                        if (!this.ExternalPlaylistCheckBox.Items.Contains(entry.Key))
+                        foreach (var entry in form.ExternalEntries)
                         {
-                            this.ExternalPlaylistCheckBox.Items.Add(entry.Key, Settings.Default.PlaylistFavorites.Contains(entry.Key));
+                            if (!ExternalPlaylistCheckBox.Items.Contains(entry.Key))
+                            {
+                                ExternalPlaylistCheckBox.Items.Add(entry.Key,
+                                                                   Settings.Default.PlaylistFavorites.Contains(entry.Key));
+                            }
                         }
-                    }
 
-                    break;
-                }
+                        break;
+                    }
                 case DialogResult.Cancel:
-                {
-                    break;
-                }
-                default:
-                    break;
+                    {
+                        break;
+                    }
             }
         }
 

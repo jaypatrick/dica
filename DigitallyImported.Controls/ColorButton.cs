@@ -6,66 +6,66 @@ namespace DigitallyImported.Utilities
 {
     public partial class ColorButton : UserControl
     {
-        Color centerColor;
-
+        /// <summary>
+        /// 
+        /// </summary>
         public ColorButton()
         {
-            MouseEnter += new EventHandler(OnMouseEnter);
-            MouseLeave += new EventHandler(OnMouseLeave);
-            MouseUp += new MouseEventHandler(OnMouseUp);
-            Paint += new PaintEventHandler(ButtonPaint);
+            MouseEnter += OnMouseEnter;
+            MouseLeave += OnMouseLeave;
+            MouseUp += OnMouseUp;
+            Paint += ButtonPaint;
         }
 
-        public Color CenterColor
-        {
-            get { return centerColor; }
-            set { centerColor = value; }
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Color CenterColor { get; set; }
 
-        void OnMouseEnter(object sender, EventArgs e)
-        {
-            Invalidate();
-        }
-
-        void OnMouseLeave(object sender, EventArgs e)
+        private void OnMouseEnter(object sender, EventArgs e)
         {
             Invalidate();
         }
 
-        void OnMouseUp(object sender, MouseEventArgs e)
+        private void OnMouseLeave(object sender, EventArgs e)
         {
             Invalidate();
         }
 
-        void ButtonPaint(Object sender, PaintEventArgs e)
+        private void OnMouseUp(object sender, MouseEventArgs e)
         {
-            Graphics g = e.Graphics;
+            Invalidate();
+        }
 
-            Rectangle r = ClientRectangle;
+        private void ButtonPaint(Object sender, PaintEventArgs e)
+        {
+            var g = e.Graphics;
+
+            var r = ClientRectangle;
 
             byte border = 4;
             byte right_border = 15;
 
-            Rectangle rc = new Rectangle(r.Left + border, r.Top + border,
-                                         r.Width - border - right_border - 1, r.Height - border * 2 - 1);
+            var rc = new Rectangle(r.Left + border, r.Top + border,
+                                   r.Width - border - right_border - 1, r.Height - border*2 - 1);
 
-            SolidBrush centerColorBrush = new SolidBrush(centerColor);
+            var centerColorBrush = new SolidBrush(CenterColor);
             g.FillRectangle(centerColorBrush, rc);
 
-            Pen pen = new Pen(Color.Black);
+            var pen = new Pen(Color.Black);
             g.DrawRectangle(pen, rc);
 
             //draw the arrow
-            Point p1 = new Point(r.Width - 9, r.Height / 2 - 1);
-            Point p2 = new Point(r.Width - 5, r.Height / 2 - 1);
+            var p1 = new Point(r.Width - 9, r.Height/2 - 1);
+            var p2 = new Point(r.Width - 5, r.Height/2 - 1);
             g.DrawLine(pen, p1, p2);
 
-            p1 = new Point(r.Width - 8, r.Height / 2);
-            p2 = new Point(r.Width - 6, r.Height / 2);
+            p1 = new Point(r.Width - 8, r.Height/2);
+            p2 = new Point(r.Width - 6, r.Height/2);
             g.DrawLine(pen, p1, p2);
 
-            p1 = new Point(r.Width - 7, r.Height / 2);
-            p2 = new Point(r.Width - 7, r.Height / 2 + 1);
+            p1 = new Point(r.Width - 7, r.Height/2);
+            p2 = new Point(r.Width - 7, r.Height/2 + 1);
             g.DrawLine(pen, p1, p2);
 
             //draw the divider line

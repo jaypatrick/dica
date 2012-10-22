@@ -9,10 +9,6 @@ C:\Code\Projects\DigitallyImported\DigitallyImported.Data\obj\Release\DigitallyI
 C:\Code\Projects\DigitallyImported\DigitallyImported.Data\obj\Release\DigitallyImported.Data.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Data.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Data.pdb
-C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Configuration.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Resources.dll
-C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Configuration.pdb
-C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Resources.pdb
-C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Release\DigitallyImported.Data.csprojResolveAssemblyReference.cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Release\DigitallyImported.Data.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Release\DigitallyImported.Data.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Release\DigitallyImported.Data.dll.config

@@ -20,6 +20,11 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:DigitallyImported.Client.Controls.ExternalChannelPickerControl">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.#ctor">
             <summary>
             
@@ -30,7 +35,7 @@
             
             </summary>
             <param name="channelName"></param>
-            <param name="channelLocation"></param>
+            <param name="channelUri"></param>
         </member>
         <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.SaveButton_Click(System.Object,System.EventArgs)">
             <summary>
@@ -92,6 +97,11 @@
             
             </summary>
             
+        </member>
+        <member name="E:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelRemoved">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:DigitallyImported.Client.BaseForm">
             <summary>
@@ -178,9 +188,24 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:DigitallyImported.Client.Program">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Client.Program.Main(System.String[])">
             <summary>
             The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.BaseContainerControl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="F:DigitallyImported.Client.Controls.BaseContainerControl.components">
@@ -248,6 +273,16 @@
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.GeneralTab">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.GeneralTab.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="F:DigitallyImported.Client.Controls.GeneralTab.components">
@@ -363,6 +398,11 @@
             </summary>
         </member>
         <member name="P:DigitallyImported.Client.HistoryForm.Channel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Client.OptionsForm">
             <summary>
             
             </summary>

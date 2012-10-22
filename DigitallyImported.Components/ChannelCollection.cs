@@ -10,13 +10,12 @@ namespace DigitallyImported.Components
     /// 
     [Serializable]
     [XmlRoot("Channels")]
-    public class ChannelCollection<T>: ContentCollection<T> where T: IChannel
+    public class ChannelCollection<T> : ContentCollection<T> where T : IChannel
     {
         /// <summary>
         /// 
         /// </summary>
-        public ChannelCollection() 
-            : base()
+        public ChannelCollection()
         {
         }
 
@@ -43,10 +42,7 @@ namespace DigitallyImported.Components
         /// <returns></returns>
         public T FindTrack(ITrack track)
         {
-            return this.Find(t => 
-            {
-                return this.Contains((T)t.Tracks[track.Name].ParentChannel);
-            });
+            return Find(t => Contains((T) t.Tracks[track.Name].ParentChannel));
         }
     }
 }

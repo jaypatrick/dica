@@ -1,5 +1,5 @@
+using System;
 using System.ComponentModel;
-
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -7,11 +7,11 @@ namespace DigitallyImported.Utilities
     /// <summary>
     /// 
     /// </summary>
-    public partial class CommentToastForm<T> : ToastForm<T> where T: IChannel
+    public partial class CommentToastForm<T> : ToastForm<T> where T : IChannel
     {
         private string _bodyText = string.Empty;
+        private T _channel;
         private string _titleText = string.Empty;
-        private T _channel = default(T);
 
         /// <summary>
         /// 
@@ -48,14 +48,8 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public override T Content
         {
-            get
-            {
-                return this._channel;
-            }
-            set
-            {
-                this._channel = value;
-            }
+            get { return _channel; }
+            set { _channel = value; }
         }
 
         /// <summary>
@@ -63,13 +57,10 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public override string BodyText
         {
-            get
-            {
-                return this._bodyText;
-            }
+            get { return _bodyText; }
             set
             {
-                this._bodyText = value;
+                _bodyText = value;
                 base.DefaultText = GetFormattedBody();
             }
         }
@@ -79,14 +70,8 @@ namespace DigitallyImported.Utilities
         /// </summary>
         public override string TitleText
         {
-            get
-            {
-                return _titleText;
-            }
-            set
-            {
-                _titleText = value;
-            }
+            get { return _titleText; }
+            set { _titleText = value; }
         }
 
         /// <summary>
@@ -94,9 +79,9 @@ namespace DigitallyImported.Utilities
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        protected internal virtual void BoardToastForm_Click(object sender, System.EventArgs e)
+        protected internal virtual void BoardToastForm_Click(object sender, EventArgs e)
         {
-            DigitallyImported.Components.Utilities.StartProcess(_channel.CurrentTrack.ForumUrl.AbsoluteUri);
+            Components.Utilities.StartProcess(_channel.CurrentTrack.ForumUrl.AbsoluteUri);
         }
     }
 }

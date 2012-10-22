@@ -1,24 +1,30 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
+
 [assembly: AssemblyTitle("DigitallyImported.Controls")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 // [assembly: AssemblyCompany("ZeroTrilogy")]
+
 [assembly: AssemblyProduct("DigitallyImported.Controls")]
 // [assembly: AssemblyCopyright("Copyright © ZeroTrilogy 2006")]
+
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
+
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
+
 [assembly: Guid("a5c4aeb2-b5de-446d-8437-2d856aeb2de1")]
 
 // Version information for an assembly consists of the following four values:
@@ -57,10 +63,15 @@ using System.Runtime.InteropServices;
 //   (*) Delay Signing is an advanced option - see the Microsoft .NET Framework
 //       documentation for more information on this.
 //
+
 [assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile(@"..\..\DigitallyImported.Controls.pfx")]
 //[assembly: AssemblyKeyName("")]
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Controls.Tests.NUnit, PublicKey=0024000004800000940000000602000000240000525341310004000001000100C9AE0B1A82EEBF40923711D0BF740462635BFE9C6924E6F732DFBB6441F1B062C583D1B2B96B66384D949865DF8A381B22726B9BC6E10A083F1C7B783BA4F5A215F158DCCEF853FB4945D9BEBAB3859F34B06EC415F55386B35EC26E270D902CDFF93BC61DC855529A7AA156A49549B3310326DDF065BFAE4EAE63781779BAB3")]
+
+[assembly:
+    InternalsVisibleTo(
+        "DigitallyImported.Controls.Tests.NUnit, PublicKey=0024000004800000940000000602000000240000525341310004000001000100C9AE0B1A82EEBF40923711D0BF740462635BFE9C6924E6F732DFBB6441F1B062C583D1B2B96B66384D949865DF8A381B22726B9BC6E10A083F1C7B783BA4F5A215F158DCCEF853FB4945D9BEBAB3859F34B06EC415F55386B35EC26E270D902CDFF93BC61DC855529A7AA156A49549B3310326DDF065BFAE4EAE63781779BAB3"
+        )]
 //[assembly: AssemblyVersionAttribute("3.0.1.12")]
 
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("DigitallyImported.Tests")]
+[assembly: InternalsVisibleTo("DigitallyImported.Tests")]

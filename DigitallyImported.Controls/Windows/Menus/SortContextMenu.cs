@@ -1,15 +1,19 @@
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
-
 using DigitallyImported.Components;
 using SortOrder = DigitallyImported.Components.SortOrder;
 
 namespace DigitallyImported.Utilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class SortContextMenu : BaseContextMenu
     {
-        private bool sortFlip = false;
+        private SortBy _sortBy;
+        private bool _sortFlip;
+        private SortOrder _sortOrder;
 
 
         /// <summary>
@@ -31,36 +35,34 @@ namespace DigitallyImported.Utilities
             InitializeComponent();
         }
 
-        private void SortContextMenu_Opening(object sender, CancelEventArgs e)
-        {
-            Items.Clear();
-
-            int i = 0;
-            foreach (string option in Enum.GetNames(typeof(SortBy)))
-            {
-                Items.Add(DigitallyImported.Components.Utilities.CapitalizeFirstLetters(option));
-                Items[i].Name = option;
-                i++;
-            }
-        }
-
         /// <summary>
         /// 
         /// </summary>
         public SortBy SortBy
         {
-            get { return this._sortBy; }
+            get { return _sortBy; }
         }
-        private SortBy _sortBy;
 
         /// <summary>
         /// 
         /// </summary>
         public SortOrder SortOrder
         {
-            get { return this._sortOrder; }
+            get { return _sortOrder; }
         }
-        private SortOrder _sortOrder;
+
+        private void SortContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            Items.Clear();
+
+            int i = 0;
+            foreach (string option in Enum.GetNames(typeof (SortBy)))
+            {
+                Items.Add(Components.Utilities.CapitalizeFirstLetters(option));
+                Items[i].Name = option;
+                i++;
+            }
+        }
 
         private void SortContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
@@ -81,16 +83,9 @@ namespace DigitallyImported.Utilities
             //    return;
             //}
 
-            if (sortFlip)
-            {
-                _sortOrder = SortOrder.Descending;
-            }
-            else
-            {
-                _sortOrder = SortOrder.Ascending;
-            }
+            _sortOrder = _sortFlip ? SortOrder.Descending : SortOrder.Ascending;
 
-            sortFlip = !sortFlip;
+            _sortFlip = !_sortFlip;
         }
     }
 }

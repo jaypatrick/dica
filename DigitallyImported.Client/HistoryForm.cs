@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
 using DigitallyImported.Components;
 using DigitallyImported.Utilities;
 
@@ -28,18 +27,13 @@ namespace DigitallyImported.Client
         {
             InitializeComponent();
 
-            _channel = channel;
+            Channel = channel;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public IChannel Channel
-        {
-            get { return _channel; }
-            set { _channel = value; }
-        }
-        private IChannel _channel;
+        public IChannel Channel { get; set; }
 
         /// <summary>
         /// 
@@ -47,7 +41,7 @@ namespace DigitallyImported.Client
         /// <param name="e"></param>
         protected override void OnLoad(EventArgs e)
         {
-            if (_channel != null)
+            if (Channel != null)
             {
                 LoadForm(this, e);
 
@@ -62,29 +56,23 @@ namespace DigitallyImported.Client
 
                 //this.HistoryPanel.Controls.AddRange(_tracks.ToArray());
 
-                foreach (Control control in this.Controls)
+                foreach (Control control in Controls)
                 {
-                    control.DoubleClick += (s, ee) =>
-                    {
-                        this.Hide();
-                    };
+                    control.DoubleClick += (s, ee) => Hide();
                 }
 
-                foreach (Control control in this.HistoryPanel.Controls)
+                foreach (Control control in HistoryPanel.Controls)
                 {
-                    control.DoubleClick += (s, ee) =>
+                    control.DoubleClick += (s, ee) => Hide();
+                }
+
+                FormClosing += (s, ee) =>
                     {
-                        this.Hide();
+                        ee.Cancel = true;
+                        Hide();
                     };
-                };
 
-                this.FormClosing += (s, ee) =>
-                {
-                    ee.Cancel = true;
-                    this.Hide();
-                };
-
-                this.Activated += new EventHandler(LoadForm);
+                Activated += LoadForm;
             }
 
             base.OnLoad(e);
@@ -92,20 +80,18 @@ namespace DigitallyImported.Client
 
         private void LoadForm(object sender, EventArgs e)
         {
-            TrackCollection<Track> tracks = new TrackCollection<Track>();
+            var tracks = new TrackCollection<Track>();
 
-            this.lnkTitle.Text = string.Format("Last {0} tracks played:", _channel.Tracks.Count);
-            this.Text = string.Format("{0} Playlist History", _channel.ChannelName);
+            lnkTitle.Text = string.Format("Last {0} tracks played:", Channel.Tracks.Count);
+            Text = string.Format("{0} Playlist History", Channel.ChannelName);
 
-            List<Track> list = _channel.Tracks.ConvertAll<Track>(new Converter<ITrack, Track>(TrackConverter));
-            list.ForEach(t =>
-            {
-                tracks.Add(t);
-            });
+            List<Track> list = Channel.Tracks.ConvertAll(TrackConverter);
+            list.ForEach(tracks.Add);
 
-            this.HistoryPanel.Controls.Clear();
-            GC.Collect(); GC.WaitForPendingFinalizers();
-            this.HistoryPanel.Controls.AddRange(tracks.ToArray());
+            HistoryPanel.Controls.Clear();
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            HistoryPanel.Controls.AddRange(tracks.ToArray());
         }
 
         private static Track TrackConverter(ITrack track)

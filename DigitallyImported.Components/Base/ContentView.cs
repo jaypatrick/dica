@@ -1,46 +1,63 @@
-
+using System;
+using System.ComponentModel;
 using DigitallyImported.Components.Caching;
+
 // using DigitallyImported.Configuration.Properties;
 
 namespace DigitallyImported.Components
 {
-    public abstract class ContentView<T> : CacheItem<T>, IContentView<T> 
-        where T: IContent
+    public abstract class ContentView<T> : CacheItem<T>, IContentView<T>
+        where T : IContent
     {
-        public abstract void Save();
+        private ContentCollection<T> _contents;
 
         /// <summary>
         /// 
         /// </summary>
-        protected ContentView() 
+        protected ContentView()
             // : this(new ContentCollection<T>())
         {
+            IsViewSet = false;
             // Settings.Default.SettingsSaving += new System.Configuration.SettingsSavingEventHandler(Global_SettingsSaving);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="viewType"></param>
+        /// <param name="contents"> </param>
         protected ContentView(ContentCollection<T> contents)
         {
+            IsViewSet = false;
             _contents = contents;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected virtual void Global_SettingsSaving(object sender, System.ComponentModel.CancelEventArgs e)
+        public virtual SortOrder SortOrder { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual SortBy SortBy { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual ContentCollection<T> Contents
         {
-            // invalidate the cache for now, but find a workaround
-            //Globals.Cache.Remove(Globals.DIChannelView);
-            //Globals.Cache.Remove(Globals.DIChannelList); 
-            ClearItems<object>();
+            get { return _contents; }
+            set { _contents = value; }
         }
 
-        #region IContentView Members
+        /// <summary>
+        /// 
+        /// </summary>
+        public virtual bool IsViewSet { get; protected set; }
+
+        #region IContentView<T> Members
+
+        public abstract void Save();
 
         /// <summary>
         /// 
@@ -50,56 +67,44 @@ namespace DigitallyImported.Components
         /// <returns></returns>
         public int Compare(T x, T y)
         {
-            switch (this.SortBy)
+            switch (SortBy)
             {
                 case SortBy.ChannelName:
-                {
-                    if (this.SortOrder == SortOrder.Ascending)
                     {
-                        return x.Name.CompareTo(y.Name);
+                        if (SortOrder == SortOrder.Ascending)
+                        {
+                            return String.Compare(x.Name, y.Name, StringComparison.Ordinal);
+                            //break;
+                        }
+                        return String.Compare(y.Name, x.Name, StringComparison.Ordinal);
                         //break;
                     }
-                    else
-                    {
-                        return y.Name.CompareTo(x.Name);
-                        //break;
-                    }
-                    
-                }
                 case SortBy.SiteName:
-                {
-                    if (this.SortOrder == SortOrder.Ascending)
                     {
-                        return x.PlaylistType.CompareTo(y.PlaylistType);
+                        return SortOrder == SortOrder.Ascending
+                                   ? x.PlaylistType.CompareTo(y.PlaylistType)
+                                   : y.PlaylistType.CompareTo(x.PlaylistType);
                         //break;
                     }
-                    else
-                    {
-                        return y.PlaylistType.CompareTo(x.PlaylistType);
-                        //break;
-                    }
-                    //break;
-                }
 
-                // TESTING, kinda sloppy as you are testing conditionals via casting
+                    // TESTING, kinda sloppy as you are testing conditionals via casting
                     // handle in uplevel class!
                 case SortBy.TrackTitle:
-                {
-                    // T a, b;
-
-                    if (x as IChannel != null)
                     {
-                        if (this.SortOrder == SortOrder.Ascending)
+                        // T a, b;
+
+                        if (x as IChannel != null)
                         {
-                            return ((IChannel)x).CurrentTrack.TrackTitle.CompareTo(((IChannel)y).CurrentTrack.TrackTitle);
+                            if (SortOrder == SortOrder.Ascending)
+                            {
+                                return String.Compare(((IChannel) x).CurrentTrack.TrackTitle,
+                                                      ((IChannel) y).CurrentTrack.TrackTitle, StringComparison.Ordinal);
+                            }
+                            return String.Compare(((IChannel) y).CurrentTrack.TrackTitle,
+                                                  ((IChannel) x).CurrentTrack.TrackTitle, StringComparison.Ordinal);
                         }
-                        else
-                        {
-                            return ((IChannel)y).CurrentTrack.TrackTitle.CompareTo(((IChannel)x).CurrentTrack.TrackTitle);
-                        }
+                        break;
                     }
-                    break;
-                }
             }
 
             return 0;
@@ -108,7 +113,7 @@ namespace DigitallyImported.Components
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="contentCollection"></param>
         public virtual void Sort(ContentCollection<T> contentCollection)
         {
             contentCollection.Sort(this);
@@ -140,63 +145,26 @@ namespace DigitallyImported.Components
         /// <summary>
         /// 
         /// </summary>
-        public virtual SortOrder SortOrder
-        {
-            get { return this._sortOrder; }
-            set { this._sortOrder = value; }
-        }
-        private SortOrder _sortOrder;
+        public virtual StationType PlaylistTypes { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual SortBy SortBy
-        {
-            get { return this._sortBy; }
-            set { this._sortBy = value; }
-        }
-        private SortBy _sortBy;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual PlaylistTypes PlaylistTypes
-        {
-            get { return this._PlaylistTypes; }
-            set { this._PlaylistTypes = value; }
-        }
-        private PlaylistTypes _PlaylistTypes;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual ViewType ViewType
-        {
-            get { return this._viewType; }
-            set { _viewType = value; }
-        }
-        private ViewType _viewType;
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public virtual ContentCollection<T> Contents
-        {
-            get {return this._contents; }
-            set { this._contents = value; }
-        }
-        private ContentCollection<T> _contents;
+        public virtual ViewType ViewType { get; set; }
 
         #endregion
 
         /// <summary>
         /// 
         /// </summary>
-        public virtual bool IsViewSet
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected virtual void Global_SettingsSaving(object sender, CancelEventArgs e)
         {
-            get { return this._isViewSet; }
-            protected set { this._isViewSet = value; }
+            // invalidate the cache for now, but find a workaround
+            //Globals.Cache.Remove(Globals.DIChannelView);
+            //Globals.Cache.Remove(Globals.DIChannelList); 
+            ClearItems<object>();
         }
-        private bool _isViewSet = false;
     }
 }

@@ -1,5 +1,4 @@
 using System.Windows.Forms;
-
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
@@ -22,11 +21,6 @@ namespace DigitallyImported.Utilities
         /// <summary>
         /// 
         /// </summary>
-        public ChannelCollection<TChannel> Channels
-        {
-            get { return _channels; }
-            set { _channels = value; }
-        }
-        private ChannelCollection<TChannel> _channels;
+        public ChannelCollection<TChannel> Channels { get; set; }
     }
 }

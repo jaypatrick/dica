@@ -6,13 +6,25 @@ using DigitallyImported.Configuration.Properties;
 
 namespace DigitallyImported.Utilities.Windows.Menus
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class PlayersContextMenu : BaseContextMenu
     {
+        private PlayerType _playerType;
+
+        /// <summary>
+        /// 
+        /// </summary>
         public PlayersContextMenu()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
         public PlayersContextMenu(IContainer container)
         {
             container.Add(this);
@@ -20,14 +32,22 @@ namespace DigitallyImported.Utilities.Windows.Menus
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public PlayerType PlayerType
+        {
+            get { return _playerType; }
+        }
+
         private void PlayersContextMenu_Opening(object sender, CancelEventArgs e)
         {
             Items.Clear();
 
             int i = 0;
-            foreach (string option in Enum.GetNames(typeof(PlayerTypes)))
+            foreach (string option in Enum.GetNames(typeof (PlayerType)))
             {
-                Items.Add(DigitallyImported.Components.Utilities.CapitalizeFirstLetters(option));
+                Items.Add(Components.Utilities.CapitalizeFirstLetters(option));
                 Items[i].Name = option;
                 i++;
             }
@@ -35,18 +55,8 @@ namespace DigitallyImported.Utilities.Windows.Menus
 
         private void PlayersContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            _playerType = Utilities.ParseEnum<PlayerTypes>(e.ClickedItem.Name);
+            _playerType = Utilities.ParseEnum<PlayerType>(e.ClickedItem.Name);
             Settings.Default.PlayerType = _playerType.ToString();
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public PlayerTypes PlayerType
-        {
-            get { return this._playerType; }
-        }
-        private PlayerTypes _playerType;
-
     }
 }

@@ -8,7 +8,7 @@
     <ProjectGuid>{EF05FE9E-358B-4891-8C36-1F999474B2E9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DigitallyImported.Utilities</RootNamespace>
+    <RootNamespace>DigitallyImported.Controls</RootNamespace>
     <AssemblyName>DigitallyImported.Controls</AssemblyName>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>DigitallyImported.Controls.pfx</AssemblyOriginatorKeyFile>
@@ -130,7 +130,6 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Web" />

@@ -1,11 +1,10 @@
+// DI
+
 using System;
 using System.Data;
 using System.Diagnostics;
 using System.Net;
 using System.Xml;
-// DI
-using DigitallyImported.Components.Caching;
-using DigitallyImported.Configuration.Properties;
 using DigitallyImported.Data;
 using C = DigitallyImported.Configuration.Properties;
 
@@ -14,25 +13,39 @@ namespace DigitallyImported.Components
     /// <summary>
     /// 
     /// </summary>
-    public class ChannelListLoader<TChannel> : ContentLoader<TChannel>, IDisposable 
-        where TChannel: IChannel
+    public class ChannelListLoader<TChannel> : ContentLoader<TChannel>, IDisposable
+        where TChannel : IChannel
     {
-        private XmlReader _reader                       = null;
-        private XmlReaderSettings _readerSettings       = null;
-        private ChannelData _channelData                = null;
+        private ChannelData _channelData;
+        private bool _disposed;
+        private XmlReader _reader;
+        private XmlReaderSettings _readerSettings;
 
         /// <summary>
         /// Default constructor. Uses default playlist URL specified in app configuration.
         /// </summary>
-        public ChannelListLoader() 
-            : this(Settings.Default.DIPlaylistXml)
-        { }
+        public ChannelListLoader()
+            : this(C.Settings.Default.DIPlaylistXml)
+        {
+        }
 
         public ChannelListLoader(string channelsLocation)
             : base(channelsLocation)
         {
             // ContentLocation = channelsLocation;
         }
+
+        #region IDisposable Members
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+        }
+
+        #endregion
 
         /// <summary>
         /// 
@@ -41,7 +54,7 @@ namespace DigitallyImported.Components
         /// <returns></returns>
         public virtual DataSet LoadPlaylist(bool bypassCache)
         {
-            return this.LoadPlaylist(bypassCache, Settings.Default.DIPlaylistXml);
+            return LoadPlaylist(bypassCache, C.Settings.Default.DIPlaylistXml);
         }
 
         public virtual DataSet LoadPlaylist(bool bypassCache, string contentLocation)
@@ -50,19 +63,12 @@ namespace DigitallyImported.Components
 
             if ((bypassCache) || (_reader == null))
             {
-                try
+                using (_reader)
                 {
-                    using (_reader)
-                    {
-                        _reader = LoadContentFromXml(); // XmlReader.Create(Resources.DIPlaylistXml, _readerSettings);
-                    }
+                    _reader = LoadContentFromXml(); // XmlReader.Create(Resources.DIPlaylistXml, _readerSettings);
+                }
 
-                    base.InsertItem<XmlReader>(_reader);
-                }
-                finally
-                {
-                    // _reader.Close();
-                }
+                base.InsertItem(_reader);
             }
 
             _channelData = GetItem(_channelData);
@@ -71,16 +77,11 @@ namespace DigitallyImported.Components
             {
                 using (_channelData = new ChannelData())
                 {
-
                     try
                     {
                         _channelData.ReadXml(_reader);
 
-                        base.InsertItem<ChannelData>(_channelData);
-                    }
-                    catch
-                    {
-                        throw;
+                        base.InsertItem(_channelData);
                     }
                     finally
                     {
@@ -92,8 +93,6 @@ namespace DigitallyImported.Components
             return _channelData;
         }
 
-        private bool disposed = false;
-
         /// <summary>
         /// 
         /// </summary>
@@ -102,7 +101,7 @@ namespace DigitallyImported.Components
         {
             Trace.WriteLine("EventListLoader was disposed, disposing = {0}", disposing.ToString());
 
-            if (!disposed)
+            if (!_disposed)
             {
                 if (disposing)
                 {
@@ -112,16 +111,8 @@ namespace DigitallyImported.Components
                     }
                 }
 
-                disposed = true;
+                _disposed = true;
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public void Dispose()
-        {
-            Dispose(true);
         }
 
         /// <summary>
@@ -132,31 +123,19 @@ namespace DigitallyImported.Components
         [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
         protected internal XmlReader LoadXmlData()
         {
-            _readerSettings = new XmlReaderSettings();
-
-            _readerSettings.IgnoreComments = true;
-            _readerSettings.IgnoreWhitespace = true;
-            _readerSettings.DtdProcessing = DtdProcessing.Prohibit;
+            _readerSettings = new XmlReaderSettings
+                {IgnoreComments = true, IgnoreWhitespace = true, DtdProcessing = DtdProcessing.Prohibit};
 
             // EDGE CASE PROCESSING GOES HERE
-            ChannelTransforms transform = new ChannelTransforms();
+            var transform = new ChannelTransforms();
 
-            try
+            if (IsNetworkAvailable)
             {
-                if (IsNetworkAvailable)
-                {
-                    return transform.TransformContent(XmlReader.Create(C.Settings.Default.DIPlaylistXml, _readerSettings));
-                }
-                else
-                {
-                    throw new WebException(DigitallyImported.Resources.Properties.Resources.NetworkConnectionError
-                        , WebExceptionStatus.ConnectFailure);
-                }
+                return
+                    transform.TransformContent(XmlReader.Create(C.Settings.Default.DIPlaylistXml, _readerSettings));
             }
-            catch
-            {
-                throw;
-            }
+            throw new WebException(Resources.Properties.Resources.NetworkConnectionError
+                                   , WebExceptionStatus.ConnectFailure);
         }
     }
 }

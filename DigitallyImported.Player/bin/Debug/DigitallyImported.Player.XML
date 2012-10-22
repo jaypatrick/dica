@@ -9,6 +9,37 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Player.IPlayer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Player.IPlayer.OpenPlayer(DigitallyImported.Components.IChannel)">
+            <summary>
+            
+            </summary>
+            <param name="channel"></param>
+        </member>
+        <member name="P:DigitallyImported.Player.IPlayer.Channel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Player.IPlayer.PlayerType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Player.IPlayer.PlayerIcon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Player.IPlayer.IsInstalled">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Player.IPlayerFactory">
             <summary>
             
@@ -25,17 +56,11 @@
             
             </summary>
         </member>
-        <member name="M:DigitallyImported.Player.Player.#ctor(DigitallyImported.Components.PlayerTypes)">
+        <member name="M:DigitallyImported.Player.Player.#ctor(DigitallyImported.Components.PlayerType)">
             <summary>
             
             </summary>
             <param name="playerType"></param>
-        </member>
-        <member name="M:DigitallyImported.Player.Player.Play(DigitallyImported.Components.IChannel)">
-            <summary>
-            
-            </summary>
-            <param name="channel"></param>
         </member>
         <member name="M:DigitallyImported.Player.Player.OpenPlayer(DigitallyImported.Components.IChannel)">
             <summary>
@@ -48,6 +73,12 @@
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="M:DigitallyImported.Player.Player.Play(DigitallyImported.Components.IChannel)">
+            <summary>
+            
+            </summary>
+            <param name="channel"></param>
         </member>
         <member name="M:DigitallyImported.Player.Player.ParseStreamUri(System.Uri)">
             <summary>
@@ -72,6 +103,11 @@
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Player.Channel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Player.StreamExtension">
             <summary>
             
             </summary>
@@ -104,10 +140,27 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Player.IITunes">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Player.IMediaPlayer">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Player.IQuicktime">
             <summary>
             
             </summary>
+        </member>
+        <member name="T:DigitallyImported.Player.PlayerCollection`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TChannel"></typeparam>
+            <typeparam name="TPlayer"></typeparam>
         </member>
         <member name="T:DigitallyImported.Player.PlayerController">
             <summary>
@@ -125,7 +178,7 @@
             </summary>
             <param name="channel"></param>
         </member>
-        <member name="M:DigitallyImported.Player.PlayerController.Play(DigitallyImported.Components.IChannel,DigitallyImported.Components.PlayerTypes)">
+        <member name="M:DigitallyImported.Player.PlayerController.Play(DigitallyImported.Components.IChannel,DigitallyImported.Components.PlayerType)">
             <summary>
             
             </summary>
@@ -182,12 +235,12 @@
             <param name="channel"></param>
             <param name="type"></param>
         </member>
-        <member name="E:DigitallyImported.Player.PlayerLoader.PlayerNotInstalledException">
+        <member name="P:DigitallyImported.Player.PlayerLoader.PlayerType">
             <summary>
             
             </summary>
         </member>
-        <member name="P:DigitallyImported.Player.PlayerLoader.PlayerType">
+        <member name="E:DigitallyImported.Player.PlayerLoader.PlayerNotInstalledException">
             <summary>
             
             </summary>
@@ -354,6 +407,11 @@
             
             </summary>
         </member>
+        <member name="M:DigitallyImported.Player.Winamp.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Player.Winamp.Play(DigitallyImported.Components.IChannel)">
             <summary>
             
@@ -375,6 +433,16 @@
             
             </summary>
         </member>
+        <member name="T:DigitallyImported.Player.Zune">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Player.Zune.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Player.Zune.Play(DigitallyImported.Components.IChannel)">
             <summary>
             
@@ -386,6 +454,7 @@
             
             </summary>
             <param name="streamUri"></param>
+            <exception cref="T:System.NotImplementedException"></exception>
             <returns></returns>
         </member>
         <member name="P:DigitallyImported.Player.Zune.PlayerType">

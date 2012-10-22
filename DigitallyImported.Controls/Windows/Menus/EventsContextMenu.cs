@@ -1,17 +1,25 @@
-using System;
 using System.ComponentModel;
-
 using DigitallyImported.Components;
 
 namespace DigitallyImported.Utilities
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public partial class EventsContextMenu : BaseContextMenu
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public EventsContextMenu()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="container"></param>
         public EventsContextMenu(IContainer container)
         {
             container.Add(this);
@@ -19,39 +27,29 @@ namespace DigitallyImported.Utilities
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public new EventCollection<Event> Events { get; set; }
+
         private void EventsContextMenu_Opening(object sender, CancelEventArgs e)
         {
             Items.Clear();
 
-            if (_events != null)
+            if (Events != null)
             {
-                _events.ForEach(item =>
-                {
-                    int i = 0;
-                    Items.Add(item.GetEventDetails()
-                            , Resources.Properties.Resources.DIIconNew.ToBitmap()
-                            , (o, ea) =>
-                            {
-                                DigitallyImported.Components.Utilities.StartProcess(
-                                    item.EventUrl.AbsoluteUri);
-                            });
+                Events.ForEach(item =>
+                    {
+                        int i = 0;
+                        Items.Add(item.GetEventDetails()
+                                  , Resources.Properties.Resources.DIIconNew.ToBitmap()
+                                  , (o, ea) => Components.Utilities.StartProcess(
+                                      item.EventUrl.AbsoluteUri));
 
-                    Items[i].Name = item.Name;
-                    ++i;
-                });
+                        Items[i].Name = item.Name;
+                        ++i;
+                    });
             }
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public EventCollection<Event> Events
-        {
-            get { return this._events; }
-            set { this._events = value; }
-        }
-
-        private EventCollection<Event> _events = null;
-
     }
 }
