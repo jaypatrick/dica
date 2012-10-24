@@ -1,13 +1,18 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls
 {
+    /// <summary>
+    /// </summary>
     public partial class ColorButton : UserControl
     {
         /// <summary>
-        /// 
         /// </summary>
         public ColorButton()
         {
@@ -18,7 +23,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public Color CenterColor { get; set; }
 

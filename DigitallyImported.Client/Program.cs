@@ -1,18 +1,22 @@
+#region using declarations
+
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-using DigitallyImported.Utilities;
+using DigitallyImported.Controls.Windows;
+
+#endregion
 
 namespace DigitallyImported.Client
 {
     /// <summary>
-    /// 
     /// </summary>
     public class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        ///   The main entry point for the application.
         /// </summary>
         [STAThread]
         private static void Main(string[] args)
@@ -40,16 +44,29 @@ namespace DigitallyImported.Client
             // global exception handler
             // Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
 
-            Application.EnableVisualStyles();
+            Application.ThreadException += Application_ThreadException;
 
-            if (Settings.Default.SubscriptionType == SubscriptionLevel.Premium.ToString())
+            Application.EnableVisualStyles();
+            try
             {
-                Application.Run(new PlaylistForm<PremiumChannel, Track>());
+                if (Settings.Default.SubscriptionType == SubscriptionLevel.Premium.ToString())
+                {
+                    Application.Run(new PlaylistForm<PremiumChannel, Track>());
+                }
+                else
+                {
+                    Application.Run(new PlaylistForm<Channel, Track>());
+                }
             }
-            else
-            {
-                Application.Run(new PlaylistForm<Channel, Track>());
+            catch (Exception exc)
+            { 
+                Trace.WriteLine(string.Format("{0} /r/n {1}", exc.StackTrace, exc.TargetSite));
             }
+        }
+
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            Trace.WriteLine(string.Format("{0} /r/n {1}", e.Exception.StackTrace, e.Exception.TargetSite));
         }
     }
 }

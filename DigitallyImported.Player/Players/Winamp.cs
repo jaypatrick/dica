@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -6,10 +8,11 @@ using DigitallyImported.Configuration.Properties;
 using Microsoft.Win32;
 using P = DigitallyImported.Resources.Properties;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public class Winamp : Player, IWinamp
     {
@@ -17,7 +20,6 @@ namespace DigitallyImported.Player
         private string _winampPath = string.Empty;
 
         /// <summary>
-        /// 
         /// </summary>
         public Winamp()
             : base(PlayerType.Winamp)
@@ -28,7 +30,6 @@ namespace DigitallyImported.Player
         #region IWinamp Members
 
         /// <summary>
-        /// 
         /// </summary>
         public override PlayerType PlayerType
         {
@@ -36,7 +37,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override Icon PlayerIcon
         {
@@ -44,7 +44,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override bool IsInstalled
         {
@@ -69,9 +68,8 @@ namespace DigitallyImported.Player
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected override void Play(IChannel channel)
         {
             Uri url = channel.CurrentTrack.TrackUrl;

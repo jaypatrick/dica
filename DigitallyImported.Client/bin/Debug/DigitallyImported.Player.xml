@@ -6,253 +6,210 @@
     <members>
         <member name="T:DigitallyImported.Player.Player">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IPlayer">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.IPlayer.OpenPlayer(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="P:DigitallyImported.Player.IPlayer.Channel">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.IPlayer.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.IPlayer.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.IPlayer.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IPlayerFactory">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.IPlayerFactory.GetPlayerKey">
             <summary>
-            
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:DigitallyImported.Player.Player.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.Player.#ctor(DigitallyImported.Components.PlayerType)">
             <summary>
-            
             </summary>
-            <param name="playerType"></param>
+            <param name="playerType"> </param>
         </member>
         <member name="M:DigitallyImported.Player.Player.OpenPlayer(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.Player.GetPlayerKey">
             <summary>
-            
             </summary>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="M:DigitallyImported.Player.Player.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.Player.ParseStreamUri(System.Uri)">
             <summary>
-            
             </summary>
-            <param name="streamUri"></param>
-            <returns></returns>
+            <param name="streamUri"> </param>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.Player.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Player.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Player.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Player.Channel">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.StreamExtension">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.PlayerNotInstalledExceptionEventArgs`1">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            
+            <typeparam name="T"> </typeparam>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledExceptionEventArgs`1.#ctor(System.Exception)">
             <summary>
-            
             </summary>
-            <param name="player"></param>
+            <param name="player"> </param>
         </member>
         <member name="P:DigitallyImported.Player.PlayerNotInstalledExceptionEventArgs`1.Player">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.PlayerNotInstalledExceptionEventArgs`1.Exception">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IWebPlayer">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IITunes">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IMediaPlayer">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.IQuicktime">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.PlayerCollection`2">
             <summary>
-            
             </summary>
-            <typeparam name="TChannel"></typeparam>
-            <typeparam name="TPlayer"></typeparam>
+            <typeparam name="TChannel"> </typeparam>
+            <typeparam name="TPlayer"> </typeparam>
         </member>
         <member name="T:DigitallyImported.Player.PlayerController">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerController.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerController.#ctor(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.PlayerController.Play(DigitallyImported.Components.IChannel,DigitallyImported.Components.PlayerType)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
-            <param name="playerType"></param>
+            <param name="channel"> </param>
+            <param name="playerType"> </param>
         </member>
         <member name="P:DigitallyImported.Player.PlayerController.Channel">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.PlayerFactory`2">
             <summary>
             
             </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TPlayer"></typeparam>
         </member>
         <member name="M:DigitallyImported.Player.PlayerFactory`2.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerFactory`2.Initialize">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerFactory`2.CreatePlayer(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
-            <returns></returns>
+            <param name="channel"> </param>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.PlayerFactory`2.Instance">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.PlayerLoader">
             <summary>
-            TODO: Make this an instance class
+              TODO: Make this an instance class
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerLoader.#ctor(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.PlayerLoader.Play(DigitallyImported.Components.IChannel,DigitallyImported.Components.StreamType)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
-            <param name="type"></param>
+            <param name="channel"> </param>
+            <param name="type"> </param>
         </member>
         <member name="P:DigitallyImported.Player.PlayerLoader.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="E:DigitallyImported.Player.PlayerLoader.PlayerNotInstalledException">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.PlayerNotInstalledException">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.String)">
@@ -263,213 +220,176 @@
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.String,System.Exception)">
             <summary>
-            
             </summary>
-            <param name="message"></param>
-            <param name="inner"></param>
+            <param name="message"> </param>
+            <param name="inner"> </param>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.String,System.Exception,DigitallyImported.Player.IPlayer)">
             <summary>
-            
             </summary>
-            <param name="message"></param>
-            <param name="inner"></param>
-            <param name="player"></param>
+            <param name="message"> </param>
+            <param name="inner"> </param>
+            <param name="player"> </param>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
             <summary>
-            
             </summary>
-            <param name="info"></param>
-            <param name="context"></param>
+            <param name="info"> </param>
+            <param name="context"> </param>
         </member>
         <member name="P:DigitallyImported.Player.PlayerNotInstalledException.Player">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.WebPlayer">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.WebPlayer.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.WebPlayer.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.WebPlayer.ParseStreamUri(System.Uri)">
             <summary>
-            
             </summary>
-            <param name="streamUri"></param>
-            <returns></returns>
+            <param name="streamUri"> </param>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.WebPlayer.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.WebPlayer.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.WebPlayer.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.ITunes">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.ITunes.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.ITunes.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.ITunes.ParseStreamUri(System.Uri)">
             <summary>
-            
             </summary>
-            <param name="streamUri"></param>
-            <returns></returns>
+            <param name="streamUri"> </param>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.ITunes.PlayerType">
-            <summary>Player U
-            
+            <summary>
+              Player U
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.ITunes.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.ITunes.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.WMediaPlayer">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.WMediaPlayer.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.WMediaPlayer.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.WMediaPlayer.ParseStreamUri(System.Uri)">
             <summary>
-            
             </summary>
-            <param name="streamUri"></param>
-            <returns></returns>
+            <param name="streamUri"> </param>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.WMediaPlayer.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.WMediaPlayer.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.WMediaPlayer.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.Winamp">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.Winamp.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.Winamp.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="P:DigitallyImported.Player.Winamp.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Winamp.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Winamp.IsInstalled">
             <summary>
-            
             </summary>
         </member>
         <member name="T:DigitallyImported.Player.Zune">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.Zune.#ctor">
             <summary>
-            
             </summary>
         </member>
         <member name="M:DigitallyImported.Player.Zune.Play(DigitallyImported.Components.IChannel)">
             <summary>
-            
             </summary>
-            <param name="channel"></param>
+            <param name="channel"> </param>
         </member>
         <member name="M:DigitallyImported.Player.Zune.ParseStreamUri(System.Uri)">
             <summary>
-            
             </summary>
-            <param name="streamUri"></param>
+            <param name="streamUri"> </param>
             <exception cref="T:System.NotImplementedException"></exception>
-            <returns></returns>
+            <returns> </returns>
         </member>
         <member name="P:DigitallyImported.Player.Zune.PlayerType">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Zune.PlayerIcon">
             <summary>
-            
             </summary>
         </member>
         <member name="P:DigitallyImported.Player.Zune.IsInstalled">
             <summary>
-            
             </summary>
         </member>
     </members>

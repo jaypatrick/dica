@@ -1,25 +1,26 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using DigitallyImported.Components;
 using VbPowerPack;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public abstract partial class ToastForm<T> : NotificationWindow where T : IContent
     {
         /// <summary>
-        /// 
         /// </summary>
         protected readonly string TextFormat = "{0}{1}{1}{2}";
 
         private T _content;
 
         /// <summary>
-        /// 
         /// </summary>
         protected ToastForm()
         {
@@ -27,9 +28,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         protected ToastForm(IContainer container)
         {
             container.Add(this);
@@ -38,9 +38,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="content"> </param>
         protected ToastForm(T content)
         {
             _content = content;
@@ -49,24 +48,20 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract T Content { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract string BodyText { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract string TitleText { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public override string ToString()
         {
             // return string.Format(TextFormat, TitleText, Environment.NewLine, Text);
@@ -75,9 +70,8 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         protected internal virtual string GetFormattedBody()
         {
             if (BodyText == null || TitleText == null)

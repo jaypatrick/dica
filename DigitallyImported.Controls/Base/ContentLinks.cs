@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities
+namespace DigitallyImported.Controls
 {
     public class ContentLinks
     {

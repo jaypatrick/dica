@@ -1,19 +1,34 @@
+#region using declarations
+
 using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
+#endregion
+
 namespace DigitallyImported.Components
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     [Serializable]
     public abstract class ContentCollection<T> : List<T>, IContentCollection<T>, IXmlSerializable
         where T : IContent
     {
+        /// <summary>
+        /// 
+        /// </summary>
         protected ContentCollection()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="capacity"></param>
         protected ContentCollection(int capacity)
             : base(capacity)
         {
@@ -42,15 +57,23 @@ namespace DigitallyImported.Components
 
         #region IXmlSerializable Members
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public virtual XmlSchema GetSchema()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reader"></param>
         public virtual void ReadXml(XmlReader reader)
         {
             var serializer = new XmlSerializer(typeof (T));
-            T channel = default(T);
+            var channel = default(T);
 
             try
             {
@@ -130,19 +153,32 @@ namespace DigitallyImported.Components
 
         #endregion
 
+        /// <summary>
+        /// </summary>
+        /// <typeparam name="U"> </typeparam>
+        /// <param name="targetClone"> </param>
         public void Clone<U>(U targetClone) where U : ContentCollection<T>
         {
-            T[] t = ToArray();
+            var t = ToArray();
             targetClone.AddRange(t);
         }
 
-        public static ContentCollection<T> operator +(ContentCollection<T> collection1, ContentCollection<T> collection2
-            )
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="collection1"></param>
+        /// <param name="collection2"></param>
+        /// <returns></returns>
+        public static ContentCollection<T> operator +(ContentCollection<T> collection1, ContentCollection<T> collection2)
         {
             //ContentCollection<T> col = new Conten
 
-            collection1.AddRange(collection2);
-            return collection1;
+            if (collection1 != null)
+            {
+                collection1.AddRange(collection2);
+                return collection1;
+            }
+            return null;
         }
     }
 }

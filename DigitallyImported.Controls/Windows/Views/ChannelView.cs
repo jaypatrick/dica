@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T">IChannel</typeparam>
+    /// <typeparam name="T"> IChannel </typeparam>
     public class ChannelView<TChannel, TTrack> : ContentView<TChannel>, IChannelView<TChannel>
         where TChannel : class, IChannel, new()
         where TTrack : class, ITrack, new()
@@ -20,7 +23,6 @@ namespace DigitallyImported.Utilities
         private TChannel _selectedChannel;
 
         /// <summary>
-        /// 
         /// </summary>
         public ChannelView() // DEFAULT VIEW
             : this(new ChannelCollection<TChannel>())
@@ -29,9 +31,8 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channels"></param>
+        /// <param name="channels"> </param>
         public ChannelView(ChannelCollection<TChannel> channels)
             // NEED A SPECIFIC VIEW TYPE SERVED UP (WEB, WINFORMS, ETC)
             : base(channels)
@@ -50,17 +51,15 @@ namespace DigitallyImported.Utilities
         #region IChannelView<TChannel> Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual ChannelCollection<TChannel> GetView(bool bypassCache)
         {
             return GetView(bypassCache, PlaylistTypes);
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override void Save()
         {
@@ -71,7 +70,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual ChannelCollection<TChannel> Channels
         {
@@ -96,7 +94,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual TChannel SelectedChannel
         {
@@ -110,7 +107,6 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual event EventHandler<ChannelViewChangedEventArgs<ChannelCollection<IChannel>>> ChannelViewChanged
         {
@@ -133,11 +129,10 @@ namespace DigitallyImported.Utilities
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <param name="playlistTypes"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <param name="playlistTypes"> </param>
+        /// <returns> </returns>
         public virtual ChannelCollection<TChannel> GetView(bool bypassCache, StationType playlistTypes)
         {
             // assume view is set
@@ -201,10 +196,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="action">Summary for action</param>
-        /// <returns></returns>
+        /// <param name="action"> Summary for action </param>
+        /// <returns> </returns>
         public virtual ChannelCollection<TChannel> GetView(Predicate<TChannel> action)
         {
             // foreach (T t in 
@@ -219,10 +213,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void OnChannelViewChanged(object sender,
                                                     ChannelViewChangedEventArgs<ChannelCollection<IChannel>> e)
         {

@@ -1,26 +1,26 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// 
+    /// <typeparam name="T"> </typeparam>
     [Serializable]
     public class StreamCollection<T> : ContentCollection<T> where T : IStream
     {
         /// <summary>
-        /// 
         /// </summary>
         public StreamCollection()
         {
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public StreamCollection(IChannel channel)
         {
             // 
@@ -29,7 +29,6 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual IChannel Channel { get; set; }
     }

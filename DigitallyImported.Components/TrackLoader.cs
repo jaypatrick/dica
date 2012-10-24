@@ -1,7 +1,11 @@
+#region using declarations
+
 using System;
 using System.Collections.Concurrent;
 using DigitallyImported.Data;
 using P = DigitallyImported.Resources.Properties;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
@@ -12,7 +16,6 @@ namespace DigitallyImported.Components
         private ConcurrentQueue<TTrack> _tracksQueue;
 
         /// <summary>
-        /// 
         /// </summary>
         public TrackLoader()
         {
@@ -20,22 +23,20 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="tracks"></param>
+        /// <param name="tracks"> </param>
         public TrackLoader(TrackCollection<TTrack> tracks)
         {
             _track = default(TTrack);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="tracksRow"></param>
-        /// <param name="bypassCache"></param>
+        /// <param name="tracksRow"> </param>
+        /// <param name="bypassCache"> </param>
         /// <param name="siteName"> </param>
         /// <param name="channel"> </param>
-        /// <returns></returns>
+        /// <returns> </returns>
         [CLSCompliant(false)]
         public virtual TrackCollection<ITrack> LoadTracks(ChannelData.TRACKSRow tracksRow, bool bypassCache,
                                                           ref string siteName, IChannel channel)

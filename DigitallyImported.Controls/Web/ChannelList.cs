@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities.Web
+#endregion
+
+namespace DigitallyImported.Controls.Web
 {
     /// <summary>
-    /// 
     /// </summary>
     [DefaultProperty("Text")]
     [ToolboxData("<{0}:ChannelList runat=server></{0}:ChannelList>")]
@@ -16,7 +19,6 @@ namespace DigitallyImported.Utilities.Web
         private Repeater _channelRepeater;
 
         /// <summary>
-        /// 
         /// </summary>
         [Bindable(true)]
         [Category("Appearance")]
@@ -34,22 +36,17 @@ namespace DigitallyImported.Utilities.Web
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public ChannelCollection<IChannel> Channels { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="output"></param>
+        /// <param name="output"> </param>
         protected override void RenderContents(HtmlTextWriter output)
         {
             output.Write(Text);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         //public override void DataBind()
         //{
         //    base.DataBind();
@@ -63,7 +60,8 @@ namespace DigitallyImported.Utilities.Web
         //    _channelRepeater.DataBind();
         //}
         /// <summary>
-        /// 
+        /// </summary>
+        /// <summary>
         /// </summary>
         protected override void CreateChildControls()
         {

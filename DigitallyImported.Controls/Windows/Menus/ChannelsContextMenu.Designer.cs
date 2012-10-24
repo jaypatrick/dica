@@ -1,5 +1,6 @@
 using DigitallyImported.Components;
-namespace DigitallyImported.Utilities
+
+namespace DigitallyImported.Controls.Windows
 {
     partial class ChannelsContextMenu<TChannel>
         where TChannel : class, IChannel, new()

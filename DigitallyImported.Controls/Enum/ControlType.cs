@@ -1,7 +1,6 @@
-namespace DigitallyImported.Utilities
+namespace DigitallyImported.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
     public enum ControlType
     {

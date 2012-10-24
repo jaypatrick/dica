@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -5,11 +7,13 @@ using System.Runtime.Caching;
 using DigitallyImported.Configuration.Properties;
 using DigitallyImported.Data;
 
+#endregion
+
 namespace DigitallyImported.Components.Caching
 {
     /// <summary>
-    /// 
     /// </summary>
+    /// <typeparam name="T"> </typeparam>
     public abstract class CacheItem<T> : ICacheable
         where T : IContent
         // wrapper around Cache object
@@ -19,26 +23,24 @@ namespace DigitallyImported.Components.Caching
         private static readonly object _itemExpiredLock = new object();
 
         /// <summary>
-        /// 
         /// </summary>
         protected CacheItem()
         {
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="value"> </param>
         protected CacheItem(CacheItem<T> value)
         {
-            CacheItem<T> instance = value;
+            if (value == null) throw new ArgumentNullException("value");
+            var instance = value;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
+        /// <param name="item"> </param>
+        /// <returns> </returns>
         protected virtual T this[T item]
         {
             get { return GetItem(item); }
@@ -48,39 +50,35 @@ namespace DigitallyImported.Components.Caching
         #region ICacheable Members
 
         /// <summary>
-        /// 
         /// </summary>
         /// <typeparam name="TItem"> </typeparam>
-        /// <param name="cacheItem"></param>
+        /// <param name="cacheItem"> </param>
         public virtual void InsertItem<TItem>(TItem cacheItem)
         {
             InsertItem(cacheItem, GetExpirationTime());
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheItem"></param>
-        /// <returns></returns>
+        /// <param name="cacheItem"> </param>
+        /// <returns> </returns>
         public virtual TItem GetItem<TItem>(TItem cacheItem)
         {
             return cacheItem != null ? Cache<string, TItem>.Get(cacheItem.GetHashCode().ToString()) : default(TItem);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="Item"></typeparam>
-        /// <param name="cacheItem"></param>
+        /// <typeparam name="TItem"> </typeparam>
+        /// <param name="cacheItem"> </param>
         public virtual void RemoveItem<TItem>(TItem cacheItem)
         {
             Cache<string, TItem>.Remove(cacheItem.GetHashCode().ToString());
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="TItems"></typeparam>
+        /// <typeparam name="TItems"> </typeparam>
         public virtual void ClearItems<TItems>()
         {
             Cache<string, TItems>.Clear();
@@ -89,11 +87,10 @@ namespace DigitallyImported.Components.Caching
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheItem"></param>
+        /// <param name="cacheItem"> </param>
         /// <param name="expirationTime"> </param>
-        public virtual void InsertItem<TItem>(TItem cacheItem, DateTime expirationTime)
+        protected virtual void InsertItem<TItem>(TItem cacheItem, DateTime expirationTime)
         {
             Trace.WriteLine(
                 string.Format("Inserting cache key {0} of type {1}", cacheItem.GetHashCode().ToString(),
@@ -102,9 +99,8 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public static DateTime GetExpirationTime()
         {
             return DateTime.Now.AddMilliseconds(Settings.Default.PlaylistRefreshInterval.TotalMilliseconds/2);
@@ -112,9 +108,8 @@ namespace DigitallyImported.Components.Caching
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="arguments"></param>
+        /// <param name="arguments"> </param>
         public static void ExpirationCallback(CacheEntryRemovedArguments arguments)
         {
             if (arguments == null) throw new ArgumentNullException("arguments");
@@ -174,7 +169,6 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public static event EventHandler<ItemExpiredEventArgs<T>> ItemExpired
         {
@@ -195,12 +189,13 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void OnItemExpired(object sender, ItemExpiredEventArgs<T> e)
         {
+            if (sender == null) throw new ArgumentNullException("sender");
+            if (e == null) throw new ArgumentNullException("e");
             if (_itemExpired != null)
                 _itemExpired(sender, e);
         }

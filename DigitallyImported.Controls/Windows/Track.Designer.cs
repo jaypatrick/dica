@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities
+namespace DigitallyImported.Controls.Windows
 {
     partial class Track
     {
@@ -34,7 +34,7 @@ namespace DigitallyImported.Utilities
             this.lblRecordLabel = new System.Windows.Forms.Label();
             this.lnkCounter = new System.Windows.Forms.LinkLabel();
             this.lnkPostComments = new System.Windows.Forms.LinkLabel();
-            this.EditContextMenu = new DigitallyImported.Utilities.BaseContextMenu(this.components);
+            this.EditContextMenu = new BaseContextMenu(this.components);
             this.SuspendLayout();
             // 
             // lnkTrackTitle

@@ -87,3 +87,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\Digital
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe.manifest
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.application
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Release\DigitallyImported.Client.exe
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Release\Bass.Net.dll

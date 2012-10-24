@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using System.IO;
@@ -7,6 +9,8 @@ using System.Windows.Forms;
 using DigitallyImported.Client.Controls;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
+
+#endregion
 
 namespace DigitallyImported.Client
 {
@@ -21,7 +25,6 @@ namespace DigitallyImported.Client
         //Type _workingType;
 
         /// <summary>
-        /// 
         /// </summary>
         public PlaylistForm()
         {
@@ -107,9 +110,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -139,9 +141,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -150,9 +151,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

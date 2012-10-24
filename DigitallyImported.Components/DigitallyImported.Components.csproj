@@ -203,6 +203,7 @@
     <Compile Include="Util\Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Components.cd" />
     <None Include="DigitallyImported.Components.pfx" />
   </ItemGroup>

@@ -1,20 +1,22 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 
-namespace DigitallyImported.Utilities.Windows.Menus
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class PlayersContextMenu : BaseContextMenu
     {
         private PlayerType _playerType;
 
         /// <summary>
-        /// 
         /// </summary>
         public PlayersContextMenu()
         {
@@ -22,9 +24,8 @@ namespace DigitallyImported.Utilities.Windows.Menus
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public PlayersContextMenu(IContainer container)
         {
             container.Add(this);
@@ -33,7 +34,6 @@ namespace DigitallyImported.Utilities.Windows.Menus
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public PlayerType PlayerType
         {

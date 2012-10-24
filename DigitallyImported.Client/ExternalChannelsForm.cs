@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -7,6 +9,8 @@ using DigitallyImported.Client.Controls;
 using DigitallyImported.Components;
 using C = DigitallyImported.Configuration.Properties;
 using P = DigitallyImported.Resources.Properties;
+
+#endregion
 
 namespace DigitallyImported.Client
 {

@@ -1,38 +1,37 @@
+#region using declarations
+
 using DigitallyImported.Components;
+
+#endregion
 
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public sealed class PlayerController
     {
         /// <summary>
-        /// 
         /// </summary>
         public PlayerController()
         {
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public PlayerController(IChannel channel)
         {
             Channel = channel;
         }
 
         /// <summary>
-        /// 
         /// </summary>
         internal IChannel Channel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
-        /// <param name="playerType"></param>
+        /// <param name="channel"> </param>
+        /// <param name="playerType"> </param>
         internal void Play(IChannel channel, PlayerType playerType)
         {
             // http://www.codeproject.com/gen/design/CSharpClassFactory.asp

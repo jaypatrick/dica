@@ -1,13 +1,17 @@
+#region using declarations
+
 using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// TODO: Make this an instance class
+    ///   TODO: Make this an instance class
     /// </summary>
     public class PlayerLoader
     {
@@ -17,15 +21,14 @@ namespace DigitallyImported.Player
         // use factory to get correct player type, then call play.
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public PlayerLoader(IChannel channel)
         {
             if (channel == null) throw new ArgumentNullException("channel", "Must supply a valid IChannel. ");
             Channel = channel;
 
-            Utilities.Channel.ChannelChanged += ChannelSection_TrackChanged;
+            Controls.Windows.Channel.ChannelChanged += ChannelSection_TrackChanged;
 
             PlayerType = Components.Utilities.ParseEnum<PlayerType>(Settings.Default.PlayerType);
 
@@ -38,12 +41,10 @@ namespace DigitallyImported.Player
         internal static IChannel Channel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public PlayerType PlayerType { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public static event EventHandler<PlayerNotInstalledExceptionEventArgs<IPlayer>> PlayerNotInstalledException
         {
@@ -63,10 +64,9 @@ namespace DigitallyImported.Player
         // this is such a hack, i hate it.
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
-        /// <param name="type"></param>
+        /// <param name="channel"> </param>
+        /// <param name="type"> </param>
         public void Play(IChannel channel, StreamType type)
         {
             _player.Play(channel, PlayerType);

@@ -97,3 +97,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\Digitally
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.TrustInfo.xml
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.exe.manifest
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.application
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Debug\Bass.Net.dll

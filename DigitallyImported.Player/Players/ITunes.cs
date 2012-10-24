@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using System.Threading;
@@ -6,15 +8,15 @@ using DigitallyImported.Configuration.Properties;
 using iTunesLib;
 using P = DigitallyImported.Resources.Properties;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public class ITunes : Player, IITunes, IPlayerFactory
     {
         /// <summary>
-        /// 
         /// </summary>
         public ITunes()
             : base(PlayerType.iTunes)
@@ -24,8 +26,8 @@ namespace DigitallyImported.Player
 
         #region IITunes Members
 
-        /// <summary>Player U
-        /// 
+        /// <summary>
+        ///   Player U
         /// </summary>
         public override PlayerType PlayerType
         {
@@ -33,7 +35,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override Icon PlayerIcon
         {
@@ -41,7 +42,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override bool IsInstalled
         {
@@ -51,9 +51,8 @@ namespace DigitallyImported.Player
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected override void Play(IChannel channel)
         {
             // REALLY NEED TO CHANGE THIS IOC/TEMPLATE METHOD IN BASE CLASS
@@ -81,10 +80,9 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="streamUri"></param>
-        /// <returns></returns>
+        /// <param name="streamUri"> </param>
+        /// <returns> </returns>
         protected override Uri ParseStreamUri(Uri streamUri)
         {
             // throw new NotImplementedException();

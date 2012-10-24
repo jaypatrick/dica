@@ -1,19 +1,21 @@
+#region using declarations
+
 using System;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public class EventView<T> : ContentView<T>, IEventView<T>
         where T : IEvent, new()
     {
         private readonly EventLoader<T> _loader;
 
         /// <summary>
-        /// 
         /// </summary>
         public EventView()
             : this(new EventCollection<T>())
@@ -21,9 +23,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="events"></param>
+        /// <param name="events"> </param>
         public EventView(EventCollection<T> events) // NEED A SPECIFIC VIEW TYPE SERVED UP (WEB, WINFORMS, ETC)
             : base(events)
         {
@@ -34,21 +35,18 @@ namespace DigitallyImported.Utilities
         #region IEventView<T> Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public EventCollection<T> GetView(bool bypassCache)
         {
             return _loader.LoadEvents(bypassCache);
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public EventCollection<T> Events { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public override void Save()
         {

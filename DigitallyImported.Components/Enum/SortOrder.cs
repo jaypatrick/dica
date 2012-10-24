@@ -1,7 +1,6 @@
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
     public enum SortOrder
     {

@@ -1,13 +1,16 @@
+#region using declarations
+
 using System.ComponentModel;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="TChannel"></typeparam>
+    /// <typeparam name="TChannel"> </typeparam>
     public partial class ChannelsContextMenu<TChannel> : BaseContextMenu
         where TChannel : class, IChannel, new()
     {
@@ -15,7 +18,6 @@ namespace DigitallyImported.Utilities
         private IChannel _selectedChannel;
 
         /// <summary>
-        /// 
         /// </summary>
         public ChannelsContextMenu()
         {
@@ -23,9 +25,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public ChannelsContextMenu(IContainer container)
         {
             container.Add(this);
@@ -34,7 +35,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public IChannel SelectedChannel
         {
@@ -42,7 +42,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public ChannelCollection<TChannel> Channels
         {
@@ -51,7 +50,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public StationType PlaylistType { get; set; }
 

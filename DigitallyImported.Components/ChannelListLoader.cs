@@ -1,4 +1,4 @@
-// DI
+#region using declarations
 
 using System;
 using System.Data;
@@ -8,10 +8,11 @@ using System.Xml;
 using DigitallyImported.Data;
 using C = DigitallyImported.Configuration.Properties;
 
+#endregion
+
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
     public class ChannelListLoader<TChannel> : ContentLoader<TChannel>, IDisposable
         where TChannel : IChannel
@@ -22,7 +23,7 @@ namespace DigitallyImported.Components
         private XmlReaderSettings _readerSettings;
 
         /// <summary>
-        /// Default constructor. Uses default playlist URL specified in app configuration.
+        ///   Default constructor. Uses default playlist URL specified in app configuration.
         /// </summary>
         public ChannelListLoader()
             : this(C.Settings.Default.DIPlaylistXml)
@@ -38,7 +39,6 @@ namespace DigitallyImported.Components
         #region IDisposable Members
 
         /// <summary>
-        /// 
         /// </summary>
         public void Dispose()
         {
@@ -48,10 +48,9 @@ namespace DigitallyImported.Components
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual DataSet LoadPlaylist(bool bypassCache)
         {
             return LoadPlaylist(bypassCache, C.Settings.Default.DIPlaylistXml);
@@ -94,9 +93,8 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="disposing"></param>
+        /// <param name="disposing"> </param>
         protected virtual void Dispose(bool disposing)
         {
             Trace.WriteLine("EventListLoader was disposed, disposing = {0}", disposing.ToString());
@@ -116,10 +114,8 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
-        /// 
+        /// <returns> </returns>
         [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
         protected internal XmlReader LoadXmlData()
         {

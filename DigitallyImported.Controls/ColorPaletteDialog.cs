@@ -1,14 +1,18 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class ColorPaletteDialog : Form
     {
+        private readonly Panel[] _panel = new Panel[40];
         private readonly Button cancelButton = new Button();
 
         private readonly Color[] color = new Color[40]
@@ -59,15 +63,13 @@ namespace DigitallyImported.Utilities
             };
 
         private readonly Button moreColorsButton = new Button();
-        private readonly Panel[] _panel = new Panel[40];
         private byte max = 40;
         private Color selectedColor;
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
+        /// <param name="x"> </param>
+        /// <param name="y"> </param>
         public ColorPaletteDialog(int x, int y)
         {
             Size = new Size(158, 132);
@@ -96,7 +98,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public Color Color
         {

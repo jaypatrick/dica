@@ -1,18 +1,20 @@
+#region using declarations
+
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DigitallyImported.Components;
-using DigitallyImported.Utilities;
+using DigitallyImported.Controls.Windows;
+
+#endregion
 
 namespace DigitallyImported.Client
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class HistoryForm : BaseForm
     {
         /// <summary>
-        /// 
         /// </summary>
         public HistoryForm()
         {
@@ -20,9 +22,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public HistoryForm(IChannel channel)
         {
             InitializeComponent();
@@ -31,14 +32,12 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public IChannel Channel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnLoad(EventArgs e)
         {
             if (Channel != null)

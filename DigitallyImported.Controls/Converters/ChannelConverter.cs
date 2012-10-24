@@ -1,9 +1,14 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Globalization;
 using DigitallyImported.Components;
+using DigitallyImported.Controls.Windows;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls
 {
     // convert from Channel to PremiumChannel
     public class ChannelConverter : TypeConverter

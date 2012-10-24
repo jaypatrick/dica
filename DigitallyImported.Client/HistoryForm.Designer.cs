@@ -1,3 +1,5 @@
+using DigitallyImported.Controls.Windows;
+
 namespace DigitallyImported.Client
 {
     partial class HistoryForm
@@ -30,7 +32,7 @@ namespace DigitallyImported.Client
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HistoryForm));
             this.lnkTitle = new System.Windows.Forms.LinkLabel();
-            this.HistoryPanel = new DigitallyImported.Utilities.ChannelPanel<DigitallyImported.Utilities.PremiumChannel>();
+            this.HistoryPanel = new ChannelPanel<PremiumChannel>();
             this.SuspendLayout();
             // 
             // lnkTitle
@@ -83,7 +85,7 @@ namespace DigitallyImported.Client
         #endregion
 
         private System.Windows.Forms.LinkLabel lnkTitle;
-        private DigitallyImported.Utilities.ChannelPanel<DigitallyImported.Utilities.PremiumChannel> HistoryPanel;
+        private ChannelPanel<PremiumChannel> HistoryPanel;
 
     }
 }

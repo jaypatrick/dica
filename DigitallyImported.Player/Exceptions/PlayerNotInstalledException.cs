@@ -1,18 +1,18 @@
+#region using declarations
+
 using System;
 using System.Runtime.Serialization;
+
+#endregion
 
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     [Serializable]
-    public class PlayerNotInstalledException : Exception, ISerializable
+    public class PlayerNotInstalledException : ApplicationException
     {
-        private readonly IPlayer _player;
-
         /// <summary>
-        /// 
         /// </summary>
         public PlayerNotInstalledException()
         {
@@ -24,49 +24,43 @@ namespace DigitallyImported.Player
         /// </summary>
         /// <param name="message"></param>
         public PlayerNotInstalledException(string message)
-            : this(message, null)
+            : base(message)
+        {
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="message"> </param>
+        /// <param name="inner"> </param>
+        public PlayerNotInstalledException(string message, Exception inner = null)
+            : base(message, inner)
         {
             // Add implementation.
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="message"></param>
-        /// <param name="inner"></param>
-        public PlayerNotInstalledException(string message, Exception inner)
-            : this(message, inner, null)
-        {
-            // Add implementation.
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="message"></param>
-        /// <param name="inner"></param>
-        /// <param name="player"></param>
+        /// <param name="message"> </param>
+        /// <param name="inner"> </param>
+        /// <param name="player"> </param>
         public PlayerNotInstalledException(string message, Exception inner, IPlayer player)
+            : base(message, inner)
         {
-            _player = player;
+            Player = player;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="info"></param>
-        /// <param name="context"></param>
+        /// <param name="info"> </param>
+        /// <param name="context"> </param>
         protected PlayerNotInstalledException(SerializationInfo info, StreamingContext context)
+            :base(info, context)
         {
             // Add implementation.
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual IPlayer Player
-        {
-            get { return _player; }
-        }
+        protected virtual IPlayer Player { get; set; }
     }
 }

@@ -1,4 +1,8 @@
+#region using declarations
+
 using System.Xml.Serialization;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

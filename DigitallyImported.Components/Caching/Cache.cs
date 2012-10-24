@@ -1,25 +1,28 @@
+#region using declarations
+
 using System;
 using System.Runtime.Caching;
 using DigitallyImported.Configuration.Properties;
 
+#endregion
+
 namespace DigitallyImported.Components.Caching
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="TKey"></typeparam>
-    /// <typeparam name="TValue"></typeparam>
+    /// <typeparam name="TKey"> </typeparam>
+    /// <typeparam name="TValue"> </typeparam>
     internal class Cache<TKey, TValue>
     {
         private static MemoryCache _cache;
 
         /// <summary>
-        /// Static initializer should ensure we only have to look up the current cache
-        /// instance once.
+        ///   Static initializer should ensure we only have to look up the current cache
+        ///   instance once.
         /// </summary>
         static Cache()
         {
-            _cache = MemoryCache.Default;
+            if (MemoryCache.Default != null) _cache = MemoryCache.Default;
         }
 
         private Cache()
@@ -27,21 +30,19 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheKey"></param>
-        /// <returns></returns>
+        /// <param name="cacheKey"> </param>
+        /// <returns> </returns>
         internal TValue this[TKey cacheKey]
         {
             get { return this[cacheKey]; }
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheKey"></param>
-        /// <param name="cacheItem"></param>
-        /// <returns></returns>
+        /// <param name="cacheKey"> </param>
+        /// <param name="cacheItem"> </param>
+        /// <returns> </returns>
         internal TValue this[TKey cacheKey, TValue cacheItem]
         {
             get { return Get(cacheKey); }
@@ -49,7 +50,6 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
         internal static int Count
         {
@@ -57,7 +57,6 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
         internal static void Clear()
         {
@@ -66,9 +65,9 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// Removes the specified cacheKey from the cache
+        ///   Removes the specified cacheKey from the cache
         /// </summary>
-        /// <param name="cacheKey"></param>
+        /// <param name="cacheKey"> </param>
         internal static void Remove(TKey cacheKey)
         {
             if (_cache.Contains(cacheKey as string))
@@ -76,10 +75,9 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheKey"></param>
-        /// <param name="cacheItem"></param>
+        /// <param name="cacheKey"> </param>
+        /// <param name="cacheItem"> </param>
         internal static void Insert(TKey cacheKey, TValue cacheItem)
         {
             Insert(cacheKey
@@ -88,10 +86,9 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheKey"></param>
-        /// <param name="cacheItem"></param>
+        /// <param name="cacheKey"> </param>
+        /// <param name="cacheItem"> </param>
         /// <param name="expirationTime"> </param>
         internal static void Insert(TKey cacheKey, TValue cacheItem, DateTime expirationTime)
         {
@@ -102,10 +99,9 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="cacheKey"></param>
-        /// <returns></returns>
+        /// <param name="cacheKey"> </param>
+        /// <returns> </returns>
         internal static TValue Get(TKey cacheKey)
         {
             return _cache.Contains(cacheKey as string)

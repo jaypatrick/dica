@@ -1,4 +1,4 @@
-// DI
+#region using declarations
 
 using System;
 using System.ComponentModel;
@@ -13,16 +13,17 @@ using System.Windows.Forms;
 using System.Xml;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
+using DigitallyImported.Controls.Windows;
 using DigitallyImported.Player;
-using DigitallyImported.Utilities;
 using P = DigitallyImported.Resources.Properties;
+
+#endregion
 
 // using DigitallyImported.Client.PlaylistService;
 
 namespace DigitallyImported.Client.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class ContentControl<TChannel, TTrack> : UserControl
         where TChannel : UserControl, IChannel, new()
@@ -51,7 +52,6 @@ namespace DigitallyImported.Client.Controls
 
 
         /// <summary>
-        /// 
         /// </summary>
         public ContentControl()
         {
@@ -108,7 +108,6 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected virtual void BindEvents()
         {
@@ -156,9 +155,8 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state"> </param>
         protected virtual void UpdateNetworkStatus(object state)
         {
             if ((bool) state)
@@ -347,10 +345,11 @@ namespace DigitallyImported.Client.Controls
 
         private void ViewChannelSplitButton_ButtonClick(object sender, EventArgs e)
         {
-            Parallel.Invoke(() => {
-                                      if (_channel != null)
-                                          Components.Utilities.StartProcess(_channel.ChannelInfoUrl.AbsoluteUri);
-            });
+            Parallel.Invoke(() =>
+                {
+                    if (_channel != null)
+                        Components.Utilities.StartProcess(_channel.ChannelInfoUrl.AbsoluteUri);
+                });
         }
 
         private void ViewSitesSplitButton_ButtonClick(object sender, EventArgs e)
@@ -484,12 +483,12 @@ namespace DigitallyImported.Client.Controls
                 {
                     if (PlayerTypeSplitButton != null) PlayerTypeSplitButton.Text = e.ClickedItem.Text;
                     if (_playerLoader != null)
-                        _playerLoader.PlayerType = Utilities.Utilities.ParseEnum<PlayerType>(e.ClickedItem.Name);
+                        _playerLoader.PlayerType =
+                            DigitallyImported.Controls.Utilities.ParseEnum<PlayerType>(e.ClickedItem.Name);
                 }));
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal void UpdateVisualCues()
         {
@@ -503,10 +502,12 @@ namespace DigitallyImported.Client.Controls
                         _channel = PlaylistPanel.Channels[_channel.Name]
                                    ??
                                    PlaylistPanel.Channels[
-                                       new Random().Next(PlaylistPanel.Channels.Count > 0 ? PlaylistPanel.Channels.Count : 0)
+                                       new Random().Next(PlaylistPanel.Channels.Count > 0
+                                                             ? PlaylistPanel.Channels.Count
+                                                             : 0)
                                        ];
 
-                    _channel.IsSelected = true;
+                    if (_channel != null) _channel.IsSelected = true;
                 }
 
                 ConnectionStatusLabel.Text = string.Format("{0} {1}", PlaylistPanel.Channels.Count, "channels loaded");
@@ -514,7 +515,8 @@ namespace DigitallyImported.Client.Controls
             ViewChannelSplitButton.Text = _channel.ChannelName;
             ViewChannelSplitButton.Image = _channel.SiteIcon.ToBitmap();
             ViewPlaylistsSplitButton.Text =
-                Utilities.Utilities.GetPlaylistTypes<StationType>(Settings.Default.PlaylistTypes).ToString();
+                DigitallyImported.Controls.Utilities.GetPlaylistTypes<StationType>(Settings.Default.PlaylistTypes).
+                    ToString();
             ViewPlaylistsSplitButton.Image = _channel.SiteIcon.ToBitmap();
             //MainNotifyIcon.Icon          = _channel.SiteIcon;
             if (ParentForm != null) ParentForm.Icon = _channel.SiteIcon;
@@ -636,10 +638,9 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="keyData"></param>
-        /// <returns></returns>
+        /// <param name="keyData"> </param>
+        /// <returns> </returns>
         protected override bool ProcessDialogKey(Keys keyData)
         {
             if (!keyData.Equals(Keys.F5))

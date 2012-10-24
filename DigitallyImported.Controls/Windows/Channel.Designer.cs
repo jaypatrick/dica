@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities
+namespace DigitallyImported.Controls.Windows
 {
     partial class Channel
     {
@@ -34,7 +34,7 @@ namespace DigitallyImported.Utilities
             this.picSiteIcon = new System.Windows.Forms.PictureBox();
             this.StartTimeLabel = new System.Windows.Forms.Label();
             this.pic24k = new System.Windows.Forms.PictureBox();
-            this.EditContextMenu = new DigitallyImported.Utilities.BaseContextMenu(this.components);
+            this.EditContextMenu = new BaseContextMenu(this.components);
             this.lnkTrackTitle = new System.Windows.Forms.LinkLabel();
             this.lnkPlaylistHistory = new System.Windows.Forms.LinkLabel();
             this.lnkPostComments = new System.Windows.Forms.LinkLabel();

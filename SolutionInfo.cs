@@ -1,5 +1,9 @@
+#region using declarations
+
 using System.Reflection;
 using System.Resources;
+
+#endregion
 
 //
 // Version information for an assembly consists of the following four values:

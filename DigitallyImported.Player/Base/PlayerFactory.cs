@@ -1,13 +1,21 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using DigitallyImported.Components;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
+
     /// <summary>
     /// 
     /// </summary>
-    public class PlayerFactory<T, TPlayer> : IPlayerFactory // http://weblogs.asp.net/whaggard/archive/2004/09/05/225955.aspx
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TPlayer"></typeparam>
+    public class PlayerFactory<T, TPlayer> : IPlayerFactory
+        // http://weblogs.asp.net/whaggard/archive/2004/09/05/225955.aspx
         where T : IPlayer // http://www.codeproject.com/useritems/GenericsFactory.asp
         where TPlayer : T, new()
     {
@@ -21,7 +29,6 @@ namespace DigitallyImported.Player
         private TPlayer _player;
 
         /// <summary>
-        /// 
         /// </summary>
         public static PlayerFactory<T, TPlayer> Instance
         {
@@ -37,7 +44,6 @@ namespace DigitallyImported.Player
         #region Constructor
 
         /// <summary>
-        /// 
         /// </summary>
         protected PlayerFactory()
         {
@@ -49,7 +55,6 @@ namespace DigitallyImported.Player
         #region Methods
 
         /// <summary>
-        /// 
         /// </summary>
         protected virtual void Initialize()
         {
@@ -58,8 +63,7 @@ namespace DigitallyImported.Player
             var instance = _player as IPlayerFactory;
 
             if (instance == null) return;
-            IChannel channel = instance.GetPlayerKey();
-            instance = null;
+            var channel = instance.GetPlayerKey();
 
             if (!_playerChannels.ContainsKey(channel))
             {
@@ -81,16 +85,15 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
-        /// <returns></returns>
+        /// <param name="channel"> </param>
+        /// <returns> </returns>
         public virtual TPlayer CreatePlayer(IChannel channel)
         {
             if (channel == null)
                 throw new ArgumentNullException("channel", "Invalid channel supplied, must be non-null.");
 
-            TPlayer player = _playerChannels[channel];
+            var player = _playerChannels[channel];
             if (player != null)
             {
                 Trace.WriteLine(string.Format("Attempting {0} instantiation for streaming of channel '{1}'"
@@ -104,9 +107,13 @@ namespace DigitallyImported.Player
 
         #endregion
 
+        #region IPlayerFactory Members
+
         public virtual IChannel GetPlayerKey()
         {
             return _player.Channel;
         }
+
+        #endregion
     }
 }

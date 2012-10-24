@@ -1,6 +1,7 @@
 using System.Windows.Forms;
 using DigitallyImported.Components;
-namespace DigitallyImported.Utilities
+
+namespace DigitallyImported.Controls.Windows
 {
     partial class ChannelPanel<TChannel>
         where TChannel : UserControl, IChannel, new()

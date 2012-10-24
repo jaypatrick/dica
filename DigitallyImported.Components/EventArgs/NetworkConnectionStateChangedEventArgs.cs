@@ -1,16 +1,18 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components.Services
 {
+    /// <summary>
+    /// </summary>
     [Serializable]
     public class NetworkConnectionStateChangedEventArgs : EventArgs
     {
-        private ConnectionStatus _networkStatus;
-
-        public ConnectionStatus NetworkStatus
-        {
-            get { return _networkStatus; }
-            set { _networkStatus = value; }
-        }
+        /// <summary>
+        /// </summary>
+        public ConnectionStatus NetworkStatus { get; set; }
     }
 }

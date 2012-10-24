@@ -1,7 +1,11 @@
+#region using declarations
+
 using System;
 using System.Collections.Specialized;
 using System.Configuration.Provider;
 using DigitallyImported.Configuration.Properties;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using System.Net.NetworkInformation;
@@ -7,10 +9,11 @@ using DigitallyImported.Client.Diagnostics;
 using DigitallyImported.Configuration.Properties;
 using P = DigitallyImported.Resources.Properties;
 
+#endregion
+
 namespace DigitallyImported.Client
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class BaseForm : Form
     {
@@ -18,9 +21,8 @@ namespace DigitallyImported.Client
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -48,20 +50,18 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void NetworkAvailabilityChanged(object sender, NetworkAvailabilityEventArgs e)
         {
             BeginInvoke(new WaitCallback(UpdateNetworkStatus), e.IsAvailable);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void AppDomainUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
 #if !DEBUG
@@ -72,9 +72,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="e"></param>
+        /// <param name="e"> </param>
         protected override void OnResize(EventArgs e)
         {
             base.OnResize(e);
@@ -90,10 +89,9 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
 #if !DEBUG
@@ -138,10 +136,9 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void Application_ApplicationExit(object sender, EventArgs e)
         {
             Settings.Default.Save();
@@ -149,9 +146,8 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="state"></param>
+        /// <param name="state"> </param>
         protected virtual void UpdateNetworkStatus(object state)
         {
             if ((bool) state)

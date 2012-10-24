@@ -1,16 +1,18 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using DigitallyImported.Components;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public class WebPlayer : Player
     {
         /// <summary>
-        /// 
         /// </summary>
         public WebPlayer()
             : base(PlayerType.Default)
@@ -18,7 +20,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override bool IsInstalled
         {
@@ -26,7 +27,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override Icon PlayerIcon
         {
@@ -34,7 +34,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override PlayerType PlayerType
         {
@@ -42,9 +41,8 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected override void Play(IChannel channel)
         {
             //if (channel == null) throw new ArgumentNullException("channel", "Must specify a channel to play. ");
@@ -57,10 +55,9 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="streamUri"></param>
-        /// <returns></returns>
+        /// <param name="streamUri"> </param>
+        /// <returns> </returns>
         protected override Uri ParseStreamUri(Uri streamUri)
         {
             return streamUri;

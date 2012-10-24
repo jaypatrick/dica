@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,35 +8,36 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
+#endregion
+
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// Static utility methods
+    ///   Static utility methods
     /// </summary>
     public static class Utilities
     {
         public static string EncodeTo64(string toEncode)
         {
-            byte[] toEncodeAsBytes = Encoding.ASCII.GetBytes(toEncode);
+            var toEncodeAsBytes = Encoding.ASCII.GetBytes(toEncode);
             return Convert.ToBase64String(toEncodeAsBytes);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="value"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="value"> </param>
+        /// <returns> </returns>
         public static T ParseEnum<T>(string value) where T : struct
         {
             return (T) Enum.Parse(typeof (T), value, true);
         }
 
         /// <summary>
-        /// Splits a string up based on capital letters, i.e. ThisString becomes This String
+        ///   Splits a string up based on capital letters, i.e. ThisString becomes This String
         /// </summary>
-        /// <param name="name">The string to split</param>
-        /// <returns></returns>
+        /// <param name="name"> The string to split </param>
+        /// <returns> </returns>
         public static string SplitName(string name)
         {
             if (string.IsNullOrEmpty(name))
@@ -80,10 +83,9 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
+        /// <param name="name"> </param>
+        /// <returns> </returns>
         public static string CapitalizeFirstLetters(string name)
         {
             if (name == null) throw new ArgumentNullException("name", Resources.Properties.Resources.StringNull);
@@ -92,23 +94,21 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="delimiter"></param>
-        /// <param name="items"></param>
-        /// <param name="converter"></param>
-        /// <returns></returns>
+        /// <typeparam name="T"> </typeparam>
+        /// <param name="delimiter"> </param>
+        /// <param name="items"> </param>
+        /// <returns> </returns>
         public static string Join<T>(string delimiter
-                                     , IEnumerable<T> items
-                                     , Converter<T, string> converter)
+                                     , IEnumerable<T> items)
         {
             var builder = new StringBuilder();
-            foreach (T site in items)
-            {
-                builder.Append(site);
-                builder.Append(delimiter);
-            }
+            if (items != null)
+                foreach (var site in items)
+                {
+                    builder.Append(site);
+                    builder.Append(delimiter);
+                }
             if (builder.Length > 0)
                 builder.Length = builder.Length - delimiter.Length;
 
@@ -116,24 +116,19 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// Starts a process based on the file extension of the string passed in
+        ///   Starts a process based on the file extension of the string passed in
         /// </summary>
-        /// <param name="processToStart">The name of the process to start</param>
+        /// <param name="processToStart"> The name of the process to start </param>
         public static void StartProcess(string processToStart)
         {
-            ProcessStartInfo info;
-
-            if (!string.IsNullOrEmpty(processToStart))
-            {
-                info = new ProcessStartInfo(processToStart.Trim());
-                StartProcess(info);
-            }
+            if (string.IsNullOrEmpty(processToStart)) return;
+            var info = new ProcessStartInfo(processToStart.Trim());
+            StartProcess(info);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="processToStart"></param>
+        /// <param name="processToStart"> </param>
         public static void StartProcess(ProcessStartInfo processToStart)
         {
             if (processToStart == null)
@@ -145,12 +140,11 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="mediaType"></param>
-        /// <param name="siteName"></param>
-        /// <param name="channelName"></param>
-        /// <returns></returns>
+        /// <param name="mediaType"> </param>
+        /// <param name="siteName"> </param>
+        /// <param name="channelName"> </param>
+        /// <returns> </returns>
         public static Uri GetChannelUri(StreamType mediaType, string siteName, string channelName)
         {
             if (string.IsNullOrEmpty(siteName))
@@ -193,13 +187,12 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="mediaType"></param>
-        /// <param name="siteName"></param>
-        /// <param name="channelName"></param>
+        /// <param name="mediaType"> </param>
+        /// <param name="siteName"> </param>
+        /// <param name="channelName"> </param>
         /// <param name="listenKey"> </param>
-        /// <returns></returns>
+        /// <returns> </returns>
         public static Uri GetPremiumChannelUri(StreamType mediaType, string siteName, string channelName,
                                                string listenKey)
         {
@@ -243,15 +236,13 @@ namespace DigitallyImported.Components
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public static bool IsConnectedToInternet()
         {
-            HttpWebRequest request;
             HttpWebResponse response;
 
-            request = (HttpWebRequest) WebRequest.Create(new Uri("http://www.google.com"));
+            var request = (HttpWebRequest) WebRequest.Create(new Uri("http://www.google.com"));
             using (response = (HttpWebResponse) request.GetResponse())
             {
                 if (response.StatusCode == HttpStatusCode.OK)

@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using SortOrder = DigitallyImported.Components.SortOrder;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class SortContextMenu : BaseContextMenu
     {
@@ -17,7 +20,6 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
         public SortContextMenu()
         {
@@ -25,9 +27,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public SortContextMenu(IContainer container)
         {
             container.Add(this);
@@ -36,7 +37,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public SortBy SortBy
         {
@@ -44,7 +44,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public SortOrder SortOrder
         {
@@ -55,8 +54,8 @@ namespace DigitallyImported.Utilities
         {
             Items.Clear();
 
-            int i = 0;
-            foreach (string option in Enum.GetNames(typeof (SortBy)))
+            var i = 0;
+            foreach (var option in Enum.GetNames(typeof (SortBy)))
             {
                 Items.Add(Components.Utilities.CapitalizeFirstLetters(option));
                 Items[i].Name = option;

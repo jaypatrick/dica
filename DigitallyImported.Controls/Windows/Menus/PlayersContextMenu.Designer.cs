@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities.Windows.Menus
+namespace DigitallyImported.Controls.Windows
 {
     partial class PlayersContextMenu
     {

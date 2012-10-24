@@ -1,4 +1,8 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
@@ -16,6 +20,6 @@ namespace DigitallyImported.Components
         int CommentCount { get; set; } //
         bool IsPlaying { get; set; } // this is set in the control itself
 
-        event EventHandler<eeEventArgs<ITrack>> ee;
+        event EventHandler<CommentCountChangedEventArgs<ITrack>> ee;
     }
 }

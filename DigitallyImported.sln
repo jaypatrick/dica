@@ -10,10 +10,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TODO.txt = TODO.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Tests", "Unit Tests", "{3613AD32-2F02-4FDD-B226-22519B7F0D52}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{5B3DA294-BFE4-4E82-AE4F-46A498E4F0D8}"
 	ProjectSection(SolutionItems) = preProject
+		lib\bass.dll = lib\bass.dll
+		lib\Bass.Net.dll = lib\Bass.Net.dll
+		lib\bassaac.dll = lib\bassaac.dll
+		lib\basswma.dll = lib\basswma.dll
 		VbPowerPack.dll = VbPowerPack.dll
 	EndProjectSection
 EndProject
@@ -30,6 +32,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitallyImported.Resources", "DigitallyImported.Resources\DigitallyImported.Resources.csproj", "{547E38B0-0DBA-487B-82C2-7CA5001B7F5C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitallyImported.Data", "DigitallyImported.Data\DigitallyImported.Data.csproj", "{8366C629-D78F-4985-87A9-AADA08187AD2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DF16E86C-FEFD-4B81-998F-3597B054496C}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution

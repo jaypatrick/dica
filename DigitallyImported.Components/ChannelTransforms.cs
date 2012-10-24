@@ -1,5 +1,9 @@
+#region using declarations
+
 using System.Xml;
 using System.Xml.XPath;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

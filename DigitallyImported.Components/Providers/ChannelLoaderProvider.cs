@@ -1,4 +1,8 @@
+#region using declarations
+
 using System.Configuration.Provider;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

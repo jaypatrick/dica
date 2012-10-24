@@ -1,4 +1,8 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
@@ -7,7 +11,6 @@ namespace DigitallyImported.Components
         where T : IContent
     {
         /// <summary>
-        /// 
         /// </summary>
         protected ContentChangedEventArgs()
             : this(default(T))
@@ -16,16 +19,14 @@ namespace DigitallyImported.Components
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="refreshedContent"></param>
+        /// <param name="refreshedContent"> </param>
         protected ContentChangedEventArgs(T refreshedContent)
         {
             RefreshedContent = refreshedContent;
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract T RefreshedContent { get; set; }
     }

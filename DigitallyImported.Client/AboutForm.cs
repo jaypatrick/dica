@@ -1,8 +1,12 @@
+#region using declarations
+
 using System;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using P = DigitallyImported.Resources.Properties;
+
+#endregion
 
 namespace DigitallyImported.Client
 {
@@ -33,14 +37,21 @@ namespace DigitallyImported.Client
                     ());
         }
 
+        private void okButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         #region Assembly Attibute Accessors
 
+        /// <summary>
+        /// </summary>
         public string AssemblyTitle
         {
             get
             {
                 // Get all Title attributes on this assembly
-                object[] attributes =
+                var attributes =
                     Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyTitleAttribute), false);
                 // If there is at least one Title attribute
                 if (attributes.Length > 0)
@@ -48,7 +59,7 @@ namespace DigitallyImported.Client
                     // Select the first one
                     var titleAttribute = (AssemblyTitleAttribute) attributes[0];
                     // If it is not an empty string, return it
-                    if (titleAttribute.Title != "")
+                    if (titleAttribute.Title != string.Empty)
                         return titleAttribute.Title;
                 }
                 // If there was no Title attribute, or if the Title attribute was the empty string, return the .exe name
@@ -66,58 +77,58 @@ namespace DigitallyImported.Client
             get
             {
                 // Get all Description attributes on this assembly
-                object[] attributes =
+                var attributes =
                     Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyDescriptionAttribute), false);
                 // If there aren't any Description attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
+                return attributes.Length == 0
+                           ? string.Empty
+                           : ((AssemblyDescriptionAttribute) attributes[0]).Description;
                 // If there is a Description attribute, return its value
-                return ((AssemblyDescriptionAttribute) attributes[0]).Description;
             }
         }
 
+        /// <summary>
+        /// </summary>
         public string AssemblyProduct
         {
             get
             {
                 // Get all Product attributes on this assembly
-                object[] attributes =
+                var attributes =
                     Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyProductAttribute), false);
                 // If there aren't any Product attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
+                return attributes.Length == 0 ? string.Empty : ((AssemblyProductAttribute) attributes[0]).Product;
                 // If there is a Product attribute, return its value
-                return ((AssemblyProductAttribute) attributes[0]).Product;
             }
         }
 
+        /// <summary>
+        /// </summary>
         public string AssemblyCopyright
         {
             get
             {
                 // Get all Copyright attributes on this assembly
-                object[] attributes =
+                var attributes =
                     Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
                 // If there aren't any Copyright attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
+                return attributes.Length == 0 ? string.Empty : ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
                 // If there is a Copyright attribute, return its value
-                return ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
             }
         }
 
+        /// <summary>
+        /// </summary>
         public string AssemblyCompany
         {
             get
             {
                 // Get all Company attributes on this assembly
-                object[] attributes =
+                var attributes =
                     Assembly.GetExecutingAssembly().GetCustomAttributes(typeof (AssemblyCompanyAttribute), false);
                 // If there aren't any Company attributes, return an empty string
-                if (attributes.Length == 0)
-                    return "";
+                return attributes.Length == 0 ? string.Empty : ((AssemblyCompanyAttribute) attributes[0]).Company;
                 // If there is a Company attribute, return its value
-                return ((AssemblyCompanyAttribute) attributes[0]).Company;
             }
         }
 

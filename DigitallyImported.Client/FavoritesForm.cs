@@ -1,11 +1,15 @@
+#region using declarations
+
 using System;
 using System.Collections;
 using System.Collections.Specialized;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-using DigitallyImported.Utilities;
+using DigitallyImported.Controls.Windows;
 using P = DigitallyImported.Resources.Properties;
+
+#endregion
 
 namespace DigitallyImported.Client
 {

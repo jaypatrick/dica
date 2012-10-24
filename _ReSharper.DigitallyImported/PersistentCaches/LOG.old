@@ -1,5 +1,5 @@
-2012/10/21-22:53:06.375 1ae4 Recovering log #3
-2012/10/21-22:53:06.388 1ae4 Level-0 table #5: started
-2012/10/21-22:53:06.724 1ae4 Level-0 table #5: 768998 bytes OK
-2012/10/21-22:53:06.736 1ae4 Delete type=0 #3
-2012/10/21-22:53:06.738 1ae4 Delete type=3 #2
+2012/10/23-23:08:35.209 26e4 Recovering log #12
+2012/10/23-23:08:35.219 26e4 Level-0 table #15: started
+2012/10/23-23:08:35.229 26e4 Level-0 table #15: 340846 bytes OK
+2012/10/23-23:08:35.239 26e4 Delete type=0 #12
+2012/10/23-23:08:35.239 26e4 Delete type=3 #10

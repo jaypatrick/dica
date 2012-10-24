@@ -1,5 +1,9 @@
+#region using declarations
+
 using System;
 using System.Drawing;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

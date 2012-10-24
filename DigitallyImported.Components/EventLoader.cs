@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
     // DI
 
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public class EventLoader<T> : EventListLoader<T>
         where T : IEvent, new()
     {

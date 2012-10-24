@@ -1,39 +1,40 @@
+#region using declarations
+
 using System;
 using System.Web;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-using P = DigitallyImported.Resources.Properties;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     [Serializable]
     public partial class PremiumChannel : Channel
     {
-        private Uri playListHistoryUrl;
+        private Uri _playListHistoryUrl;
 
         /// <summary>
-        /// 
         /// </summary>
         public override Uri PlaylistHistoryUrl
         {
-            get { return playListHistoryUrl; }
+            get { return _playListHistoryUrl; }
             set
             {
                 value = new Uri(value + "/pro/");
 
-                playListHistoryUrl = value;
+                _playListHistoryUrl = value;
 
                 if (InvokeRequired)
                 {
-                    BeginInvoke((Action) delegate
+                    BeginInvoke((Action) (() =>
                         {
                             lnkPlaylistHistory.Links[0].LinkData = value.AbsoluteUri;
                             toolTipLinks.SetToolTip(lnkPlaylistHistory, value.AbsoluteUri);
-                        });
+                        }));
                 }
                 else
                 {
@@ -44,25 +45,23 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal override void LoadImages()
         {
-            picAac.Image = P.Resources.icon_trans_aac;
-            pic256k.Image = P.Resources.blue_256k;
-            pic128kAac.Image = P.Resources.blue_128k;
-            pic128kWmp.Image = P.Resources.blue_128k;
-            pic64k.Image = P.Resources.blue_64k;
+            picAac.Image = Resources.Properties.Resources.icon_trans_aac;
+            pic256k.Image = Resources.Properties.Resources.blue_256k;
+            pic128kAac.Image = Resources.Properties.Resources.blue_128k;
+            pic128kWmp.Image = Resources.Properties.Resources.blue_128k;
+            pic64k.Image = Resources.Properties.Resources.blue_64k;
 
             base.LoadImages();
         }
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal override void PictureBox_MouseEnter(object sender, EventArgs e)
         {
             base.PictureBox_MouseEnter(sender, e);
@@ -77,7 +76,7 @@ namespace DigitallyImported.Utilities
             //{
             if (name.Contains("picaac"))
             {
-                toolTipLinks.SetToolTip(c, P.Resources.MediaTypeAacPlus);
+                toolTipLinks.SetToolTip(c, Resources.Properties.Resources.MediaTypeAacPlus);
                 //break;
             }
 
@@ -113,10 +112,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal override void StreamType_MouseClick(object sender, MouseEventArgs e)
         {
             if ((Settings.Default.Username == string.Empty
@@ -171,7 +169,7 @@ namespace DigitallyImported.Utilities
             }
             else
             {
-                throw new HttpException(401, P.Resources.PremiumServiceAuthorizationException);
+                throw new HttpException(401, Resources.Properties.Resources.PremiumServiceAuthorizationException);
             }
         }
     }

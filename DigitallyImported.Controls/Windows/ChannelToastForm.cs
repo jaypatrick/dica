@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public partial class ChannelToastForm<T> : ToastForm<T> where T : IChannel
     {
         private string _bodyText = string.Empty;
@@ -15,7 +18,6 @@ namespace DigitallyImported.Utilities
         private string _titleText = string.Empty;
 
         /// <summary>
-        /// 
         /// </summary>
         public ChannelToastForm()
         {
@@ -23,9 +25,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public ChannelToastForm(IContainer container)
             : base(container)
         {
@@ -35,9 +36,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public ChannelToastForm(T channel)
             : base(channel)
         {
@@ -47,7 +47,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override T Content
         {
@@ -56,7 +55,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override string BodyText
         {
@@ -69,7 +67,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override string TitleText
         {
@@ -78,10 +75,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal void ChannelToastForm_Click(object sender, EventArgs e)
         {
             // string toastText = string.Format("Track changed on channel {0} to {1}", _channel.ChannelName, _channel.TrackTitle);

@@ -1,5 +1,6 @@
 using System.Windows.Forms;
 using DigitallyImported.Components;
+using DigitallyImported.Controls.Windows;
 
 namespace DigitallyImported.Client.Controls
 {
@@ -42,7 +43,7 @@ namespace DigitallyImported.Client.Controls
             this.ExceptionStatusMessage = new System.Windows.Forms.ToolStripStatusLabel();
             this.MemoryStatus = new System.Windows.Forms.Label();
             this.RefreshCounterLabel = new System.Windows.Forms.Label();
-            this.PlaylistPanel = new DigitallyImported.Utilities.ChannelPanel<TChannel>();
+            this.PlaylistPanel = new ChannelPanel<TChannel>();
             this.MainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,11 +96,11 @@ namespace DigitallyImported.Client.Controls
             this.MainNotifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.RefreshEventlistWorker = new System.ComponentModel.BackgroundWorker();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.PlaylistsContextMenu = new DigitallyImported.Utilities.PlaylistsContextMenu(this.components);
-            this.SortContextMenu = new DigitallyImported.Utilities.SortContextMenu(this.components);
-            this.ChannelsContextMenu = new DigitallyImported.Utilities.ChannelsContextMenu<TChannel>(this.components);
-            this.EventsContextMenu = new DigitallyImported.Utilities.EventsContextMenu(this.components);
-            this.PlayersContextMenu = new DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu(this.components);
+            this.PlaylistsContextMenu = new PlaylistsContextMenu(this.components);
+            this.SortContextMenu = new SortContextMenu(this.components);
+            this.ChannelsContextMenu = new ChannelsContextMenu<TChannel>(this.components);
+            this.EventsContextMenu = new EventsContextMenu(this.components);
+            this.PlayersContextMenu = new PlayersContextMenu(this.components);
             this.MainToolStripContainer.BottomToolStripPanel.SuspendLayout();
             this.MainToolStripContainer.ContentPanel.SuspendLayout();
             this.MainToolStripContainer.TopToolStripPanel.SuspendLayout();
@@ -751,13 +752,13 @@ namespace DigitallyImported.Client.Controls
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripStatusLabel ConnectionStatusLabel;
         private System.Windows.Forms.ToolStripSplitButton SortPlaylistSplitButton;
-        private DigitallyImported.Utilities.PlaylistsContextMenu PlaylistsContextMenu;
-        private DigitallyImported.Utilities.SortContextMenu SortContextMenu;
-        private DigitallyImported.Utilities.ChannelsContextMenu<TChannel> ChannelsContextMenu;
-        private DigitallyImported.Utilities.EventsContextMenu EventsContextMenu;
-        private DigitallyImported.Utilities.ChannelPanel<TChannel> PlaylistPanel;
+        private PlaylistsContextMenu PlaylistsContextMenu;
+        private SortContextMenu SortContextMenu;
+        private ChannelsContextMenu<TChannel> ChannelsContextMenu;
+        private EventsContextMenu EventsContextMenu;
+        private ChannelPanel<TChannel> PlaylistPanel;
         private System.Windows.Forms.ToolStripSplitButton PlayerTypeSplitButton;
-        private DigitallyImported.Utilities.Windows.Menus.PlayersContextMenu PlayersContextMenu;
+        private PlayersContextMenu PlayersContextMenu;
         private System.Windows.Forms.ToolStripSplitButton ViewEventsSplitButton;
         private System.Windows.Forms.ToolStripButton OptionsButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;

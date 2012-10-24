@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
     /// 

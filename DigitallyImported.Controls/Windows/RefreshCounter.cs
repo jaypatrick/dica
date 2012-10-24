@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Configuration;
@@ -5,10 +7,11 @@ using System.Globalization;
 using System.Windows.Forms;
 using DigitallyImported.Configuration.Properties;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class RefreshCounter : UserControl
     {
@@ -32,7 +35,6 @@ namespace DigitallyImported.Utilities
         private DateTimeFormatInfo info = CultureInfo.CurrentCulture.DateTimeFormat;
 
         /// <summary>
-        /// 
         /// </summary>
         public RefreshCounter()
             : this(_refreshInterval)
@@ -40,9 +42,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="refreshInterval"></param>
+        /// <param name="refreshInterval"> </param>
         public RefreshCounter(TimeSpan refreshInterval)
         {
             if (refreshInterval <= _minInterval || refreshInterval >= _maxInterval)
@@ -66,16 +67,13 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         public static TimeSpan MaxInterval
         {
             get { return _maxInterval; }
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public static TimeSpan MinInterval
         {
@@ -83,9 +81,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// The number of seconds that will elapse before the counter refreshes.
+        ///   The number of seconds that will elapse before the counter refreshes.
         /// </summary>
-        /// 
         [DefaultValue("00:05:00")]
         public static TimeSpan RefreshInterval
         {
@@ -94,7 +91,6 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
         public string Value
         {
@@ -103,7 +99,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public static event EventHandler<EventArgs> CounterRefreshed
         {
@@ -149,7 +144,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public void Reset()
         {
@@ -160,7 +154,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public void Stop()
         {
@@ -169,7 +162,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public void Start()
         {

@@ -1,11 +1,14 @@
+#region using declarations
+
 using System;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class Event : UserControl, IEvent
     {
@@ -15,7 +18,6 @@ namespace DigitallyImported.Utilities
         private string _title;
 
         /// <summary>
-        /// 
         /// </summary>
         public Event()
         {
@@ -23,7 +25,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual TimeZone PlaylistTimeZone
         {
@@ -37,7 +38,6 @@ namespace DigitallyImported.Utilities
         #region IEvent Members
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DateTime EventDate
         {
@@ -46,12 +46,10 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DayOfWeek Day { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string Title
         {
@@ -64,13 +62,11 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string Subtitle { get; set; }
 
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DateTime StartTime
         {
@@ -86,7 +82,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DateTime EndTime
         {
@@ -100,35 +95,29 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string Channel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri EventUrl { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual StationType PlaylistType { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual SubscriptionLevel SubscriptionLevel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsSelected { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
+        /// <param name="other"> </param>
+        /// <returns> </returns>
         public bool Equals(IContent other)
         {
             return Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
@@ -137,18 +126,16 @@ namespace DigitallyImported.Utilities
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public override string ToString()
         {
             return Name;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public string GetEventDetails()
         {
             return string.Format("{0} :: {1}-{2}{4}{3}{4}{5}{4}{6}"

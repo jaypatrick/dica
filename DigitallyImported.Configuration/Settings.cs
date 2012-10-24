@@ -1,5 +1,9 @@
-﻿using System.ComponentModel;
+﻿#region using declarations
+
+using System.ComponentModel;
 using System.Configuration;
+
+#endregion
 
 namespace DigitallyImported.Configuration.Properties
 {

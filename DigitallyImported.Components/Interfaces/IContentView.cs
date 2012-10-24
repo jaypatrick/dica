@@ -1,4 +1,8 @@
+#region using declarations
+
 using System.Collections.Generic;
+
+#endregion
 
 namespace DigitallyImported.Components
 {

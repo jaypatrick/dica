@@ -1,11 +1,14 @@
+#region using declarations
+
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public class ChannelList<T> : ChannelCollection<T> where T : IChannel
     {
     }

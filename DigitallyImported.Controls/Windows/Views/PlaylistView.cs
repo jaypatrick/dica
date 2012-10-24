@@ -1,11 +1,14 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="TPlaylist"> </typeparam>
     public class PlaylistView<TPlaylist> : ContentView<TPlaylist>, ISiteView<TPlaylist>
@@ -15,7 +18,6 @@ namespace DigitallyImported.Utilities
         private PlaylistCollection<TPlaylist> _sites;
 
         /// <summary>
-        /// 
         /// </summary>
         public PlaylistView()
         {
@@ -25,10 +27,9 @@ namespace DigitallyImported.Utilities
         #region ISiteView<TPlaylist> Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual PlaylistCollection<TPlaylist> GetView(bool bypassCache)
         {
             _sites = GetItem(_sites);
@@ -82,7 +83,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public PlaylistCollection<TPlaylist> Sites
         {
@@ -90,7 +90,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override void Save()
         {
@@ -107,10 +106,9 @@ namespace DigitallyImported.Utilities
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected override void Global_SettingsSaving(object sender, CancelEventArgs e)
         {
         }

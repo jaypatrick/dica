@@ -1,12 +1,15 @@
+#region using declarations
+
 using System;
 using System.Runtime.Caching;
+
+#endregion
 
 namespace DigitallyImported.Components.Caching
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// 
+    /// <typeparam name="TItem"> </typeparam>
     [Serializable]
     public class ItemExpiredEventArgs<TItem> : EventArgs
         where TItem : IContent
@@ -14,50 +17,42 @@ namespace DigitallyImported.Components.Caching
         private readonly TItem _cachedItem;
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="removedKey"></param>
-        public ItemExpiredEventArgs(string removedKey)
-            : this(removedKey, default(TItem))
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="removedKey"></param>
-        /// <param name="expiredValue"></param>
-        public ItemExpiredEventArgs(string removedKey, TItem expiredValue)
+        /// <param name="removedKey"> </param>
+        /// <param name="expiredValue"> </param>
+        public ItemExpiredEventArgs(string removedKey, TItem expiredValue = default(TItem))
             : this(removedKey
                    , expiredValue
                    , CacheEntryRemovedReason.Expired)
         {
+            if (removedKey == null) throw new ArgumentNullException("removedKey");
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="removedKey"></param>
-        /// <param name="expiredValue"></param>
-        /// <param name="removalReason"></param>
+        /// <param name="removedKey"> </param>
+        /// <param name="expiredValue"> </param>
+        /// <param name="removalReason"> </param>
         public ItemExpiredEventArgs(string removedKey, TItem expiredValue, CacheEntryRemovedReason removalReason)
             : this(removedKey
                    , expiredValue
                    , removalReason
                    , CacheItem<TItem>.ExpirationCallback)
         {
+            if (removedKey == null) throw new ArgumentNullException("removedKey");
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="removedKey"></param>
-        /// <param name="expiredValue"></param>
-        /// <param name="removalReason"></param>
-        /// <param name="callbackFunction"></param>
+        /// <param name="removedKey"> </param>
+        /// <param name="expiredValue"> </param>
+        /// <param name="removalReason"> </param>
+        /// <param name="callbackFunction"> </param>
         public ItemExpiredEventArgs(string removedKey, TItem expiredValue, CacheEntryRemovedReason removalReason,
                                     CacheEntryRemovedCallback callbackFunction)
         {
+            if (removedKey == null) throw new ArgumentNullException("removedKey");
+            if (callbackFunction == null) throw new ArgumentNullException("callbackFunction");
             RemovedKey = removedKey;
             ExpiredValue = expiredValue;
             RemovalReason = removalReason;
@@ -67,32 +62,26 @@ namespace DigitallyImported.Components.Caching
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual string RemovedKey { get; set; }
+        protected virtual string RemovedKey { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual TItem ExpiredValue { get; set; }
+        protected virtual TItem ExpiredValue { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual CacheEntryRemovedReason RemovalReason { get; set; }
+        protected virtual CacheEntryRemovedReason RemovalReason { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual CacheEntryRemovedCallback CallbackFunction { get; set; }
+        protected virtual CacheEntryRemovedCallback CallbackFunction { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
-        public virtual DateTime ExpirationTime { get; private set; }
+        protected virtual DateTime ExpirationTime { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DateTime ExpirationInterval { get; set; }
 

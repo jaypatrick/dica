@@ -1,13 +1,6 @@
-// DEBUG CONSOLE EXAMPLE v1.1
-// Code by Kévin Drapel - 2002
-// http://www.calodox.org
-//
-// Thanks to Richard D for the TraceListener idea
-//
-// Do what you want with this source.
-//
-
 #define TRACE
+
+#region using declarations
 
 using System;
 using System.ComponentModel;
@@ -17,22 +10,24 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 
+#endregion
+
 namespace DigitallyImported.Client.Diagnostics
 {
     /// <summary>
-    /// Summary description for DebugConsole.
+    ///   Summary description for DebugConsole.
     /// </summary>
     public class DebugConsoleWrapper : Form
     {
         /// <summary>
-        /// Required designer variable.
+        ///   Required designer variable.
         /// </summary>
-        /// 
         private readonly Container _components = null;
+
+        public StringBuilder Buffer = new StringBuilder();
 
         private Button _btnClear;
         private Button _btnSave;
-        public StringBuilder Buffer = new StringBuilder();
         private CheckBox _checkScroll;
         private CheckBox _checkTop;
         private ColumnHeader _col1;
@@ -41,17 +36,19 @@ namespace DigitallyImported.Client.Diagnostics
         private ListViewItem.ListViewSubItem _currentMsgItem;
         private int _eventCounter;
         private ListView _outputView;
+        private Panel _panel2;
         private SaveFileDialog _saveFileDlg;
         private DefaultTraceListener _tracer = new DefaultTraceListener();
-        private Panel _panel2;
 
+        /// <summary>
+        /// </summary>
         public DebugConsoleWrapper()
         {
             InitializeComponent();
         }
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///   Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -65,6 +62,8 @@ namespace DigitallyImported.Client.Diagnostics
             base.Dispose(disposing);
         }
 
+        /// <summary>
+        /// </summary>
         public void CreateEventRow()
         {
             DateTime d = DateTime.Now;
@@ -87,6 +86,8 @@ namespace DigitallyImported.Client.Diagnostics
         }
 
 
+        /// <summary>
+        /// </summary>
         public void UpdateCurrentRow( /*bool CreateRowNextTime*/)
         {
             if (_currentMsgItem == null) CreateEventRow();
@@ -151,8 +152,8 @@ namespace DigitallyImported.Client.Diagnostics
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///   Required method for Designer support - do not modify
+        ///   the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -210,7 +211,7 @@ namespace DigitallyImported.Client.Diagnostics
                 });
             this._outputView.Dock = System.Windows.Forms.DockStyle.Fill;
             this._outputView.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular,
-                                                           System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+                                                            System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this._outputView.ForeColor = System.Drawing.Color.Yellow;
             this._outputView.Location = new System.Drawing.Point(0, 0);
             this._outputView.Name = "_outputView";

@@ -1,4 +1,4 @@
-// READ: http://wiki.cdyne.com/index.php/Playing_PLS_Winamp_files_in_Windows_Media
+#region using declarations
 
 using System;
 using System.Drawing;
@@ -11,17 +11,17 @@ using DigitallyImported.Configuration.Properties;
 using WMPLib;
 using P = DigitallyImported.Resources.Properties;
 
+#endregion
+
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public class WMediaPlayer : Player, IMediaPlayer
     {
         private readonly WindowsMediaPlayerClass _mediaPlayer = new WindowsMediaPlayerClass();
 
         /// <summary>
-        /// 
         /// </summary>
         public WMediaPlayer()
             : base(PlayerType.WMP)
@@ -32,7 +32,6 @@ namespace DigitallyImported.Player
         #region IMediaPlayer Members
 
         /// <summary>
-        /// 
         /// </summary>
         public override PlayerType PlayerType
         {
@@ -40,7 +39,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override Icon PlayerIcon
         {
@@ -48,7 +46,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override bool IsInstalled
         {
@@ -58,9 +55,8 @@ namespace DigitallyImported.Player
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected override void Play(IChannel channel)
         {
             // REALLY NEED TO CHANGE THIS IOC/TEMPLATE METHOD IN BASE CLASS
@@ -81,10 +77,9 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="streamUri"></param>
-        /// <returns></returns>
+        /// <param name="streamUri"> </param>
+        /// <returns> </returns>
         //protected override Uri ParseStreamUri(Uri streamUri)
         protected override Uri ParseStreamUri(Uri streamUri)
         {

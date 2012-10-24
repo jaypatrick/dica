@@ -1,16 +1,18 @@
-﻿using System;
+﻿#region using declarations
+
+using System;
 using System.Drawing;
 using DigitallyImported.Components;
+
+#endregion
 
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public class Zune : Player, IZune, IPlayerFactory
     {
         /// <summary>
-        /// 
         /// </summary>
         public Zune()
             : base(PlayerType.Zune)
@@ -21,7 +23,6 @@ namespace DigitallyImported.Player
         #region IZune Members
 
         /// <summary>
-        /// 
         /// </summary>
         public override PlayerType PlayerType
         {
@@ -29,7 +30,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override Icon PlayerIcon
         {
@@ -37,7 +37,6 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override bool IsInstalled
         {
@@ -47,9 +46,8 @@ namespace DigitallyImported.Player
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected override void Play(IChannel channel)
         {
             //if (channel == null) throw new ArgumentNullException("channel", "Must specify a channel to play. ");
@@ -58,11 +56,10 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="streamUri"></param>
+        /// <param name="streamUri"> </param>
         /// <exception cref="NotImplementedException"></exception>
-        /// <returns></returns>
+        /// <returns> </returns>
         protected override Uri ParseStreamUri(Uri streamUri)
         {
             throw new NotImplementedException();

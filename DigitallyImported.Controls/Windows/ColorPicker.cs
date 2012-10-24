@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,7 +10,9 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
-namespace DigitallyImported.Utilities.Windows
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     // using Microsoft.VisualBasic.CompilerServices;
 

@@ -1,11 +1,14 @@
+#region using declarations
+
 using System.Collections.Generic;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     public class PlaylistCollection<T> : ContentCollection<T> where T : IPlaylist
     {
     }

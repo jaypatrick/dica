@@ -1,14 +1,4 @@
-// C# TaskbarNotifier Class v1.0
-// by John O'Byrne - 02 december 2002
-// 01 april 2003 : Small fix in the OnMouseUp handler
-// 11 january 2003 : Patrick Vanden Driessche <pvdd@devbrains.be> added a few enhancements
-//           Small Enhancements/Bugfix
-//           Small bugfix: When Content text measures larger than the corresponding ContentRectangle
-//                         the focus rectangle was not correctly drawn. This has been solved.
-//           Added KeepVisibleOnMouseOver
-//           Added ReShowOnMouseOver
-//           Added If the Title or Content are too long to fit in the corresponding Rectangles,
-//                 the text is truncateed and the ellipses are appended (StringTrimming).
+#region using declarations
 
 using System;
 using System.Drawing;
@@ -16,10 +6,12 @@ using System.Drawing.Drawing2D;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// TaskbarNotifier allows to display MSN style/Skinned instant messaging popups
+    ///   TaskbarNotifier allows to display MSN style/Skinned instant messaging popups
     /// </summary>
     public partial class TaskbarNotifier : Form
     {
@@ -68,7 +60,7 @@ namespace DigitallyImported.Utilities
         #region TaskbarNotifier Enums
 
         /// <summary>
-        /// List of the different popup animation status
+        ///   List of the different popup animation status
         /// </summary>
         public enum TaskbarStates
         {
@@ -83,7 +75,7 @@ namespace DigitallyImported.Utilities
         #region TaskbarNotifier Constructor
 
         /// <summary>
-        /// The Constructor for TaskbarNotifier
+        ///   The Constructor for TaskbarNotifier
         /// </summary>
         public TaskbarNotifier()
         {
@@ -108,7 +100,7 @@ namespace DigitallyImported.Utilities
         #region TaskbarNotifier Properties
 
         /// <summary>
-        /// Get the current TaskbarState (hidden, showing, visible, hiding)
+        ///   Get the current TaskbarState (hidden, showing, visible, hiding)
         /// </summary>
         public TaskbarStates TaskbarState
         {
@@ -116,7 +108,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the popup Title Text
+        ///   Get/Set the popup Title Text
         /// </summary>
         public string TitleText
         {
@@ -129,7 +121,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the popup Content Text
+        ///   Get/Set the popup Content Text
         /// </summary>
         public string ContentText
         {
@@ -142,7 +134,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Normal Title Color
+        ///   Get/Set the Normal Title Color
         /// </summary>
         public Color NormalTitleColor
         {
@@ -155,7 +147,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Hover Title Color
+        ///   Get/Set the Hover Title Color
         /// </summary>
         public Color HoverTitleColor
         {
@@ -168,7 +160,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Normal Content Color
+        ///   Get/Set the Normal Content Color
         /// </summary>
         public Color NormalContentColor
         {
@@ -181,7 +173,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Hover Content Color
+        ///   Get/Set the Hover Content Color
         /// </summary>
         public Color HoverContentColor
         {
@@ -194,7 +186,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Normal Title Font
+        ///   Get/Set the Normal Title Font
         /// </summary>
         public Font NormalTitleFont
         {
@@ -207,7 +199,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Hover Title Font
+        ///   Get/Set the Hover Title Font
         /// </summary>
         public Font HoverTitleFont
         {
@@ -220,7 +212,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Normal Content Font
+        ///   Get/Set the Normal Content Font
         /// </summary>
         public Font NormalContentFont
         {
@@ -233,7 +225,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Get/Set the Hover Content Font
+        ///   Get/Set the Hover Content Font
         /// </summary>
         public Font HoverContentFont
         {
@@ -246,8 +238,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Indicates if the popup should remain visible when the mouse pointer is over it.
-        /// Added Rev 002
+        ///   Indicates if the popup should remain visible when the mouse pointer is over it.
+        ///   Added Rev 002
         /// </summary>
         public bool KeepVisibleOnMousOver
         {
@@ -256,8 +248,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Indicates if the popup should appear again when mouse moves over it while it's disappearing.
-        /// Added Rev 002
+        ///   Indicates if the popup should appear again when mouse moves over it while it's disappearing.
+        ///   Added Rev 002
         /// </summary>
         public bool ReShowOnMouseOver
         {
@@ -273,14 +265,14 @@ namespace DigitallyImported.Utilities
         private static extern Boolean ShowWindow(IntPtr hWnd, Int32 nCmdShow);
 
         /// <summary>
-        /// Displays the popup for a certain amount of time
+        ///   Displays the popup for a certain amount of time
         /// </summary>
-        /// <param name="strTitle">The string which will be shown as the title of the popup</param>
-        /// <param name="strContent">The string which will be shown as the content of the popup</param>
-        /// <param name="nTimeToShow">Duration of the showing animation (in milliseconds)</param>
-        /// <param name="nTimeToStay">Duration of the visible state before collapsing (in milliseconds)</param>
-        /// <param name="nTimeToHide">Duration of the hiding animation (in milliseconds)</param>
-        /// <returns>Nothing</returns>
+        /// <param name="strTitle"> The string which will be shown as the title of the popup </param>
+        /// <param name="strContent"> The string which will be shown as the content of the popup </param>
+        /// <param name="nTimeToShow"> Duration of the showing animation (in milliseconds) </param>
+        /// <param name="nTimeToStay"> Duration of the visible state before collapsing (in milliseconds) </param>
+        /// <param name="nTimeToHide"> Duration of the hiding animation (in milliseconds) </param>
+        /// <returns> Nothing </returns>
         public void Show(string strTitle, string strContent, int nTimeToShow, int nTimeToStay, int nTimeToHide)
         {
             WorkAreaRectangle = Screen.GetWorkingArea(WorkAreaRectangle);
@@ -353,9 +345,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Hides the popup
+        ///   Hides the popup
         /// </summary>
-        /// <returns>Nothing</returns>
+        /// <returns> Nothing </returns>
         public new void Hide()
         {
             if (taskbarState != TaskbarStates.hidden)
@@ -367,11 +359,11 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Sets the background bitmap and its transparency color
+        ///   Sets the background bitmap and its transparency color
         /// </summary>
-        /// <param name="strFilename">Path of the Background Bitmap on the disk</param>
-        /// <param name="transparencyColor">Color of the Bitmap which won't be visible</param>
-        /// <returns>Nothing</returns>
+        /// <param name="strFilename"> Path of the Background Bitmap on the disk </param>
+        /// <param name="transparencyColor"> Color of the Bitmap which won't be visible </param>
+        /// <returns> Nothing </returns>
         public void SetBackgroundBitmap(string strFilename, Color transparencyColor)
         {
             BackgroundBitmap = new Bitmap(strFilename);
@@ -381,11 +373,11 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Sets the background bitmap and its transparency color
+        ///   Sets the background bitmap and its transparency color
         /// </summary>
-        /// <param name="image">Image/Bitmap object which represents the Background Bitmap</param>
-        /// <param name="transparencyColor">Color of the Bitmap which won't be visible</param>
-        /// <returns>Nothing</returns>
+        /// <param name="image"> Image/Bitmap object which represents the Background Bitmap </param>
+        /// <param name="transparencyColor"> Color of the Bitmap which won't be visible </param>
+        /// <returns> Nothing </returns>
         public void SetBackgroundBitmap(Image image, Color transparencyColor)
         {
             BackgroundBitmap = new Bitmap(image);
@@ -395,12 +387,12 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Sets the 3-State Close Button bitmap, its transparency color and its coordinates
+        ///   Sets the 3-State Close Button bitmap, its transparency color and its coordinates
         /// </summary>
-        /// <param name="strFilename">Path of the 3-state Close button Bitmap on the disk (width must a multiple of 3)</param>
-        /// <param name="transparencyColor">Color of the Bitmap which won't be visible</param>
-        /// <param name="position">Location of the close button on the popup</param>
-        /// <returns>Nothing</returns>
+        /// <param name="strFilename"> Path of the 3-state Close button Bitmap on the disk (width must a multiple of 3) </param>
+        /// <param name="transparencyColor"> Color of the Bitmap which won't be visible </param>
+        /// <param name="position"> Location of the close button on the popup </param>
+        /// <returns> Nothing </returns>
         public void SetCloseBitmap(string strFilename, Color transparencyColor, Point position)
         {
             CloseBitmap = new Bitmap(strFilename);
@@ -410,12 +402,13 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Sets the 3-State Close Button bitmap, its transparency color and its coordinates
+        ///   Sets the 3-State Close Button bitmap, its transparency color and its coordinates
         /// </summary>
-        /// <param name="image">Image/Bitmap object which represents the 3-state Close button Bitmap (width must be a multiple of 3)</param>
-        /// <param name="transparencyColor">Color of the Bitmap which won't be visible</param>
-        /// /// <param name="position">Location of the close button on the popup</param>
-        /// <returns>Nothing</returns>
+        /// <param name="image"> Image/Bitmap object which represents the 3-state Close button Bitmap (width must be a multiple of 3) </param>
+        /// <param name="transparencyColor"> Color of the Bitmap which won't be visible </param>
+        /// ///
+        /// <param name="position"> Location of the close button on the popup </param>
+        /// <returns> Nothing </returns>
         public void SetCloseBitmap(Image image, Color transparencyColor, Point position)
         {
             CloseBitmap = new Bitmap(image);

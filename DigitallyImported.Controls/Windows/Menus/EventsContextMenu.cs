@@ -1,15 +1,17 @@
+#region using declarations
+
 using System.ComponentModel;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class EventsContextMenu : BaseContextMenu
     {
         /// <summary>
-        /// 
         /// </summary>
         public EventsContextMenu()
         {
@@ -17,9 +19,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public EventsContextMenu(IContainer container)
         {
             container.Add(this);
@@ -28,7 +29,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public new EventCollection<Event> Events { get; set; }
 

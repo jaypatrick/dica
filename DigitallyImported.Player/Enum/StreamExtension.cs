@@ -1,9 +1,12 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     [Flags] // need to figure out which streams can be combined into each player
     public enum StreamExtension

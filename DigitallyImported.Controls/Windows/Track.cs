@@ -1,21 +1,24 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     public partial class Track : UserControl, ITrack
     {
         private static int _counter = 1;
         private readonly object _eeLock = new object();
         private int _commentCount = -1;
-        internal EventHandler<eeEventArgs<ITrack>> _ee;
+        internal EventHandler<CommentCountChangedEventArgs<ITrack>> _ee;
         private string _trackTitle;
 
         /// <summary>
-        /// 
         /// </summary>
         public Track()
         {
@@ -25,7 +28,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual TimeZone PlaylistTimeZone
         {
@@ -39,12 +41,10 @@ namespace DigitallyImported.Utilities
         #region ITrack Members
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual IChannel ParentChannel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string TrackTitle
         {
@@ -58,44 +58,36 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string ArtistName { get; set; }
 
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual DateTime StartTime { get; set; }
 
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string SongName { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri ArtistUri { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri ForumUrl { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri TrackUrl { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string RecordLabel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual int CommentCount
         {
@@ -106,7 +98,7 @@ namespace DigitallyImported.Utilities
                 {
                     Trace.WriteLine(string.Format("Comment count changed on channel {0}", ParentChannel.ChannelName),
                                     TraceCategory.ContentChangedEvents.ToString());
-                    Onee(this, new eeEventArgs<ITrack>(this, value));
+                    Onee(this, new CommentCountChangedEventArgs<ITrack>(this, value));
                 }
 
                 _commentCount = value;
@@ -114,27 +106,22 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsPlaying { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public new virtual string Name { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual StationType PlaylistType { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual SubscriptionLevel SubscriptionLevel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsSelected { get; set; }
 
@@ -144,10 +131,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Browsable(true)]
-        public event EventHandler<eeEventArgs<ITrack>> ee
+        public event EventHandler<CommentCountChangedEventArgs<ITrack>> ee
         {
             add
             {
@@ -193,19 +179,17 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public override string ToString()
         {
             return TrackTitle;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var link = sender as LinkLabel;
@@ -228,11 +212,10 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected internal virtual void Onee(object sender, eeEventArgs<ITrack> e)
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
+        protected internal virtual void Onee(object sender, CommentCountChangedEventArgs<ITrack> e)
         {
             if (_ee != null)
             {

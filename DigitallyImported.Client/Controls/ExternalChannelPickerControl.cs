@@ -1,11 +1,14 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+#endregion
+
 namespace DigitallyImported.Client.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class ExternalChannelPickerControl : UserControl
     {
@@ -15,7 +18,6 @@ namespace DigitallyImported.Client.Controls
         private Uri _channelUri;
 
         /// <summary>
-        /// 
         /// </summary>
         public ExternalChannelPickerControl()
         {
@@ -23,10 +25,9 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channelName"></param>
-        /// <param name="channelUri"></param>
+        /// <param name="channelName"> </param>
+        /// <param name="channelUri"> </param>
         public ExternalChannelPickerControl(string channelName, Uri channelUri)
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual string ChannelName
         {
@@ -51,7 +51,6 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri ChannelUri
         {
@@ -66,29 +65,25 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void SaveButton_Click(object sender, EventArgs e)
         {
             OnChannelSaved(sender, e);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void RemoveButton_Click(object sender, EventArgs e)
         {
             OnChannelRemoved(sender, e);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [Browsable(true)]
         public virtual event EventHandler<EventArgs> ChannelSaved
         {
@@ -97,7 +92,6 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Browsable(true)]
         public virtual event EventHandler<EventArgs> ChannelRemoved
@@ -107,10 +101,9 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void OnChannelSaved(object sender, EventArgs e)
         {
             if (_channelSaved != null)
@@ -120,10 +113,9 @@ namespace DigitallyImported.Client.Controls
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected virtual void OnChannelRemoved(object sender, EventArgs e)
         {
             if (_channelRemoved != null)

@@ -1,4 +1,8 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
@@ -10,10 +14,9 @@ namespace DigitallyImported.Components
         private PlaylistCollection<T> _playlists;
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual PlaylistCollection<T> LoadSites(bool bypassCache)
         {
             var playlists = new PlaylistCollection<T>();

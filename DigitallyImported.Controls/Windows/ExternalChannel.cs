@@ -1,11 +1,13 @@
+#region using declarations
+
 using System;
 using DigitallyImported.Components;
-using P = DigitallyImported.Resources.Properties;
 
-namespace DigitallyImported.Utilities.Windows
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class ExternalChannel : Channel, IExternalContent
     {
@@ -21,7 +23,7 @@ namespace DigitallyImported.Utilities.Windows
 
         protected internal override void LoadImages()
         {
-            picPlay.Image = P.Resources.icon_play;
+            picPlay.Image = Resources.Properties.Resources.icon_play;
         }
     }
 }

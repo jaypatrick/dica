@@ -1,4 +1,8 @@
+#region using declarations
+
 using System.Windows.Forms;
+
+#endregion
 
 namespace DigitallyImported.Client.Controls
 {

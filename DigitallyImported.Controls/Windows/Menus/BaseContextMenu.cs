@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     public partial class BaseContextMenu : ContextMenuStrip
     {
         /// <summary>
-        /// 
         /// </summary>
         public BaseContextMenu()
         {
@@ -15,9 +18,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public BaseContextMenu(IContainer container)
         {
             container.Add(this);

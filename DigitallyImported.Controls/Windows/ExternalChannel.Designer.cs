@@ -1,4 +1,4 @@
-namespace DigitallyImported.Utilities.Windows
+namespace DigitallyImported.Controls.Windows
 {
     partial class ExternalChannel
     {

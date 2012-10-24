@@ -1,5 +1,4 @@
-// using DigitallyImported.Client.Properties;
-// using DigitallyImported.Utilities;
+#region using declarations
 
 using System;
 using System.ComponentModel;
@@ -9,17 +8,19 @@ using System.Globalization;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
-using DigitallyImported.Utilities;
-using DigitallyImported.Utilities.Windows;
+using DigitallyImported.Controls;
+using DigitallyImported.Controls.Windows;
 using P = DigitallyImported.Resources.Properties;
 using SortOrder = DigitallyImported.Components.SortOrder;
+
+#endregion
 
 // using DigitallyImported.Player;
 
 namespace DigitallyImported.Client
 {
     /// <summary>
-    /// Summary description for DIAdmin.
+    ///   Summary description for DIAdmin.
     /// </summary>
     public class AdminForm : BaseForm
     {
@@ -72,7 +73,6 @@ namespace DigitallyImported.Client
         private TrackBar transparencyTrackBar;
 
         /// <summary>
-        /// 
         /// </summary>
         public AdminForm()
         {
@@ -86,7 +86,7 @@ namespace DigitallyImported.Client
         }
 
         /// <summary>
-        /// Clean up any resources being used.
+        ///   Clean up any resources being used.
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -352,8 +352,8 @@ namespace DigitallyImported.Client
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///   Required method for Designer support - do not modify
+        ///   the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -393,10 +393,10 @@ namespace DigitallyImported.Client
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AdminErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            this.refreshCounter1 = new DigitallyImported.Utilities.RefreshCounter();
-            this.channelColorPicker = new DigitallyImported.Utilities.Windows.ColorPicker();
-            this.alternatingChannelColorPicker = new DigitallyImported.Utilities.Windows.ColorPicker();
-            this.selectedChannelColorPicker = new DigitallyImported.Utilities.Windows.ColorPicker();
+            this.refreshCounter1 = new RefreshCounter();
+            this.channelColorPicker = new ColorPicker();
+            this.alternatingChannelColorPicker = new ColorPicker();
+            this.selectedChannelColorPicker = new ColorPicker();
             this.label13 = new System.Windows.Forms.Label();
             this.calendarFormatValue = new System.Windows.Forms.DomainUpDown();
             this.showToastPanel.SuspendLayout();

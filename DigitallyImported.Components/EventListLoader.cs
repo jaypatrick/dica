@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Data;
 using System.Diagnostics;
@@ -5,10 +7,11 @@ using System.Net;
 using System.Xml;
 using C = DigitallyImported.Configuration.Properties;
 
+#endregion
+
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="TEvent"> </typeparam>
     public class EventListLoader<TEvent> : ContentLoader<TEvent>, IDisposable
@@ -42,20 +45,18 @@ namespace DigitallyImported.Components
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual DataSet LoadEventList()
         {
             return LoadEventList(false);
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="bypassCache"></param>
-        /// <returns></returns>
+        /// <param name="bypassCache"> </param>
+        /// <returns> </returns>
         public virtual DataSet LoadEventList(bool bypassCache)
         {
             _reader = GetItem(_reader);
@@ -110,10 +111,8 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
-        /// 
+        /// <returns> </returns>
         [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
         protected internal XmlReader LoadXmlData()
         {

@@ -1,19 +1,20 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using System.Drawing;
 using DigitallyImported.Components;
 using P = DigitallyImported.Resources.Properties;
 
+#endregion
 
 namespace DigitallyImported.Player
 {
     /// <summary>
-    /// 
     /// </summary>
     public abstract class Player : IPlayer, IPlayerFactory
     {
         /// <summary>
-        /// 
         /// </summary>
         protected Player()
             : this(PlayerType.Default)
@@ -21,9 +22,8 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="playerType"></param>
+        /// <param name="playerType"> </param>
         protected Player(PlayerType playerType)
         {
             if (!IsInstalled)
@@ -34,9 +34,8 @@ namespace DigitallyImported.Player
         #region IPlayer Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public void OpenPlayer(IChannel channel)
         {
             if (channel == null)
@@ -44,7 +43,7 @@ namespace DigitallyImported.Player
 
             Channel = channel;
 
-            Uri url = channel.CurrentTrack.TrackUrl;
+            var url = channel.CurrentTrack.TrackUrl;
 
             //Template method
             GetPlayerKey();
@@ -57,22 +56,18 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract PlayerType PlayerType { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract Icon PlayerIcon { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public abstract bool IsInstalled { get; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual IChannel Channel { get; set; }
 
@@ -81,9 +76,8 @@ namespace DigitallyImported.Player
         #region IPlayerFactory Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public virtual IChannel GetPlayerKey()
         {
             return PlayerLoader.Channel;
@@ -92,16 +86,14 @@ namespace DigitallyImported.Player
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         protected abstract void Play(IChannel channel);
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="streamUri"></param>
-        /// <returns></returns>
+        /// <param name="streamUri"> </param>
+        /// <returns> </returns>
         protected abstract Uri ParseStreamUri(Uri streamUri);
     }
 }

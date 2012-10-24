@@ -1,18 +1,20 @@
+#region using declarations
+
 using System.ComponentModel;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class PlaylistsContextMenu : BaseContextMenu
     {
         private StationType _playlistType;
 
         /// <summary>
-        /// 
         /// </summary>
         public PlaylistsContextMenu()
         {
@@ -20,9 +22,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public PlaylistsContextMenu(IContainer container)
         {
             container.Add(this);
@@ -31,7 +32,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public StationType PlaylistType
         {
@@ -39,10 +39,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         private void SitesContextMenu_Opening(object sender, CancelEventArgs e)
         {
             Items.Clear();

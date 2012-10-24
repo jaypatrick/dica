@@ -1,14 +1,16 @@
+#region using declarations
+
 using System.ComponentModel;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class ToolsContextMenu : BaseContextMenu
     {
         /// <summary>
-        /// 
         /// </summary>
         public ToolsContextMenu()
         {
@@ -16,9 +18,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public ToolsContextMenu(IContainer container)
         {
             container.Add(this);

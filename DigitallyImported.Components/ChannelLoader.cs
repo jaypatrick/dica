@@ -1,13 +1,16 @@
+#region using declarations
+
 using System;
 using System.Collections.Generic;
 using DigitallyImported.Data;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
     // DI
 
     /// <summary>
-    /// 
     /// </summary>
     public class ChannelLoader<TChannel, TTrack> : ChannelListLoader<TChannel>
         where TChannel : class, IChannel, new()
@@ -20,16 +23,8 @@ namespace DigitallyImported.Components
         private ChannelCollection<TChannel> _channels; // new ChannelCollection<T>();
 
         /// <summary>
-        /// Default constructor.
         /// </summary>
-        public ChannelLoader()
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="channelsLocation"></param>
+        /// <param name="channelsLocation"> </param>
         public ChannelLoader(string channelsLocation)
             : base(channelsLocation)
         {
@@ -37,10 +32,10 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// Method to get an array of DI Channels.
+        ///   Method to get an array of DI Channels.
         /// </summary>
-        /// <param name="bypassCache">Specifies whether the collection should be retrieved from the cache.</param>
-        /// <returns>An array of DI Channel controls.</returns>
+        /// <param name="bypassCache"> Specifies whether the collection should be retrieved from the cache. </param>
+        /// <returns> An array of DI Channel controls. </returns>
         public virtual ChannelCollection<TChannel> LoadChannels(bool bypassCache)
         {
             var channels = new ChannelCollection<TChannel>();

@@ -1,12 +1,15 @@
+#region using declarations
+
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities.Windows
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class Stream : UserControl, IStream
     {
@@ -14,7 +17,6 @@ namespace DigitallyImported.Utilities.Windows
         private EventHandler<StreamChangedEventArgs<IStream>> _streamChanged;
 
         /// <summary>
-        /// 
         /// </summary>
         public Stream()
         {
@@ -24,9 +26,8 @@ namespace DigitallyImported.Utilities.Windows
         #region IStream Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public virtual event EventHandler<StreamChangedEventArgs<IStream>> StreamChanged
         {
             add
@@ -46,7 +47,6 @@ namespace DigitallyImported.Utilities.Windows
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual void OpenStream()
         {
@@ -54,52 +54,42 @@ namespace DigitallyImported.Utilities.Windows
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual StreamType StreamType { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual StreamBitrate StreamBitrate { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual IChannel Channel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Uri StreamUri { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Image PlayerImage { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual Image BitrateImage { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsEnabled { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual StationType PlaylistType { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual SubscriptionLevel SubscriptionLevel { get; set; }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsSelected { get; set; }
 
@@ -111,10 +101,9 @@ namespace DigitallyImported.Utilities.Windows
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void OnStreamChanged(object sender, StreamChangedEventArgs<IStream> e)
         {
             if (_streamChanged != null)

@@ -1,11 +1,14 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using DigitallyImported.Components;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// 
     /// </summary>
     public partial class CommentToastForm<T> : ToastForm<T> where T : IChannel
     {
@@ -14,7 +17,6 @@ namespace DigitallyImported.Utilities
         private string _titleText = string.Empty;
 
         /// <summary>
-        /// 
         /// </summary>
         public CommentToastForm()
         {
@@ -22,9 +24,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="container"></param>
+        /// <param name="container"> </param>
         public CommentToastForm(IContainer container)
         {
             container.Add(this);
@@ -33,9 +34,8 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="channel"></param>
+        /// <param name="channel"> </param>
         public CommentToastForm(T channel)
         {
             _channel = channel;
@@ -44,7 +44,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override T Content
         {
@@ -53,7 +52,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override string BodyText
         {
@@ -66,7 +64,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override string TitleText
         {
@@ -75,10 +72,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void BoardToastForm_Click(object sender, EventArgs e)
         {
             Components.Utilities.StartProcess(_channel.CurrentTrack.ForumUrl.AbsoluteUri);

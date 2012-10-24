@@ -1,6 +1,10 @@
+#region using declarations
+
 using System.ComponentModel;
 using System.Configuration;
 using DigitallyImported.Configuration.Properties;
+
+#endregion
 
 namespace DigitallyImported.Configuration
 {

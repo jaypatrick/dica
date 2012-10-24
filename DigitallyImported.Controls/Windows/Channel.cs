@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.ComponentModel;
 using System.Configuration;
@@ -8,12 +10,13 @@ using System.Xml.Serialization;
 using DigitallyImported.Components;
 using DigitallyImported.Configuration.Properties;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls.Windows
 {
     /// <summary>
-    /// Summary description for ChannelSection.
+    ///   Summary description for ChannelSection.
     /// </summary>
-    /// 
     [Serializable]
     [XmlRoot("RegularChannel")]
     public partial class Channel : UserControl, IChannel
@@ -44,7 +47,6 @@ namespace DigitallyImported.Utilities
         private TrackCollection<ITrack> tracks;
 
         /// <summary>
-        /// 
         /// </summary>
         public Channel()
             : this(StationType.Custom)
@@ -53,9 +55,8 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="PlaylistTypes"></param>
+        /// <param name="PlaylistTypes"> </param>
         public Channel(StationType PlaylistTypes)
             // : base(PlaylistTypes)
         {
@@ -68,20 +69,18 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="track"></param>
-        /// <returns></returns>
+        /// <param name="track"> </param>
+        /// <returns> </returns>
         public virtual IChannel this[ITrack track]
         {
             get { return tracks[track.Name].ParentChannel; }
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
+        /// <param name="index"> </param>
+        /// <returns> </returns>
         public virtual IChannel this[int index]
         {
             get { return tracks[index].ParentChannel; }
@@ -90,9 +89,8 @@ namespace DigitallyImported.Utilities
         #region IChannel Members
 
         /// <summary>
-        /// Property to get/set the channel name
+        ///   Property to get/set the channel name
         /// </summary>
-        /// 
         [XmlAttribute("ChannelName")]
         public virtual string ChannelName
         {
@@ -129,9 +127,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("ChannelInfoUrl")]
         public virtual Uri ChannelInfoUrl
         {
@@ -157,9 +153,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("SiteName")]
         public virtual string SiteName
         {
@@ -168,9 +162,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("PlaylistHistoryUrl")]
         public virtual Uri PlaylistHistoryUrl
         {
@@ -195,9 +187,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("SiteIcon")]
         public virtual Icon SiteIcon
         {
@@ -217,9 +207,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("PlaylistType")]
         public virtual StationType PlaylistType
         {
@@ -228,9 +216,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("SubscriptionLevel")]
         public virtual SubscriptionLevel SubscriptionLevel
         {
@@ -239,9 +225,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("StreamType")]
         public virtual StreamType StreamType
         {
@@ -250,9 +234,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlArray("Streams")]
         public virtual StreamCollection<IStream> Streams
         {
@@ -261,9 +243,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("Playlist")]
         public virtual IPlaylist Playlist
         {
@@ -272,9 +252,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlArray("Tracks")]
         public virtual TrackCollection<ITrack> Tracks
         {
@@ -307,7 +285,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [XmlIgnore]
         public virtual ITrack CurrentTrack
@@ -317,9 +294,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlIgnore]
         public virtual bool IsAlternating
         {
@@ -348,9 +323,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [XmlElement("SelectedChannel")]
         public virtual bool IsSelected
         {
@@ -393,7 +366,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Browsable(true)]
         public event EventHandler<TrackChangedEventArgs<ITrack>> TrackChanged
@@ -417,10 +389,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
+        /// <param name="other"> </param>
+        /// <returns> </returns>
         public bool Equals(IContent other)
         {
             return Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
@@ -429,7 +400,7 @@ namespace DigitallyImported.Utilities
         #endregion
 
         /// <summary>
-        /// Method to initialize the image controls.
+        ///   Method to initialize the image controls.
         /// </summary>
         protected internal virtual void LoadImages()
         {
@@ -442,10 +413,10 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Event to set the mouse cursor to hand upon entering a picture box
+        ///   Event to set the mouse cursor to hand upon entering a picture box
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">EventArgs</param>
+        /// <param name="sender"> sender </param>
+        /// <param name="e"> EventArgs </param>
         protected internal virtual void PictureBox_MouseEnter(object sender, EventArgs e)
         {
             Cursor = Cursors.Hand;
@@ -496,20 +467,19 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Event to set the mouse cursor to arrow upon leaving a picture box
+        ///   Event to set the mouse cursor to arrow upon leaving a picture box
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">EventArgs</param>
+        /// <param name="sender"> sender </param>
+        /// <param name="e"> EventArgs </param>
         protected internal virtual void PictureBox_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Arrow;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             var link = sender as LinkLabel;
@@ -532,10 +502,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void ChannelSection_SettingChanging(object sender, SettingChangingEventArgs e)
         {
             switch (e.SettingName)
@@ -554,10 +523,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void OnChannelChanged(object sender, ChannelChangedEventArgs<IChannel> e)
         {
             if (_channelChanged != null)
@@ -567,10 +535,10 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// Event to refresh the main page's playlist
+        ///   Event to refresh the main page's playlist
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">EventArgs</param>
+        /// <param name="sender"> sender </param>
+        /// <param name="e"> EventArgs </param>
         protected internal virtual void OnChannelRefreshed(object sender, TrackChangedEventArgs<ITrack> e)
         {
             if (_channelRefreshed != null)
@@ -580,10 +548,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">EventArgs</param>
+        /// <param name="sender"> sender </param>
+        /// <param name="e"> EventArgs </param>
         protected internal virtual void OnTrackChanged(object sender, TrackChangedEventArgs<ITrack> e)
         {
             if (_trackChanged != null)
@@ -593,10 +560,9 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void OnPlaylistHistoryClicked(object sender, EventArgs e)
         {
             if (_historyClicked != null)
@@ -610,7 +576,7 @@ namespace DigitallyImported.Utilities
         ///// </summary>
         ///// <param name="sender"></param>
         ///// <param name="e"></param>
-        //protected internal virtual void Onee(object sender, eeEventArgs<IChannel> e)
+        //protected internal virtual void Onee(object sender, CommentCountChangedEventArgs<IChannel> e)
         //{
         //    if (_ee != null)
         //    {
@@ -619,29 +585,26 @@ namespace DigitallyImported.Utilities
         //}
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void OnElementHover(object sender, PopupEventArgs e)
         {
             // TODO omplement
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public override string ToString()
         {
             return channelName;
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender"> </param>
+        /// <param name="e"> </param>
         protected internal virtual void StreamType_MouseClick(object sender, MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -699,9 +662,7 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         [Browsable(true)]
         public event EventHandler<TrackChangedEventArgs<ITrack>> ChannelRefreshed
         {
@@ -725,9 +686,7 @@ namespace DigitallyImported.Utilities
 
 
         /// <summary>
-        /// 
         /// </summary>
-        /// 
         // todo refactor this out into it's own EventArgs class, pass link as e.Message
         [Browsable(true)]
         public static event EventHandler<EventArgs> ElementMouseHover
@@ -749,7 +708,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Browsable(true)]
         public static event EventHandler<ChannelChangedEventArgs<IChannel>> ChannelChanged
@@ -771,7 +729,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Browsable(true)]
         public event EventHandler<EventArgs> PlaylistHistoryClicked
@@ -793,7 +750,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public virtual void LoadUI()
         {

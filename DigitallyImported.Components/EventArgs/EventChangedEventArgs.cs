@@ -1,7 +1,14 @@
+#region using declarations
+
 using System;
+
+#endregion
 
 namespace DigitallyImported.Components
 {
+    /// <summary>
+    /// </summary>
+    /// <typeparam name="T"> </typeparam>
     [Serializable]
     public class EventChangedEventArgs<T> : ContentChangedEventArgs<T>
         where T : IEvent
@@ -9,7 +16,6 @@ namespace DigitallyImported.Components
         private T _refreshedEvent;
 
         /// <summary>
-        /// 
         /// </summary>
         public EventChangedEventArgs()
             : this(default(T))
@@ -17,9 +23,8 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="refreshedEvent"></param>
+        /// <param name="refreshedEvent"> </param>
         public EventChangedEventArgs(T refreshedEvent)
             : base(refreshedEvent)
         {
@@ -27,7 +32,6 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
         public override T RefreshedContent
         {

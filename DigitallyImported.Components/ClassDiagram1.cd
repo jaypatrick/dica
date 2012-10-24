@@ -1,0 +1,440 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DigitallyImported.Components.ContentCollection&lt;T&gt;" Collapsed="true">
+    <Position X="15" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAAAAAASAAAAAACAABAAAAAAAAAgAAAABA=</HashCode>
+      <FileName>Base\ContentCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.ContentLoader&lt;TContent&gt;" Collapsed="true">
+    <Position X="4" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Base\ContentLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.ContentLoaderProvider&lt;T, U&gt;" Collapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\ContentLoaderProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ContentSerializer&lt;T&gt;" Collapsed="true">
+    <Position X="9.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAABAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Base\ContentSerializer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.ContentView&lt;T&gt;" Collapsed="true">
+    <Position X="12" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABIAEAAAQAAABQAAQAAAAAAAAAAAABABBCABAAAA=</HashCode>
+      <FileName>Base\ContentView.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.SerializableCollection&lt;T&gt;" Collapsed="true">
+    <Position X="25.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Base\SerializableCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelCollection&lt;T&gt;" Collapsed="true">
+    <Position X="19.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ChannelCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelListLoader&lt;TChannel&gt;" Collapsed="true">
+    <Position X="7.5" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAACABCAEAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChannelListLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelLoader&lt;TChannel, TTrack&gt;" Collapsed="true">
+    <Position X="7.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAACAAAAAAAAAAAAAAAAAAAAJAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ChannelLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelTransforms" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ChannelTransforms.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="7.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\ChannelChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.CommentCountChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="9.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\CommentCountChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ContentChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\ContentChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.EventChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAA=</HashCode>
+      <FileName>EventArgs\EventChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.StreamChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\StreamChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.TrackChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\TrackChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ViewChangedEventArgs&lt;T&gt;" Collapsed="true">
+    <Position X="22" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>EventArgs\ViewChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.EventCollection&lt;T&gt;" Collapsed="true">
+    <Position X="12.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.EventListLoader&lt;TEvent&gt;" Collapsed="true">
+    <Position X="0.75" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAABCgEAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventListLoader.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.EventLoader&lt;T&gt;" Collapsed="true">
+    <Position X="0.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAABAQAIAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>EventLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ExternalChannelEntry&lt;K, V&gt;" Collapsed="true">
+    <Position X="23.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEggAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ExternalChannelEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ExternalChannelEntryCollection&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACACBAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>ExternalChannelEntryCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="DigitallyImported.Components.PlaylistCollection&lt;T&gt;" Collapsed="true">
+    <Position X="15" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.PlaylistDictionary&lt;K, V&gt;" Collapsed="true">
+    <Position X="23.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlaylistCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.PlaylistLoader&lt;T&gt;" Collapsed="true">
+    <Position X="5.25" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAACAACAAABAAAAAAAAAAAABA=</HashCode>
+      <FileName>PlaylistLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelLoaderProvider&lt;TChannel&gt;" Collapsed="true">
+    <Position X="3.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Providers\ChannelLoaderProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelLoaderProviderCollection&lt;TProvider, TChannel&gt;" Collapsed="true">
+    <Position X="23.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Providers\ChannelLoaderProviderCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.ChannelLoaderServiceSection" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>Providers\ChannelLoaderServiceSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.DIChannelProvider&lt;TChannel, TTrack&gt;" Collapsed="true">
+    <Position X="3.25" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAQAAAAAAAAAAAAABAAAAAAACAAAAAAA=</HashCode>
+      <FileName>Providers\DIChannelProvider.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.StreamCollection&lt;T&gt;" Collapsed="true">
+    <Position X="10.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StreamCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.TrackCollection&lt;T&gt;" Collapsed="true">
+    <Position X="17.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>TrackCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.TrackLoader&lt;TTrack&gt;" Collapsed="true">
+    <Position X="3" Y="9.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIQA=</HashCode>
+      <FileName>TrackLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.Utilities" Collapsed="true">
+    <Position X="27.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAACAAEIgAAAAAAAAAAAAAAAAIAAABBACAAAA=</HashCode>
+      <FileName>Util\Utilities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.Caching.Cache&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAIAAAABACAAABAQAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Caching\Cache.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.Caching.CacheItem&lt;T&gt;" Collapsed="true">
+    <Position X="6.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAoBAAAAAAEAACAACAAAgQAAAAEAEAAAAAAAAAQA=</HashCode>
+      <FileName>Caching\CacheItem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DigitallyImported.Components.Caching.ItemExpiredEventArgs&lt;TItem&gt;" Collapsed="true">
+    <Position X="27.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAFAAAgAQAAAAAAEAAAEAAAAAAAAAAAAAAACAAABAAA=</HashCode>
+      <FileName>Caching\ItemExpiredEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DigitallyImported.Components.Services.NetworkConnectionStateChangedEventArgs" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventArgs\NetworkConnectionStateChangedEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="DigitallyImported.Components.IChannel" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAARAAAAAEAAAAAAAAAIAAAAAgAAACAACgAAAAAMAgA=</HashCode>
+      <FileName>Interfaces\IChannel.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IContent" Collapsed="true">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAACQAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Interfaces\IContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IContentCollection&lt;T&gt;" Collapsed="true">
+    <Position X="23.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAEAAAAAAAASAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IContentCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IContentLoader&lt;T&gt;" Collapsed="true">
+    <Position X="25.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Interfaces\IContentLoader.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IContentTransform" Collapsed="true">
+    <Position X="27.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IContentTransform.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IContentView&lt;T&gt;" Collapsed="true">
+    <Position X="22" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAQAAQAAAAAAAAAAAAAAABCAAAAAA=</HashCode>
+      <FileName>Interfaces\IContentView.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IEvent" Collapsed="true">
+    <Position X="12" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgIAAAAEAAQAAAAAAAIAAgAAAAAAAIAABAAAA=</HashCode>
+      <FileName>Interfaces\IEvent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IExternalContent" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IExternalContent.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IPlaylist" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABgAAAAAAAAAAAAABAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\IPlaylist.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.IStream" Collapsed="true">
+    <Position X="7.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAQEBQAAIQAAAAAAAAAQAAAAAAgA=</HashCode>
+      <FileName>Interfaces\IStream.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.ITrack" Collapsed="true">
+    <Position X="9.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAEAAAAACAEQIAQAAACEADAAgAAAAAA=</HashCode>
+      <FileName>Interfaces\ITrack.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="DigitallyImported.Components.Caching.ICacheable" Collapsed="true">
+    <Position X="22" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAEAAAAAAAAAAQAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces\ICacheable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DigitallyImported.Components.CalendarFormat" Collapsed="true">
+    <Position X="22" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAEAAAAAIAAAAA=</HashCode>
+      <FileName>Enum\CalendarFormat.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.ContentType" Collapsed="true">
+    <Position X="25.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAEAA=</HashCode>
+      <FileName>Enum\ContentType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.PlayerType" Collapsed="true">
+    <Position X="27.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAQAAAAAAAAAAAJAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enum\PlayerType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.SortBy" Collapsed="true">
+    <Position X="22" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAIgAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Enum\SortBy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.SortOrder" Collapsed="true">
+    <Position X="23.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAABAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Enum\SortOrder.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.StationType" Collapsed="true">
+    <Position X="25.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAEIAAAAAACAA=</HashCode>
+      <FileName>Enum\StationType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.StreamBitrate" Collapsed="true">
+    <Position X="27.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enum\StreamBitrate.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.StreamType" Collapsed="true">
+    <Position X="22" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAEAAAAAAAAAAACAAAAAAAAAAAAAAAEAAgA=</HashCode>
+      <FileName>Enum\StreamType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.SubscriptionLevel" Collapsed="true">
+    <Position X="23.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enum\SubscriptionLevel.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.TraceCategory" Collapsed="true">
+    <Position X="25.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACEAAAAAAAAAAAQAAAAAAAABCAAAAAAA=</HashCode>
+      <FileName>Enum\TraceCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.ViewType" Collapsed="true">
+    <Position X="27.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAIAAAAAAAAAAACAAAAAAAEAAAA=</HashCode>
+      <FileName>Enum\ViewType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DigitallyImported.Components.Services.ConnectionStatus" Collapsed="true">
+    <Position X="23.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Enum\ConnectionStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

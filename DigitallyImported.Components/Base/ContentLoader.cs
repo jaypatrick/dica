@@ -1,3 +1,5 @@
+#region using declarations
+
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -6,17 +8,17 @@ using System.Net.NetworkInformation;
 using System.Xml;
 using DigitallyImported.Components.Caching;
 
+#endregion
+
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
     /// <typeparam name="TContent"> </typeparam>
     public abstract class ContentLoader<TContent> : CacheItem<TContent>, IContentLoader<TContent>
         where TContent : IContent
     {
         /// <summary>
-        /// 
         /// </summary>
         protected ContentLoader()
             : this(string.Empty)
@@ -24,9 +26,8 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="contentLocation"></param>
+        /// <param name="contentLocation"> </param>
         protected ContentLoader(string contentLocation)
         {
             ContentLocation = contentLocation;
@@ -43,10 +44,8 @@ namespace DigitallyImported.Components
         #region IContentLoader<TContent> Members
 
         /// <summary>
-        /// 
         /// </summary>
         /// <summary>
-        /// 
         /// </summary>
         public virtual bool IsNetworkAvailable
         {
@@ -54,13 +53,12 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="settings"></param>
-        /// <returns></returns>
+        /// <param name="settings"> </param>
+        /// <returns> </returns>
         public virtual XmlReader LoadContentFromXml(XmlReaderSettings settings)
         {
-            int i = 0;
+            var i = 0;
 
             if (string.IsNullOrEmpty(ContentLocation))
                 throw new InvalidOperationException("Property ContentLocation must be set prior to retrieving channels.");
@@ -85,8 +83,10 @@ namespace DigitallyImported.Components
 
                 if (i <= 3)
                 {
-                    Trace.WriteLine(string.Format("Attempt #{0} for loading {1}", i.ToString(), ContentLocation),
-                                    TraceCategory.Exception.ToString());
+                    Trace.WriteLine(
+                        string.Format("Attempt #{0} for loading {1}", i.ToString(CultureInfo.InvariantCulture),
+                                      ContentLocation),
+                        TraceCategory.Exception.ToString());
                     return LoadContentFromXml(settings);
                 }
                 throw;
@@ -110,10 +110,9 @@ namespace DigitallyImported.Components
         #endregion
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
-        public virtual XmlReader LoadContentFromXml()
+        /// <returns> </returns>
+        protected virtual XmlReader LoadContentFromXml()
         {
             var settings = new XmlReaderSettings
                 {IgnoreComments = true, IgnoreWhitespace = true, DtdProcessing = DtdProcessing.Parse};

@@ -1,10 +1,13 @@
+#region using declarations
+
 using System;
 using System.Windows.Forms;
 
-namespace DigitallyImported.Utilities
+#endregion
+
+namespace DigitallyImported.Controls
 {
     /// <summary>
-    /// 
     /// </summary>
     internal class PlaylistTimer : Timer
     {
@@ -12,16 +15,14 @@ namespace DigitallyImported.Utilities
         private EventHandler<EventArgs> _timerTick;
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal PlaylistTimer()
         {
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="tickInterval"></param>
+        /// <param name="tickInterval"> </param>
         protected internal PlaylistTimer(TimeSpan tickInterval)
         {
             // if (tickInterval == null) throw new ArgumentNullException("tickInterval");
@@ -32,7 +33,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal TimeSpan TickInterval
         {
@@ -45,7 +45,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal event EventHandler<EventArgs> TimerTick
         {
@@ -60,7 +59,6 @@ namespace DigitallyImported.Utilities
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected internal void Reset()
         {
