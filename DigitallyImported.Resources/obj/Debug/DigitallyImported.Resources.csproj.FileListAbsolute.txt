@@ -12,3 +12,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\Digita
 C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.csproj.GenerateResource.Cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Resources\obj\Debug\DigitallyImported.Resources.csprojResolveAssemblyReference.cache

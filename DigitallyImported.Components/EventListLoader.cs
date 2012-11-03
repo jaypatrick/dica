@@ -24,12 +24,19 @@ namespace DigitallyImported.Components
 
         private StackFrame sf;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public EventListLoader()
             : this(C.Settings.Default.DIEventListXml)
         {
             // ContentLocation = Settings.Default.DIEventListXml;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="contentLocation"></param>
         public EventListLoader(string contentLocation)
             : base(contentLocation)
         {
@@ -37,6 +44,10 @@ namespace DigitallyImported.Components
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        /// <filterpriority>2</filterpriority>
         public void Dispose()
         {
             Dispose(true);
@@ -46,7 +57,6 @@ namespace DigitallyImported.Components
 
         /// <summary>
         /// </summary>
-        /// <param name="bypassCache"> </param>
         /// <returns> </returns>
         public virtual DataSet LoadEventList()
         {
@@ -59,7 +69,7 @@ namespace DigitallyImported.Components
         /// <returns> </returns>
         public virtual DataSet LoadEventList(bool bypassCache)
         {
-            _reader = GetItem(_reader);
+            if (_reader != null) _reader = GetItem(_reader);
 
             if ((bypassCache) || (_reader == null))
             {

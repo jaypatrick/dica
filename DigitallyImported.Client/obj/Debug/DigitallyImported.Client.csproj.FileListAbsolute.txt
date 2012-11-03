@@ -98,3 +98,9 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\Digitally
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.exe.manifest
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.application
 C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Debug\Bass.Net.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Debug\CodeContracts\DigitallyImported.Client.Contracts.dll
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\bin\Debug\CodeContracts\DigitallyImported.Client.Contracts.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\Decl\DigitallyImported.Client.exe
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\Decl\DigitallyImported.Client.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Clientccrefgen.rsp
+C:\Code\Projects\Digitally Imported\DigitallyImported.Client\obj\Debug\DigitallyImported.Client.rewritten

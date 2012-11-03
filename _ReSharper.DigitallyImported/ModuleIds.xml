@@ -20,16 +20,10 @@
   <Module PersistentId="System.Drawing.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Drawing.Design" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib" />
   <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib" />
-  <Module PersistentId="DigitallyImported.Components, Version=4.1.0.1103, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Components_1" />
-  <Module PersistentId="DigitallyImported.Controls, Version=4.1.0.1103, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Controls_1" />
-  <Module PersistentId="DigitallyImported.Player, Version=4.1.0.1103, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Player_1" />
-  <Module PersistentId="DigitallyImported.Resources, Version=4.1.0.1058, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Resources_1" />
-  <Module PersistentId="DigitallyImported.Configuration, Version=4.1.0.1058, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Configuration_1" />
   <Module PersistentId="System.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Security" />
   <Module PersistentId="Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="Accessibility" />
   <Module PersistentId="System.Deployment, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Deployment" />
   <Module PersistentId="System.Runtime.Serialization.Formatters.Soap, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Runtime.Serialization.Formatters.Soap" />
-  <Module PersistentId="DigitallyImported.Data, Version=4.1.0.1058, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_1" />
   <Module PersistentId="Microsoft.Build.Framework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="Microsoft.Build.Framework" />
   <Module PersistentId="System.ComponentModel.DataAnnotations, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="System.ComponentModel.DataAnnotations" />
   <Module PersistentId="System.Web.ApplicationServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="System.Web.ApplicationServices" />
@@ -82,41 +76,55 @@
   <Module PersistentId="System.ServiceModel.Internals, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" ModuleId="System.ServiceModel.Internals" />
   <Module PersistentId="SMDiagnostics, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="SMDiagnostics" />
   <Module PersistentId="Microsoft.Vsa, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="Microsoft.Vsa" />
-  <Module PersistentId="DigitallyImported.Data, Version=4.1.0.38590, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_2" />
   <Module PersistentId="Bass.Net, Version=2.4.9.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480" ModuleId="Bass.Net" />
-  <Module PersistentId="DigitallyImported.Client, Version=4.1.0.3894, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Client_1" />
+  <Module PersistentId="DigitallyImported.Components, Version=4.1.0.5481, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Components_1" />
+  <Module PersistentId="DigitallyImported.Controls, Version=4.1.0.5482, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Controls_1" />
+  <Module PersistentId="DigitallyImported.Player, Version=4.1.0.5483, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Player_1" />
+  <Module PersistentId="DigitallyImported.Resources, Version=4.1.0.5480, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Resources_1" />
+  <Module PersistentId="DigitallyImported.Configuration, Version=4.1.0.5480, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Configuration_1" />
+  <Module PersistentId="DigitallyImported.Data, Version=4.1.0.5480, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_1" />
+  <Module PersistentId="DigitallyImported.Client, Version=4.1.4688.2596, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Client_1" />
   <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib_1" />
   <Module PersistentId="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System_1" />
   <Module PersistentId="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Xml_1" />
   <Module PersistentId="System.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Security_1" />
   <Module PersistentId="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" ModuleId="System.Configuration_1" />
   <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_1" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_2" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_1" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_2" />
   <Module PersistentId="System.Data.SqlXml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="System.Data.SqlXml_1" />
-  <Module PersistentId="DigitallyImported.Components, Version=4.1.0.3891, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Components_2" />
-  <Module PersistentId="DigitallyImported.Controls, Version=4.1.0.3891, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Controls_2" />
-  <Module PersistentId="DigitallyImported.Player, Version=4.1.0.3893, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Player_2" />
-  <Module PersistentId="DigitallyImported.Configuration, Version=4.1.0.3890, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Configuration_2" />
-  <Module PersistentId="DigitallyImported.Resources, Version=4.1.0.3890, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Resources_2" />
-  <Module PersistentId="DigitallyImported.Data, Version=4.1.0.3890, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_3" />
+  <Module PersistentId="DigitallyImported.Components, Version=4.1.4688.2592, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Components_2" />
+  <Module PersistentId="DigitallyImported.Data, Version=4.1.0.38590, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_2" />
+  <Module PersistentId="DigitallyImported.Controls, Version=4.1.4688.2593, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Controls_2" />
+  <Module PersistentId="DigitallyImported.Player, Version=4.1.4688.2595, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Player_2" />
+  <Module PersistentId="DigitallyImported.Configuration, Version=4.1.4688.2591, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Configuration_2" />
+  <Module PersistentId="DigitallyImported.Resources, Version=4.1.4688.2591, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Resources_2" />
+  <Module PersistentId="DigitallyImported.Data, Version=4.1.4688.2591, Culture=neutral, PublicKeyToken=null" ModuleId="DigitallyImported.Data_3" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_3" />
   <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_1" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_3" />
-  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_2" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_4" />
   <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_2" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_4" />
-  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_3" />
-  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_3" />
-  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_5" />
-  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_4" />
-  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_6" />
   <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_5" />
-  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_4" />
-  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_7" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_5" />
   <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_6" />
-  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_8" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_6" />
   <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_7" />
+  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_3" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_7" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_8" />
+  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_4" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_8" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_9" />
   <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_5" />
   <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_9" />
-  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_8" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_10" />
+  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_6" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_10" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_11" />
+  <Module PersistentId="VbPowerPack, Version=0.0.0.0, Culture=neutral, PublicKeyToken=01341dd74a677708" ModuleId="VbPowerPack_7" />
+  <Module PersistentId="Interop.iTunesLib, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.iTunesLib_11" />
+  <Module PersistentId="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Interop.WMPLib_12" />
 </Modules>

@@ -73,23 +73,6 @@ namespace DigitallyImported.Client
 
         /// <summary>
         /// </summary>
-        /// <param name="e"> </param>
-        protected override void OnResize(EventArgs e)
-        {
-            base.OnResize(e);
-
-            //foreach (IComponent component in this.)
-            //{
-            //    if (component is NotifyIcon)
-            //    {
-            //        ((NotifyIcon)component).Visible = (!(this.ShowInTaskbar = this.WindowState == FormWindowState.Minimized ? false : true));
-            //        break;
-            //    }
-            //}
-        }
-
-        /// <summary>
-        /// </summary>
         /// <param name="sender"> </param>
         /// <param name="e"> </param>
         protected virtual void Application_ThreadException(object sender, ThreadExceptionEventArgs e)

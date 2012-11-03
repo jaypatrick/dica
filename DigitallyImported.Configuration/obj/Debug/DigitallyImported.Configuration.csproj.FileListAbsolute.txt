@@ -9,3 +9,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\Di
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.pdb
+C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.csprojResolveAssemblyReference.cache

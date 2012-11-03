@@ -8,7 +8,6 @@ using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
 using System.Windows.Forms;
 using System.Xml;
 using DigitallyImported.Components;
@@ -159,6 +158,7 @@ namespace DigitallyImported.Client.Controls
         /// <param name="state"> </param>
         protected virtual void UpdateNetworkStatus(object state)
         {
+            if (state == null) throw new ArgumentNullException("state");
             if ((bool) state)
             {
                 ConnectionStatusLabel.Text = P.Resources.NetworkOnline;
@@ -295,7 +295,7 @@ namespace DigitallyImported.Client.Controls
             BindChannelPlaylistPanel();
 
             // PlaylistPanel.RefreshPlaylist(sender, e);
-
+            if (channels.Count == 0) return;
             if (_isFirstRun)
             {
                 // IF NULL, GENERATE RANDOM NUMBER AND PLAY THAT CHANNEL INDEX
@@ -426,13 +426,11 @@ namespace DigitallyImported.Client.Controls
                             BindChannelPlaylistPanel();
                             UpdateVisualCues();
 
-                            if (ViewPlaylistsSplitButton != null)
-                            {
-                                ViewPlaylistsSplitButton.Text = playlist.Name;
-                                ViewPlaylistsSplitButton.Image = playlist.Image;
-                                ViewPlaylistsSplitButton.Tag = playlist.SiteUri; // HACK
-                                ViewPlaylistsSplitButton.ToolTipText = playlist.SiteUri.AbsoluteUri;
-                            }
+                            if (ViewPlaylistsSplitButton == null) return;
+                            ViewPlaylistsSplitButton.Text = playlist.Name;
+                            ViewPlaylistsSplitButton.Image = playlist.Image;
+                            ViewPlaylistsSplitButton.Tag = playlist.SiteUri; // HACK
+                            ViewPlaylistsSplitButton.ToolTipText = playlist.SiteUri.AbsoluteUri;
                         }));
                 }
                 else
@@ -593,37 +591,33 @@ namespace DigitallyImported.Client.Controls
 
             foreach (var control in PlaylistPanel.Controls)
             {
-                if (control is TChannel)
-                {
-                    ((Channel) control).PlaylistHistoryClicked -= (sender, e) => { };
-                    ((Channel) control).PlaylistHistoryClicked += (sender, e) =>
-                        {
-                            var channel = sender as TChannel;
+                if (!(control is TChannel)) continue;
+                ((Channel) control).PlaylistHistoryClicked -= (sender, e) => { };
+                ((Channel) control).PlaylistHistoryClicked += (sender, e) =>
+                    {
+                        var channel = sender as TChannel;
 
-                            if (channel != null)
-                            {
-                                if (_trackHistory == null)
-                                {
-                                    _trackHistory = new HistoryForm(channel);
-                                    _trackHistory.Show();
-                                }
-                                else
-                                {
-                                    _trackHistory.Channel = channel;
-                                    _trackHistory.Show();
-                                }
-                                _trackHistory.Activate();
-                                // _trackHistory.Location = this.PointToScreen(this.PlaylistPanel.Controls[((Control)c).Name].Location);
-                            }
-                        };
-                }
+                        if (channel == null) return;
+                        if (_trackHistory == null)
+                        {
+                            _trackHistory = new HistoryForm(channel);
+                            _trackHistory.Show();
+                        }
+                        else
+                        {
+                            _trackHistory.Channel = channel;
+                            _trackHistory.Show();
+                        }
+                        _trackHistory.Activate();
+                        // _trackHistory.Location = this.PointToScreen(this.PlaylistPanel.Controls[((Control)c).Name].Location);
+                    };
             }
         }
 
         private void SetTrackText(ITrack track)
         {
             if (track == null) throw new ArgumentNullException("track");
-            string displayText =
+            var displayText =
                 string.Format("{0} {1} {2}", track.ParentChannel.ChannelName, P.Resources.ColonSeparator,
                               track.TrackTitle);
 
@@ -672,28 +666,6 @@ namespace DigitallyImported.Client.Controls
                 PlaylistRefreshProgress.Visible = false;
                 ExceptionStatusMessage.Visible = true;
                 ExceptionStatusMessage.Text = serviceOfflineMessage;
-            }
-        }
-
-        private void PremiumAuthenticationFailure(HttpException exc)
-        {
-            if (InvokeRequired)
-            {
-                BeginInvoke((Action) (() =>
-                    {
-                        ConnectionStatusLabel.Visible = false;
-                        PlaylistRefreshProgress.Visible = false;
-                        ExceptionStatusMessage.Visible = true;
-                        ExceptionStatusMessage.Text = string.Format("{0}: {1}", exc.GetHttpCode().ToString(),
-                                                                    exc.Message);
-                    }));
-            }
-            else
-            {
-                ConnectionStatusLabel.Visible = false;
-                PlaylistRefreshProgress.Visible = false;
-                ExceptionStatusMessage.Visible = true;
-                ExceptionStatusMessage.Text = string.Format("{0}: {1}", exc.GetHttpCode().ToString(), exc.Message);
             }
         }
     }

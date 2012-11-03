@@ -11,24 +11,21 @@ using System.Xml.Serialization;
 namespace DigitallyImported.Components
 {
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T"> </typeparam>
     [Serializable]
     public abstract class ContentCollection<T> : List<T>, IContentCollection<T>, IXmlSerializable
         where T : IContent
     {
         /// <summary>
-        /// 
         /// </summary>
         protected ContentCollection()
         {
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="capacity"></param>
+        /// <param name="capacity"> </param>
         protected ContentCollection(int capacity)
             : base(capacity)
         {
@@ -58,18 +55,16 @@ namespace DigitallyImported.Components
         #region IXmlSerializable Members
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <returns></returns>
+        /// <returns> </returns>
         public virtual XmlSchema GetSchema()
         {
             throw new Exception("The method or operation is not implemented.");
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="reader"></param>
+        /// <param name="reader"> </param>
         public virtual void ReadXml(XmlReader reader)
         {
             var serializer = new XmlSerializer(typeof (T));
@@ -164,12 +159,12 @@ namespace DigitallyImported.Components
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="collection1"></param>
-        /// <param name="collection2"></param>
-        /// <returns></returns>
-        public static ContentCollection<T> operator +(ContentCollection<T> collection1, ContentCollection<T> collection2)
+        /// <param name="collection1"> </param>
+        /// <param name="collection2"> </param>
+        /// <returns> </returns>
+        public static ContentCollection<T> operator +(ContentCollection<T> collection1, ContentCollection<T> collection2
+            )
         {
             //ContentCollection<T> col = new Conten
 
@@ -178,6 +173,7 @@ namespace DigitallyImported.Components
                 collection1.AddRange(collection2);
                 return collection1;
             }
+            if (collection2 == null) throw new ArgumentNullException("collection2");
             return null;
         }
     }

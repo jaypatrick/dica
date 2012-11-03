@@ -1,7 +1,6 @@
 #region using declarations
 
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using DigitallyImported.Components.Caching;
 
@@ -31,6 +30,7 @@ namespace DigitallyImported.Components
         /// <param name="contents"> </param>
         protected ContentView(ContentCollection<T> contents)
         {
+            if (contents == null) throw new ArgumentNullException("contents");
             IsViewSet = false;
             Contents = contents;
         }
@@ -66,9 +66,9 @@ namespace DigitallyImported.Components
             {
                 case SortBy.ChannelName:
                     {
-                        return SortOrder == SortOrder.Ascending 
-                            ? String.Compare(x.Name, y.Name, StringComparison.Ordinal) 
-                            : String.Compare(y.Name, x.Name, StringComparison.Ordinal);
+                        return SortOrder == SortOrder.Ascending
+                                   ? String.Compare(x.Name, y.Name, StringComparison.Ordinal)
+                                   : String.Compare(y.Name, x.Name, StringComparison.Ordinal);
                         //break;
                     }
                 case SortBy.SiteName:

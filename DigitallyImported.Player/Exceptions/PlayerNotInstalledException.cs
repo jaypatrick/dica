@@ -20,9 +20,8 @@ namespace DigitallyImported.Player
         }
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="message"></param>
+        /// <param name="message"> </param>
         public PlayerNotInstalledException(string message)
             : base(message)
         {
@@ -54,7 +53,7 @@ namespace DigitallyImported.Player
         /// <param name="info"> </param>
         /// <param name="context"> </param>
         protected PlayerNotInstalledException(SerializationInfo info, StreamingContext context)
-            :base(info, context)
+            : base(info, context)
         {
             // Add implementation.
         }

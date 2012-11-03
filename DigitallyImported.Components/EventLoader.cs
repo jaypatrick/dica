@@ -19,15 +19,29 @@ namespace DigitallyImported.Components
         private EventData _eventData; // NEEDS TO BE DATASET FOR INHERITANCE
         private EventCollection<T> _events;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public EventLoader()
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventsLocation"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public EventLoader(string eventsLocation)
             : base(eventsLocation)
         {
+            if (eventsLocation == null) throw new ArgumentNullException("eventsLocation");
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <returns></returns>
         public virtual EventCollection<T> LoadEvents(bool bypassCache)
         {
             var events = new EventCollection<T>();
@@ -46,11 +60,11 @@ namespace DigitallyImported.Components
 
             if (_eventData != null)
             {
-                EventData.EVENTDataTable eventTable = _eventData.EVENT;
+                var eventTable = _eventData.EVENT;
             }
 
             if (_eventData != null) _eventArray = new T[_eventData.Tables["EVENT"].Rows.Count];
-            int i = 0;
+            var i = 0;
 
             if (_eventData != null)
                 foreach (EventData.EVENTRow eventRow in _eventData.Tables["EVENT"].Rows)

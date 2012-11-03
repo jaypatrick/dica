@@ -13,8 +13,6 @@ namespace DigitallyImported.Components
     public class ViewChangedEventArgs<T> : EventArgs
         where T : IContentCollection<IChannel>
     {
-        private readonly T _changedContent;
-
         /// <summary>
         /// </summary>
         public ViewChangedEventArgs()
@@ -27,12 +25,9 @@ namespace DigitallyImported.Components
         /// <param name="changedContent"> </param>
         public ViewChangedEventArgs(T changedContent)
         {
-            _changedContent = changedContent;
+            ChangedContent = changedContent;
         }
 
-        public virtual T ChangedContent
-        {
-            get { return _changedContent; }
-        }
+        public virtual T ChangedContent { get; private set; }
     }
 }

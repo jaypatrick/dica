@@ -50,11 +50,13 @@
             <summary>
             </summary>
             <param name="playerType"> </param>
+            <exception cref="T:DigitallyImported.Player.PlayerNotInstalledException"></exception>
         </member>
         <member name="M:DigitallyImported.Player.Player.OpenPlayer(DigitallyImported.Components.IChannel)">
             <summary>
             </summary>
             <param name="channel"> </param>
+            <exception cref="T:System.ArgumentNullException"></exception>
         </member>
         <member name="M:DigitallyImported.Player.Player.GetPlayerKey">
             <summary>
@@ -157,10 +159,9 @@
         </member>
         <member name="T:DigitallyImported.Player.PlayerFactory`2">
             <summary>
-            
             </summary>
-            <typeparam name="T"></typeparam>
-            <typeparam name="TPlayer"></typeparam>
+            <typeparam name="T"> </typeparam>
+            <typeparam name="TPlayer"> </typeparam>
         </member>
         <member name="M:DigitallyImported.Player.PlayerFactory`2.#ctor">
             <summary>
@@ -214,9 +215,8 @@
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.String)">
             <summary>
-            
             </summary>
-            <param name="message"></param>
+            <param name="message"> </param>
         </member>
         <member name="M:DigitallyImported.Player.PlayerNotInstalledException.#ctor(System.String,System.Exception)">
             <summary>

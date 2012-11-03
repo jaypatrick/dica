@@ -30,16 +30,12 @@ namespace DigitallyImported.Components
         /// <param name="contentLocation"> </param>
         protected ContentLoader(string contentLocation)
         {
+            if (contentLocation == null) throw new ArgumentNullException("contentLocation");
             ContentLocation = contentLocation;
         }
 
         protected virtual string ContentLocation { get; private set; //set { _contentLocation = value; }
         }
-
-        //protected ContentLoader(ContentLoaderProvider<IContentLoader<TContent>, TContent> loaderFactory)
-        //{
-
-        //}
 
         #region IContentLoader<TContent> Members
 
@@ -55,6 +51,7 @@ namespace DigitallyImported.Components
         /// <summary>
         /// </summary>
         /// <param name="settings"> </param>
+        /// <exception cref="WebException"></exception>
         /// <returns> </returns>
         public virtual XmlReader LoadContentFromXml(XmlReaderSettings settings)
         {

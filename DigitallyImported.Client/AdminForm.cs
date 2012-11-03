@@ -118,7 +118,7 @@ namespace DigitallyImported.Client
             Settings.Default.CalendarFormat = calendarFormatValue.Text;
             Settings.Default.FormOpacityValue = ((double) transparencyTrackBar.Value/100);
 
-            foreach (object item in serviceLevelValues.CheckedItems)
+            foreach (var item in serviceLevelValues.CheckedItems)
             {
                 if (
                     !Settings.Default.SubscriptionType.Equals(item.ToString(),

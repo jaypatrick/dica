@@ -42,15 +42,15 @@ namespace DigitallyImported.Components
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("name", Resources.Properties.Resources.StringNull);
-            int numberOfSpaces = 0;
+            var numberOfSpaces = 0;
             const string space = " ";
 
-            char[] buffer = name.ToCharArray();
+            var buffer = name.ToCharArray();
 
-            for (int i = 0; i < buffer.Length; i++)
+            for (var i = 0; i < buffer.Length; i++)
             {
-                char c = buffer[i];
-                char d = Char.MinValue;
+                var c = buffer[i];
+                var d = Char.MinValue;
 
                 if (buffer.Length > i + 1)
                 {
@@ -68,15 +68,13 @@ namespace DigitallyImported.Components
                     numberOfSpaces++;
                 }
 
-                if (char.IsUpper(c) && char.IsLower(d))
-                {
-                    if (i == 0) continue;
+                if (!char.IsUpper(c) || !char.IsLower(d)) continue;
+                if (i == 0) continue;
 
-                    if (name[i] == ' ') continue;
+                if (name[i] == ' ') continue;
 
-                    name = name.Insert(i + numberOfSpaces, space);
-                    numberOfSpaces++;
-                }
+                name = name.Insert(i + numberOfSpaces, space);
+                numberOfSpaces++;
             }
 
             return name.Trim(); //.Replace("  ", " ");

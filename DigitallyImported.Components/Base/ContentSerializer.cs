@@ -31,6 +31,7 @@ namespace DigitallyImported.Components
         /// <param name="reader"> </param>
         public void ReadXml(XmlReader reader)
         {
+            if (reader == null) throw new ArgumentNullException("reader");
             throw new Exception("The method or operation is not implemented.");
         }
 
@@ -39,6 +40,7 @@ namespace DigitallyImported.Components
         /// <param name="writer"> </param>
         public void WriteXml(XmlWriter writer)
         {
+            if (writer == null) throw new ArgumentNullException("writer");
             throw new Exception("The method or operation is not implemented.");
         }
 

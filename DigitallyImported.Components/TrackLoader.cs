@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Linq;
 using DigitallyImported.Data;
 using P = DigitallyImported.Resources.Properties;
 
@@ -9,6 +10,10 @@ using P = DigitallyImported.Resources.Properties;
 
 namespace DigitallyImported.Components
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TTrack"></typeparam>
     public class TrackLoader<TTrack> : ContentLoader<TTrack>
         where TTrack : class, ITrack, new()
     {
@@ -55,7 +60,7 @@ namespace DigitallyImported.Components
             // _tracksQueue = new ConcurrentQueue<TTrack>();
 
 
-            foreach (ChannelData.TRACKRow trackRow in tracksRow.GetTRACKRows())
+            foreach (var trackRow in tracksRow.GetTRACKRows())
             {
                 _track =
                     tracks.Find(
@@ -114,15 +119,9 @@ namespace DigitallyImported.Components
                         _track.RecordLabel = trackRow.LABEL;
                     }
 
-                    foreach (ChannelData.EXTRAURLRow extraUrlRow in trackRow.GetEXTRAURLRows())
+                    foreach (var extraUrlRow in trackRow.GetEXTRAURLRows().Where(extraUrlRow => !extraUrlRow.IsEXTRAURL_TextNull()).Where(extraUrlRow => Uri.IsWellFormedUriString(extraUrlRow.EXTRAURL_Text, UriKind.Absolute)))
                     {
-                        if (!extraUrlRow.IsEXTRAURL_TextNull())
-                        {
-                            if (Uri.IsWellFormedUriString(extraUrlRow.EXTRAURL_Text, UriKind.Absolute))
-                            {
-                                _track.ArtistUri = new Uri(extraUrlRow.EXTRAURL_Text);
-                            }
-                        }
+                        _track.ArtistUri = new Uri(extraUrlRow.EXTRAURL_Text);
                     }
 
                     _tracksQueue.Enqueue(_track);

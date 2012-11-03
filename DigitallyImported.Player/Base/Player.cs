@@ -2,6 +2,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
 using System.Drawing;
 using DigitallyImported.Components;
 using P = DigitallyImported.Resources.Properties;
@@ -24,11 +25,17 @@ namespace DigitallyImported.Player
         /// <summary>
         /// </summary>
         /// <param name="playerType"> </param>
+        /// <exception cref="PlayerNotInstalledException"></exception>
         protected Player(PlayerType playerType)
         {
-            if (!IsInstalled)
-                throw new PlayerNotInstalledException
-                    (string.Format("{0} {1}", playerType.ToString(), "is not installed."));
+            Contract.Requires<ArgumentNullException>(playerType != null);
+            Contract.Requires<PlayerNotInstalledException>(IsInstalled, string.Format("{0} {1}"
+                , playerType.ToString(), "is not installed."));
+
+            //if (!IsInstalled)
+            //    throw new PlayerNotInstalledException
+            //        (string.Format("{0} {1}", playerType.ToString(), "is not installed."));
+            //Contract.EndContractBlock();
         }
 
         #region IPlayer Members
@@ -36,10 +43,17 @@ namespace DigitallyImported.Player
         /// <summary>
         /// </summary>
         /// <param name="channel"> </param>
+        /// <exception cref="ArgumentNullException"></exception>
         public void OpenPlayer(IChannel channel)
         {
-            if (channel == null)
-                throw new ArgumentNullException(string.Format("{0}, {1} ", "channel", "Must specify a channel to play."));
+            Contract.Requires<ArgumentNullException>(channel != null
+                , string.Format("{0}, {1} "
+                , "channel", "Must specify a channel to play."));
+
+            //if (channel == null)
+            //    throw new ArgumentNullException(string.Format("{0}, {1} ", "channel", "Must specify a channel to play."));
+
+            //Contract.EndContractBlock();
 
             Channel = channel;
 

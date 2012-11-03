@@ -24,6 +24,9 @@ namespace DigitallyImported.Client.Diagnostics
         /// </summary>
         private readonly Container _components = null;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public StringBuilder Buffer = new StringBuilder();
 
         private Button _btnClear;
@@ -38,7 +41,6 @@ namespace DigitallyImported.Client.Diagnostics
         private ListView _outputView;
         private Panel _panel2;
         private SaveFileDialog _saveFileDlg;
-        private DefaultTraceListener _tracer = new DefaultTraceListener();
 
         /// <summary>
         /// </summary>

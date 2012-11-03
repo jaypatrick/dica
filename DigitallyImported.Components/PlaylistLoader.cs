@@ -6,6 +6,10 @@ using System;
 
 namespace DigitallyImported.Components
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class PlaylistLoader<T> : ContentLoader<T>
         where T : IPlaylist, new()
     {
@@ -30,9 +34,9 @@ namespace DigitallyImported.Components
             }
 
             _playlistArray = new T[Enum.GetNames(typeof (StationType)).Length];
-            int i = 0;
+            var i = 0;
 
-            foreach (string playlist in Enum.GetNames(typeof (StationType)))
+            foreach (var playlist in Enum.GetNames(typeof (StationType)))
             {
                 _playlist = playlists.Contains(playlists[playlist]) ? playlists[playlist] : new T();
 

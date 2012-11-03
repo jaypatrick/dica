@@ -8,12 +8,10 @@ using DigitallyImported.Components;
 
 namespace DigitallyImported.Player
 {
-
     /// <summary>
-    /// 
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="TPlayer"></typeparam>
+    /// <typeparam name="T"> </typeparam>
+    /// <typeparam name="TPlayer"> </typeparam>
     public class PlayerFactory<T, TPlayer> : IPlayerFactory
         // http://weblogs.asp.net/whaggard/archive/2004/09/05/225955.aspx
         where T : IPlayer // http://www.codeproject.com/useritems/GenericsFactory.asp
@@ -94,15 +92,15 @@ namespace DigitallyImported.Player
                 throw new ArgumentNullException("channel", "Invalid channel supplied, must be non-null.");
 
             var player = _playerChannels[channel];
-            if (player != null)
+            if (player == null)
             {
-                Trace.WriteLine(string.Format("Attempting {0} instantiation for streaming of channel '{1}'"
-                                              , player.PlayerType.ToString()
-                                              , channel.ChannelName), TraceCategory.PlayerLoading.ToString());
-
-                return Activator.CreateInstance<TPlayer>();
+                return default(TPlayer);
             }
-            return default(TPlayer);
+            Trace.WriteLine(string.Format("Attempting {0} instantiation for streaming of channel '{1}'"
+                                          , player.PlayerType.ToString()
+                                          , channel.ChannelName), TraceCategory.PlayerLoading.ToString());
+
+            return Activator.CreateInstance<TPlayer>();
         }
 
         #endregion

@@ -145,8 +145,6 @@ namespace DigitallyImported.Client
         /// <param name="e"> </param>
         protected override void OnResize(EventArgs e)
         {
-            base.OnResize(e);
-
             // ShowInTaskbar = this.WindowState == FormWindowState.Minimized ? false : true;
         }
 

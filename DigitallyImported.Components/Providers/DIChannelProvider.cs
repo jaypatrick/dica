@@ -9,17 +9,30 @@ using DigitallyImported.Configuration.Properties;
 
 namespace DigitallyImported.Components
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TChannel"></typeparam>
+    /// <typeparam name="TTrack"></typeparam>
     public class DIChannelProvider<TChannel, TTrack> : ChannelLoaderProvider<TChannel>
         where TChannel : class, IChannel, new()
         where TTrack : class, ITrack, new()
     {
         private string _channelsLocation;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public override string ChannelsLocation
         {
             get { return _channelsLocation; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="config"></param>
         public override void Initialize(string name, NameValueCollection config)
         {
             // Verify that config isn't null
@@ -59,6 +72,11 @@ namespace DigitallyImported.Components
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <returns></returns>
         public override ChannelCollection<TChannel> LoadChannels(bool bypassCache)
         {
             return new ChannelLoader<TChannel, TTrack>(_channelsLocation).LoadChannels(bypassCache);

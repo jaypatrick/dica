@@ -119,7 +119,7 @@ namespace DigitallyImported.Components
             //    channels.Add(t);
             //});
 
-            foreach (T entry in list)
+            foreach (var entry in list)
             {
                 channels[entry.ChannelName] = entry.ChannelUri;
             }

@@ -61,7 +61,7 @@ namespace DigitallyImported.Player
             // _channel = channel;
             //if (channel == null) throw new ArgumentNullException("channel", "Must specify a channel to play. ");
 
-            Uri url = channel.CurrentTrack.TrackUrl;
+            var url = channel.CurrentTrack.TrackUrl;
 
             if (!IsInstalled) return;
             //Trace.WriteLine(string.Format("{0} will attempt to stream {1}", this.PlayerType.ToString(), url));

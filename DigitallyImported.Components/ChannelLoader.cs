@@ -72,7 +72,7 @@ namespace DigitallyImported.Components
 
                     // Parallel.ForEach(rowItem.GetTRACKSRows().Cast<ChannelData.TRACKRow>(), tracksRow =>
 
-                    foreach (ChannelData.TRACKSRow tracksRow in rowItem.GetTRACKSRows())
+                    foreach (var tracksRow in rowItem.GetTRACKSRows())
                     {
                         ChannelData.TRACKSRow tr = tracksRow;
 

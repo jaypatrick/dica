@@ -30,6 +30,10 @@ namespace DigitallyImported.Components
         {
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="channelsLocation"></param>
         public ChannelListLoader(string channelsLocation)
             : base(channelsLocation)
         {
@@ -56,6 +60,12 @@ namespace DigitallyImported.Components
             return LoadPlaylist(bypassCache, C.Settings.Default.DIPlaylistXml);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bypassCache"></param>
+        /// <param name="contentLocation"></param>
+        /// <returns></returns>
         public virtual DataSet LoadPlaylist(bool bypassCache, string contentLocation)
         {
             _reader = GetItem(_reader);
@@ -99,22 +109,18 @@ namespace DigitallyImported.Components
         {
             Trace.WriteLine("EventListLoader was disposed, disposing = {0}", disposing.ToString());
 
-            if (!_disposed)
+            if (_disposed) return;
+            if (disposing && _channelData != null)
             {
-                if (disposing)
-                {
-                    if (_channelData != null)
-                    {
-                        _channelData.Dispose();
-                    }
-                }
-
-                _disposed = true;
+                _channelData.Dispose();
             }
+
+            _disposed = true;
         }
 
         /// <summary>
         /// </summary>
+        /// <exception cref="WebException"></exception>
         /// <returns> </returns>
         [Obsolete("Obsolete. Use LoadXmlData from base class instead. ", true)]
         protected internal XmlReader LoadXmlData()

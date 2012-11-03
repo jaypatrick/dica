@@ -68,7 +68,7 @@ namespace DigitallyImported.Player
             if (!IsInstalled) return;
             //Trace.WriteLine(string.Format("{0} will attempt to stream {1}", this.PlayerType.ToString(), url));
 
-            var thread = new Thread(() => startPlayer(url));
+            var thread = new Thread(() => { if (url != null) startPlayer(url); });
             thread.Start();
 
             //Parallel.Invoke(
@@ -83,6 +83,7 @@ namespace DigitallyImported.Player
         //protected override Uri ParseStreamUri(Uri streamUri)
         protected override Uri ParseStreamUri(Uri streamUri)
         {
+            if (streamUri == null) throw new ArgumentNullException("streamUri");
             Uri returnUri = null;
 
             var request = (HttpWebRequest) WebRequest.Create(streamUri);
@@ -104,9 +105,9 @@ namespace DigitallyImported.Player
 
                     // JK fix for parsing out filename extension after LK was introduced by DI.fm
                     // the LK is a query path of the URL
-                    if (streamUri.AbsolutePath.ToLower().EndsWith("asx", StringComparison.CurrentCultureIgnoreCase))
+                    if (streamUri.AbsolutePath.ToLower().EndsWith(string.Format("a{0}sx", "ARG0"), StringComparison.CurrentCultureIgnoreCase))
                     {
-                        string url = mms.Match(contents).Success
+                        var url = mms.Match(contents).Success
                                          ? mms.Match(contents).Value
                                          : http.Match(contents).Value; // might contain http links instead of mms
 
@@ -124,7 +125,7 @@ namespace DigitallyImported.Player
                     {
                         //if (file.IsMatch(contents))
                         //{
-                        string url = file.Matches(contents)[new Random().Next(file.Matches(contents).Count)].Value;
+                        var url = file.Matches(contents)[new Random().Next(file.Matches(contents).Count)].Value;
                         url = http.Match(url).Value;
 
                         //string url = http.Matches(contents)[new Random().Next(http.Matches(contents).Count)].Value;

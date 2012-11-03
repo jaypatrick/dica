@@ -45,7 +45,7 @@ namespace DigitallyImported.Controls.Windows
             Items.Clear();
 
             int i = 0;
-            foreach (string option in Enum.GetNames(typeof (PlayerType)))
+            foreach (var option in Enum.GetNames(typeof (PlayerType)))
             {
                 Items.Add(Components.Utilities.CapitalizeFirstLetters(option));
                 Items[i].Name = option;

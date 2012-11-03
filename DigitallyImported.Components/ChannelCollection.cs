@@ -37,9 +37,11 @@ namespace DigitallyImported.Components
         ///   I have no idea if this works.
         /// </summary>
         /// <param name="track"> </param>
+        /// <exception cref="ArgumentNullException"></exception>
         /// <returns> </returns>
         public T FindTrack(ITrack track)
         {
+            if (track == null) throw new ArgumentNullException("track");
             return Find(t => Contains((T) t.Tracks[track.Name].ParentChannel));
         }
     }

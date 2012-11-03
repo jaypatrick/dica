@@ -12,3 +12,4 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Debug\DigitallyIm
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Debug\DigitallyImported.Data.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Debug\DigitallyImported.Data.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Data\bin\Debug\DigitallyImported.Data.dll.config
+C:\Code\Projects\Digitally Imported\DigitallyImported.Data\obj\Debug\DigitallyImported.Data.csprojResolveAssemblyReference.cache
