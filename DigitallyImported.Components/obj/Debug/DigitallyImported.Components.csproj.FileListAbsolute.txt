@@ -22,3 +22,18 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Components\bin\Debug\Digit
 C:\Code\Projects\Digitally Imported\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.csprojResolveAssemblyReference.cache
 C:\Code\Projects\Digitally Imported\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\ChannelTransforms.xslt
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Components.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Components.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Configuration.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Data.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Resources.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Configuration.dll.config
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Data.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Data.dll.config
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\bin\Debug\DigitallyImported.Resources.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.csprojAssemblyReference.cache
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.csproj.CopyComplete
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Components\obj\Debug\DigitallyImported.Components.pdb

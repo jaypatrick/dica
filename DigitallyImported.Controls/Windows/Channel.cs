@@ -72,19 +72,13 @@ namespace DigitallyImported.Controls.Windows
         /// </summary>
         /// <param name="track"> </param>
         /// <returns> </returns>
-        public virtual IChannel this[ITrack track]
-        {
-            get { return tracks[track.Name].ParentChannel; }
-        }
+        public virtual IChannel this[ITrack track] => tracks[track.Name].ParentChannel;
 
         /// <summary>
         /// </summary>
         /// <param name="index"> </param>
         /// <returns> </returns>
-        public virtual IChannel this[int index]
-        {
-            get { return tracks[index].ParentChannel; }
-        }
+        public virtual IChannel this[int index] => tracks[index].ParentChannel;
 
         #region IChannel Members
 
@@ -94,7 +88,7 @@ namespace DigitallyImported.Controls.Windows
         [XmlAttribute("ChannelName")]
         public virtual string ChannelName
         {
-            get { return channelName; }
+            get => channelName;
             set
             {
                 base.Name = value.Replace(" ", "").ToLower(); // unique key for control
@@ -131,7 +125,7 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("ChannelInfoUrl")]
         public virtual Uri ChannelInfoUrl
         {
-            get { return channelInfoUrl; }
+            get => channelInfoUrl;
             set
             {
                 channelInfoUrl = value;
@@ -157,8 +151,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("SiteName")]
         public virtual string SiteName
         {
-            get { return siteName; }
-            set { siteName = value; }
+            get => siteName;
+            set => siteName = value;
         }
 
         /// <summary>
@@ -166,7 +160,7 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("PlaylistHistoryUrl")]
         public virtual Uri PlaylistHistoryUrl
         {
-            get { return playListHistoryUrl; }
+            get => playListHistoryUrl;
             set
             {
                 playListHistoryUrl = value;
@@ -191,7 +185,7 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("SiteIcon")]
         public virtual Icon SiteIcon
         {
-            get { return siteIcon; }
+            get => siteIcon;
             set
             {
                 if (InvokeRequired)
@@ -211,8 +205,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("PlaylistType")]
         public virtual StationType PlaylistType
         {
-            get { return playlistType; }
-            set { playlistType = value; }
+            get => playlistType;
+            set => playlistType = value;
         }
 
         /// <summary>
@@ -220,8 +214,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("SubscriptionLevel")]
         public virtual SubscriptionLevel SubscriptionLevel
         {
-            get { return subscriptionLevel; }
-            set { subscriptionLevel = value; }
+            get => subscriptionLevel;
+            set => subscriptionLevel = value;
         }
 
         /// <summary>
@@ -229,8 +223,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("StreamType")]
         public virtual StreamType StreamType
         {
-            get { return streamType; }
-            set { streamType = value; }
+            get => streamType;
+            set => streamType = value;
         }
 
         /// <summary>
@@ -238,8 +232,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlArray("Streams")]
         public virtual StreamCollection<IStream> Streams
         {
-            get { return streams; }
-            set { streams = value; }
+            get => streams;
+            set => streams = value;
         }
 
         /// <summary>
@@ -247,8 +241,8 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("Playlist")]
         public virtual IPlaylist Playlist
         {
-            get { return playlist; }
-            set { playlist = value; }
+            get => playlist;
+            set => playlist = value;
         }
 
         /// <summary>
@@ -256,14 +250,14 @@ namespace DigitallyImported.Controls.Windows
         [XmlArray("Tracks")]
         public virtual TrackCollection<ITrack> Tracks
         {
-            get { return tracks; }
+            get => tracks;
             set
             {
                 if (tracks != null)
                 {
                     if (!currentTrack.TrackTitle.Equals(value[0].TrackTitle))
                     {
-                        Trace.WriteLine(string.Format("Track changed on channel {0}", ChannelName),
+                        Trace.WriteLine($"Track changed on channel {ChannelName}",
                                         TraceCategory.ContentChangedEvents.ToString());
                         OnTrackChanged(this, new TrackChangedEventArgs<ITrack>(value[0]));
                     }
@@ -287,18 +281,14 @@ namespace DigitallyImported.Controls.Windows
         /// <summary>
         /// </summary>
         [XmlIgnore]
-        public virtual ITrack CurrentTrack
-        {
-            get { return currentTrack; // CHANGE THIS PLEASE! should be the track marked as IsPlaying!
-            }
-        }
+        public virtual ITrack CurrentTrack => currentTrack;
 
         /// <summary>
         /// </summary>
         [XmlIgnore]
         public virtual bool IsAlternating
         {
-            get { return isAlternating; }
+            get => isAlternating;
             set
             {
                 isAlternating = value;
@@ -327,7 +317,7 @@ namespace DigitallyImported.Controls.Windows
         [XmlElement("SelectedChannel")]
         public virtual bool IsSelected
         {
-            get { return isSelected; }
+            get => isSelected;
             set
             {
                 isSelected = value;
@@ -383,7 +373,7 @@ namespace DigitallyImported.Controls.Windows
             {
                 lock (_trackChangedLock)
                 {
-                    _trackChanged -= value;
+                    if (_trackChanged != null) _trackChanged -= value;
                 }
             }
         }
@@ -394,7 +384,7 @@ namespace DigitallyImported.Controls.Windows
         /// <returns> </returns>
         public bool Equals(IContent other)
         {
-            return Name.Equals(other.Name, StringComparison.CurrentCultureIgnoreCase);
+            return Name.Equals(other?.Name, StringComparison.CurrentCultureIgnoreCase);
         }
 
         #endregion
@@ -482,22 +472,16 @@ namespace DigitallyImported.Controls.Windows
         /// <param name="e"> </param>
         protected internal virtual void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var link = sender as LinkLabel;
-
-            if (link != null)
+            if (!(sender is LinkLabel link)) return;
+            link.Tag = e.Link.LinkData ?? link.Text;
+            if (e.Button != MouseButtons.Left) return;
+            if (link.Name.Contains("lnkPlaylistHistory"))
             {
-                link.Tag = e.Link.LinkData ?? link.Text;
-                if (e.Button == MouseButtons.Left)
-                {
-                    if (link.Name.Contains("lnkPlaylistHistory"))
-                    {
-                        OnPlaylistHistoryClicked(this, EventArgs.Empty);
-                    }
-                    else
-                    {
-                        Components.Utilities.StartProcess(e.Link.LinkData as string);
-                    }
-                }
+                OnPlaylistHistoryClicked(this, EventArgs.Empty);
+            }
+            else
+            {
+                Components.Utilities.StartProcess(e.Link.LinkData as string);
             }
         }
 
@@ -528,10 +512,7 @@ namespace DigitallyImported.Controls.Windows
         /// <param name="e"> </param>
         protected internal virtual void OnChannelChanged(object sender, ChannelChangedEventArgs<IChannel> e)
         {
-            if (_channelChanged != null)
-            {
-                _channelChanged(sender, e);
-            }
+            _channelChanged?.Invoke(sender, e);
         }
 
         /// <summary>
@@ -541,10 +522,7 @@ namespace DigitallyImported.Controls.Windows
         /// <param name="e"> EventArgs </param>
         protected internal virtual void OnChannelRefreshed(object sender, TrackChangedEventArgs<ITrack> e)
         {
-            if (_channelRefreshed != null)
-            {
-                _channelRefreshed(this, e);
-            }
+            _channelRefreshed?.Invoke(this, e);
         }
 
         /// <summary>
@@ -553,10 +531,7 @@ namespace DigitallyImported.Controls.Windows
         /// <param name="e"> EventArgs </param>
         protected internal virtual void OnTrackChanged(object sender, TrackChangedEventArgs<ITrack> e)
         {
-            if (_trackChanged != null)
-            {
-                _trackChanged(this, e);
-            }
+            _trackChanged?.Invoke(this, e);
         }
 
         /// <summary>
@@ -565,10 +540,7 @@ namespace DigitallyImported.Controls.Windows
         /// <param name="e"> </param>
         protected internal virtual void OnPlaylistHistoryClicked(object sender, EventArgs e)
         {
-            if (_historyClicked != null)
-            {
-                _historyClicked(this, e);
-            }
+            _historyClicked?.Invoke(this, e);
         }
 
         ///// <summary>
@@ -756,16 +728,14 @@ namespace DigitallyImported.Controls.Windows
             if (currentTrack == null)
                 throw new InvalidOperationException("Channel control must have a valid Track collection");
 
-            if (currentTrack != null)
+            if (currentTrack == null) return;
+            if (InvokeRequired)
             {
-                if (InvokeRequired)
-                {
-                    Invoke((Action) SetValues);
-                }
-                else
-                {
-                    SetValues();
-                }
+                Invoke((Action) SetValues);
+            }
+            else
+            {
+                SetValues();
             }
 
             // base.OnLoad(e);
@@ -780,8 +750,7 @@ namespace DigitallyImported.Controls.Windows
             lnkTrackTitle.Text = track.TrackTitle;
 
             // comment count
-            lnkPostComments.Text = string.Format("Read and Post Comments {0}{1} {2}{3}", "(", track.CommentCount,
-                                                 "comments", ")");
+            lnkPostComments.Text = $"Read and Post Comments {"("}{track.CommentCount} {"comments"}{")"}";
 
             // forum url
             if (track.ForumUrl != null)
@@ -810,7 +779,7 @@ namespace DigitallyImported.Controls.Windows
 
             // time the track started
             DateTime startTime = track.StartTime.AddMinutes(Settings.Default.TrackStartTimeOffset);
-            StartTimeLabel.Text = string.Format("{0} {1}", "Started at", startTime.ToShortTimeString());
+            StartTimeLabel.Text = $"{"Started at"} {startTime.ToShortTimeString()}";
         }
     }
 }

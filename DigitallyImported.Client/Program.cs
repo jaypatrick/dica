@@ -60,13 +60,13 @@ namespace DigitallyImported.Client
             }
             catch (Exception exc)
             {
-                Trace.WriteLine(string.Format("{0} /r/n {1}", exc.StackTrace, exc.TargetSite));
+                Trace.WriteLine($"{exc.StackTrace} /r/n {exc.TargetSite}");
             }
         }
 
         private static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
-            Trace.WriteLine(string.Format("{0} /r/n {1}", e.Exception.StackTrace, e.Exception.TargetSite));
+            Trace.WriteLine($"{e.Exception.StackTrace} /r/n {e.Exception.TargetSite}");
         }
     }
 }

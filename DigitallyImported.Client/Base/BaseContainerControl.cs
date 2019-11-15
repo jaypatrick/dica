@@ -18,6 +18,7 @@ namespace DigitallyImported.Client.Controls
             InitializeComponent();
         }
 
+        /// <inheritdoc />
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

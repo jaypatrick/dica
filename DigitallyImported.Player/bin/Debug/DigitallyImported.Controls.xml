@@ -57,6 +57,182 @@
             <summary>
             </summary>
         </member>
+        <member name="F:DigitallyImported.Controls.Windows.ExternalChannel.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.ExternalChannel.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.ExternalChannel.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.PlaylistTimeZone">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.ParentChannel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.TrackTitle">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.ArtistName">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.StartTime">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.SongName">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.ArtistUri">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.ForumUrl">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.TrackUrl">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.RecordLabel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.CommentCount">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.IsPlaying">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.Name">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.PlaylistType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.SubscriptionLevel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Track.IsSelected">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.Windows.Track.ee">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.ToString">
+            <summary>
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.LinkLabel_LinkClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.Onee(System.Object,DigitallyImported.Components.CommentCountChangedEventArgs{DigitallyImported.Components.ITrack})">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Controls.Windows.Track.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Track.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.Windows.CommentToastForm`1">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            </summary>
+            <param name="container"> </param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor(`0)">
+            <summary>
+            </summary>
+            <param name="channel"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.Content">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.BodyText">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.TitleText">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.BoardToastForm_Click(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Controls.Windows.CommentToastForm`1.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Controls.Windows.Channel">
             <summary>
               Summary description for ChannelSection.
@@ -70,6 +246,79 @@
             <summary>
             </summary>
             <param name="PlaylistTypes"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.Item(DigitallyImported.Components.ITrack)">
+            <summary>
+            </summary>
+            <param name="track"> </param>
+            <returns> </returns>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.Item(System.Int32)">
+            <summary>
+            </summary>
+            <param name="index"> </param>
+            <returns> </returns>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.ChannelName">
+            <summary>
+              Property to get/set the channel name
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.ChannelInfoUrl">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.SiteName">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.PlaylistHistoryUrl">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.SiteIcon">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.PlaylistType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.SubscriptionLevel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.StreamType">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.Streams">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.Playlist">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.Tracks">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.CurrentTrack">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.IsAlternating">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.Channel.IsSelected">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.Windows.Channel.TrackChanged">
+            <summary>
+            </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.Channel.Equals(DigitallyImported.Components.IContent)">
             <summary>
@@ -150,95 +399,6 @@
             <param name="sender"> </param>
             <param name="e"> </param>
         </member>
-        <member name="M:DigitallyImported.Controls.Windows.Channel.LoadUI">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Channel.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Channel.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.Item(DigitallyImported.Components.ITrack)">
-            <summary>
-            </summary>
-            <param name="track"> </param>
-            <returns> </returns>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.Item(System.Int32)">
-            <summary>
-            </summary>
-            <param name="index"> </param>
-            <returns> </returns>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.ChannelName">
-            <summary>
-              Property to get/set the channel name
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.ChannelInfoUrl">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.SiteName">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.PlaylistHistoryUrl">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.SiteIcon">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.PlaylistType">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.SubscriptionLevel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.StreamType">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.Streams">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.Playlist">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.Tracks">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.CurrentTrack">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.IsAlternating">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Channel.IsSelected">
-            <summary>
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Controls.Windows.Channel.TrackChanged">
-            <summary>
-            </summary>
-        </member>
         <member name="E:DigitallyImported.Controls.Windows.Channel.ChannelRefreshed">
             <summary>
             </summary>
@@ -255,319 +415,20 @@
             <summary>
             </summary>
         </member>
-        <member name="F:DigitallyImported.Controls.Windows.ExternalChannel.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ExternalChannel.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ExternalChannel.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.#ctor">
+        <member name="M:DigitallyImported.Controls.Windows.Channel.LoadUI">
             <summary>
             </summary>
         </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.ToString">
-            <summary>
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.LinkLabel_LinkClicked(System.Object,System.Windows.Forms.LinkLabelLinkClickedEventArgs)">
-            <summary>
-            </summary>
-            <param name="sender"> </param>
-            <param name="e"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.Onee(System.Object,DigitallyImported.Components.CommentCountChangedEventArgs{DigitallyImported.Components.ITrack})">
-            <summary>
-            </summary>
-            <param name="sender"> </param>
-            <param name="e"> </param>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.Track.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.Dispose(System.Boolean)">
+        <member name="M:DigitallyImported.Controls.Windows.Channel.Dispose(System.Boolean)">
             <summary> 
             Clean up any resources being used.
             </summary>
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="M:DigitallyImported.Controls.Windows.Track.InitializeComponent">
+        <member name="M:DigitallyImported.Controls.Windows.Channel.InitializeComponent">
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.PlaylistTimeZone">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.ParentChannel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.TrackTitle">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.ArtistName">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.StartTime">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.SongName">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.ArtistUri">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.ForumUrl">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.TrackUrl">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.RecordLabel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.CommentCount">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.IsPlaying">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.Name">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.PlaylistType">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.SubscriptionLevel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.Track.IsSelected">
-            <summary>
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Controls.Windows.Track.ee">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.Windows.CommentToastForm`1">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.Windows.ToastForm`1">
-            <summary>
-            </summary>
-            <typeparam name="T"> </typeparam>
-            <summary>
-            
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.ToastForm`1.TextFormat">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor(System.ComponentModel.IContainer)">
-            <summary>
-            </summary>
-            <param name="container"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor(`0)">
-            <summary>
-            </summary>
-            <param name="content"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.ToString">
-            <summary>
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.GetFormattedBody">
-            <summary>
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.ToastForm`1.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.Content">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.BodyText">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.TitleText">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor(System.ComponentModel.IContainer)">
-            <summary>
-            </summary>
-            <param name="container"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.#ctor(`0)">
-            <summary>
-            </summary>
-            <param name="channel"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.BoardToastForm_Click(System.Object,System.EventArgs)">
-            <summary>
-            </summary>
-            <param name="sender"> </param>
-            <param name="e"> </param>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.CommentToastForm`1.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.CommentToastForm`1.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.Content">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.BodyText">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.CommentToastForm`1.TitleText">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.ColorButton">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorButton.#ctor">
-            <summary>
-            </summary>
-        </member>
-        <member name="F:DigitallyImported.Controls.ColorButton.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorButton.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorButton.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.ColorButton.CenterColor">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.ColorPaletteDialog">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.#ctor(System.Int32,System.Int32)">
-            <summary>
-            </summary>
-            <param name="x"> </param>
-            <param name="y"> </param>
-        </member>
-        <member name="F:DigitallyImported.Controls.ColorPaletteDialog.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.ColorPaletteDialog.Color">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.ControlFactory">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.ControlFactory.#ctor(DigitallyImported.Controls.ControlType)">
-            <summary>
-            </summary>
-            <param name="controlType"> </param>
-        </member>
-        <member name="T:DigitallyImported.Controls.ControlType">
-            <summary>
             </summary>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.ChannelPanel`1">
@@ -576,6 +437,10 @@
             <typeparam name="TChannel"> </typeparam>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.ChannelPanel`1.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelPanel`1.Channels">
             <summary>
             </summary>
         </member>
@@ -596,10 +461,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelPanel`1.Channels">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.ChannelToastForm`1">
             <summary>
             </summary>
@@ -618,6 +479,18 @@
             <summary>
             </summary>
             <param name="channel"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.Content">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.BodyText">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.TitleText">
+            <summary>
+            </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.ChannelToastForm`1.ChannelToastForm_Click(System.Object,System.EventArgs)">
             <summary>
@@ -642,16 +515,14 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.Content">
+        <member name="P:DigitallyImported.Controls.Windows.ColorPicker.Color">
             <summary>
+            
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.BodyText">
+        <member name="P:DigitallyImported.Controls.Windows.ColorPicker.ForeColor">
             <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelToastForm`1.TitleText">
-            <summary>
+            
             </summary>
         </member>
         <member name="F:DigitallyImported.Controls.Windows.ColorPicker.components">
@@ -677,39 +548,6 @@
         </member>
         <member name="M:DigitallyImported.Controls.Windows.Event.#ctor">
             <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Event.Equals(DigitallyImported.Components.IContent)">
-            <summary>
-            </summary>
-            <param name="other"> </param>
-            <returns> </returns>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Event.ToString">
-            <summary>
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Event.GetEventDetails">
-            <summary>
-            </summary>
-            <returns> </returns>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.Event.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Event.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Event.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="P:DigitallyImported.Controls.Windows.Event.PlaylistTimeZone">
@@ -760,29 +598,37 @@
             <summary>
             </summary>
         </member>
-        <member name="T:DigitallyImported.Controls.PlaylistTimer">
+        <member name="M:DigitallyImported.Controls.Windows.Event.Equals(DigitallyImported.Components.IContent)">
             <summary>
             </summary>
+            <param name="other"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:DigitallyImported.Controls.PlaylistTimer.#ctor">
+        <member name="M:DigitallyImported.Controls.Windows.Event.ToString">
             <summary>
             </summary>
+            <returns> </returns>
         </member>
-        <member name="M:DigitallyImported.Controls.PlaylistTimer.#ctor(System.TimeSpan)">
+        <member name="M:DigitallyImported.Controls.Windows.Event.GetEventDetails">
             <summary>
             </summary>
-            <param name="tickInterval"> </param>
+            <returns> </returns>
         </member>
-        <member name="M:DigitallyImported.Controls.PlaylistTimer.Reset">
-            <summary>
+        <member name="F:DigitallyImported.Controls.Windows.Event.components">
+            <summary> 
+            Required designer variable.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.PlaylistTimer.TickInterval">
-            <summary>
+        <member name="M:DigitallyImported.Controls.Windows.Event.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
             </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="E:DigitallyImported.Controls.PlaylistTimer.TimerTick">
-            <summary>
+        <member name="M:DigitallyImported.Controls.Windows.Event.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.BaseContextMenu.#ctor">
@@ -825,6 +671,18 @@
             </summary>
             <param name="container"> </param>
         </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.SelectedChannel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.Channels">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.PlaylistType">
+            <summary>
+            </summary>
+        </member>
         <member name="F:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.components">
             <summary>
             Required designer variable.
@@ -842,18 +700,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.SelectedChannel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.Channels">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelsContextMenu`1.PlaylistType">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.EventsContextMenu">
             <summary>
             </summary>
@@ -866,6 +712,10 @@
             <summary>
             </summary>
             <param name="container"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.EventsContextMenu.Events">
+            <summary>
+            </summary>
         </member>
         <member name="F:DigitallyImported.Controls.Windows.EventsContextMenu.components">
             <summary>
@@ -884,10 +734,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.EventsContextMenu.Events">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.PlayersContextMenu">
             <summary>
             </summary>
@@ -900,6 +746,10 @@
             <summary>
             </summary>
             <param name="container"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.PlayersContextMenu.PlayerType">
+            <summary>
+            </summary>
         </member>
         <member name="F:DigitallyImported.Controls.Windows.PlayersContextMenu.components">
             <summary>
@@ -918,10 +768,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.PlayersContextMenu.PlayerType">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.PlaylistsContextMenu">
             <summary>
             </summary>
@@ -934,6 +780,10 @@
             <summary>
             </summary>
             <param name="container"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.PlaylistsContextMenu.PlaylistType">
+            <summary>
+            </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.PlaylistsContextMenu.SitesContextMenu_Opening(System.Object,System.ComponentModel.CancelEventArgs)">
             <summary>
@@ -958,10 +808,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.PlaylistsContextMenu.PlaylistType">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.SortContextMenu">
             <summary>
             </summary>
@@ -974,6 +820,14 @@
             <summary>
             </summary>
             <param name="container"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.SortContextMenu.SortBy">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.SortContextMenu.SortOrder">
+            <summary>
+            </summary>
         </member>
         <member name="F:DigitallyImported.Controls.Windows.SortContextMenu.components">
             <summary>
@@ -990,14 +844,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.SortContextMenu.SortBy">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.SortContextMenu.SortOrder">
-            <summary>
             </summary>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.ToolsContextMenu">
@@ -1064,6 +910,10 @@
             <summary>
             </summary>
         </member>
+        <member name="P:DigitallyImported.Controls.Windows.PremiumChannel.PlaylistHistoryUrl">
+            <summary>
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Controls.Windows.PremiumChannel.LoadImages">
             <summary>
             </summary>
@@ -1097,10 +947,6 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.PremiumChannel.PlaylistHistoryUrl">
-            <summary>
-            </summary>
-        </member>
         <member name="T:DigitallyImported.Controls.Windows.RefreshCounter">
             <summary>
             </summary>
@@ -1113,6 +959,27 @@
             <summary>
             </summary>
             <param name="refreshInterval"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.MaxInterval">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.MinInterval">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.RefreshInterval">
+            <summary>
+              The number of seconds that will elapse before the counter refreshes.
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.Value">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.Windows.RefreshCounter.CounterRefreshed">
+            <summary>
+            </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.RefreshCounter.Reset">
             <summary>
@@ -1141,50 +1008,6 @@
             <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.MaxInterval">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.MinInterval">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.RefreshInterval">
-            <summary>
-              The number of seconds that will elapse before the counter refreshes.
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.RefreshCounter.Value">
-            <summary>
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Controls.Windows.RefreshCounter.CounterRefreshed">
-            <summary>
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.Web.ChannelList">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Web.ChannelList.RenderContents(System.Web.UI.HtmlTextWriter)">
-            <summary>
-            </summary>
-            <param name="output"> </param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Web.ChannelList.CreateChildControls">
-            <summary>
-            </summary>
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Web.ChannelList.Text">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Web.ChannelList.Channels">
-            <summary>
             </summary>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.Site">
@@ -1223,23 +1046,6 @@
             <summary>
             </summary>
         </member>
-        <member name="F:DigitallyImported.Controls.Windows.PlaylistList.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.PlaylistList.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.PlaylistList.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
         <member name="P:DigitallyImported.Controls.Windows.PlaylistList.Text">
             <summary>
             </summary>
@@ -1276,6 +1082,23 @@
             <summary>
             </summary>
         </member>
+        <member name="F:DigitallyImported.Controls.Windows.PlaylistList.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.PlaylistList.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.PlaylistList.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Controls.Windows.Stream">
             <summary>
             </summary>
@@ -1284,37 +1107,14 @@
             <summary>
             </summary>
         </member>
-        <member name="M:DigitallyImported.Controls.Windows.Stream.OpenStream">
-            <summary>
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Stream.OnStreamChanged(System.Object,DigitallyImported.Components.StreamChangedEventArgs{DigitallyImported.Components.IStream})">
-            <summary>
-            </summary>
-            <param name="sender"> </param>
-            <param name="e"> </param>
-        </member>
-        <member name="F:DigitallyImported.Controls.Windows.Stream.components">
-            <summary> 
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Stream.Dispose(System.Boolean)">
-            <summary> 
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:DigitallyImported.Controls.Windows.Stream.InitializeComponent">
-            <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-        </member>
         <member name="E:DigitallyImported.Controls.Windows.Stream.StreamChanged">
             <summary>
             </summary>
             <returns> </returns>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Stream.OpenStream">
+            <summary>
+            </summary>
         </member>
         <member name="P:DigitallyImported.Controls.Windows.Stream.StreamType">
             <summary>
@@ -1356,14 +1156,109 @@
             <summary>
             </summary>
         </member>
+        <member name="M:DigitallyImported.Controls.Windows.Stream.OnStreamChanged(System.Object,DigitallyImported.Components.StreamChangedEventArgs{DigitallyImported.Components.IStream})">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Controls.Windows.Stream.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Stream.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.Stream.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:DigitallyImported.Controls.Windows.TaskbarNotifier">
             <summary>
               TaskbarNotifier allows to display MSN style/Skinned instant messaging popups
             </summary>
         </member>
+        <member name="T:DigitallyImported.Controls.Windows.TaskbarNotifier.TaskbarStates">
+            <summary>
+              List of the different popup animation status
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Controls.Windows.TaskbarNotifier.#ctor">
             <summary>
               The Constructor for TaskbarNotifier
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.TaskbarState">
+            <summary>
+              Get the current TaskbarState (hidden, showing, visible, hiding)
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.TitleText">
+            <summary>
+              Get/Set the popup Title Text
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.ContentText">
+            <summary>
+              Get/Set the popup Content Text
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalTitleColor">
+            <summary>
+              Get/Set the Normal Title Color
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverTitleColor">
+            <summary>
+              Get/Set the Hover Title Color
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalContentColor">
+            <summary>
+              Get/Set the Normal Content Color
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverContentColor">
+            <summary>
+              Get/Set the Hover Content Color
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalTitleFont">
+            <summary>
+              Get/Set the Normal Title Font
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverTitleFont">
+            <summary>
+              Get/Set the Hover Title Font
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalContentFont">
+            <summary>
+              Get/Set the Normal Content Font
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverContentFont">
+            <summary>
+              Get/Set the Hover Content Font
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.KeepVisibleOnMousOver">
+            <summary>
+              Indicates if the popup should remain visible when the mouse pointer is over it.
+              Added Rev 002
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.ReShowOnMouseOver">
+            <summary>
+              Indicates if the popup should appear again when mouse moves over it while it's disappearing.
+              Added Rev 002
             </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.TaskbarNotifier.Show(System.String,System.String,System.Int32,System.Int32,System.Int32)">
@@ -1435,113 +1330,76 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.TaskbarState">
+        <member name="T:DigitallyImported.Controls.Windows.ToastForm`1">
             <summary>
-              Get the current TaskbarState (hidden, showing, visible, hiding)
+            </summary>
+            <typeparam name="T"> </typeparam>
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="F:DigitallyImported.Controls.Windows.ToastForm`1.TextFormat">
+            <summary>
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.TitleText">
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor">
             <summary>
-              Get/Set the popup Title Text
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.ContentText">
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor(System.ComponentModel.IContainer)">
             <summary>
-              Get/Set the popup Content Text
+            </summary>
+            <param name="container"> </param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.#ctor(`0)">
+            <summary>
+            </summary>
+            <param name="content"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.Content">
+            <summary>
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalTitleColor">
+        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.BodyText">
             <summary>
-              Get/Set the Normal Title Color
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverTitleColor">
+        <member name="P:DigitallyImported.Controls.Windows.ToastForm`1.TitleText">
             <summary>
-              Get/Set the Hover Title Color
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalContentColor">
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.ToString">
             <summary>
-              Get/Set the Normal Content Color
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.GetFormattedBody">
+            <summary>
+            </summary>
+            <returns> </returns>
+        </member>
+        <member name="F:DigitallyImported.Controls.Windows.ToastForm`1.components">
+            <summary>
+            Required designer variable.
             </summary>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverContentColor">
-            <summary>
-              Get/Set the Hover Content Color
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
             </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalTitleFont">
+        <member name="M:DigitallyImported.Controls.Windows.ToastForm`1.InitializeComponent">
             <summary>
-              Get/Set the Normal Title Font
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverTitleFont">
-            <summary>
-              Get/Set the Hover Title Font
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.NormalContentFont">
-            <summary>
-              Get/Set the Normal Content Font
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.HoverContentFont">
-            <summary>
-              Get/Set the Hover Content Font
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.KeepVisibleOnMousOver">
-            <summary>
-              Indicates if the popup should remain visible when the mouse pointer is over it.
-              Added Rev 002
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.TaskbarNotifier.ReShowOnMouseOver">
-            <summary>
-              Indicates if the popup should appear again when mouse moves over it while it's disappearing.
-              Added Rev 002
-            </summary>
-        </member>
-        <member name="T:DigitallyImported.Controls.Windows.TaskbarNotifier.TaskbarStates">
-            <summary>
-              List of the different popup animation status
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
             </summary>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.ChannelView`2">
             <summary>
             </summary>
             <typeparam name="T"> IChannel </typeparam>
-        </member>
-        <member name="T:DigitallyImported.Controls.IChannelView`1">
-            <summary>
-            </summary>
-            <typeparam name="T"> </typeparam>
-        </member>
-        <member name="M:DigitallyImported.Controls.IChannelView`1.GetView(System.Boolean)">
-            <summary>
-            </summary>
-            <param name="bypassCache"> </param>
-            <returns> </returns>
-        </member>
-        <member name="P:DigitallyImported.Controls.IChannelView`1.Channels">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.IChannelView`1.SelectedChannel">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.IChannelView`1.SortOrder">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.IChannelView`1.SortBy">
-            <summary>
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Controls.IChannelView`1.ChannelViewChanged">
-            <summary>
-            </summary>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.ChannelView`2.#ctor">
             <summary>
@@ -1559,6 +1417,18 @@
             <returns> </returns>
         </member>
         <member name="M:DigitallyImported.Controls.Windows.ChannelView`2.Save">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelView`2.Channels">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Windows.ChannelView`2.SelectedChannel">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.Windows.ChannelView`2.ChannelViewChanged">
             <summary>
             </summary>
         </member>
@@ -1580,18 +1450,6 @@
             </summary>
             <param name="sender"> </param>
             <param name="e"> </param>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelView`2.Channels">
-            <summary>
-            </summary>
-        </member>
-        <member name="P:DigitallyImported.Controls.Windows.ChannelView`2.SelectedChannel">
-            <summary>
-            </summary>
-        </member>
-        <member name="E:DigitallyImported.Controls.Windows.ChannelView`2.ChannelViewChanged">
-            <summary>
-            </summary>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.ChannelViewChangedEventArgs`1">
             <summary>
@@ -1616,11 +1474,6 @@
             </summary>
             <typeparam name="T"> </typeparam>
         </member>
-        <member name="T:DigitallyImported.Controls.IEventView`1">
-            <summary>
-            </summary>
-            <typeparam name="T"> </typeparam>
-        </member>
         <member name="M:DigitallyImported.Controls.Windows.EventView`1.#ctor">
             <summary>
             </summary>
@@ -1635,18 +1488,13 @@
             </summary>
             <returns> </returns>
         </member>
-        <member name="M:DigitallyImported.Controls.Windows.EventView`1.Save">
-            <summary>
-            </summary>
-        </member>
         <member name="P:DigitallyImported.Controls.Windows.EventView`1.Events">
             <summary>
             </summary>
         </member>
-        <member name="T:DigitallyImported.Controls.ISiteView`1">
+        <member name="M:DigitallyImported.Controls.Windows.EventView`1.Save">
             <summary>
             </summary>
-            <typeparam name="T"> </typeparam>
         </member>
         <member name="T:DigitallyImported.Controls.Windows.PlaylistView`1">
             <summary>
@@ -1663,6 +1511,10 @@
             <param name="bypassCache"> </param>
             <returns> </returns>
         </member>
+        <member name="P:DigitallyImported.Controls.Windows.PlaylistView`1.Sites">
+            <summary>
+            </summary>
+        </member>
         <member name="M:DigitallyImported.Controls.Windows.PlaylistView`1.Save">
             <summary>
             </summary>
@@ -1673,9 +1525,167 @@
             <param name="sender"> </param>
             <param name="e"> </param>
         </member>
-        <member name="P:DigitallyImported.Controls.Windows.PlaylistView`1.Sites">
+        <member name="T:DigitallyImported.Controls.ColorButton">
             <summary>
             </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorButton.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.ColorButton.CenterColor">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Controls.ColorButton.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorButton.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorButton.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.ColorPaletteDialog">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.#ctor(System.Int32,System.Int32)">
+            <summary>
+            </summary>
+            <param name="x"> </param>
+            <param name="y"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.ColorPaletteDialog.Color">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Controls.ColorPaletteDialog.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Controls.ColorPaletteDialog.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.ControlFactory">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.ControlFactory.#ctor(DigitallyImported.Controls.ControlType)">
+            <summary>
+            </summary>
+            <param name="controlType"> </param>
+        </member>
+        <member name="T:DigitallyImported.Controls.ControlType">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.PlaylistTimer">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.PlaylistTimer.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.PlaylistTimer.#ctor(System.TimeSpan)">
+            <summary>
+            </summary>
+            <param name="tickInterval"> </param>
+        </member>
+        <member name="P:DigitallyImported.Controls.PlaylistTimer.TickInterval">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.PlaylistTimer.TimerTick">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.PlaylistTimer.Reset">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.Web.ChannelList">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Web.ChannelList.Text">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.Web.ChannelList.Channels">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.Web.ChannelList.RenderContents(System.Web.UI.HtmlTextWriter)">
+            <summary>
+            </summary>
+            <param name="output"> </param>
+        </member>
+        <member name="M:DigitallyImported.Controls.Web.ChannelList.CreateChildControls">
+            <summary>
+            </summary>
+            <summary>
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Controls.IChannelView`1">
+            <summary>
+            </summary>
+            <typeparam name="T"> </typeparam>
+        </member>
+        <member name="P:DigitallyImported.Controls.IChannelView`1.Channels">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.IChannelView`1.SelectedChannel">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.IChannelView`1.SortOrder">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Controls.IChannelView`1.SortBy">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Controls.IChannelView`1.ChannelViewChanged">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Controls.IChannelView`1.GetView(System.Boolean)">
+            <summary>
+            </summary>
+            <param name="bypassCache"> </param>
+            <returns> </returns>
+        </member>
+        <member name="T:DigitallyImported.Controls.IEventView`1">
+            <summary>
+            </summary>
+            <typeparam name="T"> </typeparam>
+        </member>
+        <member name="T:DigitallyImported.Controls.ISiteView`1">
+            <summary>
+            </summary>
+            <typeparam name="T"> </typeparam>
         </member>
     </members>
 </doc>

@@ -61,3 +61,37 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Debug\Digital
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.PlayersContextMenu.resources
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.PlaylistsContextMenu.resources
 C:\Code\Projects\Digitally Imported\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.SortContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\ChannelTransforms.xslt
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Controls.XML
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Controls.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Controls.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Components.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Configuration.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Resources.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\VbPowerPack.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Data.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Components.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Configuration.dll.config
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Resources.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Data.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\bin\Debug\DigitallyImported.Data.dll.config
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.csprojAssemblyReference.cache
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Properties.Resources.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.Channel.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.ExternalChannel.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.Track.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.ChannelPanel.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.BaseContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.ChannelsContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.EventsContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.PlayersContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.PlaylistsContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.SortContextMenu.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.PremiumChannel.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.RefreshCounter.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.Windows.ToastForm.resources
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.csproj.GenerateResource.cache
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.csproj.CopyComplete
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Controls\obj\Debug\DigitallyImported.Controls.pdb

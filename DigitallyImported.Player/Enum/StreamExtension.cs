@@ -11,6 +11,9 @@ namespace DigitallyImported.Player
     [Flags] // need to figure out which streams can be combined into each player
     public enum StreamExtension
     {
+        /// <summary>
+        /// 
+        /// </summary>
         asx,
         asf,
         wma, // WMA

@@ -15,6 +15,7 @@ namespace DigitallyImported.Player
         /// <summary>
         /// </summary>
         /// <param name="player"> </param>
+        /// <param name="e"></param>
         public PlayerNotInstalledExceptionEventArgs(Exception e)
         {
             // _player = player;

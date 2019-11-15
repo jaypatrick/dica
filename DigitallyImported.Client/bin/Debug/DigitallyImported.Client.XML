@@ -1,444 +1,493 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <doc>
-  <assembly>
-    <name>DigitallyImported.Client</name>
-  </assembly>
-  <members>
-    <member name="F:DigitallyImported.Client.AboutForm.components">
-      <summary>
+    <assembly>
+        <name>DigitallyImported.Client</name>
+    </assembly>
+    <members>
+        <member name="P:DigitallyImported.Client.AboutForm.AssemblyTitle">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Client.AboutForm.AssemblyProduct">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Client.AboutForm.AssemblyCopyright">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Client.AboutForm.AssemblyCompany">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Client.AboutForm.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.AboutForm.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.AboutForm.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.AboutForm.InitializeComponent">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.AboutForm.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="P:DigitallyImported.Client.AboutForm.AssemblyTitle">
-      <summary />
-    </member>
-    <member name="P:DigitallyImported.Client.AboutForm.AssemblyProduct">
-      <summary />
-    </member>
-    <member name="P:DigitallyImported.Client.AboutForm.AssemblyCopyright">
-      <summary />
-    </member>
-    <member name="P:DigitallyImported.Client.AboutForm.AssemblyCompany">
-      <summary />
-    </member>
-    <member name="T:DigitallyImported.Client.Controls.ExternalChannelPickerControl">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.#ctor(System.String,System.Uri)">
-      <summary />
-      <param name="channelName" />
-      <param name="channelUri" />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.SaveButton_Click(System.Object,System.EventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.RemoveButton_Click(System.Object,System.EventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.OnChannelSaved(System.Object,System.EventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.OnChannelRemoved(System.Object,System.EventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="F:DigitallyImported.Client.Controls.ExternalChannelPickerControl.components">
-      <summary> 
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.ExternalChannelPickerControl">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.#ctor(System.String,System.Uri)">
+            <summary>
+            </summary>
+            <param name="channelName"> </param>
+            <param name="channelUri"> </param>
+        </member>
+        <member name="P:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelName">
+            <summary>
+            </summary>
+        </member>
+        <member name="P:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelUri">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.SaveButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.RemoveButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="E:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelSaved">
+            <summary>
+            </summary>
+        </member>
+        <member name="E:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelRemoved">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.OnChannelSaved(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.OnChannelRemoved(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Client.Controls.ExternalChannelPickerControl.components">
+            <summary> 
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.Dispose(System.Boolean)">
-      <summary> 
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.Dispose(System.Boolean)">
+            <summary> 
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.InitializeComponent">
-      <summary> 
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ExternalChannelPickerControl.InitializeComponent">
+            <summary> 
             Required method for Designer support - do not modify 
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="P:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelName">
-      <summary />
-    </member>
-    <member name="P:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelUri">
-      <summary />
-    </member>
-    <member name="E:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelSaved">
-      <summary />
-    </member>
-    <member name="E:DigitallyImported.Client.Controls.ExternalChannelPickerControl.ChannelRemoved">
-      <summary />
-    </member>
-    <member name="T:DigitallyImported.Client.BaseForm">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.OnLoad(System.EventArgs)">
-      <summary />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.NetworkAvailabilityChanged(System.Object,System.Net.NetworkInformation.NetworkAvailabilityEventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.AppDomainUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.Application_ThreadException(System.Object,System.Threading.ThreadExceptionEventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.Application_ApplicationExit(System.Object,System.EventArgs)">
-      <summary />
-      <param name="sender" />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.UpdateNetworkStatus(System.Object)">
-      <summary />
-      <param name="state" />
-    </member>
-    <member name="F:DigitallyImported.Client.BaseForm.components">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.BaseContainerControl">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.OnLoad(System.EventArgs)">
+            <inheritdoc />
+        </member>
+        <member name="F:DigitallyImported.Client.Controls.BaseContainerControl.components">
+            <summary> 
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.Dispose(System.Boolean)">
+            <summary> 
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.BaseForm.InitializeComponent">
-      <summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.ContentControl`2">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.BindEvents">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.UpdateNetworkStatus(System.Object)">
+            <summary>
+            </summary>
+            <param name="state"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.UpdateVisualCues">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.ProcessDialogKey(System.Windows.Forms.Keys)">
+            <summary>
+            </summary>
+            <param name="keyData"> </param>
+            <returns> </returns>
+        </member>
+        <member name="F:DigitallyImported.Client.Controls.ContentControl`2.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.ContentControl`2.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Controls.GeneralTab">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.GeneralTab.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Client.Controls.GeneralTab.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.GeneralTab.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.GeneralTab.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Client.Controls.OptionsControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.OptionsControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.Controls.OptionsControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Client.ExternalChannelsForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.ExternalChannelsForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.ExternalChannelsForm.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="F:DigitallyImported.Client.ExternalChannelsForm.components">
-      <summary>
-            Required designer variable.
+        </member>
+        <member name="T:DigitallyImported.Client.Program">
+            <summary>
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.ExternalChannelsForm.Dispose(System.Boolean)">
-      <summary>
-            Clean up any resources being used.
-            </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.ExternalChannelsForm.InitializeComponent">
-      <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Program">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Program.Main(System.String[])">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Program.Main(System.String[])">
+            <summary>
               The main entry point for the application.
             </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Controls.BaseContainerControl">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.#ctor">
-      <summary />
-    </member>
-    <member name="F:DigitallyImported.Client.Controls.BaseContainerControl.components">
-      <summary> 
+        </member>
+        <member name="T:DigitallyImported.Client.BaseForm">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.OnLoad(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.NetworkAvailabilityChanged(System.Object,System.Net.NetworkInformation.NetworkAvailabilityEventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.AppDomainUnhandledException(System.Object,System.UnhandledExceptionEventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.Application_ThreadException(System.Object,System.Threading.ThreadExceptionEventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.Application_ApplicationExit(System.Object,System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="sender"> </param>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.UpdateNetworkStatus(System.Object)">
+            <summary>
+            </summary>
+            <param name="state"> </param>
+        </member>
+        <member name="F:DigitallyImported.Client.BaseForm.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.Dispose(System.Boolean)">
-      <summary> 
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.BaseContainerControl.InitializeComponent">
-      <summary> 
-            Required method for Designer support - do not modify 
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.BaseForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Controls.ContentControl`2">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.BindEvents">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.UpdateNetworkStatus(System.Object)">
-      <summary />
-      <param name="state" />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.UpdateVisualCues">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.ProcessDialogKey(System.Windows.Forms.Keys)">
-      <summary />
-      <param name="keyData" />
-      <returns />
-    </member>
-    <member name="F:DigitallyImported.Client.Controls.ContentControl`2.components">
-      <summary> 
-            Required designer variable.
-            </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.Dispose(System.Boolean)">
-      <summary> 
-            Clean up any resources being used.
-            </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.InitializeComponent">
-      <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Controls.GeneralTab">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.GeneralTab.#ctor">
-      <summary />
-    </member>
-    <member name="F:DigitallyImported.Client.Controls.GeneralTab.components">
-      <summary> 
-            Required designer variable.
-            </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.GeneralTab.Dispose(System.Boolean)">
-      <summary> 
-            Clean up any resources being used.
-            </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.GeneralTab.InitializeComponent">
-      <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-    </member>
-    <member name="F:DigitallyImported.Client.Controls.OptionsControl.components">
-      <summary> 
-            Required designer variable.
-            </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.OptionsControl.Dispose(System.Boolean)">
-      <summary> 
-            Clean up any resources being used.
-            </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.OptionsControl.InitializeComponent">
-      <summary> 
-            Required method for Designer support - do not modify 
-            the contents of this method with the code editor.
-            </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper">
+            <summary>
               Summary description for DebugConsole.
             </summary>
-    </member>
-    <member name="F:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper._components">
-      <summary>
+        </member>
+        <member name="F:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper._components">
+            <summary>
               Required designer variable.
             </summary>
-    </member>
-    <member name="F:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.Buffer">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="F:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.Buffer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.Dispose(System.Boolean)">
+            <summary>
               Clean up any resources being used.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.CreateEventRow">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.UpdateCurrentRow">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.InitializeComponent">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.CreateEventRow">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.UpdateCurrentRow">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.Diagnostics.DebugConsoleWrapper.InitializeComponent">
+            <summary>
               Required method for Designer support - do not modify
               the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="F:DigitallyImported.Client.FavoritesForm`2.components">
-      <summary>
+        </member>
+        <member name="F:DigitallyImported.Client.FavoritesForm`2.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.FavoritesForm`2.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.FavoritesForm`2.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.FavoritesForm`2.InitializeComponent">
-      <summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.FavoritesForm`2.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.HistoryForm">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.HistoryForm.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.HistoryForm.#ctor(DigitallyImported.Components.IChannel)">
-      <summary />
-      <param name="channel" />
-    </member>
-    <member name="M:DigitallyImported.Client.HistoryForm.OnLoad(System.EventArgs)">
-      <summary />
-      <param name="e" />
-    </member>
-    <member name="F:DigitallyImported.Client.HistoryForm.components">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.HistoryForm">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.HistoryForm.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.HistoryForm.#ctor(DigitallyImported.Components.IChannel)">
+            <summary>
+            </summary>
+            <param name="channel"> </param>
+        </member>
+        <member name="P:DigitallyImported.Client.HistoryForm.Channel">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.HistoryForm.OnLoad(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Client.HistoryForm.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.HistoryForm.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.HistoryForm.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.HistoryForm.InitializeComponent">
-      <summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.HistoryForm.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="P:DigitallyImported.Client.HistoryForm.Channel">
-      <summary />
-    </member>
-    <member name="T:DigitallyImported.Client.OptionsForm">
-      <summary />
-    </member>
-    <member name="F:DigitallyImported.Client.OptionsForm.components">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.OptionsForm">
+            <summary>
+            </summary>
+        </member>
+        <member name="F:DigitallyImported.Client.OptionsForm.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.OptionsForm.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.OptionsForm.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.OptionsForm.InitializeComponent">
-      <summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.OptionsForm.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.OnLoad(System.EventArgs)">
-      <summary />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.OnResize(System.EventArgs)">
-      <summary />
-      <param name="e" />
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.OnFormClosing(System.Windows.Forms.FormClosingEventArgs)">
-      <summary />
-      <param name="e" />
-    </member>
-    <member name="F:DigitallyImported.Client.PlaylistForm`2.components">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.OnLoad(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.OnResize(System.EventArgs)">
+            <summary>
+            </summary>
+            <param name="e"> </param>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.OnFormClosing(System.Windows.Forms.FormClosingEventArgs)">
+            <summary>
+            </summary>
+            <param name="e"> </param>
+        </member>
+        <member name="F:DigitallyImported.Client.PlaylistForm`2.components">
+            <summary>
             Required designer variable.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.Dispose(System.Boolean)">
+            <summary>
             Clean up any resources being used.
             </summary>
-      <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    </member>
-    <member name="M:DigitallyImported.Client.PlaylistForm`2.InitializeComponent">
-      <summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:DigitallyImported.Client.PlaylistForm`2.InitializeComponent">
+            <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.AdminForm">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.AdminForm">
+            <summary>
               Summary description for DIAdmin.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.AdminForm.#ctor">
-      <summary />
-    </member>
-    <member name="M:DigitallyImported.Client.AdminForm.Dispose(System.Boolean)">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.AdminForm.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DigitallyImported.Client.AdminForm.Dispose(System.Boolean)">
+            <summary>
               Clean up any resources being used.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.AdminForm.InitializeComponent">
-      <summary>
+        </member>
+        <member name="M:DigitallyImported.Client.AdminForm.InitializeComponent">
+            <summary>
               Required method for Designer support - do not modify
               the contents of this method with the code editor.
             </summary>
-    </member>
-    <member name="T:DigitallyImported.Client.Properties.Resources">
-      <summary>
+        </member>
+        <member name="T:DigitallyImported.Client.Properties.Resources">
+            <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
             </summary>
-    </member>
-    <member name="P:DigitallyImported.Client.Properties.Resources.ResourceManager">
-      <summary>
+        </member>
+        <member name="P:DigitallyImported.Client.Properties.Resources.ResourceManager">
+            <summary>
               Returns the cached ResourceManager instance used by this class.
             </summary>
-    </member>
-    <member name="P:DigitallyImported.Client.Properties.Resources.Culture">
-      <summary>
+        </member>
+        <member name="P:DigitallyImported.Client.Properties.Resources.Culture">
+            <summary>
               Overrides the current thread's CurrentUICulture property for all
               resource lookups using this strongly typed resource class.
             </summary>
-    </member>
-    <member name="M:DigitallyImported.Client.Controls.ContentControl`2.OnPaint(System.Windows.Forms.PaintEventArgs)">
-      <requires inheritedFrom="M:System.Windows.Forms.Control.OnPaint(System.Windows.Forms.PaintEventArgs)" inheritedFromTypeName="Control" csharp="e != null" vb="e &lt;&gt; Nothing">e != null</requires>
-    </member>
-  </members>
+        </member>
+    </members>
 </doc>

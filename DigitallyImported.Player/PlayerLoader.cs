@@ -25,8 +25,7 @@ namespace DigitallyImported.Player
         /// <param name="channel"> </param>
         public PlayerLoader(IChannel channel)
         {
-            if (channel == null) throw new ArgumentNullException("channel", "Must supply a valid IChannel. ");
-            Channel = channel;
+            Channel = channel ?? throw new ArgumentNullException(nameof(channel), "Must supply a valid IChannel. ");
 
             Controls.Windows.Channel.ChannelChanged += ChannelSection_TrackChanged;
 
@@ -48,17 +47,19 @@ namespace DigitallyImported.Player
         /// </summary>
         public static event EventHandler<PlayerNotInstalledExceptionEventArgs<IPlayer>> PlayerNotInstalledException
         {
-            add { _playerNotInstalledException += value; }
+            add => _playerNotInstalledException += value;
             remove { if (_playerNotInstalledException != null) _playerNotInstalledException -= value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void OnPlayerNotInstalledException(object sender,
                                                              PlayerNotInstalledExceptionEventArgs<IPlayer> e)
         {
-            if (_playerNotInstalledException != null)
-            {
-                _playerNotInstalledException(sender, e);
-            }
+            _playerNotInstalledException?.Invoke(sender, e);
         }
 
         // this is such a hack, i hate it.
@@ -87,7 +88,7 @@ namespace DigitallyImported.Player
             catch (COMException exc)
             {
                 int hr = exc.ErrorCode;
-                string message = String.Format("There was an error.\nHRESULT = {0}\n{1}",
+                string message = string.Format("There was an error.\nHRESULT = {0}\n{1}",
                                                hr.ToString(CultureInfo.InvariantCulture), exc.Message);
 
                 throw new COMException(message, exc);

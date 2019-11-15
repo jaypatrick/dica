@@ -41,8 +41,8 @@ namespace DigitallyImported.Controls.Windows
         /// </summary>
         public virtual DateTime EventDate
         {
-            get { return _eventDate; }
-            set { _eventDate = value; }
+            get => _eventDate;
+            set => _eventDate = value;
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace DigitallyImported.Controls.Windows
         /// </summary>
         public virtual string Title
         {
-            get { return _title; }
+            get => _title;
             set
             {
                 _title = value;
@@ -70,7 +70,7 @@ namespace DigitallyImported.Controls.Windows
         /// </summary>
         public virtual DateTime StartTime
         {
-            get { return _startTime; }
+            get => _startTime;
             set
             {
                 _startTime = PlaylistTimeZone.IsDaylightSavingTime(value)
@@ -85,13 +85,11 @@ namespace DigitallyImported.Controls.Windows
         /// </summary>
         public virtual DateTime EndTime
         {
-            get { return _endTime; }
-            set
-            {
+            get => _endTime;
+            set =>
                 _endTime = PlaylistTimeZone.IsDaylightSavingTime(value)
-                               ? value.AddHours(4).ToLocalTime()
-                               : value.AddHours(5).ToLocalTime();
-            }
+                    ? value.AddHours(4).ToLocalTime()
+                    : value.AddHours(5).ToLocalTime();
         }
 
         /// <summary>

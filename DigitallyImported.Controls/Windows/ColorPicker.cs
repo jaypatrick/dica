@@ -41,7 +41,7 @@ namespace DigitallyImported.Controls.Windows
 
         private CheckBox _CheckBox
         {
-            get { return __CheckBox; }
+            get => __CheckBox;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -60,37 +60,40 @@ namespace DigitallyImported.Controls.Windows
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public override Color BackColor
         {
-            get { return base.BackColor; }
-            set { base.BackColor = value; }
+            get => base.BackColor;
+            set => base.BackColor = value;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [DefaultValue(typeof (Color), "Black"), Description("The currently selected color."), Category("Appearance")]
         public Color Color
         {
-            get { return _CheckBox.BackColor; }
+            get => _CheckBox.BackColor;
             set
             {
                 SetColor(value);
                 EventHandler colorChangedEvent = ColorChanged;
-                if (colorChangedEvent != null)
-                {
-                    colorChangedEvent(this, EventArgs.Empty);
-                }
+                colorChangedEvent?.Invoke(this, EventArgs.Empty);
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
         public override Color ForeColor
         {
-            get { return base.ForeColor; }
-            set { base.ForeColor = value; }
+            get => base.ForeColor;
+            set => base.ForeColor = value;
         }
 
         [EditorBrowsable(EditorBrowsableState.Never), Browsable(false)]
         public override string Text
         {
-            get { return base.Text; }
-            set { base.Text = value; }
+            get => base.Text;
+            set => base.Text = value;
         }
 
         [Category("Appearance"),
@@ -98,7 +101,7 @@ namespace DigitallyImported.Controls.Windows
          DefaultValue(true)]
         public bool TextDisplayed
         {
-            get { return _TextDisplayed; }
+            get => _TextDisplayed;
             set
             {
                 _TextDisplayed = value;
@@ -115,11 +118,7 @@ namespace DigitallyImported.Controls.Windows
 
         private Color GetInvertedColor(Color c)
         {
-            if (((c.R + c.G) + c.B) > 0x17e)
-            {
-                return Color.Black;
-            }
-            return Color.White;
+            return ((c.R + c.G) + c.B) > 0x17e ? Color.Black : Color.White;
         }
 
         private void OnCheckStateChanged(object sender, EventArgs e)
@@ -147,7 +146,7 @@ namespace DigitallyImported.Controls.Windows
             {
                 var editor = new ColorEditor();
                 Color color = Color;
-                object objectValue = RuntimeHelpers.GetObjectValue(editor.EditValue(_EditorService, color));
+                var objectValue = RuntimeHelpers.GetObjectValue(editor.EditValue(_EditorService, color));
                 if ((objectValue != null) && !_EditorService.Canceled)
                 {
                     Color = (Color) objectValue;
@@ -166,8 +165,7 @@ namespace DigitallyImported.Controls.Windows
 
         private class DropDownForm : Form
         {
-            private bool _Canceled;
-            private bool _CloseDropDownCalled;
+            private bool _closeDropDownCalled;
 
             public DropDownForm()
             {
@@ -179,14 +177,11 @@ namespace DigitallyImported.Controls.Windows
                 Controls.Add(panel);
             }
 
-            public bool Canceled
-            {
-                get { return _Canceled; }
-            }
+            public bool Canceled { get; private set; }
 
             public void CloseDropDown()
             {
-                _CloseDropDownCalled = true;
+                _closeDropDownCalled = true;
                 Hide();
             }
 
@@ -194,9 +189,9 @@ namespace DigitallyImported.Controls.Windows
             {
                 Owner = null;
                 base.OnDeactivate(e);
-                if (!_CloseDropDownCalled)
+                if (!_closeDropDownCalled)
                 {
-                    _Canceled = true;
+                    Canceled = true;
                 }
                 Hide();
             }
@@ -222,30 +217,23 @@ namespace DigitallyImported.Controls.Windows
 
         private class EditorService : IWindowsFormsEditorService, IServiceProvider
         {
-            private readonly ColorPicker _Picker;
-            private bool _Canceled;
-            private DropDownForm _DropDownHolder;
+            private readonly ColorPicker _picker;
+            private bool _canceled;
+            private DropDownForm _dropDownHolder;
 
             public EditorService(ColorPicker owner)
             {
-                _Picker = owner;
+                _picker = owner;
             }
 
-            public bool Canceled
-            {
-                get { return _Canceled; }
-            }
+            public bool Canceled => _canceled;
 
             #region IServiceProvider Members
 
             public object GetService(Type serviceType)
             {
                 var obj2 = new object();
-                if (serviceType.Equals(typeof (IWindowsFormsEditorService)))
-                {
-                    return this;
-                }
-                return obj2;
+                return serviceType == typeof (IWindowsFormsEditorService) ? this : obj2;
             }
 
             #endregion
@@ -254,28 +242,25 @@ namespace DigitallyImported.Controls.Windows
 
             public void CloseDropDown()
             {
-                if (_DropDownHolder != null)
-                {
-                    _DropDownHolder.CloseDropDown();
-                }
+                _dropDownHolder?.CloseDropDown();
             }
 
             public void DropDownControl(Control control)
             {
-                _Canceled = false;
-                _DropDownHolder = new DropDownForm {Bounds = control.Bounds};
-                _DropDownHolder.SetControl(control);
-                Control parentForm = GetParentForm(_Picker);
-                if (parentForm != null && (parentForm is Form))
+                _canceled = false;
+                _dropDownHolder = new DropDownForm {Bounds = control.Bounds};
+                _dropDownHolder.SetControl(control);
+                Control parentForm = GetParentForm(_picker);
+                if (parentForm is Form form)
                 {
-                    _DropDownHolder.Owner = (Form) parentForm;
+                    _dropDownHolder.Owner = form;
                 }
                 PositionDropDownHolder();
-                _DropDownHolder.Show();
+                _dropDownHolder.Show();
                 DoModalLoop();
-                _Canceled = _DropDownHolder.Canceled;
-                _DropDownHolder.Dispose();
-                _DropDownHolder = null;
+                _canceled = _dropDownHolder.Canceled;
+                _dropDownHolder.Dispose();
+                _dropDownHolder = null;
             }
 
             public DialogResult ShowDialog(Form dialog)
@@ -287,7 +272,7 @@ namespace DigitallyImported.Controls.Windows
 
             private void DoModalLoop()
             {
-                while (_DropDownHolder.Visible)
+                while (_dropDownHolder.Visible)
                 {
                     Application.DoEvents();
                     MsgWaitForMultipleObjects(1, IntPtr.Zero, 1, 5, 0xff);
@@ -309,25 +294,25 @@ namespace DigitallyImported.Controls.Windows
 
             private void PositionDropDownHolder()
             {
-                Point point = _Picker.Parent.PointToScreen(_Picker.Location);
+                Point point = _picker.Parent.PointToScreen(_picker.Location);
                 Rectangle workingArea = Screen.PrimaryScreen.WorkingArea;
                 if (point.X < workingArea.X)
                 {
                     point.X = workingArea.X;
                 }
-                else if ((point.X + _DropDownHolder.Width) > workingArea.Right)
+                else if ((point.X + _dropDownHolder.Width) > workingArea.Right)
                 {
-                    point.X = workingArea.Right - _DropDownHolder.Width;
+                    point.X = workingArea.Right - _dropDownHolder.Width;
                 }
-                if (((point.Y + _Picker.Height) + _DropDownHolder.Height) > workingArea.Bottom)
+                if (((point.Y + _picker.Height) + _dropDownHolder.Height) > workingArea.Bottom)
                 {
-                    point.Offset(0, 0 - _DropDownHolder.Height);
+                    point.Offset(0, 0 - _dropDownHolder.Height);
                 }
                 else
                 {
-                    point.Offset(0, _Picker.Height);
+                    point.Offset(0, _picker.Height);
                 }
-                _DropDownHolder.Location = point;
+                _dropDownHolder.Location = point;
             }
         }
 

@@ -1,3 +1,4 @@
+#if __itunes
 #region using declarations
 
 using System;
@@ -24,7 +25,7 @@ namespace DigitallyImported.Player
             //if (!IsInstalled) throw new PlayerNotInstalledException("ITunes Player is not installed");
         }
 
-        #region IITunes Members
+#region IITunes Members
 
         /// <summary>
         ///   Player U
@@ -48,7 +49,7 @@ namespace DigitallyImported.Player
             get { return Type.GetTypeFromProgID(Settings.Default.ITunesProgID, false) != null; }
         }
 
-        #endregion
+#endregion
 
         /// <summary>
         /// </summary>
@@ -89,4 +90,4 @@ namespace DigitallyImported.Player
             return streamUri;
         }
     }
-}
+#endif

@@ -11,17 +11,17 @@
     <deploymentProvider codebase="http://di.jaysonknight.com/DigitallyImported.Client.application" />
   </deployment>
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="DigitallyImported.Client.exe.manifest" size="12600">
+    <dependentAssembly dependencyType="install" codebase="DigitallyImported.Client.exe.manifest" size="12628">
       <assemblyIdentity name="DigitallyImported.Client.exe" version="3.1.0.6" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Vapa6JYkt22xpUEsHIzxpOSYqX1vBwmAbdSqLesE/hA=</dsig:DigestValue>
+        <dsig:DigestValue>Zab31G2UOImefLRT9Zu+GhnjS4lIkl5kBbzAlDZIQQs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

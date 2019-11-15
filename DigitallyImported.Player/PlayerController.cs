@@ -48,14 +48,14 @@ namespace DigitallyImported.Player
                         player = PlayerFactory<IPlayer, WMediaPlayer>.Instance.CreatePlayer(channel);
                         break;
                     }
-
+#if __itunes
                 case PlayerType.iTunes:
                     {
                         //player = pf.CreateITunes(channel);
                         player = PlayerFactory<IPlayer, ITunes>.Instance.CreatePlayer(channel);
                         break;
                     }
-
+#endif
                     //case PlayerTypes.Quicktime:
                     //    {
                     //        //player = pf.CreateQuicktime(channel);
@@ -85,11 +85,9 @@ namespace DigitallyImported.Player
                         break;
                     }
             }
-            if (player != null)
-            {
-                // calls base template method
-                player.OpenPlayer(channel);
-            }
+
+            // calls base template method
+            player?.OpenPlayer(channel);
         }
     }
 }

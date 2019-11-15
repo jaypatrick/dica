@@ -10,3 +10,8 @@ C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\bin\Debug\Di
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.dll
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.pdb
 C:\Code\Projects\Digitally Imported\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.csprojResolveAssemblyReference.cache
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll.config
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Configuration\bin\Debug\DigitallyImported.Configuration.pdb
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.dll
+C:\Users\jayson.knight\source\projects\dica\DigitallyImported.Configuration\obj\Debug\DigitallyImported.Configuration.pdb

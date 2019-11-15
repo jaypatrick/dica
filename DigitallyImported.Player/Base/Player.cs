@@ -29,8 +29,8 @@ namespace DigitallyImported.Player
         protected Player(PlayerType playerType)
         {
             Contract.Requires<ArgumentNullException>(playerType != null);
-            Contract.Requires<PlayerNotInstalledException>(IsInstalled, string.Format("{0} {1}"
-                , playerType.ToString(), "is not installed."));
+            Contract.Requires<PlayerNotInstalledException>(IsInstalled,
+                $"{playerType.ToString()} is not installed.");
 
             //if (!IsInstalled)
             //    throw new PlayerNotInstalledException
@@ -47,8 +47,7 @@ namespace DigitallyImported.Player
         public void OpenPlayer(IChannel channel)
         {
             Contract.Requires<ArgumentNullException>(channel != null
-                , string.Format("{0}, {1} "
-                , "channel", "Must specify a channel to play."));
+                , $"{nameof(channel)}, Must specify a channel to play. ");
 
             //if (channel == null)
             //    throw new ArgumentNullException(string.Format("{0}, {1} ", "channel", "Must specify a channel to play."));
@@ -62,9 +61,9 @@ namespace DigitallyImported.Player
             //Template method
             GetPlayerKey();
             ParseStreamUri(channel.CurrentTrack.TrackUrl);
-            Trace.WriteLine(string.Format("{0} received request: {1}", PlayerType.ToString(), url),
+            Trace.WriteLine($"{PlayerType.ToString()} received request: {url}",
                             TraceCategory.StreamParsing.ToString());
-            Trace.WriteLine(string.Format("{0} will attempt to stream {1}", PlayerType.ToString(), url),
+            Trace.WriteLine($"{PlayerType.ToString()} will attempt to stream {url}",
                             TraceCategory.StreamParsing.ToString());
             Play(channel);
         }
